@@ -1,12 +1,12 @@
 # Zero-Trust LinkedIn Agent
 
-A privacy-first AI agent that automates LinkedIn networking for legal professionals. It scans connections, identifies target profiles (e.g., Partners, Founders), generates "Zero-Trust" AI audit reports using Google Gemini, and sends personalized messages—all while keeping sensitive client data safe.
+A privacy-first AI agent that automates LinkedIn networking for legal professionals. It scans connections, identifies target profiles (e.g., Partners, Founders), generates "Zero-Trust" AI strategy reports using Google Gemini, and sends personalized messages—all while keeping sensitive client data safe.
 
 ## Features
 
 - **Automated Scanning**: Browses LinkedIn connections to find relevant legal professionals.
 - **Zero-Trust Analysis**: Uses Google Gemini to generate practice-specific AI prompts that require *no* PII (Personally Identifiable Information) to run.
-- **PDF Generation**: Creates a professional, accessible PDF report ("AI Audit") for each contact.
+- **PDF Generation**: Creates a professional, accessible PDF report ("Zero-Trust AI Strategy") for each contact.
 - **Smart Messaging**: Sends a connection message and a follow-up message with the report attached.
 - **Privacy First**: Runs locally on your machine. Login sessions are stored locally. No data is sent to third-party servers other than the Gemini API for prompt generation (which itself follows Zero-Trust protocols).
 - **Schedule Ready**: Includes scripts to run automatically in the background (e.g., daily 5 PM - 11 PM).

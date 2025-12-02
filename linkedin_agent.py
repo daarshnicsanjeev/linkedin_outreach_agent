@@ -390,7 +390,7 @@ You must strictly output VALID JSON with the following structure. Do not include
                - TONE: Professional, concise, peer-to-peer. NO "marketing speak".
                - FORMAT:
                  Hi [First Name],
-                 I noticed [Firm Name] specializes in [Specific Practice Area], so I generated a **"Zero-Trust" AI Audit** specifically for your practice.
+                 I noticed [Firm Name] specializes in [Specific Practice Area], so I generated a **"Zero-Trust" AI Strategy** specifically for your practice.
                  It includes 10 ready-to-use workflows—including [Mention 2 specific topics derived from the generated prompts]—that use an "anonymization sandwich" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.
                  I've attached the PDF. You can preview the prompts directly here in the chat.
                  Best,
@@ -438,7 +438,7 @@ You must strictly output VALID JSON with the following structure. Do not include
                 def header(self):
                     self.set_font('Arial', 'B', 16)
                     self.set_text_color(15, 23, 42) # Slate 900
-                    self.cell(0, 10, 'PRIVACY-FIRST AI AUDIT', 0, 1, 'L')
+                    self.cell(0, 10, 'PRIVACY-FIRST AI STRATEGY', 0, 1, 'L')
                     self.ln(2)
 
                 def footer(self):
@@ -457,12 +457,12 @@ You must strictly output VALID JSON with the following structure. Do not include
             # --- ACCESSIBILITY IMPROVEMENTS ---
             # 1. Set Document Metadata (Crucial for Screen Readers)
             profile = result.get('profile', {})
-            doc_title = f"Zero-Trust AI Audit for {profile.get('name')}"
+            doc_title = f"Zero-Trust AI Strategy for {profile.get('name')}"
             pdf.set_title(doc_title)
             pdf.set_author("Sanjeev Chaodhari")
-            pdf.set_subject(f"Legal AI Audit for {profile.get('firmName')}")
+            pdf.set_subject(f"Legal AI Strategy for {profile.get('firmName')}")
             pdf.set_creator("Legal AI Consultant Agent")
-            pdf.set_keywords("Legal, AI, Audit, Zero-Trust, Privacy")
+            pdf.set_keywords("Legal, AI, Strategy, Zero-Trust, Privacy")
             
             # 2. Set Display Mode
             # Forces the PDF viewer to show the document at 100% zoom and use the title tag
