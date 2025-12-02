@@ -714,21 +714,24 @@ You must strictly output VALID JSON with the following structure. Do not include
 
             # 3. Send Message 1 if needed
             if not msg1_sent:
-                self.log("Sending Message 1...")
+                self.log("Sending Message 1 (Thank You)...")
                 first_name = candidate["name"].split()[0]
                 thank_you_msg = f"Hi {first_name},\n\nThank you for connecting with me. I look forward to following your work.\n\nBest,\nSanjeev Chaodhari"
                 if await self.send_chat_message(thank_you_msg, page=new_page):
-                    msg1_sent = True
+                    self.log("Message 1 sent. Ending session for this candidate (will send report next time).")
+                    await self.close_chat(page=new_page)
+                    await new_page.close()
+                    return True # Successfully processed (sent msg 1)
                 else:
                     self.log("Failed to send Message 1. Aborting this candidate.")
                     await self.close_chat(page=new_page)
                     await new_page.close()
                     return False
-            else:
-                self.log("Message 1 already sent. Skipping.")
 
-            # 4. Send Message 2 if needed
+            # 4. Send Message 2 if needed (Only if Msg 1 was already present)
             if not msg2_sent:
+                self.log("Message 1 was already sent. Proceeding to Message 2 (Report)...")
+                
                 # We need to generate the report.
                 # Close chat to avoid interference with extraction
                 await self.close_chat(page=new_page)
@@ -765,17 +768,12 @@ You must strictly output VALID JSON with the following structure. Do not include
                      self.log("Message 2 sent successfully.")
                      await self.close_chat(page=new_page)
                      await new_page.close()
-                     return True # Successfully processed new candidate
+                     return True # Successfully processed (sent msg 2)
                 else:
                      self.log("Failed to send Message 2.")
                      await self.close_chat(page=new_page)
                      await new_page.close()
                      return False
-            else:
-                self.log("Message 2 already sent. Skipping.")
-                await self.close_chat(page=new_page)
-                await new_page.close()
-                return False # Nothing new done
         except Exception as e:
             self.log(f"Error processing in new tab: {e}")
             await new_page.close()
