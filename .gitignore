@@ -1,0 +1,26 @@
+# Environment Variables
+.env
+
+# User Data (Login Sessions)
+user_data/
+ChromeAutomationProfile/
+
+# Logs
+*.log
+agent_log.txt
+debug_log.txt
+stderr.txt
+stdout.txt
+
+# Generated Reports
+*.pdf
+Audit_*.pdf
+
+# Python
+__pycache__/
+*.pyc
+
+# Debugging
+debug_*.html
+analysis_result.txt
+env_check.txt
