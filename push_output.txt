@@ -1,6 +1,0 @@
-POST git-receive-pack (14473 bytes)
-branch 'main' set up to track 'origin/main'.
-Pushing to https://github.com/daarshnicsanjeev/linkedin_outreach_agent.git
-To https://github.com/daarshnicsanjeev/linkedin_outreach_agent.git
- * [new branch]      main -> main
-updating local tracking ref 'refs/remotes/origin/main'

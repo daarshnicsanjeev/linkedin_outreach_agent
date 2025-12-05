@@ -1,5 +1,6 @@
 # Environment Variables
 .env
+!.env.example
 
 # User Data (Login Sessions)
 user_data/
@@ -8,19 +9,50 @@ ChromeAutomationProfile/
 # Logs
 *.log
 agent_log.txt
+agent_log_view.txt
+agent_scheduler_log.txt
 debug_log.txt
 stderr.txt
 stdout.txt
+run_log*.txt
+temp_log*.txt
+check_log*.txt
 
 # Generated Reports
 *.pdf
+Zero_Trust_AI_Strategy_*.pdf
 Audit_*.pdf
+
+# History Files (contain contact data)
+history.json
+agent_history.json
 
 # Python
 __pycache__/
 *.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+.eggs/
 
 # Debugging
 debug_*.html
+debug_*.txt
 analysis_result.txt
 env_check.txt
+test_output*.txt
+status.txt
+commit_output.txt
+push_output.txt
+profile_snapshot*.pdf
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db

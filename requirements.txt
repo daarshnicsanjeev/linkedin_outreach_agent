@@ -1,4 +1,0 @@
-playwright
-google-genai
-fpdf
-python-dotenv
