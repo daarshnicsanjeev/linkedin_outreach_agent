@@ -622,3 +622,519 @@ Cleaning up...
 [2025-12-09 21:47:01]   Chrome process terminated successfully.
 [2025-12-09 21:47:01]   Run statistics saved to history.
 [2025-12-09 21:47:01] Agent stopped.
+[2025-12-10 18:13:53] ============================================================
+[2025-12-10 18:13:53] LinkedIn Notification Engagement Agent Starting
+[2025-12-10 18:13:53] ============================================================
+[2025-12-10 18:13:54] Attempting to connect to existing Chrome on port 9222...
+[2025-12-10 18:13:54] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-10 18:13:54] Attempting to launch Chrome...
+[2025-12-10 18:13:54] Checking for existing Chrome processes on port 9222...
+[2025-12-10 18:13:54] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-10 18:13:54] Chrome launched with PID: 23220
+[2025-12-10 18:13:55] Chrome debug port ready (after 1s)
+[2025-12-10 18:14:00] Connection attempt 1/5...
+[2025-12-10 18:14:00] Connected to launched Chrome.
+[2025-12-10 18:14:00] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-10 18:14:07] Notifications page loaded.
+[2025-12-10 18:14:07] Extracting notifications...
+[2025-12-10 18:14:07] Scrolling to load more notifications...
+[2025-12-10 18:14:10]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-10 18:14:11] Found 22 notification cards with selector: article.nt-card
+[2025-12-10 18:14:11]   DEBUG [1]: Status is reachable Unread notification. Mukesh Sharma posted: thanks to chef harpal singh 5m
+[2025-12-10 18:14:11]   DEBUG [2]: Unread notification. Administrative Manager: new opportunity in Mumbai. Administrative Manager: new opportunity in Mumbai. View job View job 4h
+[2025-12-10 18:14:11]   DEBUG [3]: Status is online Unread notification. People are engaging with Sofia Maria Silva de Almeida e Souza Netto’s post: Good morning, LinkedIn community! ☀️ 😊 The past few weeks have gotten me thinking abou
+[2025-12-10 18:14:11]   DEBUG [4]: Status is reachable Unread notification. Manoj Nayak posted: I published my novelette , do read Sadhu Laxmandas and I “He said two men living together would naturally have sex.” A 26-year-old’s five-d
+[2025-12-10 18:14:11]   DEBUG [5]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 8h
+[2025-12-10 18:14:11]   DEBUG [6]: Status is reachable Unread notification. Pranay Gadodia, He/Him/His and Rt n. Taha Haaziq reacted to a post: Standing before the President of India as a National Awardee felt like a dream. But what ha
+[2025-12-10 18:14:11]   [6] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Pranay Gadodia, H...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/pranaygadodia
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Pranaygadodia
+[2025-12-10 18:14:11]   DEBUG [7]: Unread notification. You may know Bryce Angell. Add to your network. Trial Attorney 16h
+[2025-12-10 18:14:11]   DEBUG [8]: Status is online Unread notification. Chong Ye liked your comment. Your reflection is powerful and truly resonates. The shift from seeing outcomes as client fault to recognizing the role of guidance h
+[2025-12-10 18:14:11]   [8] ENGAGEMENT DETECTED: Status is online  Unread notification.  Chong Ye liked your ...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/chong%2Dye%2Dab84317
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Chong Ye
+[2025-12-10 18:14:11]   DEBUG [9]: Status is reachable Unread notification. Tabber B. Benedict mentioned you in a comment. Sanjeev Chaodhari well written Sanjeev. Mergers and Acquisitions Educational Update (MAEU): Strategic Intensity 
+[2025-12-10 18:14:11]   [9] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Tabber B. Benedic...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Tabber B
+[2025-12-10 18:14:11]   DEBUG [10]: Status is reachable Unread notification. Tabber B. Benedict mentioned you in a comment. Sanjeev Chaodhari Agreed. One thing we do is give more of a white glove, bespoke, partner level service to our c
+[2025-12-10 18:14:11]   [10] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Tabber B. Benedic...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Tabber B
+[2025-12-10 18:14:11]   [13] ENGAGEMENT DETECTED: Status is online  Unread notification.  Chong Ye commented o...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/chong%2Dye%2Dab84317
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Chong Ye
+[2025-12-10 18:14:11]   [15] ENGAGEMENT DETECTED: Status is reachable Kyle Wright liked your comment. This rea...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/kyle%2Dwright%2D96b35019
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Kyle Wright
+[2025-12-10 18:14:11]   [16] ENGAGEMENT DETECTED: Andrew Pickett, Kyle Wright, and 1 other connection reacted ...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/andrewburtonpickett
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Andrewburtonpickett
+[2025-12-10 18:14:11]   [21] ENGAGEMENT DETECTED: Status is reachable Ravi Soni viewed your profile. See all v...
+[2025-12-10 18:14:11]     Found 1 profile links in notification
+[2025-12-10 18:14:11]     Link: NO NAME -> /in/ravi%2Dsoni%2D16358b184
+[2025-12-10 18:14:11]     ✓ Added 1 profile(s): Ravi Soni
+[2025-12-10 18:14:11] Extracted 8 engagement notifications
+[2025-12-10 18:14:11] 
+Processing 8 notifications...
+[2025-12-10 18:14:11] Current invite count: 0/50
+[2025-12-10 18:14:11] 
+--- REACTED: Status is reachable
+
+Unread notification.
+
+Pranay ...
+[2025-12-10 18:14:11]   Checking connection status: https://www.linkedin.com/in/pranaygadodia
+[2025-12-10 18:14:15]   Sending connection invite to: Pranaygadodia
+[2025-12-10 18:14:20]     ✓ Connection invite sent to Pranaygadodia
+[2025-12-10 18:14:20]   Progress: 1/50 invites sent
+[2025-12-10 18:14:20]   Waiting 5s before next action...
+[2025-12-10 18:14:25] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Chong Ye l...
+[2025-12-10 18:14:25]   Checking connection status: https://www.linkedin.com/in/chong%2Dye%2Dab84317
+[2025-12-10 18:14:30]   Sending connection invite to: Chong Ye
+[2025-12-10 18:14:36]     ✓ Connection invite sent to Chong Ye
+[2025-12-10 18:14:36]   Progress: 2/50 invites sent
+[2025-12-10 18:14:36]   Waiting 5s before next action...
+[2025-12-10 18:14:41] 
+--- MENTIONED: Status is reachable
+
+Unread notification.
+
+Tabber ...
+[2025-12-10 18:14:41]   Checking connection status: https://www.linkedin.com/in/tabber%2Db%2Dbenedict
+[2025-12-10 18:14:45]   Sending connection invite to: Tabber B
+[2025-12-10 18:14:50]     ✓ Connection invite sent to Tabber B
+[2025-12-10 18:14:50]   Progress: 3/50 invites sent
+[2025-12-10 18:14:50]   Waiting 5s before next action...
+[2025-12-10 18:14:55] 
+--- MENTIONED: Status is reachable
+
+Unread notification.
+
+Tabber ...
+[2025-12-10 18:14:55]   Skipping Tabber B - already invited previously
+[2025-12-10 18:14:55] 
+--- COMMENTED: Status is online
+
+Unread notification.
+
+Chong Ye c...
+[2025-12-10 18:14:55]   Skipping Chong Ye - already invited previously
+[2025-12-10 18:14:55] 
+--- LIKED: Status is reachable
+Kyle Wright liked your comment...
+[2025-12-10 18:14:55]   Skipping Kyle Wright - already invited previously
+[2025-12-10 18:14:55] 
+--- LIKED: Andrew Pickett, Kyle Wright, and 1 other connectio...
+[2025-12-10 18:14:55]   Skipping Andrewburtonpickett - already invited previously
+[2025-12-10 18:14:55] 
+--- VIEWED: Status is reachable
+Ravi Soni viewed your profile....
+[2025-12-10 18:14:55]   Skipping Ravi Soni - already invited previously
+[2025-12-10 18:14:57] 
+============================================================
+[2025-12-10 18:14:57] RUN SUMMARY
+[2025-12-10 18:14:57] ============================================================
+[2025-12-10 18:14:57]   Notifications processed: 3
+[2025-12-10 18:14:57]   Connection invites sent: 3
+[2025-12-10 18:14:57]   Already connected: 0
+[2025-12-10 18:14:57]   Already pending: 0
+[2025-12-10 18:14:57]   Errors/Skipped: 0
+[2025-12-10 18:14:57] ============================================================
+[2025-12-10 18:14:57] 
+Cleaning up...
+[2025-12-10 18:14:57]   Closing agent page...
+[2025-12-10 18:14:57]   Closing additional page: chrome://new-tab-page/...
+[2025-12-10 18:14:57]   Stopping Playwright...
+[2025-12-10 18:14:57]   Terminating Chrome process (PID: 23220)...
+[2025-12-10 18:14:57]   Chrome process terminated successfully.
+[2025-12-10 18:14:57]   Run statistics saved to history.
+[2025-12-10 18:14:57] Agent stopped.
+[2025-12-10 19:33:56] ============================================================
+[2025-12-10 19:33:56] LinkedIn Notification Engagement Agent Starting
+[2025-12-10 19:33:56] ============================================================
+[2025-12-10 19:33:56] Attempting to connect to existing Chrome on port 9222...
+[2025-12-10 19:33:56] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-10 19:33:56] Attempting to launch Chrome...
+[2025-12-10 19:33:56] Checking for existing Chrome processes on port 9222...
+[2025-12-10 19:33:56] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-10 19:33:56] Chrome launched with PID: 28276
+[2025-12-10 19:33:57] Chrome debug port ready (after 1s)
+[2025-12-10 19:34:02] Connection attempt 1/5...
+[2025-12-10 19:34:02] Connected to launched Chrome.
+[2025-12-10 19:34:02] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-10 19:34:10] Notifications page loaded.
+[2025-12-10 19:34:10] Extracting notifications...
+[2025-12-10 19:34:10] Scrolling to load more notifications...
+[2025-12-10 19:34:13]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-10 19:34:14] Found 22 notification cards with selector: article.nt-card
+[2025-12-10 19:34:14]   DEBUG [1]: Unread notification. Kevin McManus liked your comment. Great post, Kevin. It's inspiring to see how you successfully managed working abroad. Your experience highlights the importance of having a relia
+[2025-12-10 19:34:14]   [1] ENGAGEMENT DETECTED: Unread notification.  Kevin McManus liked your comment. Grea...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Kevinjmcmanus
+[2025-12-10 19:34:14]   DEBUG [2]: Unread notification. Kevin McManus mentioned you in a comment. Sanjeev Chaodhari Appreciate the kind words. Before leaving for Paraguay last year, I told one of our legal assistants that I was nervous
+[2025-12-10 19:34:14]   [2] ENGAGEMENT DETECTED: Unread notification.  Kevin McManus mentioned you in a comme...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Kevinjmcmanus
+[2025-12-10 19:34:14]   DEBUG [3]: Unread notification. Carrie Gray, D.B.A. loved your comment. This is such a helpful perspective on a tough situation many of us face. I love how you tie leadership skills from work into managing famil
+[2025-12-10 19:34:14]   DEBUG [4]: Unread notification. Anthony L. Ray posted: DHS has officially ended the 540-day automatic extension of work permits. This means many immigrant workers could face gaps in employment authorization unle
+[2025-12-10 19:34:14]   DEBUG [5]: Status is online Unread notification. Joel Goldstein - The Dauntless Entrepreneur replied to your comment. Thank you so much Sanjeev- that means a lot! In today’s world, it’s easy to get caught up in 
+[2025-12-10 19:34:14]   [5] ENGAGEMENT DETECTED: Status is online  Unread notification.  Joel Goldstein - The...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-10 19:34:14]   DEBUG [6]: Status is online Unread notification. Joel Goldstein - The Dauntless Entrepreneur liked your comment. I really appreciate your thoughtful approach to networking—it’s refreshing to hear someone emphasi
+[2025-12-10 19:34:14]   [6] ENGAGEMENT DETECTED: Status is online  Unread notification.  Joel Goldstein - The...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-10 19:34:14]   DEBUG [7]: Status is online Unread notification. Michael Rabinovich posted: I fired an attorney last year. Not the kind of story you hear often in this business, but it needed to be done. He was being condescend
+[2025-12-10 19:34:14]   DEBUG [8]: Status is reachable Mukesh Sharma posted: thanks to chef harpal singh 1h
+[2025-12-10 19:34:14]   DEBUG [9]: Administrative Manager: new opportunity in Mumbai. Administrative Manager: new opportunity in Mumbai. View job View job 5h
+[2025-12-10 19:34:14]   DEBUG [10]: Status is online People are engaging with Sofia Maria Silva de Almeida e Souza Netto’s post: Good morning, LinkedIn community! ☀️ 😊 The past few weeks have gotten me thinking about how far I have come
+[2025-12-10 19:34:14]   [13] ENGAGEMENT DETECTED: Status is reachable Pranay Gadodia, He/Him/His and Rt n. Tah...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/pranaygadodia
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Pranaygadodia
+[2025-12-10 19:34:14]   [15] ENGAGEMENT DETECTED: Status is reachable Chong Ye liked your comment. Your reflec...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/chong%2Dye%2Dab84317
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Chong Ye
+[2025-12-10 19:34:14]   [16] ENGAGEMENT DETECTED: Status is reachable Tabber B. Benedict mentioned you in a co...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Tabber B
+[2025-12-10 19:34:14]   [17] ENGAGEMENT DETECTED: Status is reachable Tabber B. Benedict mentioned you in a co...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Tabber B
+[2025-12-10 19:34:14]   [20] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Chong Ye commente...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/chong%2Dye%2Dab84317
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Chong Ye
+[2025-12-10 19:34:14]   [22] ENGAGEMENT DETECTED: Status is online Kyle Wright liked your comment. This really...
+[2025-12-10 19:34:14]     Found 1 profile links in notification
+[2025-12-10 19:34:14]     Link: NO NAME -> /in/kyle%2Dwright%2D96b35019
+[2025-12-10 19:34:14]     ✓ Added 1 profile(s): Kyle Wright
+[2025-12-10 19:34:14] Extracted 10 engagement notifications
+[2025-12-10 19:34:14] 
+Processing 10 notifications...
+[2025-12-10 19:34:14] Current invite count: 0/50
+[2025-12-10 19:34:14] 
+--- LIKED: Unread notification.
+
+Kevin McManus liked your com...
+[2025-12-10 19:34:14]   Checking connection status: https://www.linkedin.com/in/kevinjmcmanus
+[2025-12-10 19:34:18]   Sending connection invite to: Kevinjmcmanus
+[2025-12-10 19:34:30]     ✓ Connection invite sent to Kevinjmcmanus
+[2025-12-10 19:34:30]   Progress: 1/50 invites sent
+[2025-12-10 19:34:30]   Waiting 5s before next action...
+[2025-12-10 19:34:35] 
+--- MENTIONED: Unread notification.
+
+Kevin McManus mentioned you ...
+[2025-12-10 19:34:35]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-10 19:34:35] 
+--- ENGAGED: Status is online
+
+Unread notification.
+
+Joel Golds...
+[2025-12-10 19:34:35]   Checking connection status: https://www.linkedin.com/in/dauntlessentrepreneur
+[2025-12-10 19:34:39]   Sending connection invite to: Dauntlessentrepreneur
+[2025-12-10 19:34:45]     ✓ Connection invite sent to Dauntlessentrepreneur
+[2025-12-10 19:34:45]   Progress: 2/50 invites sent
+[2025-12-10 19:34:45]   Waiting 5s before next action...
+[2025-12-10 19:34:50] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Joel Golds...
+[2025-12-10 19:34:50]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-10 19:34:50] 
+--- REACTED: Status is reachable
+Pranay Gadodia, He/Him/His and...
+[2025-12-10 19:34:50]   Skipping Pranaygadodia - already invited previously
+[2025-12-10 19:34:50] 
+--- LIKED: Status is reachable
+Chong Ye liked your comment.
+Y...
+[2025-12-10 19:34:50]   Skipping Chong Ye - already invited previously
+[2025-12-10 19:34:50] 
+--- MENTIONED: Status is reachable
+Tabber B. Benedict mentioned y...
+[2025-12-10 19:34:50]   Skipping Tabber B - already invited previously
+[2025-12-10 19:34:50] 
+--- MENTIONED: Status is reachable
+Tabber B. Benedict mentioned y...
+[2025-12-10 19:34:50]   Skipping Tabber B - already invited previously
+[2025-12-10 19:34:50] 
+--- COMMENTED: Status is reachable
+
+Unread notification.
+
+Chong Y...
+[2025-12-10 19:34:50]   Skipping Chong Ye - already invited previously
+[2025-12-10 19:34:50] 
+--- LIKED: Status is online
+Kyle Wright liked your comment.
+T...
+[2025-12-10 19:34:50]   Skipping Kyle Wright - already invited previously
+[2025-12-10 19:34:51] 
+============================================================
+[2025-12-10 19:34:51] RUN SUMMARY
+[2025-12-10 19:34:51] ============================================================
+[2025-12-10 19:34:51]   Notifications processed: 2
+[2025-12-10 19:34:51]   Connection invites sent: 2
+[2025-12-10 19:34:51]   Already connected: 0
+[2025-12-10 19:34:51]   Already pending: 0
+[2025-12-10 19:34:51]   Errors/Skipped: 0
+[2025-12-10 19:34:51] ============================================================
+[2025-12-10 19:34:51] 
+Cleaning up...
+[2025-12-10 19:34:51]   Closing agent page...
+[2025-12-10 19:34:52]   Closing additional page: chrome://new-tab-page/...
+[2025-12-10 19:34:52]   Stopping Playwright...
+[2025-12-10 19:34:52]   Terminating Chrome process (PID: 28276)...
+[2025-12-10 19:34:52]   Chrome process terminated successfully.
+[2025-12-10 19:34:52]   Run statistics saved to history.
+[2025-12-10 19:34:52] Agent stopped.
+[2025-12-10 19:56:00] ============================================================
+[2025-12-10 19:56:00] LinkedIn Notification Engagement Agent Starting
+[2025-12-10 19:56:00] ============================================================
+[2025-12-10 19:56:01] Attempting to connect to existing Chrome on port 9222...
+[2025-12-10 19:56:01] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-10 19:56:01] Attempting to launch Chrome...
+[2025-12-10 19:56:01] Checking for existing Chrome processes on port 9222...
+[2025-12-10 19:56:01] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-10 19:56:01] Chrome launched with PID: 29108
+[2025-12-10 19:56:02] Chrome debug port ready (after 1s)
+[2025-12-10 19:56:07] Connection attempt 1/5...
+[2025-12-10 19:56:07] Connected to launched Chrome.
+[2025-12-10 19:56:07] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-10 19:56:14] Notifications page loaded.
+[2025-12-10 19:56:14] Extracting notifications...
+[2025-12-10 19:56:14] Scrolling to load more notifications...
+[2025-12-10 19:56:17]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-10 19:56:18] Found 21 notification cards with selector: article.nt-card
+[2025-12-10 19:56:18]   DEBUG [1]: Unread notification. Larry Kotlyar liked your comment. What an inspiring journey! It's incredible to see how consistency and belief in a vision can lead to such remarkable success. Your story is a pow
+[2025-12-10 19:56:21]   AI Classification: is_engagement=True, type=liked
+[2025-12-10 19:56:21]   [1] ENGAGEMENT DETECTED: Unread notification.  Larry Kotlyar liked your comment. What...
+[2025-12-10 19:56:21]     Found 1 profile links in notification
+[2025-12-10 19:56:21]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-10 19:56:21]     Added 1 profile(s): Larry
+[2025-12-10 19:56:21]   DEBUG [2]: Unread notification. Matt Nakajima replied to your comment. Sanjeev Chaodhari Well said. After practicing on the defense side for 13 years, a friend switched to our side. It's been a rude awakening. T
+[2025-12-10 19:56:23]   AI Classification: is_engagement=True, type=replied
+[2025-12-10 19:56:23]   [2] ENGAGEMENT DETECTED: Unread notification.  Matt Nakajima replied to your comment....
+[2025-12-10 19:56:23]     Found 1 profile links in notification
+[2025-12-10 19:56:23]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-10 19:56:23]     Added 1 profile(s): Matt
+[2025-12-10 19:56:23]   DEBUG [3]: Unread notification. Matt Nakajima liked your comment. I can appreciate this perspective. Both sides certainly face unique challenges and strategic considerations. A good defense lawyer often has to b
+[2025-12-10 19:56:25]   AI Classification: is_engagement=True, type=liked
+[2025-12-10 19:56:25]   [3] ENGAGEMENT DETECTED: Unread notification.  Matt Nakajima liked your comment. I ca...
+[2025-12-10 19:56:25]     Found 1 profile links in notification
+[2025-12-10 19:56:25]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-10 19:56:25]     Added 1 profile(s): Matt
+[2025-12-10 19:56:25]   DEBUG [4]: Unread notification. Kevin McManus liked your comment. Great post, Kevin. It's inspiring to see how you successfully managed working abroad. Your experience highlights the importance of having a relia
+[2025-12-10 19:56:27]   AI Classification: is_engagement=True, type=liked
+[2025-12-10 19:56:27]   [4] ENGAGEMENT DETECTED: Unread notification.  Kevin McManus liked your comment. Grea...
+[2025-12-10 19:56:27]     Found 1 profile links in notification
+[2025-12-10 19:56:27]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-10 19:56:27]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-10 19:56:27]   DEBUG [5]: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari Appreciate the kind words. Before leaving for Paraguay last year, I told one of our legal assistants that I was nervous about working from S
+[2025-12-10 19:56:29]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-10 19:56:29]   [5] ENGAGEMENT DETECTED: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari ...
+[2025-12-10 19:56:29]     Found 1 profile links in notification
+[2025-12-10 19:56:29]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-10 19:56:29]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-10 19:56:29]   DEBUG [6]: Carrie Gray, D.B.A. loved your comment. This is such a helpful perspective on a tough situation many of us face. I love how you tie leadership skills from work into managing family conversations—it re
+[2025-12-10 19:56:31]   AI Classification: is_engagement=True, type=loved
+[2025-12-10 19:56:31]   [6] ENGAGEMENT DETECTED: Carrie Gray, D.B.A. loved your comment. This is such a helpf...
+[2025-12-10 19:56:31]     Found 1 profile links in notification
+[2025-12-10 19:56:31]     Link: NO NAME -> /in/carriegraydba
+[2025-12-10 19:56:31]     Added 1 profile(s): Carriegraydba
+[2025-12-10 19:56:31]   DEBUG [7]: Unread notification. Anthony L. Ray posted: DHS has officially ended the 540-day automatic extension of work permits. This means many immigrant workers could face gaps in employment authorization unle
+[2025-12-10 19:56:33]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:33]   DEBUG [8]: Status is online Unread notification. Joel Goldstein - The Dauntless Entrepreneur replied to your comment. Thank you so much Sanjeev- that means a lot! In today’s world, it’s easy to get caught up in 
+[2025-12-10 19:56:36]   AI Classification: is_engagement=True, type=commented
+[2025-12-10 19:56:36]   [8] ENGAGEMENT DETECTED: Status is online  Unread notification.  Joel Goldstein - The...
+[2025-12-10 19:56:36]     Found 1 profile links in notification
+[2025-12-10 19:56:36]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-10 19:56:36]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-10 19:56:36]   DEBUG [9]: Status is online Unread notification. Joel Goldstein - The Dauntless Entrepreneur liked your comment. I really appreciate your thoughtful approach to networking—it’s refreshing to hear someone emphasi
+[2025-12-10 19:56:38]   AI Classification: is_engagement=True, type=liked
+[2025-12-10 19:56:38]   [9] ENGAGEMENT DETECTED: Status is online  Unread notification.  Joel Goldstein - The...
+[2025-12-10 19:56:38]     Found 1 profile links in notification
+[2025-12-10 19:56:38]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-10 19:56:38]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-10 19:56:38]   DEBUG [10]: Status is online Unread notification. Michael Rabinovich posted: I fired an attorney last year. Not the kind of story you hear often in this business, but it needed to be done. He was being condescend
+[2025-12-10 19:56:40]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:42]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:44]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:46]   AI Classification: is_engagement=True, type=reacted
+[2025-12-10 19:56:46]   [13] ENGAGEMENT DETECTED: Status is online People are engaging with Sofia Maria Silva ...
+[2025-12-10 19:56:46]     Found 1 profile links in notification
+[2025-12-10 19:56:46]     Link: NO NAME -> /in/sofia%2Dmaria%2Dsilva%2Dde%2Dalmeida%2De%2Dsou
+[2025-12-10 19:56:46]     Added 1 profile(s): Sofia Maria Silva De Almeida E Souza Netto
+[2025-12-10 19:56:48]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:50]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:52]   AI Classification: is_engagement=True, type=reacted
+[2025-12-10 19:56:52]   [16] ENGAGEMENT DETECTED: Status is reachable Pranay Gadodia, He/Him/His and Rt n. Tah...
+[2025-12-10 19:56:52]     Found 1 profile links in notification
+[2025-12-10 19:56:52]     Link: NO NAME -> /in/pranaygadodia
+[2025-12-10 19:56:52]     Added 1 profile(s): Pranaygadodia
+[2025-12-10 19:56:54]   AI Classification: is_engagement=False, type=none
+[2025-12-10 19:56:55]   AI Classification: is_engagement=True, type=liked
+[2025-12-10 19:56:55]   [18] ENGAGEMENT DETECTED: Status is reachable Chong Ye liked your comment. Your reflec...
+[2025-12-10 19:56:55]     Found 1 profile links in notification
+[2025-12-10 19:56:55]     Link: NO NAME -> /in/chong%2Dye%2Dab84317
+[2025-12-10 19:56:55]     Added 1 profile(s): Chong Ye
+[2025-12-10 19:56:57]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-10 19:56:57]   [19] ENGAGEMENT DETECTED: Status is reachable Tabber B. Benedict mentioned you in a co...
+[2025-12-10 19:56:57]     Found 1 profile links in notification
+[2025-12-10 19:56:57]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 19:56:57]     Added 1 profile(s): Tabber B
+[2025-12-10 19:56:59]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-10 19:56:59]   [20] ENGAGEMENT DETECTED: Status is reachable Tabber B. Benedict mentioned you in a co...
+[2025-12-10 19:56:59]     Found 1 profile links in notification
+[2025-12-10 19:56:59]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 19:56:59]     Added 1 profile(s): Tabber B
+[2025-12-10 19:57:01]   AI Classification: is_engagement=True, type=reacted
+[2025-12-10 19:57:01]   [21] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Tabber B. Benedic...
+[2025-12-10 19:57:01]     Found 1 profile links in notification
+[2025-12-10 19:57:01]     Link: NO NAME -> /in/tabber%2Db%2Dbenedict
+[2025-12-10 19:57:01]     Added 1 profile(s): Tabber B
+[2025-12-10 19:57:01] Extracted 14 engagement notifications
+[2025-12-10 19:57:01] 
+Processing 14 notifications...
+[2025-12-10 19:57:01] Current invite count: 0/50
+[2025-12-10 19:57:01] 
+--- LIKED: Unread notification.
+
+Larry Kotlyar liked your com...
+[2025-12-10 19:57:01]   Checking connection status: https://www.linkedin.com/in/larry%2Dkotlyar
+[2025-12-10 19:57:05]   Sending connection invite to: Larry
+[2025-12-10 19:57:18]     ✓ Connection invite sent to Larry
+[2025-12-10 19:57:18]   Progress: 1/50 invites sent
+[2025-12-10 19:57:18]   Waiting 5s before next action...
+[2025-12-10 19:57:23] 
+--- REPLIED: Unread notification.
+
+Matt Nakajima replied to you...
+[2025-12-10 19:57:23]   Checking connection status: https://www.linkedin.com/in/matt%2Dnakajima
+[2025-12-10 19:57:27]   Sending connection invite to: Matt
+[2025-12-10 19:57:30]     ✓ Connection invite sent to Matt
+[2025-12-10 19:57:30]   Progress: 2/50 invites sent
+[2025-12-10 19:57:30]   Waiting 5s before next action...
+[2025-12-10 19:57:35] 
+--- LIKED: Unread notification.
+
+Matt Nakajima liked your com...
+[2025-12-10 19:57:35]   Skipping Matt - already invited previously
+[2025-12-10 19:57:35] 
+--- LIKED: Unread notification.
+
+Kevin McManus liked your com...
+[2025-12-10 19:57:35]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-10 19:57:35] 
+--- MENTIONED: Kevin McManus mentioned you in a comment.
+Sanjeev ...
+[2025-12-10 19:57:35]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-10 19:57:35] 
+--- LOVED: Carrie Gray, D.B.A. loved your comment.
+This is su...
+[2025-12-10 19:57:35]   Checking connection status: https://www.linkedin.com/in/carriegraydba
+[2025-12-10 19:57:40]   Sending connection invite to: Carriegraydba
+[2025-12-10 19:57:45]     ✓ Connection invite sent to Carriegraydba
+[2025-12-10 19:57:45]   Progress: 3/50 invites sent
+[2025-12-10 19:57:45]   Waiting 5s before next action...
+[2025-12-10 19:57:50] 
+--- COMMENTED: Status is online
+
+Unread notification.
+
+Joel Golds...
+[2025-12-10 19:57:50]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-10 19:57:50] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Joel Golds...
+[2025-12-10 19:57:50]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-10 19:57:50] 
+--- REACTED: Status is online
+People are engaging with Sofia Ma...
+[2025-12-10 19:57:50]   Checking connection status: https://www.linkedin.com/in/sofia%2Dmaria%2Dsilva%2Dde%2Dalmeida%2De%2Dsouza%2Dnetto
+[2025-12-10 19:57:54]   Sending connection invite to: Sofia Maria Silva De Almeida E Souza Netto
+[2025-12-10 19:57:59]     ✓ Connection invite sent to Sofia Maria Silva De Almeida E Souza Netto
+[2025-12-10 19:57:59]   Progress: 4/50 invites sent
+[2025-12-10 19:57:59]   Waiting 5s before next action...
+[2025-12-10 19:58:04] 
+--- REACTED: Status is reachable
+Pranay Gadodia, He/Him/His and...
+[2025-12-10 19:58:04]   Skipping Pranaygadodia - already invited previously
+[2025-12-10 19:58:04] 
+--- LIKED: Status is reachable
+Chong Ye liked your comment.
+Y...
+[2025-12-10 19:58:04]   Skipping Chong Ye - already invited previously
+[2025-12-10 19:58:04] 
+--- MENTIONED: Status is reachable
+Tabber B. Benedict mentioned y...
+[2025-12-10 19:58:04]   Skipping Tabber B - already invited previously
+[2025-12-10 19:58:04] 
+--- MENTIONED: Status is reachable
+Tabber B. Benedict mentioned y...
+[2025-12-10 19:58:04]   Skipping Tabber B - already invited previously
+[2025-12-10 19:58:04] 
+--- REACTED: Status is reachable
+
+Unread notification.
+
+Tabber ...
+[2025-12-10 19:58:04]   Skipping Tabber B - already invited previously
+[2025-12-10 19:58:07] 
+============================================================
+[2025-12-10 19:58:07] RUN SUMMARY
+[2025-12-10 19:58:07] ============================================================
+[2025-12-10 19:58:07]   Notifications processed: 4
+[2025-12-10 19:58:07]   Connection invites sent: 4
+[2025-12-10 19:58:07]   Already connected: 0
+[2025-12-10 19:58:07]   Already pending: 0
+[2025-12-10 19:58:07]   Errors/Skipped: 0
+[2025-12-10 19:58:07] ============================================================
+[2025-12-10 19:58:07] 
+Cleaning up...
+[2025-12-10 19:58:07]   Closing agent page...
+[2025-12-10 19:58:07]   Closing additional page: chrome://new-tab-page/...
+[2025-12-10 19:58:07]   Stopping Playwright...
+[2025-12-10 19:58:07]   Terminating Chrome process (PID: 29108)...
+[2025-12-10 19:58:08]   Chrome process terminated successfully.
+[2025-12-10 19:58:08]   Run statistics saved to history.
+[2025-12-10 19:58:08] Agent stopped.

@@ -7373,3 +7373,1408 @@ Cleaning up 1 generated PDF files...
 Deleted: Zero_Trust_AI_Strategy_for_Andrew_Pickett.pdf
 Terminating Chrome process (PID: 49048)...
 Cleanup complete.
+Running self-optimization...
+Starting agent...
+Attempting to connect to existing Chrome on port 9222...
+Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Attempting to launch Chrome automatically...
+Checking for existing Chrome processes on port 9222...
+Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+Chrome launched with PID: 31568
+Waiting for Chrome to start and open debug port...
+Chrome debug port is now listening (after 1s)
+Connection attempt 1/5...
+Closing 1 pre-existing tab(s)...
+Connected to launched Chrome.
+Navigating to https://www.linkedin.com/mynetwork/invite-connect/connections/...
+Waiting 5s for page load...
+Connections list found.
+--- Scan Loop 1/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 10 items.
+Found 10 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+Found 1 candidates (1 new).
+--- Processing Candidate: Gabrielle Bond (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: SKIP (Headline: Seasonal Fundraiser (Bell Ringer) at The Salvation...)
+AI Classification: SKIP. Skipping Gabrielle Bond.
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: Candidates increased from 1 to 2
+--- Scan Loop 2/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (1 new).
+Skipping Jennifer McDaniel (Explicitly skipped for testing).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 3/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 4/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Brad Singer | Role: PENDING | URL: https://www.linkedin.com/in/bradsingerlaw/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: John Benemerito | Role: PENDING | URL: https://www.linkedin.com/in/john-benemerito-234984101/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Scroll Successful: Candidates increased from 2 to 7
+--- Scan Loop 5/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Brad Singer | Role: PENDING | URL: https://www.linkedin.com/in/bradsingerlaw/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: John Benemerito | Role: PENDING | URL: https://www.linkedin.com/in/john-benemerito-234984101/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Found 7 candidates (5 new).
+--- Processing Candidate: Brad Singer (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/bradsingerlaw/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: PRACTICING (Headline: Attorney Driven Commercial Collections & Subrogati...)
+Opening chat for https://www.linkedin.com/in/bradsingerlaw/...
+Identity Verified (Page Title): '(13) Brad Singer | LinkedIn'
+No message bubbles found in chat. Proceeding (new conversation).
+Role: PRACTICING. Executing full workflow.
+Sending message (Attempt 1/6)...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 1 sent. Proceeding to Report Generation...
+Starting website extraction...
+Website found on profile: https://www.bradsingerlaw.com/
+Priority 1 Success: Website found (https://www.bradsingerlaw.com/)
+Generating report using input type: url...
+Calling Gemini API...
+API Response: ```{
+  "profile": {
+    "name": "Brad Singer",
+    "firmName": "The Singer Law Firm, P.C.",
+    "practiceArea": "Construction Law",
+    "keyMatters": [
+      "Construction Defect Litigation",
+      "Contract Disputes"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The Anonymization Sandwich technique allows lawyers to use AI safely, without exposing privileged client data, by using bracketed placeholders.",
+    "steps": [
+      "Step 1: Identify all Personally Identifiable Information (PII) and sensitive details within the document or query.",
+      "Step 2: Replace all identified PII and sensitive details with bracketed placeholders (e.g., [Client Name], [Project Address], [Contract Date]).",
+      "Step 3: Use the bracketed prompt with the LLM."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Analyze Potential Claims in Delay Claims",
+      "category": "Delay Claim Analysis",
+      "content": "Analyze the provided construction schedule data from [Project Name] and identify potential delay claims based on critical path analysis. Consider factors such as weather delays, material shortages, and change orders. Summarize findings in a report outlining potential claim value and supporting evidence, replacing the real project name with [Project Name] and contractor name with [Contractor Name].",
+      "safetyCheck": "Uses a bracketed placeholder for the project name and contractor."
+    },
+    {
+      "title": "Draft a Notice of Intent to Lien",
+      "category": "Mechanic's Lien Filings",
+      "content": "Draft a Notice of Intent to Lien for unpaid work performed by [Subcontractor Name] on the [Property Address] property, as per the contract dated [Contract Date], and file it in [County Name] County. Ensure compliance with relevant state statutes regarding lien requirements. Replace the Subcontractor Name with [Subcontractor Name], Property Address with [Property Address], Contract Date with [Contract Date], and County Name with [County Name].",
+      "safetyCheck": "Uses bracketed placeholders for sensitive project information."
+    },
+    {
+      "title": "Evaluate Change Order Entitlement",
+      "category": "Change Order Disputes",
+      "content": "Analyze the provided change order request from [Contractor Name] for [Project Name], specifically focusing on the scope of work change, cost justification, and impact on the project schedule. Determine if the change order is valid and if the requested compensation is reasonable. Project Name should be replaced with [Project Name] and Contractor Name with [Contractor Name].",
+      "safetyCheck": "Uses bracketed placeholders for project details and contractor name."
+    },
+    {
+      "title": "Generate a Claim for Differing Site Conditions",
+      "category": "Differing Site Conditions Claims",
+      "content": "Generate a claim for differing site conditions encountered at the [Project Name] site, specifically related to [Condition Description]. Detail the unexpected nature of the condition, the impact on the work, and the associated costs incurred by [Contractor Name]. Ensure that all references to the specific location and contractor are replaced with [Project Name] and [Contractor Name].",
+      "safetyCheck": "Uses bracketed placeholders for project name and contractor."
+    },
+    {
+      "title": "Review a Construction Contract for Indemnification Clauses",
+      "category": "Contract Review and Analysis",
+      "content": "Review the construction contract between [Client Name] and [Contractor Name] for clauses related to indemnification, insurance requirements, and limitations of liability. Summarize the key provisions and advise on potential risks and liabilities. Use [Client Name] and [Contractor Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for client and contractor names."
+    },
+    {
+      "title": "Analyze Payment Provisions in Subcontract Agreements",
+      "category": "Contract Review and Analysis",
+      "content": "Analyze the payment provisions in the subcontract agreement between [Subcontractor Name] and [General Contractor Name] for the [Project Name] project, focusing on pay-when-paid clauses, retainage, and payment application requirements. Summarize the key terms and advise on potential payment risks. Use [Subcontractor Name], [General Contractor Name], and [Project Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for names and project."
+    },
+    {
+      "title": "Draft a Complaint for Breach of Contract",
+      "category": "Breach of Contract Litigation",
+      "content": "Draft a complaint for breach of contract on behalf of [Client Name] against [Defendant Name] for failure to perform under the contract dated [Contract Date] for the [Project Name] project. Allege damages and seek appropriate remedies. Replace Client Name with [Client Name], Defendant Name with [Defendant Name], Contract Date with [Contract Date], and Project Name with [Project Name].",
+      "safetyCheck": "Uses bracketed placeholders for sensitive client and project information."
+    },
+    {
+      "title": "Develop Interrogatories for a Construction Defect Case",
+      "category": "Construction Defect Litigation",
+      "content": "Develop a set of interrogatories to be served on [Defendant Name] in a construction defect case involving the property located at [Property Address]. Focus on the defendant's involvement in the design, construction, and supervision of the project. Replace Defendant Name with [Defendant Name] and Property Address with [Property Address].",
+      "safetyCheck": "Uses bracketed placeholders for defendant name and property address."
+    },
+    {
+      "title": "Summarize Expert Witness Report on Construction Defects",
+      "category": "Expert Witness Analysis",
+      "content": "Summarize the expert witness report provided by [Expert Name] regarding construction defects at the [Project Name] site. Identify the key findings, opinions, and methodologies used by the expert. Ensure Expert Name and Project Name are replaced with [Expert Name] and [Project Name].",
+      "safetyCheck": "Uses bracketed placeholders for expert name and project details."
+    },
+    {
+      "title": "Prepare a Settlement Demand Letter",
+      "category": "Settlement Negotiations",
+      "content": "Prepare a settlement demand letter to [Opposing Counsel Name] representing [Defendant Name] in a construction dispute involving [Project Name]. Outline the claims, damages, and proposed settlement terms on behalf of [Client Name]. Use [Opposing Counsel Name], [Defendant Name], [Project Name], and [Client Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for all key parties and project details."
+    }
+  ],
+  "linkedinMessage": "Hi Brad,\n\nI noticed The Singer Law Firm, P.C. specializes in Construction Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including Mechanic's Lien Filings and Delay Claim Analysis—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+{
+  "profile": {
+    "name": "Brad Singer",
+    "firmName": "The Singer Law Firm, P.C.",
+    "practiceArea": "Construction Law",
+    "keyMatters": [
+      "Construction Defect Litigation",
+      "Contract Disputes"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The Anonymization Sandwich technique allows lawyers to use AI safely, without exposing privileged client data, by using bracketed placeholders.",
+    "steps": [
+      "Step 1: Identify all Personally Identifiable Information (PII) and sensitive details within the document or query.",
+      "Step 2: Replace all identified PII and sensitive details with bracketed placeholders (e.g., [Client Name], [Project Address], [Contract Date]).",
+      "Step 3: Use the bracketed prompt with the LLM."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Analyze Potential Claims in Delay Claims",
+      "category": "Delay Claim Analysis",
+      "content": "Analyze the provided construction schedule data from [Project Name] and identify potential delay claims based on critical path analysis. Consider factors such as weather delays, material shortages, and change orders. Summarize findings in a report outlining potential claim value and supporting evidence, replacing the real project name with [Project Name] and contractor name with [Contractor Name].",
+      "safetyCheck": "Uses a bracketed placeholder for the project name and contractor."
+    },
+    {
+      "title": "Draft a Notice of Intent to Lien",
+      "category": "Mechanic's Lien Filings",
+      "content": "Draft a Notice of Intent to Lien for unpaid work performed by [Subcontractor Name] on the [Property Address] property, as per the contract dated [Contract Date], and file it in [County Name] County. Ensure compliance with relevant state statutes regarding lien requirements. Replace the Subcontractor Name with [Subcontractor Name], Property Address with [Property Address], Contract Date with [Contract Date], and County Name with [County Name].",
+      "safetyCheck": "Uses bracketed placeholders for sensitive project information."
+    },
+    {
+      "title": "Evaluate Change Order Entitlement",
+      "category": "Change Order Disputes",
+      "content": "Analyze the provided change order request from [Contractor Name] for [Project Name], specifically focusing on the scope of work change, cost justification, and impact on the project schedule. Determine if the change order is valid and if the requested compensation is reasonable. Project Name should be replaced with [Project Name] and Contractor Name with [Contractor Name].",
+      "safetyCheck": "Uses bracketed placeholders for project details and contractor name."
+    },
+    {
+      "title": "Generate a Claim for Differing Site Conditions",
+      "category": "Differing Site Conditions Claims",
+      "content": "Generate a claim for differing site conditions encountered at the [Project Name] site, specifically related to [Condition Description]. Detail the unexpected nature of the condition, the impact on the work, and the associated costs incurred by [Contractor Name]. Ensure that all references to the specific location and contractor are replaced with [Project Name] and [Contractor Name].",
+      "safetyCheck": "Uses bracketed placeholders for project name and contractor."
+    },
+    {
+      "title": "Review a Construction Contract for Indemnification Clauses",
+      "category": "Contract Review and Analysis",
+      "content": "Review the construction contract between [Client Name] and [Contractor Name] for clauses related to indemnification, insurance requirements, and limitations of liability. Summarize the key provisions and advise on potential risks and liabilities. Use [Client Name] and [Contractor Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for client and contractor names."
+    },
+    {
+      "title": "Analyze Payment Provisions in Subcontract Agreements",
+      "category": "Contract Review and Analysis",
+      "content": "Analyze the payment provisions in the subcontract agreement between [Subcontractor Name] and [General Contractor Name] for the [Project Name] project, focusing on pay-when-paid clauses, retainage, and payment application requirements. Summarize the key terms and advise on potential payment risks. Use [Subcontractor Name], [General Contractor Name], and [Project Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for names and project."
+    },
+    {
+      "title": "Draft a Complaint for Breach of Contract",
+      "category": "Breach of Contract Litigation",
+      "content": "Draft a complaint for breach of contract on behalf of [Client Name] against [Defendant Name] for failure to perform under the contract dated [Contract Date] for the [Project Name] project. Allege damages and seek appropriate remedies. Replace Client Name with [Client Name], Defendant Name with [Defendant Name], Contract Date with [Contract Date], and Project Name with [Project Name].",
+      "safetyCheck": "Uses bracketed placeholders for sensitive client and project information."
+    },
+    {
+      "title": "Develop Interrogatories for a Construction Defect Case",
+      "category": "Construction Defect Litigation",
+      "content": "Develop a set of interrogatories to be served on [Defendant Name] in a construction defect case involving the property located at [Property Address]. Focus on the defendant's involvement in the design, construction, and supervision of the project. Replace Defendant Name with [Defendant Name] and Property Address with [Property Address].",
+      "safetyCheck": "Uses bracketed placeholders for defendant name and property address."
+    },
+    {
+      "title": "Summarize Expert Witness Report on Construction Defects",
+      "category": "Expert Witness Analysis",
+      "content": "Summarize the expert witness report provided by [Expert Name] regarding construction defects at the [Project Name] site. Identify the key findings, opinions, and methodologies used by the expert. Ensure Expert Name and Project Name are replaced with [Expert Name] and [Project Name].",
+      "safetyCheck": "Uses bracketed placeholders for expert name and project details."
+    },
+    {
+      "title": "Prepare a Settlement Demand Letter",
+      "category": "Settlement Negotiations",
+      "content": "Prepare a settlement demand letter to [Opposing Counsel Name] representing [Defendant Name] in a construction dispute involving [Project Name]. Outline the claims, damages, and proposed settlement terms on behalf of [Client Name]. Use [Opposing Counsel Name], [Defendant Name], [Project Name], and [Client Name] as placeholders.",
+      "safetyCheck": "Uses bracketed placeholders for all key parties and project details."
+    }
+  ],
+  "linkedinMessage": "Hi Brad,\n\nI noticed The Singer Law Firm, P.C. specializes in Construction Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including Mechanic's Lien Filings and Delay Claim Analysis—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+
+JSON parsed successfully.
+Analysis complete.
+Generating Accessible PDF Report: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Brad_Singer.pdf
+PDF generated successfully.
+Opening chat for https://www.linkedin.com/in/bradsingerlaw/...
+Sending message (Attempt 1/6)...
+Attaching file: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Brad_Singer.pdf
+File uploaded. Waiting for processing...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 2 sent successfully.
+History saved to history.json. Total entries: 44
+Candidate processed successfully. Stopping agent (one per run).
+Logging run metrics to history...
+Workflow completed.
+Stopping agent...
+Closing 3 agent-created tabs...
+Cleaning up 1 generated PDF files...
+Deleted: Zero_Trust_AI_Strategy_for_Brad_Singer.pdf
+Terminating Chrome process (PID: 31568)...
+Cleanup complete.
+Running self-optimization...
+Starting agent...
+Attempting to connect to existing Chrome on port 9222...
+Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Attempting to launch Chrome automatically...
+Checking for existing Chrome processes on port 9222...
+Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+Chrome launched with PID: 27332
+Waiting for Chrome to start and open debug port...
+Chrome debug port is now listening (after 1s)
+Connection attempt 1/5...
+Closing 1 pre-existing tab(s)...
+Connected to launched Chrome.
+Navigating to https://www.linkedin.com/mynetwork/invite-connect/connections/...
+Waiting 5s for page load...
+Connections list found.
+--- Scan Loop 1/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 10 items.
+Found 10 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+Found 1 candidates (1 new).
+--- Processing Candidate: Gabrielle Bond (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: SKIP (Headline: Seasonal Fundraiser (Bell Ringer) at The Salvation...)
+AI Classification: SKIP. Skipping Gabrielle Bond.
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: Candidates increased from 1 to 2
+--- Scan Loop 2/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (1 new).
+Skipping Jennifer McDaniel (Explicitly skipped for testing).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 3/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 4/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: John Benemerito | Role: PENDING | URL: https://www.linkedin.com/in/john-benemerito-234984101/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Scroll Successful: Candidates increased from 2 to 6
+--- Scan Loop 5/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: John Benemerito | Role: PENDING | URL: https://www.linkedin.com/in/john-benemerito-234984101/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Found 6 candidates (4 new).
+--- Processing Candidate: Jake Eldemire Smith (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/...
+Navigation timeout/error (proceeding anyway): Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/", waiting until "load"
+
+Classifying with AI (headline + About)...
+Scraping About section...
+About section not found.
+AI Classification: PRACTICING (Headline: Law Firm Owner | Representing Entrepreneurs, Spons...)
+Opening chat for https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/...
+Identity Verified (Page Title): '(3) Jake Eldemire Smith | LinkedIn'
+No message bubbles found in chat. Proceeding (new conversation).
+Role: PRACTICING. Executing full workflow.
+Sending message (Attempt 1/6)...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 1 sent. Proceeding to Report Generation...
+Starting website extraction...
+Website found on profile: https://aligned-law.com
+Priority 1 Success: Website found (https://aligned-law.com)
+Generating report using input type: url...
+Calling Gemini API...
+API Response: ```{
+  "profile": {
+    "name": "Jake Eldemire Smith",
+    "firmName": "Aligned Law LLC",
+    "practiceArea": "Business Law, Construction Law, and Real Estate Law",
+    "keyMatters": [
+      "Business Formation and Governance",
+      "Construction Contract Negotiation",
+      "Real Estate Transactions and Litigation"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' technique ensures client confidentiality when using AI. It involves replacing sensitive data with bracketed placeholders, running the prompt, and then restoring the original data in the AI's output.",
+    "steps": [
+      "Step 1: Identify and replace all Personally Identifiable Information (PII) and sensitive data in your legal documents or queries with bracketed placeholders (e.g., [Client Name], [Case Number], [Financial Amount]).",
+      "Step 2: Input the anonymized prompt into the AI model.",
+      "Step 3: Review the AI's output, and replace the bracketed placeholders with the original sensitive information. This ensures that no client data is ever directly exposed to the AI."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Evaluate Potential Liability in Construction Disputes",
+      "category": "Construction Litigation",
+      "content": "Analyze the provided construction contract involving [Contractor Name] and [Client Name] dated [Contract Date], focusing on clauses related to delays, defects, and payment terms. Based on the contract and the documented issues of [Specific Issue, e.g., water damage, foundation cracks], assess the potential liability and range of damages [Dollar Amount] for both parties under [Governing Law].",
+      "safetyCheck": "Uses placeholders for contractor name, client name, dates, specific issues, dollar amounts and governing law, avoiding real client data."
+    },
+    {
+      "title": "Draft Initial Complaint for Breach of Contract",
+      "category": "Business Litigation",
+      "content": "Draft an initial complaint for breach of contract on behalf of [Client Company] against [Defendant Company], based on the attached contract signed on [Date]. The primary breach involves [Specific Breach Details], resulting in damages estimated at [Dollar Amount]. Include standard clauses for jurisdiction, venue in [City, State], and demand for relief.",
+      "safetyCheck": "Uses placeholders for company names, dates, breach details, and jurisdiction details, ensuring no real client data is exposed."
+    },
+    {
+      "title": "Analyze Commercial Lease Agreement for Tenant Rights",
+      "category": "Real Estate Law",
+      "content": "Analyze the attached commercial lease agreement between [Landlord Name] and [Tenant Name] for the property located at [Property Address], focusing on clauses related to renewal options, maintenance responsibilities, and termination rights. Advise [Tenant Name] on their rights and obligations under the lease, especially concerning [Specific Issue, e.g., rent escalation, property damage].",
+      "safetyCheck": "Uses placeholders for landlord name, tenant name, property address, and specific issues, protecting client confidentiality."
+    },
+    {
+      "title": "Evaluate the Enforceability of a Non-Compete Agreement",
+      "category": "Business Law",
+      "content": "Evaluate the enforceability of the non-compete agreement between [Company Name] and [Employee Name], signed on [Date]. The agreement restricts the employee from working in [Industry Sector] within a [Radius] mile radius for [Duration]. Analyze whether these restrictions are reasonable under [State Law] and advise on potential legal challenges.",
+      "safetyCheck": "Uses placeholders for company name, employee name, dates, industry sector, radius, duration and state law, ensuring safe use."
+    },
+    {
+      "title": "Summarize Key Terms of a Construction Loan Agreement",
+      "category": "Real Estate Law",
+      "content": "Summarize the key terms of the construction loan agreement between [Lender Name] and [Borrower Name] for the property located at [Property Address], dated [Date]. Focus on the loan amount [Dollar Amount], interest rate [Percentage], repayment schedule, and any specific covenants related to the construction project. Highlight potential risks and obligations for the borrower.",
+      "safetyCheck": "Uses placeholders for lender name, borrower name, property address, dates, and financial details, avoiding real data exposure."
+    },
+    {
+      "title": "Draft a Letter of Intent for a Business Acquisition",
+      "category": "Business Law",
+      "content": "Draft a letter of intent (LOI) for the acquisition of [Target Company] by [Acquiring Company]. Include key terms such as purchase price [Dollar Amount], payment method, due diligence period, and exclusivity period. Specify that this LOI is non-binding except for confidentiality and exclusivity clauses, governed by the laws of [State].",
+      "safetyCheck": "Uses placeholders for company names, dollar amounts, and state laws, protecting confidential information."
+    },
+    {
+      "title": "Analyze Potential Mechanic’s Lien Claims",
+      "category": "Construction Litigation",
+      "content": "Analyze the potential mechanic’s lien claims for subcontractors [Subcontractor Names] against the property located at [Property Address], owned by [Property Owner Name]. The claims relate to unpaid work performed between [Start Date] and [End Date], totaling [Dollar Amount]. Assess the validity and priority of these liens under [State Law].",
+      "safetyCheck": "Uses placeholders for subcontractor names, property address, property owner name, dates, dollar amounts, and state law, avoiding sensitive details."
+    },
+    {
+      "title": "Draft a Purchase Agreement for Residential Real Estate",
+      "category": "Real Estate Law",
+      "content": "Draft a purchase agreement for the sale of residential real estate located at [Property Address] from [Seller Name] to [Buyer Name]. Include standard clauses for purchase price [Dollar Amount], earnest money deposit, closing date, and contingencies for inspection and financing. Ensure compliance with [State Law] requirements for residential property sales.",
+      "safetyCheck": "Uses placeholders for property address, seller name, buyer name, dollar amount, and state law, ensuring confidentiality."
+    },
+    {
+      "title": "Assess Risks in a Joint Venture Agreement",
+      "category": "Business Law",
+      "content": "Assess potential risks and liabilities in the joint venture agreement between [Company A] and [Company B] for the [Project Description] project. Focus on clauses related to capital contributions, profit sharing, management responsibilities, and dispute resolution. Identify areas where [Client Company] could face liability or financial loss under [Governing Law].",
+      "safetyCheck": "Uses placeholders for company names, project description and governing law, ensuring client data remains private."
+    },
+    {
+      "title": "Evaluate Environmental Risks in a Real Estate Transaction",
+      "category": "Real Estate Law",
+      "content": "Evaluate potential environmental risks associated with the property located at [Property Address], including historical use as a [Previous Use, e.g., gas station, industrial site]. Review environmental reports and regulatory filings to assess the presence of hazardous substances and potential remediation costs. Advise [Client Name] on potential liabilities under [Environmental Law].",
+      "safetyCheck": "Uses placeholders for property address, previous use, client name, and environmental law, protecting sensitive data."
+    }
+  ],
+  "linkedinMessage": "Hi Jake,\n\nI noticed Aligned Law LLC specializes in Business Law, Construction Law, and Real Estate Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including Evaluate Potential Liability in Construction Disputes and Draft Initial Complaint for Breach of Contract—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+{
+  "profile": {
+    "name": "Jake Eldemire Smith",
+    "firmName": "Aligned Law LLC",
+    "practiceArea": "Business Law, Construction Law, and Real Estate Law",
+    "keyMatters": [
+      "Business Formation and Governance",
+      "Construction Contract Negotiation",
+      "Real Estate Transactions and Litigation"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' technique ensures client confidentiality when using AI. It involves replacing sensitive data with bracketed placeholders, running the prompt, and then restoring the original data in the AI's output.",
+    "steps": [
+      "Step 1: Identify and replace all Personally Identifiable Information (PII) and sensitive data in your legal documents or queries with bracketed placeholders (e.g., [Client Name], [Case Number], [Financial Amount]).",
+      "Step 2: Input the anonymized prompt into the AI model.",
+      "Step 3: Review the AI's output, and replace the bracketed placeholders with the original sensitive information. This ensures that no client data is ever directly exposed to the AI."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Evaluate Potential Liability in Construction Disputes",
+      "category": "Construction Litigation",
+      "content": "Analyze the provided construction contract involving [Contractor Name] and [Client Name] dated [Contract Date], focusing on clauses related to delays, defects, and payment terms. Based on the contract and the documented issues of [Specific Issue, e.g., water damage, foundation cracks], assess the potential liability and range of damages [Dollar Amount] for both parties under [Governing Law].",
+      "safetyCheck": "Uses placeholders for contractor name, client name, dates, specific issues, dollar amounts and governing law, avoiding real client data."
+    },
+    {
+      "title": "Draft Initial Complaint for Breach of Contract",
+      "category": "Business Litigation",
+      "content": "Draft an initial complaint for breach of contract on behalf of [Client Company] against [Defendant Company], based on the attached contract signed on [Date]. The primary breach involves [Specific Breach Details], resulting in damages estimated at [Dollar Amount]. Include standard clauses for jurisdiction, venue in [City, State], and demand for relief.",
+      "safetyCheck": "Uses placeholders for company names, dates, breach details, and jurisdiction details, ensuring no real client data is exposed."
+    },
+    {
+      "title": "Analyze Commercial Lease Agreement for Tenant Rights",
+      "category": "Real Estate Law",
+      "content": "Analyze the attached commercial lease agreement between [Landlord Name] and [Tenant Name] for the property located at [Property Address], focusing on clauses related to renewal options, maintenance responsibilities, and termination rights. Advise [Tenant Name] on their rights and obligations under the lease, especially concerning [Specific Issue, e.g., rent escalation, property damage].",
+      "safetyCheck": "Uses placeholders for landlord name, tenant name, property address, and specific issues, protecting client confidentiality."
+    },
+    {
+      "title": "Evaluate the Enforceability of a Non-Compete Agreement",
+      "category": "Business Law",
+      "content": "Evaluate the enforceability of the non-compete agreement between [Company Name] and [Employee Name], signed on [Date]. The agreement restricts the employee from working in [Industry Sector] within a [Radius] mile radius for [Duration]. Analyze whether these restrictions are reasonable under [State Law] and advise on potential legal challenges.",
+      "safetyCheck": "Uses placeholders for company name, employee name, dates, industry sector, radius, duration and state law, ensuring safe use."
+    },
+    {
+      "title": "Summarize Key Terms of a Construction Loan Agreement",
+      "category": "Real Estate Law",
+      "content": "Summarize the key terms of the construction loan agreement between [Lender Name] and [Borrower Name] for the property located at [Property Address], dated [Date]. Focus on the loan amount [Dollar Amount], interest rate [Percentage], repayment schedule, and any specific covenants related to the construction project. Highlight potential risks and obligations for the borrower.",
+      "safetyCheck": "Uses placeholders for lender name, borrower name, property address, dates, and financial details, avoiding real data exposure."
+    },
+    {
+      "title": "Draft a Letter of Intent for a Business Acquisition",
+      "category": "Business Law",
+      "content": "Draft a letter of intent (LOI) for the acquisition of [Target Company] by [Acquiring Company]. Include key terms such as purchase price [Dollar Amount], payment method, due diligence period, and exclusivity period. Specify that this LOI is non-binding except for confidentiality and exclusivity clauses, governed by the laws of [State].",
+      "safetyCheck": "Uses placeholders for company names, dollar amounts, and state laws, protecting confidential information."
+    },
+    {
+      "title": "Analyze Potential Mechanic’s Lien Claims",
+      "category": "Construction Litigation",
+      "content": "Analyze the potential mechanic’s lien claims for subcontractors [Subcontractor Names] against the property located at [Property Address], owned by [Property Owner Name]. The claims relate to unpaid work performed between [Start Date] and [End Date], totaling [Dollar Amount]. Assess the validity and priority of these liens under [State Law].",
+      "safetyCheck": "Uses placeholders for subcontractor names, property address, property owner name, dates, dollar amounts, and state law, avoiding sensitive details."
+    },
+    {
+      "title": "Draft a Purchase Agreement for Residential Real Estate",
+      "category": "Real Estate Law",
+      "content": "Draft a purchase agreement for the sale of residential real estate located at [Property Address] from [Seller Name] to [Buyer Name]. Include standard clauses for purchase price [Dollar Amount], earnest money deposit, closing date, and contingencies for inspection and financing. Ensure compliance with [State Law] requirements for residential property sales.",
+      "safetyCheck": "Uses placeholders for property address, seller name, buyer name, dollar amount, and state law, ensuring confidentiality."
+    },
+    {
+      "title": "Assess Risks in a Joint Venture Agreement",
+      "category": "Business Law",
+      "content": "Assess potential risks and liabilities in the joint venture agreement between [Company A] and [Company B] for the [Project Description] project. Focus on clauses related to capital contributions, profit sharing, management responsibilities, and dispute resolution. Identify areas where [Client Company] could face liability or financial loss under [Governing Law].",
+      "safetyCheck": "Uses placeholders for company names, project description and governing law, ensuring client data remains private."
+    },
+    {
+      "title": "Evaluate Environmental Risks in a Real Estate Transaction",
+      "category": "Real Estate Law",
+      "content": "Evaluate potential environmental risks associated with the property located at [Property Address], including historical use as a [Previous Use, e.g., gas station, industrial site]. Review environmental reports and regulatory filings to assess the presence of hazardous substances and potential remediation costs. Advise [Client Name] on potential liabilities under [Environmental Law].",
+      "safetyCheck": "Uses placeholders for property address, previous use, client name, and environmental law, protecting sensitive data."
+    }
+  ],
+  "linkedinMessage": "Hi Jake,\n\nI noticed Aligned Law LLC specializes in Business Law, Construction Law, and Real Estate Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including Evaluate Potential Liability in Construction Disputes and Draft Initial Complaint for Breach of Contract—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+
+JSON parsed successfully.
+Analysis complete.
+Generating Accessible PDF Report: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Jake_Eldemire_Smith.pdf
+PDF generated successfully.
+Opening chat for https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/...
+Chat input not found after clicking Message.
+Could not re-open chat for Message 2. Aborting.
+--- Processing Candidate: John Benemerito (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/john-benemerito-234984101/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: PRACTICING (Headline: Startup Attorney | Ensuring startups launch with t...)
+Opening chat for https://www.linkedin.com/in/john-benemerito-234984101/...
+Identity Verified (Page Title): '(4) John Benemerito | LinkedIn'
+No message bubbles found in chat. Proceeding (new conversation).
+Role: PRACTICING. Executing full workflow.
+Sending message (Attempt 1/6)...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 1 sent. Proceeding to Report Generation...
+Starting website extraction...
+Clicking contact info (JS)...
+Waiting 3s for modal...
+Modal found. Scanning links...
+Priority 1 Failed (No Website). Trying Priority 2 (About Section)...
+Scraping About section...
+About section scraped (0 chars).
+Priority 2 Failed (No/Short About). Trying Priority 3 (PDF Fallback)...
+Saving profile as PDF...
+Profile PDF saved to: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\profile_snapshot_20251210_190808.pdf
+Priority 3 Success: Profile PDF saved.
+Generating report using input type: pdf...
+Uploading PDF for analysis: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\profile_snapshot_20251210_190808.pdf
+Calling Gemini API...
+API Response: {
+  "profile": {
+    "name": "John Benemerito",
+    "firmName": "Benemerito Attorneys at Law",
+    "practiceArea": "Startup Law",
+    "keyMatters": [
+      "Startup Formation",
+      "Startup Funding"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The Anonymization Sandwich is a privacy technique. It minimizes the risk of exposing client data when using AI tools. By adding a layer of generalization before and after the core prompt, it ensures prompts are safer to run on public LLMs because they contain no PII.",
+    "steps": [
+      "Step 1: Contextualize. Prepend general, non-client-specific information to set the stage for the AI.",
+      "Step 2: Prompt. Insert your core prompt with bracketed placeholders. Do NOT include any PII or real confidential data.",
+      "Step 3: Generalize. Append a general instruction, shifting focus away from specific details."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Analyze Term Sheet for Red Flags",
+      "category": "Funding Rounds Analysis",
+      "content": "Analyze this term sheet from [Investor Name] dated [Date] for a [Series] funding round for potential red flags for my client [Client Company] related to [Specific Clause Type, e.g., 'liquidation preferences']. Focus on clauses that might disproportionately favor the investor in a downside scenario. Compare it to market standards for similar startups in the [Industry] industry. What are general negotiation strategies for mitigating these risks?",
+      "safetyCheck": "Uses bracketed placeholders; requests analysis of a general term sheet structure rather than specific confidential terms."
+    },
+    {
+      "title": "Draft a Convertible Note Agreement",
+      "category": "Funding Rounds Analysis",
+      "content": "Draft a convertible note agreement for a seed round investment of [Dollar Amount] with a [Interest Rate]% interest rate, a valuation cap of [Valuation Cap Amount], and a [Discount Rate]% discount rate. The note will convert upon the company, [Client Company]'s, next equity financing. Include standard provisions for [Jurisdiction] law. What are common alternative clauses for convertible notes?",
+      "safetyCheck": "Uses bracketed placeholders, no specific client data."
+    },
+    {
+      "title": "Compare SAFE Note vs. Convertible Note",
+      "category": "Funding Rounds Analysis",
+      "content": "Compare the advantages and disadvantages of using a SAFE (Simple Agreement for Future Equity) note versus a convertible note for a [Stage] stage startup, [Client Company], seeking [Dollar Amount] in seed funding. Consider the implications for both the company and the investors under [Jurisdiction] law. List out common points of negotiation for both types of instruments.",
+      "safetyCheck": "General comparison with bracketed placeholders; no actual client financials."
+    },
+    {
+      "title": "Create an Employee Equity Incentive Plan Summary",
+      "category": "Equity & Compensation",
+      "content": "Summarize the key terms of a standard employee equity incentive plan for a startup, [Client Company], including the vesting schedule ([Vesting Schedule Details]), the types of equity awards (stock options and restricted stock), and the potential tax implications for employees in [Jurisdiction]. What are some common mistakes to avoid when drafting equity incentive plans?",
+      "safetyCheck": "Focuses on standard terms and common practices, avoiding specific client data."
+    },
+    {
+      "title": "Analyze a Founders' Agreement",
+      "category": "Equity & Compensation",
+      "content": "Analyze the key provisions of a standard founders' agreement for a startup with [Number] founders, including equity allocation, vesting schedules, roles and responsibilities, and dispute resolution mechanisms under [State] law. The company's name will be [Client Company Name]. What are potential pitfalls to watch out for in such agreements?",
+      "safetyCheck": "Uses bracketed placeholders; general analysis of a common legal document."
+    },
+    {
+      "title": "Draft an Offer Letter for Key Executive",
+      "category": "Equity & Compensation",
+      "content": "Draft an offer letter for a key executive joining a startup, [Client Company], as [Executive Title], including base salary ([Salary Amount]), equity compensation ([Equity Amount]), benefits, and termination provisions, compliant with [State] labor laws. What are typical clauses to include regarding confidentiality and non-compete?",
+      "safetyCheck": "Uses bracketed placeholders; general template creation request."
+    },
+    {
+      "title": "Create Privacy Policy for Startup",
+      "category": "Compliance & Regulations",
+      "content": "Generate a basic privacy policy for a startup, [Client Company], that collects [Types of Data] from its users, compliant with [Relevant Regulations, e.g., GDPR, CCPA]. The company is based in [Jurisdiction]. Include sections on data collection, usage, security, and user rights. What are common ways startups violate data privacy rules?",
+      "safetyCheck": "Focuses on general compliance requirements; avoids specific client data."
+    },
+    {
+      "title": "Analyze a Data Processing Agreement",
+      "category": "Compliance & Regulations",
+      "content": "Analyze a sample Data Processing Agreement (DPA) between a startup, [Client Company], and a third-party vendor, [Vendor Name], ensuring compliance with [Applicable Data Privacy Law]. The vendor will be processing [Types of Data] on behalf of the startup. What are the key liabilities for both the startup and the vendor?",
+      "safetyCheck": "Uses bracketed placeholders; asks for general analysis of a sample DPA."
+    },
+    {
+      "title": "Draft Terms of Service for SaaS Platform",
+      "category": "Compliance & Regulations",
+      "content": "Draft a standard Terms of Service (ToS) agreement for a SaaS platform, [Client Company], offering [Service Description] to its users. Include clauses on acceptable use, intellectual property, disclaimers, limitations of liability, and governing law ([Jurisdiction]). What are common disputes that arise from unclear terms of service?",
+      "safetyCheck": "Focuses on standard clauses and avoids client-specific information."
+    },
+    {
+      "title": "Summarize Key Aspects of Delaware Corporate Law",
+      "category": "Legal Research & Due Diligence",
+      "content": "Summarize the key aspects of Delaware corporate law relevant to the formation and governance of a technology startup, [Client Company]. Focus on topics such as fiduciary duties, corporate governance, and shareholder rights. How does Delaware law differ from [Other State] law with respect to founder equity and control?",
+      "safetyCheck": "General legal summary request; no specific client data."
+    }
+  ],
+  "linkedinMessage": "Hi John,\n\nI noticed Benemerito Attorneys at Law specializes in Startup Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including 'Analyze Term Sheet for Red Flags' and 'Create Privacy Policy for Startup'—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+JSON parsed successfully.
+Analysis complete.
+Generating Accessible PDF Report: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_John_Benemerito.pdf
+PDF generated successfully.
+Opening chat for https://www.linkedin.com/in/john-benemerito-234984101/...
+Sending message (Attempt 1/6)...
+Attaching file: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_John_Benemerito.pdf
+File uploaded. Waiting for processing...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 2 sent successfully.
+History saved to history.json. Total entries: 45
+Candidate processed successfully. Stopping agent (one per run).
+Logging run metrics to history...
+Workflow completed.
+Stopping agent...
+Closing 4 agent-created tabs...
+Cleaning up 2 generated PDF files...
+Deleted: Zero_Trust_AI_Strategy_for_Jake_Eldemire_Smith.pdf
+Deleted: Zero_Trust_AI_Strategy_for_John_Benemerito.pdf
+Terminating Chrome process (PID: 27332)...
+Cleanup complete.
+Running self-optimization...
+Starting agent...
+Attempting to connect to existing Chrome on port 9222...
+Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Attempting to launch Chrome automatically...
+Checking for existing Chrome processes on port 9222...
+Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+Chrome launched with PID: 26976
+Waiting for Chrome to start and open debug port...
+Chrome debug port is now listening (after 1s)
+Connection attempt 1/5...
+Closing 1 pre-existing tab(s)...
+Connected to launched Chrome.
+Navigating to https://www.linkedin.com/mynetwork/invite-connect/connections/...
+Waiting 5s for page load...
+Connections list found.
+--- Scan Loop 1/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 10 items.
+Found 10 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+Found 1 candidates (1 new).
+--- Processing Candidate: Gabrielle Bond (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: SKIP (Headline: Seasonal Fundraiser (Bell Ringer) at The Salvation...)
+AI Classification: SKIP. Skipping Gabrielle Bond.
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: Candidates increased from 1 to 2
+--- Scan Loop 2/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (1 new).
+Skipping Jennifer McDaniel (Explicitly skipped for testing).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 3/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 4/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Scroll Successful: Candidates increased from 2 to 5
+--- Scan Loop 5/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Jake Eldemire Smith | Role: PENDING | URL: https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/
+CANDIDATE FOUND: Jeffrey Gross | Role: PENDING | URL: https://www.linkedin.com/in/jeffrey-gross-6968683/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Found 5 candidates (3 new).
+--- Processing Candidate: Jake Eldemire Smith (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/...
+Navigation timeout/error (proceeding anyway): Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/", waiting until "load"
+
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: PRACTICING (Headline: Law Firm Owner | Representing Entrepreneurs, Spons...)
+Opening chat for https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/...
+Identity Verified: 'Jake Eldemire Smith' (Match=1.00)
+Found 1 message bubbles in chat. Using Vision AI to check for duplicates...
+Scrolled chat to top to view all messages.
+Screenshot saved for analysis.
+Vision AI response: YES
+DUPLICATE DETECTED (Vision AI): Sanjeev has already sent messages.
+Manual history detected. Skipping.
+History saved to history.json. Total entries: 46
+--- Processing Candidate: Jeffrey Gross (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/jeffrey-gross-6968683/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: PRACTICING (Headline: Managing Partner at Gross & Kenny, LLP...)
+Opening chat for https://www.linkedin.com/in/jeffrey-gross-6968683/...
+Identity Verified (Page Title): 'Jeffrey Gross | LinkedIn'
+Found 1 message bubbles in chat. Using Vision AI to check for duplicates...
+Scrolled chat to top to view all messages.
+Screenshot saved for analysis.
+Vision AI response: NO
+Vision AI confirms: No prior messages from Sanjeev. Safe to proceed.
+Role: PRACTICING. Executing full workflow.
+Sending message (Attempt 1/6)...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 1 sent. Proceeding to Report Generation...
+Starting website extraction...
+Clicking contact info (JS)...
+Waiting 3s for modal...
+Modal found. Scanning links...
+Website found in modal: http://www.philaworkerscomp.com
+Priority 1 Success: Website found (http://www.philaworkerscomp.com)
+Generating report using input type: url...
+Calling Gemini API...
+API Response: ```{
+  "profile": {
+    "name": "Jeffrey Gross",
+    "firmName": "Law Offices of Jeffrey Gross",
+    "practiceArea": "Workers' Compensation Law",
+    "keyMatters": [
+      "Representing injured workers in Pennsylvania",
+      "Navigating the workers' compensation system"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' helps ensure client data remains private when using AI. It involves replacing sensitive client details with bracketed placeholders BEFORE using the AI, processing the request, and then replacing the placeholders with the original data AFTERWARDS.",
+    "steps": [
+      "Step 1: Replace all Personally Identifiable Information (PII) and sensitive data in your documents or text with generic bracketed placeholders (e.g., [Client Name], [Injury Date], [Medical Record Number]).",
+      "Step 2: Use the anonymized text as input for the AI tool, following the prompts.",
+      "Step 3: Once you receive the AI's output, carefully replace the bracketed placeholders with the original sensitive data."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Analyze Potential Settlement Value",
+      "category": "Case Valuation & Strategy",
+      "content": "Based on the details of this workers' compensation case, including [Employee Occupation], [Specific Injury], [Medical Expenses to Date], and [Lost Wage Amount], analyze the potential settlement value range and identify key factors influencing the outcome. Assume the accident occurred on [Date of Accident].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Draft a Petition for Benefits",
+      "category": "Document Drafting & Review",
+      "content": "Draft a Petition for Benefits on behalf of [Employee Name] who sustained a [Specific Injury] on [Date of Injury] while working as a [Employee Occupation] for [Employer Name]. Include details about the injury, medical treatment received ([Type of Treatment]), and current disability status.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Prepare Questions for Medical Expert Deposition",
+      "category": "Litigation Support",
+      "content": "Prepare a list of questions to ask [Medical Expert Name], a [Medical Specialty] testifying on behalf of the employer, regarding their medical evaluation of [Employee Name] who sustained a [Specific Injury] on [Date of Injury]. Focus on challenging the expert's opinions regarding the causality between the injury and the work-related incident.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Summarize Medical Records",
+      "category": "Case Review & Summarization",
+      "content": "Summarize the key findings and treatment recommendations from the medical records of [Employee Name] related to a [Specific Injury] sustained on [Date of Injury]. Highlight any pre-existing conditions or inconsistencies in the medical history.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Identify Potential Witnesses",
+      "category": "Litigation Support",
+      "content": "Based on the case details involving [Employee Name]'s [Specific Injury] on [Date of Injury] at [Work Location], identify potential witnesses who may have observed the incident or have relevant information about the employee's work conditions or injury. Include co-workers and supervisors at [Employer Name].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Analyze Case Law Regarding Specific Injury Type",
+      "category": "Legal Research & Analysis",
+      "content": "Analyze relevant Pennsylvania case law related to workers' compensation claims involving [Specific Injury] resulting from [Type of Accident]. Identify key precedents and legal arguments that could support or weaken [Client Name]'s claim for benefits.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Evaluate Return-to-Work Options",
+      "category": "Case Valuation & Strategy",
+      "content": "Evaluate potential return-to-work options for [Employee Name] who sustained a [Specific Injury] on [Date of Injury]. Consider the employee's physical limitations, job requirements as a [Employee Occupation] at [Employer Name], and potential accommodations that could be made.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Draft a Settlement Demand Letter",
+      "category": "Document Drafting & Review",
+      "content": "Draft a settlement demand letter to the insurance carrier, [Insurance Carrier Name], on behalf of [Employee Name] for a workers' compensation claim related to a [Specific Injury] sustained on [Date of Injury]. Include details about medical expenses, lost wages, and pain and suffering.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Research the Employer's Safety Record",
+      "category": "Litigation Support",
+      "content": "Research [Employer Name]'s safety record and history of workers' compensation claims. Identify any prior incidents or safety violations that could be relevant to [Client Name]'s claim for a [Specific Injury] that occurred on [Date of Injury].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Assess the Impact of Pre-Existing Conditions",
+      "category": "Case Valuation & Strategy",
+      "content": "Assess the potential impact of [Client Name]'s pre-existing [Pre-existing Condition] on their workers' compensation claim for a [Specific Injury] sustained on [Date of Injury]. Analyze whether the work-related incident aggravated the pre-existing condition and to what extent.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    }
+  ],
+  "linkedinMessage": "Hi Jeffrey,\n\nI noticed Law Offices of Jeffrey Gross specializes in Workers' Compensation Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including 'Analyze Potential Settlement Value' and 'Draft a Petition for Benefits'—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+{
+  "profile": {
+    "name": "Jeffrey Gross",
+    "firmName": "Law Offices of Jeffrey Gross",
+    "practiceArea": "Workers' Compensation Law",
+    "keyMatters": [
+      "Representing injured workers in Pennsylvania",
+      "Navigating the workers' compensation system"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' helps ensure client data remains private when using AI. It involves replacing sensitive client details with bracketed placeholders BEFORE using the AI, processing the request, and then replacing the placeholders with the original data AFTERWARDS.",
+    "steps": [
+      "Step 1: Replace all Personally Identifiable Information (PII) and sensitive data in your documents or text with generic bracketed placeholders (e.g., [Client Name], [Injury Date], [Medical Record Number]).",
+      "Step 2: Use the anonymized text as input for the AI tool, following the prompts.",
+      "Step 3: Once you receive the AI's output, carefully replace the bracketed placeholders with the original sensitive data."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Analyze Potential Settlement Value",
+      "category": "Case Valuation & Strategy",
+      "content": "Based on the details of this workers' compensation case, including [Employee Occupation], [Specific Injury], [Medical Expenses to Date], and [Lost Wage Amount], analyze the potential settlement value range and identify key factors influencing the outcome. Assume the accident occurred on [Date of Accident].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Draft a Petition for Benefits",
+      "category": "Document Drafting & Review",
+      "content": "Draft a Petition for Benefits on behalf of [Employee Name] who sustained a [Specific Injury] on [Date of Injury] while working as a [Employee Occupation] for [Employer Name]. Include details about the injury, medical treatment received ([Type of Treatment]), and current disability status.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Prepare Questions for Medical Expert Deposition",
+      "category": "Litigation Support",
+      "content": "Prepare a list of questions to ask [Medical Expert Name], a [Medical Specialty] testifying on behalf of the employer, regarding their medical evaluation of [Employee Name] who sustained a [Specific Injury] on [Date of Injury]. Focus on challenging the expert's opinions regarding the causality between the injury and the work-related incident.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Summarize Medical Records",
+      "category": "Case Review & Summarization",
+      "content": "Summarize the key findings and treatment recommendations from the medical records of [Employee Name] related to a [Specific Injury] sustained on [Date of Injury]. Highlight any pre-existing conditions or inconsistencies in the medical history.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Identify Potential Witnesses",
+      "category": "Litigation Support",
+      "content": "Based on the case details involving [Employee Name]'s [Specific Injury] on [Date of Injury] at [Work Location], identify potential witnesses who may have observed the incident or have relevant information about the employee's work conditions or injury. Include co-workers and supervisors at [Employer Name].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Analyze Case Law Regarding Specific Injury Type",
+      "category": "Legal Research & Analysis",
+      "content": "Analyze relevant Pennsylvania case law related to workers' compensation claims involving [Specific Injury] resulting from [Type of Accident]. Identify key precedents and legal arguments that could support or weaken [Client Name]'s claim for benefits.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Evaluate Return-to-Work Options",
+      "category": "Case Valuation & Strategy",
+      "content": "Evaluate potential return-to-work options for [Employee Name] who sustained a [Specific Injury] on [Date of Injury]. Consider the employee's physical limitations, job requirements as a [Employee Occupation] at [Employer Name], and potential accommodations that could be made.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Draft a Settlement Demand Letter",
+      "category": "Document Drafting & Review",
+      "content": "Draft a settlement demand letter to the insurance carrier, [Insurance Carrier Name], on behalf of [Employee Name] for a workers' compensation claim related to a [Specific Injury] sustained on [Date of Injury]. Include details about medical expenses, lost wages, and pain and suffering.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Research the Employer's Safety Record",
+      "category": "Litigation Support",
+      "content": "Research [Employer Name]'s safety record and history of workers' compensation claims. Identify any prior incidents or safety violations that could be relevant to [Client Name]'s claim for a [Specific Injury] that occurred on [Date of Injury].",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    },
+    {
+      "title": "Assess the Impact of Pre-Existing Conditions",
+      "category": "Case Valuation & Strategy",
+      "content": "Assess the potential impact of [Client Name]'s pre-existing [Pre-existing Condition] on their workers' compensation claim for a [Specific Injury] sustained on [Date of Injury]. Analyze whether the work-related incident aggravated the pre-existing condition and to what extent.",
+      "safetyCheck": "Uses placeholders for sensitive data, preventing exposure of real client information."
+    }
+  ],
+  "linkedinMessage": "Hi Jeffrey,\n\nI noticed Law Offices of Jeffrey Gross specializes in Workers' Compensation Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including 'Analyze Potential Settlement Value' and 'Draft a Petition for Benefits'—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+
+JSON parsed successfully.
+Analysis complete.
+Generating Accessible PDF Report: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Jeffrey_Gross.pdf
+PDF generated successfully.
+Opening chat for https://www.linkedin.com/in/jeffrey-gross-6968683/...
+Sending message (Attempt 1/6)...
+Attaching file: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Jeffrey_Gross.pdf
+File uploaded. Waiting for processing...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 2 sent successfully.
+History saved to history.json. Total entries: 47
+Candidate processed successfully. Stopping agent (one per run).
+Logging run metrics to history...
+Workflow completed.
+Stopping agent...
+Closing 4 agent-created tabs...
+Cleaning up 1 generated PDF files...
+Deleted: Zero_Trust_AI_Strategy_for_Jeffrey_Gross.pdf
+Terminating Chrome process (PID: 26976)...
+Cleanup complete.
+Running self-optimization...
+[OPTIMIZER] Stable chat opening. Decreasing chat_open_delay_ms: 2000 -> 1500
+[OPTIMIZER] Stable identity verification. Decreasing identity_poll_delay_ms: 300 -> 250
+[OPTIMIZER] Stable file uploads. Decreasing file_upload_wait_ms: 5000 -> 4500
+Starting agent...
+Attempting to connect to existing Chrome on port 9222...
+Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Attempting to launch Chrome automatically...
+Checking for existing Chrome processes on port 9222...
+Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+Chrome launched with PID: 12940
+Waiting for Chrome to start and open debug port...
+Chrome debug port is now listening (after 1s)
+Connection attempt 1/5...
+Closing 1 pre-existing tab(s)...
+Connected to launched Chrome.
+Navigating to https://www.linkedin.com/mynetwork/invite-connect/connections/...
+Waiting 5s for page load...
+Connections list found.
+--- Scan Loop 1/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 10 items.
+Found 10 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+Found 1 candidates (1 new).
+--- Processing Candidate: Gabrielle Bond (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: SKIP (Headline: Seasonal Fundraiser (Bell Ringer) at The Salvation...)
+AI Classification: SKIP. Skipping Gabrielle Bond.
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: Candidates increased from 1 to 2
+--- Scan Loop 2/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 20 items.
+Found 20 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (1 new).
+Skipping Jennifer McDaniel (Explicitly skipped for testing).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 3/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 30 items.
+Found 30 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Scroll Successful: 'Show More' button was clicked.
+--- Scan Loop 4/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 40 items.
+Found 40 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+Found 2 candidates (0 new).
+No new candidates processed in this view. Scrolling...
+Found button with selector 'button:has-text('Load more')'. Clicking...
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Scroll Successful: Candidates increased from 2 to 3
+--- Scan Loop 5/50 ---
+Scanning visible connections...
+Selector 'div[data-view-name='connections-list']' found 50 items.
+Found 50 connection cards in current view.
+CANDIDATE FOUND: Gabrielle Bond | Role: PENDING | URL: https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/
+CANDIDATE FOUND: Jennifer McDaniel | Role: PENDING | URL: https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/
+CANDIDATE FOUND: Steven R. Young | Role: PENDING | URL: https://www.linkedin.com/in/lastminutetriallawyer/
+Found 3 candidates (1 new).
+--- Processing Candidate: Steven R. Young (PENDING) ---
+Opening new tab for https://www.linkedin.com/in/lastminutetriallawyer/...
+Classifying with AI (headline + About)...
+Scraping About section...
+About section scraped (0 chars).
+AI Classification: PRACTICING (Headline: Almost 200  civil jury trials. "Last Minute Trial ...)
+Opening chat for https://www.linkedin.com/in/lastminutetriallawyer/...
+Chat input found with selector: .msg-form__contenteditable
+Chat overlay selectors failed. Trying Vision AI fallback...
+Vision AI identity check response: MATCH: YES
+Identity Verified (Vision AI): 'Steven R. Young'
+No message bubbles found in chat. Proceeding (new conversation).
+Role: PRACTICING. Executing full workflow.
+Sending message (Attempt 1/3)...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 1 sent. Proceeding to Report Generation...
+Starting website extraction...
+Clicking contact info (JS)...
+Waiting 3s for modal...
+Modal found. Scanning links...
+Website found in modal: http://juryattorney.com
+Priority 1 Success: Website found (http://juryattorney.com)
+Generating report using input type: url...
+Calling Gemini API...
+API Response: ```{
+  "profile": {
+    "name": "Steven R. Young",
+    "firmName": "Young &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;ampampamp;amp;amp;ampamp;amp;amp;amp;amp Associates, PLLC",
+    "practiceArea": "Personal Injury Law",
+    "keyMatters": [
+      "Motor Vehicle Accidents",
+      "Wrongful Death Claims"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' is a technique to protect client data when using AI. It involves removing or replacing Personally Identifiable Information (PII) before using the AI, and then restoring the original data after the analysis.",
+    "steps": [
+      "Step 1: Remove or replace all PII in the document with bracketed placeholders (e.g., [Client Name], [Date of Accident]).",
+      "Step 2: Input the anonymized text into the AI tool for analysis.",
+      "Step 3: Review the AI's output and carefully restore the original, sensitive information, ensuring accuracy and context."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Draft Initial Demand Letter",
+      "category": "Settlement Negotiation",
+      "content": "Draft an initial demand letter for a personal injury case involving a [Type of Accident] on [Date of Accident], resulting in [Type of Injury] to [Client Name]. The accident was caused by [Defendant Name]'s negligence. Include details of medical expenses, lost wages, and pain and suffering. Settlement target: [Settlement Amount].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Analyze Accident Report",
+      "category": "Evidence Review & Analysis",
+      "content": "Analyze the provided accident report from [Date of Accident] involving [Client Name] and identify key factors contributing to the accident, including road conditions, visibility, and potential violations by [Defendant Name]. The police report number is [Police Report Number].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Outline Cross-Examination Questions",
+      "category": "Litigation Strategy",
+      "content": "Outline cross-examination questions for [Defendant Name] in a personal injury case involving a [Type of Accident]. Focus on inconsistencies between their deposition testimony on [Date of Deposition] and the accident report regarding [Specific Detail].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Summarize Medical Records",
+      "category": "Evidence Review & Analysis",
+      "content": "Summarize the medical records of [Client Name] from [Start Date] to [End Date] related to injuries sustained in a [Type of Accident]. Highlight key diagnoses, treatments, and prognoses relevant to proving damages. The medical provider is [Medical Provider Name].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Draft Interrogatories",
+      "category": "Discovery",
+      "content": "Draft interrogatories to be served on [Defendant Name] in a personal injury case. Focus on their driving history, knowledge of the accident scene, and any potential witnesses. The accident occurred on [Date of Accident] at [Location].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Assess Case Value",
+      "category": "Settlement Negotiation",
+      "content": "Assess the potential settlement value of a personal injury case involving [Client Name] who sustained [Type of Injury] in a [Type of Accident] on [Date of Accident]. Consider medical expenses of [Dollar Amount], lost wages, and pain and suffering, referencing similar verdicts in [Jurisdiction].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Analyze Witness Statements",
+      "category": "Evidence Review & Analysis",
+      "content": "Analyze the witness statement provided by [Witness Name] regarding the [Type of Accident] involving [Client Name]. Identify any biases, inconsistencies, or corroborating details relevant to establishing liability on [Defendant Name]. The statement was given on [Date of Statement].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Research Relevant Case Law",
+      "category": "Litigation Strategy",
+      "content": "Research case law in [Jurisdiction] regarding [Specific Legal Issue] related to personal injury claims arising from [Type of Accident]. Focus on cases with similar fact patterns and legal arguments.",
+      "safetyCheck": "This prompt does not involve any PII."
+    },
+    {
+      "title": "Draft Motion for Summary Judgement",
+      "category": "Litigation Strategy",
+      "content": "Draft a motion for summary judgment on the issue of negligence in a personal injury case involving [Client Name] who was injured in a [Type of Accident] caused by [Defendant Name] on [Date of Accident]. Argue that there is no genuine issue of material fact based on the evidence presented.",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Prepare Opening Statement",
+      "category": "Litigation Strategy",
+      "content": "Prepare an opening statement for a personal injury trial involving [Client Name] who sustained [Type of Injury] in a [Type of Accident] on [Date of Accident]. Clearly articulate the elements of negligence, the damages suffered by the client, and the evidence that will be presented.",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    }
+  ],
+  "linkedinMessage": "Hi Steven,\n\nI noticed Young &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;ampampamp;amp;amp;ampamp;amp;amp;amp;amp;amp Associates, PLLC specializes in Personal Injury Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including 'Draft Initial Demand Letter' and 'Analyze Accident Report'—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+{
+  "profile": {
+    "name": "Steven R. Young",
+    "firmName": "Young &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;ampampamp;amp;amp;ampamp;amp;amp;amp;amp Associates, PLLC",
+    "practiceArea": "Personal Injury Law",
+    "keyMatters": [
+      "Motor Vehicle Accidents",
+      "Wrongful Death Claims"
+    ]
+  },
+  "anonymizationTechnique": {
+    "title": "Anonymization Sandwich",
+    "description": "The 'Anonymization Sandwich' is a technique to protect client data when using AI. It involves removing or replacing Personally Identifiable Information (PII) before using the AI, and then restoring the original data after the analysis.",
+    "steps": [
+      "Step 1: Remove or replace all PII in the document with bracketed placeholders (e.g., [Client Name], [Date of Accident]).",
+      "Step 2: Input the anonymized text into the AI tool for analysis.",
+      "Step 3: Review the AI's output and carefully restore the original, sensitive information, ensuring accuracy and context."
+    ]
+  },
+  "prompts": [
+    {
+      "title": "Draft Initial Demand Letter",
+      "category": "Settlement Negotiation",
+      "content": "Draft an initial demand letter for a personal injury case involving a [Type of Accident] on [Date of Accident], resulting in [Type of Injury] to [Client Name]. The accident was caused by [Defendant Name]'s negligence. Include details of medical expenses, lost wages, and pain and suffering. Settlement target: [Settlement Amount].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Analyze Accident Report",
+      "category": "Evidence Review & Analysis",
+      "content": "Analyze the provided accident report from [Date of Accident] involving [Client Name] and identify key factors contributing to the accident, including road conditions, visibility, and potential violations by [Defendant Name]. The police report number is [Police Report Number].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Outline Cross-Examination Questions",
+      "category": "Litigation Strategy",
+      "content": "Outline cross-examination questions for [Defendant Name] in a personal injury case involving a [Type of Accident]. Focus on inconsistencies between their deposition testimony on [Date of Deposition] and the accident report regarding [Specific Detail].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Summarize Medical Records",
+      "category": "Evidence Review & Analysis",
+      "content": "Summarize the medical records of [Client Name] from [Start Date] to [End Date] related to injuries sustained in a [Type of Accident]. Highlight key diagnoses, treatments, and prognoses relevant to proving damages. The medical provider is [Medical Provider Name].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Draft Interrogatories",
+      "category": "Discovery",
+      "content": "Draft interrogatories to be served on [Defendant Name] in a personal injury case. Focus on their driving history, knowledge of the accident scene, and any potential witnesses. The accident occurred on [Date of Accident] at [Location].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Assess Case Value",
+      "category": "Settlement Negotiation",
+      "content": "Assess the potential settlement value of a personal injury case involving [Client Name] who sustained [Type of Injury] in a [Type of Accident] on [Date of Accident]. Consider medical expenses of [Dollar Amount], lost wages, and pain and suffering, referencing similar verdicts in [Jurisdiction].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Analyze Witness Statements",
+      "category": "Evidence Review & Analysis",
+      "content": "Analyze the witness statement provided by [Witness Name] regarding the [Type of Accident] involving [Client Name]. Identify any biases, inconsistencies, or corroborating details relevant to establishing liability on [Defendant Name]. The statement was given on [Date of Statement].",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Research Relevant Case Law",
+      "category": "Litigation Strategy",
+      "content": "Research case law in [Jurisdiction] regarding [Specific Legal Issue] related to personal injury claims arising from [Type of Accident]. Focus on cases with similar fact patterns and legal arguments.",
+      "safetyCheck": "This prompt does not involve any PII."
+    },
+    {
+      "title": "Draft Motion for Summary Judgement",
+      "category": "Litigation Strategy",
+      "content": "Draft a motion for summary judgment on the issue of negligence in a personal injury case involving [Client Name] who was injured in a [Type of Accident] caused by [Defendant Name] on [Date of Accident]. Argue that there is no genuine issue of material fact based on the evidence presented.",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    },
+    {
+      "title": "Prepare Opening Statement",
+      "category": "Litigation Strategy",
+      "content": "Prepare an opening statement for a personal injury trial involving [Client Name] who sustained [Type of Injury] in a [Type of Accident] on [Date of Accident]. Clearly articulate the elements of negligence, the damages suffered by the client, and the evidence that will be presented.",
+      "safetyCheck": "This prompt uses bracketed placeholders instead of real client data, protecting PII."
+    }
+  ],
+  "linkedinMessage": "Hi Steven,\n\nI noticed Young &amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;amp;ampampamp;amp;amp;ampamp;amp;amp;amp;amp;amp Associates, PLLC specializes in Personal Injury Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows—including 'Draft Initial Demand Letter' and 'Analyze Accident Report'—that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev"
+}
+
+JSON parsed successfully.
+Analysis complete.
+Generating Accessible PDF Report: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Steven_R._Young.pdf
+PDF generated successfully.
+Opening chat for https://www.linkedin.com/in/lastminutetriallawyer/...
+Chat input found with selector: .msg-form__contenteditable
+Sending message (Attempt 1/3)...
+Attaching file: C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\Zero_Trust_AI_Strategy_for_Steven_R._Young.pdf
+File uploaded. Waiting for processing...
+Found Send button with selector: button[type='submit']
+Send button clicked.
+Verifying message sent...
+Message verified in history.
+Message 2 sent successfully.
+History saved to history.json. Total entries: 48
+Candidate processed successfully. Stopping agent (one per run).
+Logging run metrics to history...
+Workflow completed.
+Stopping agent...
+Closing 3 agent-created tabs...
+Cleaning up 1 generated PDF files...
+Deleted: Zero_Trust_AI_Strategy_for_Steven_R._Young.pdf
+Terminating Chrome process (PID: 12940)...
+Cleanup complete.

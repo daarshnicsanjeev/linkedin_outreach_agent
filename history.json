@@ -214,5 +214,30 @@
     "status": "COMPLETED",
     "role": "PRACTICING",
     "timestamp": "2025-12-09T23:04:02.523526"
+  },
+  "https://www.linkedin.com/in/bradsingerlaw/": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2025-12-10T18:06:00.223222"
+  },
+  "https://www.linkedin.com/in/john-benemerito-234984101/": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2025-12-10T19:09:07.468062"
+  },
+  "https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/": {
+    "status": "SKIPPED",
+    "reason": "Manual history detected",
+    "timestamp": "2025-12-10T20:04:35.408400"
+  },
+  "https://www.linkedin.com/in/jeffrey-gross-6968683/": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2025-12-10T20:06:31.672150"
+  },
+  "https://www.linkedin.com/in/lastminutetriallawyer/": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2025-12-10T21:05:33.980922"
   }
 }

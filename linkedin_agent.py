@@ -48,7 +48,10 @@ class LinkedInAgent:
             "scroll_attempts": 0,
             "scroll_successes": 0,
             "errors": [],
-            "message_verification_failed": False
+            "message_verification_failed": False,
+            "chat_open_failed": False,
+            "identity_verification_failed": False,
+            "file_upload_failed": False
         }
         
         self.history_file = "history.json"
@@ -374,6 +377,10 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
             except:
                 pass  # Continue even if timeout
             
+            # Dynamic config for polling
+            max_retries = self.config_manager.get("timeouts.identity_poll_retries", 15)
+            poll_delay = self.config_manager.get("timeouts.identity_poll_delay_ms", 300) / 1000
+            
             # Modern LinkedIn chat selectors (2024)
             selectors = [
                 # Chat overlay header selectors
@@ -404,8 +411,7 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
                 except:
                     continue
             
-            # Now poll for identity match (with shorter intervals since we already waited)
-            max_retries = 15
+            # Now poll for identity match
             last_found_name = "None"
             
             for i in range(max_retries):
@@ -438,17 +444,62 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
                     except:
                         pass
                 
-                await asyncio.sleep(0.3)  # Shorter interval since we did upfront wait
-            
-            # Final fallback: Check if we're on the correct profile page
+                await asyncio.sleep(poll_delay)  # Dynamic delay from config
+            # VISION AI FALLBACK: Safer alternative to page title
+            # If chat overlay selectors fail, use Vision AI to verify the name visually
+            # This is safer because it sees the actual chat overlay, not just the page URL
+            self.log("Chat overlay selectors failed. Trying Vision AI fallback...")
             try:
-                page_title = await page.title()
-                if expected_name.split()[0].lower() in page_title.lower():
-                    self.log(f"Identity Verified (Page Title): '{page_title}'")
-                    return True
-            except:
-                pass
+                screenshot_path = os.path.join(os.path.dirname(__file__), "identity_check_temp.png")
+                await page.screenshot(path=screenshot_path)
+                
+                api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
+                if api_key:
+                    from google import genai
+                    from google.genai import types
+                    
+                    client = genai.Client(api_key=api_key)
+                    with open(screenshot_path, "rb") as f:
+                        image_data = f.read()
+                    
+                    # Ask Vision AI to read the chat participant name
+                    prompt = f"""Look at this LinkedIn screenshot.
+
+Is there a chat/message overlay or popup visible on the right side of the screen? If yes, what is the name shown in the chat header (the person being messaged)?
+
+I'm expecting the chat to be with: "{expected_name}"
+
+Answer with ONLY:
+MATCH: YES - if the chat header shows "{expected_name}" or a very similar name
+MATCH: NO - if the chat shows a different name or no chat is visible
+
+Just respond with MATCH: YES or MATCH: NO"""
+
+                    response = client.models.generate_content(
+                        model="gemini-2.0-flash",
+                        contents=[types.Part.from_bytes(data=image_data, mime_type="image/png"), prompt]
+                    )
+                    
+                    result = response.text.strip().upper()
+                    self.log(f"Vision AI identity check response: {result}")
+                    
+                    # Clean up temp file
+                    try:
+                        os.remove(screenshot_path)
+                    except:
+                        pass
+                    
+                    if "MATCH: YES" in result or "YES" in result:
+                        self.log(f"Identity Verified (Vision AI): '{expected_name}'")
+                        return True
+                    else:
+                        self.log(f"Vision AI: Chat participant does not match expected '{expected_name}'")
+                else:
+                    self.log("No API key for Vision AI fallback.")
+            except Exception as vision_err:
+                self.log(f"Vision AI fallback error: {vision_err}")
             
+            # Final fail-closed: Could not verify identity
             self.log(f"Identity Verification Failed. Expected='{expected_name}', Last Found='{last_found_name}'")
             return False
 
@@ -832,61 +883,131 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
         except Exception as e:
             self.log(f"Error closing existing chats: {e}")
 
-    async def open_chat(self, profile_url, page=None):
-        page = page or self.page
-        self.log(f"Opening chat for {profile_url}...")
-        try:
-            # FIRST: Close any existing chat overlays
-            await self.close_existing_chats(page)
-            
-            await page.goto(profile_url, timeout=60000)
-            
-            # Dynamic wait: Wait for page to be fully loaded
+    async def _find_message_button(self, page):
+        """Find the Message button on a LinkedIn profile with multiple strategies."""
+        # Strategy 1: Direct button/anchor search
+        buttons = await page.query_selector_all("button:has-text('Message'), a:has-text('Message')")
+        for btn in buttons:
             try:
-                await page.wait_for_load_state("networkidle", timeout=15000)
-            except:
-                pass  # Continue even if timeout
-            
-            # Click Message button
-            buttons = await page.query_selector_all("button:has-text('Message'), a:has-text('Message')")
-            msg_btn = None
-            for btn in buttons:
                 if await btn.is_visible():
                     text = await btn.inner_text()
                     if "Message" in text:
-                        msg_btn = btn
-                        break
-            
-            if not msg_btn:
-                more_btn = await page.query_selector("button[aria-label='More actions']")
-                if more_btn:
-                    await more_btn.click()
-                    await asyncio.sleep(1)
-                    msg_btn = await page.query_selector("div[role='button']:has-text('Message')")
-            
-            if not msg_btn:
-                self.log("Message button not found. Dumping buttons for debug...")
-                all_btns = await page.query_selector_all("button")
-                btn_texts = []
-                for b in all_btns[:10]: # First 10
-                    t = await b.inner_text()
-                    btn_texts.append(t.strip())
-                self.log(f"Visible buttons: {btn_texts}")
-                return False
-
-            await msg_btn.evaluate("node => node.click()")
-            
-            # Dynamic wait: Wait for chat input to appear
-            try:
-                await page.wait_for_selector(".msg-form__contenteditable", timeout=15000, state="visible")
-                return True
+                        return btn
             except:
-                self.log("Chat input not found after clicking Message.")
-                return False
+                continue
+        
+        # Strategy 2: Check "More actions" dropdown
+        more_btn = await page.query_selector("button[aria-label='More actions']")
+        if more_btn:
+            try:
+                await more_btn.click()
+                await asyncio.sleep(1)
+                msg_option = await page.query_selector("div[role='button']:has-text('Message')")
+                if msg_option:
+                    return msg_option
+            except:
+                pass
+        
+        # Strategy 3: Try aria-label selectors
+        aria_selectors = [
+            "button[aria-label*='Message']",
+            "button[aria-label*='message']",
+        ]
+        for selector in aria_selectors:
+            btn = await page.query_selector(selector)
+            if btn:
+                try:
+                    if await btn.is_visible():
+                        return btn
+                except:
+                    continue
+        
+        return None
+
+    async def open_chat(self, profile_url, page=None, retries=None):
+        page = page or self.page
+        self.log(f"Opening chat for {profile_url}...")
+        
+        # Dynamic retry configuration from config.json
+        if retries is None:
+            retries = self.config_manager.get("limits.chat_open_retries", 3)
+        retry_delay_ms = self.config_manager.get("limits.chat_open_delay_ms", 2000)
+        retry_delay = retry_delay_ms / 1000  # Convert to seconds
+        
+        # Multiple selectors for chat input (LinkedIn UI varies)
+        chat_input_selectors = [
+            ".msg-form__contenteditable",
+            "div[role='textbox'][contenteditable='true']",
+            ".msg-form__message-texteditor",
+            "[data-artdeco-is-focused]",
+            ".msg-form__msg-content-container div[contenteditable='true']",
+        ]
+        
+        for attempt in range(retries):
+            try:
+                # Close any existing chat overlays first
+                await self.close_existing_chats(page)
                 
-        except Exception as e:
-            self.log(f"Error opening chat: {e}")
-            return False
+                if attempt > 0:
+                    self.log(f"Chat open retry attempt {attempt + 1}/{retries}...")
+                
+                await page.goto(profile_url, timeout=60000)
+                
+                # Wait for page to be fully loaded
+                try:
+                    await page.wait_for_load_state("networkidle", timeout=15000)
+                except:
+                    pass  # Continue even if timeout
+                
+                # Find Message button using helper method
+                msg_btn = await self._find_message_button(page)
+                
+                if not msg_btn:
+                    self.log("Message button not found.")
+                    if attempt < retries - 1:
+                        await asyncio.sleep(retry_delay)
+                        continue
+                    # Debug info on final attempt
+                    all_btns = await page.query_selector_all("button")
+                    btn_texts = []
+                    for b in all_btns[:10]:
+                        try:
+                            t = await b.inner_text()
+                            btn_texts.append(t.strip())
+                        except:
+                            pass
+                    self.log(f"Visible buttons (debug): {btn_texts}")
+                    return False
+
+                await msg_btn.evaluate("node => node.click()")
+                await asyncio.sleep(1)  # Give UI time to respond
+                
+                # Try multiple selectors for chat input
+                for selector in chat_input_selectors:
+                    try:
+                        await page.wait_for_selector(selector, timeout=5000, state="visible")
+                        self.log(f"Chat input found with selector: {selector}")
+                        return True
+                    except:
+                        continue
+                
+                # If no selector worked, try clicking Message button again
+                if attempt < retries - 1:
+                    self.log("Chat input not found. Will retry...")
+                    await asyncio.sleep(retry_delay)
+                    continue
+                
+                self.log("Chat input not found after all attempts.")
+                return False
+                    
+            except Exception as e:
+                self.log(f"Error opening chat (attempt {attempt + 1}): {e}")
+                if attempt < retries - 1:
+                    await asyncio.sleep(retry_delay)
+                    continue
+                return False
+        
+        return False
 
     async def get_chat_history(self, page=None):
         page = page or self.page
@@ -923,11 +1044,14 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
         except Exception as e:
             self.log(f"Error closing chat: {e}")
 
-    async def send_chat_message(self, message_text, attachment_path=None, page=None, verify=True, retries=2):
+    async def send_chat_message(self, message_text, attachment_path=None, page=None, verify=True, retries=None):
         page = page or self.page
         
-        # Override retries with config if available
-        retries = self.config_manager.get("limits.max_retries", retries)
+        # Dynamic config values
+        if retries is None:
+            retries = self.config_manager.get("limits.send_message_retries", 2)
+        file_upload_wait = self.config_manager.get("timeouts.file_upload_wait_ms", 5000) / 1000
+        ui_wait = self.config_manager.get("timeouts.ui_response_wait_ms", 1000) / 1000
         
         for attempt in range(retries + 1):
             try:
@@ -939,7 +1063,7 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                 
                 await msg_form.fill("") # Clear first
                 await msg_form.type(message_text)
-                await asyncio.sleep(1)
+                await asyncio.sleep(ui_wait)
 
                 if attachment_path:
                     self.log(f"Attaching file: {attachment_path}")
@@ -947,17 +1071,17 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                     if file_input:
                         await file_input.set_input_files(attachment_path)
                         self.log("File uploaded. Waiting for processing...")
-                        await asyncio.sleep(5)
+                        await asyncio.sleep(file_upload_wait)
                     else:
                         # Try clicking attach button
                         attach_btn = await page.query_selector("button[aria-label='Attach file']")
                         if attach_btn:
                             await attach_btn.click()
-                            await asyncio.sleep(1)
+                            await asyncio.sleep(ui_wait)
                             file_input = await page.query_selector("input[type='file']")
                             if file_input:
                                 await file_input.set_input_files(attachment_path)
-                                await asyncio.sleep(5)
+                                await asyncio.sleep(file_upload_wait)
                 
                 # Click Send - try multiple selectors for robustness
                 send_btn = None
@@ -1009,8 +1133,9 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                     
                     if verify:
                         self.log("Verifying message sent...")
-                        # Wait a bit more for UI update
-                        await asyncio.sleep(2)
+                        # Wait for UI update - use config value
+                        verify_wait = self.config_manager.get("timeouts.message_verify_wait_ms", 2000) / 1000
+                        await asyncio.sleep(verify_wait)
                         history = await self.get_chat_history(page)
                         # Check if message_text (or significant part) is in history
                         # We check the last few messages
@@ -1642,12 +1767,14 @@ You must strictly output VALID JSON with the following structure. Do not include
             # --- SAFETY PROTOCOL: OPEN CHAT & VERIFY ---
             if not await self.open_chat(target_url, page=new_page):
                 self.log("Could not open chat. Skipping.")
+                self.run_metrics["chat_open_failed"] = True  # Track for optimizer
                 await new_page.close()
                 return False
             
             # 1. Identity Verification (Fuzzy Match)
             if not await self.verify_chat_identity(candidate["name"], page=new_page):
                 self.log("Identity verification failed. Skipping.")
+                self.run_metrics["identity_verification_failed"] = True  # Track for optimizer
                 await new_page.close()
                 return False
 
@@ -1748,6 +1875,7 @@ You must strictly output VALID JSON with the following structure. Do not include
                 # Re-open Chat for Message 2
                 if not await self.open_chat(target_url, page=new_page):
                     self.log("Could not re-open chat for Message 2. Aborting.")
+                    self.run_metrics["chat_open_failed"] = True  # Track for optimizer
                     await new_page.close()
                     return False
                 

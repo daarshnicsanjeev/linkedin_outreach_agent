@@ -21,18 +21,21 @@ A privacy-first AI automation suite for LinkedIn networking. Includes two powerf
 | **Zero-Trust Analysis** | Generates AI prompts with bracketed placeholders—no PII ever exposed |
 | **PDF Reports** | Creates accessible, screen-reader friendly strategy PDFs |
 | **Smart Messaging** | Role-based messaging workflow with duplicate prevention |
-| **Self-Optimization** | Learns from run history to adjust timeouts automatically |
+| **Vision AI Identity Verification** | Uses Gemini Vision to verify chat participant name before sending—prevents wrong-person messages |
+| **Robust Chat Retry** | Dynamic retry logic with multiple fallback selectors for reliable chat opening |
+| **Self-Optimization** | Learns from run history to automatically adjust 7 different timeout/retry settings |
 | **Login Detection** | Audio alerts + toast notifications when login required |
 
 ### 🔔 Notification Engagement Agent (`notification_agent.py`)
 
 | Feature | Description |
 |---------|-------------|
-| **Engagement Monitoring** | Scans notifications for likes, comments, mentions, shares |
+| **AI Engagement Detection** | Uses Gemini AI to classify notifications—handles all reaction types (like, love, celebrate, insightful, etc.) |
 | **Auto Connection Invites** | Sends invites to engaged non-connections (no note) |
 | **Rate Limiting** | Configurable limits (default: 50 invites/run, 5s delay) |
 | **Duplicate Prevention** | Tracks history to avoid re-inviting |
 | **Multi-Profile Support** | Handles notifications with multiple engagers |
+| **Fallback Detection** | Keyword-based fallback if AI unavailable |
 
 ---
 
@@ -92,10 +95,11 @@ run_notification_agent.bat
 
 **What it does:**
 1. Opens LinkedIn notifications page
-2. Identifies engagement notifications (likes, comments, etc.)
-3. Checks connection status for each engager
-4. Sends connection invites to non-connections
-5. Tracks history to prevent duplicates
+2. Uses **Gemini AI** to classify each notification as engagement or not
+3. Handles all reaction types: like, love, celebrate, insightful, curious, etc.
+4. Checks connection status for each engager
+5. Sends connection invites to non-connections
+6. Tracks history to prevent duplicates
 
 > **First Run**: Chrome will open. Log in to LinkedIn manually. The session persists for future runs.
 
@@ -148,6 +152,8 @@ linkedin-agent/
 
 ### `config.json`
 
+The agent uses a dynamic configuration that the self-optimizer adjusts automatically:
+
 ```json
 {
   "keywords_practicing": ["partner", "attorney", "counsel", ...],
@@ -155,14 +161,35 @@ linkedin-agent/
   "timeouts": {
     "page_load": 5000,
     "scroll_wait": 10000,
-    "message_send_wait": 2000
+    "message_send_wait": 2000,
+    "file_upload_wait_ms": 5000,
+    "message_verify_wait_ms": 2000,
+    "ui_response_wait_ms": 1000,
+    "identity_poll_delay_ms": 300,
+    "identity_poll_retries": 15
   },
   "limits": {
     "max_scrolls": 50,
-    "max_retries": 5
+    "max_retries": 5,
+    "chat_open_retries": 3,
+    "chat_open_delay_ms": 2000,
+    "send_message_retries": 2
   }
 }
 ```
+
+### Self-Optimizer Rules
+
+The `optimizer.py` automatically tunes these values based on run history:
+
+| Metric | Action |
+|--------|--------|
+| Low scroll success rate | Increases `scroll_wait` |
+| Message verification failures | Increases `message_send_wait`, `ui_response_wait_ms` |
+| Chat open failures | Increases `chat_open_retries`, `chat_open_delay_ms` |
+| Identity verification failures | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
+| File upload failures | Increases `file_upload_wait_ms` |
+| **Stable performance** | **Decreases waits to speed up** |
 
 ### Notification Agent Constants (in `notification_agent.py`)
 

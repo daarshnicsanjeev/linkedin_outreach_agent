@@ -568,5 +568,56 @@
       "message_verification_failed": false,
       "scroll_success_rate": 0.8
     }
+  },
+  {
+    "timestamp": "2025-12-10T18:06:00.823592",
+    "metrics": {
+      "candidates_found": 7,
+      "messages_sent": 1,
+      "scroll_attempts": 5,
+      "scroll_successes": 4,
+      "errors": [],
+      "message_verification_failed": false,
+      "scroll_success_rate": 0.8
+    }
+  },
+  {
+    "timestamp": "2025-12-10T19:09:08.117855",
+    "metrics": {
+      "candidates_found": 6,
+      "messages_sent": 1,
+      "scroll_attempts": 5,
+      "scroll_successes": 4,
+      "errors": [],
+      "message_verification_failed": false,
+      "scroll_success_rate": 0.8
+    }
+  },
+  {
+    "timestamp": "2025-12-10T20:06:32.283155",
+    "metrics": {
+      "candidates_found": 5,
+      "messages_sent": 1,
+      "scroll_attempts": 5,
+      "scroll_successes": 4,
+      "errors": [],
+      "message_verification_failed": false,
+      "scroll_success_rate": 0.8
+    }
+  },
+  {
+    "timestamp": "2025-12-10T21:05:34.616843",
+    "metrics": {
+      "candidates_found": 3,
+      "messages_sent": 1,
+      "scroll_attempts": 5,
+      "scroll_successes": 4,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8
+    }
   }
 ]

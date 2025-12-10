@@ -56,7 +56,12 @@
   "timeouts": {
     "page_load": 5000,
     "scroll_wait": 10000,
-    "message_send_wait": 2000
+    "message_send_wait": 2000,
+    "file_upload_wait_ms": 4500,
+    "message_verify_wait_ms": 2000,
+    "ui_response_wait_ms": 1000,
+    "identity_poll_delay_ms": 250,
+    "identity_poll_retries": 15
   },
   "selectors": {
     "connections_list": "div[data-view-name='connections-list']",
@@ -68,6 +73,9 @@
   },
   "limits": {
     "max_scrolls": 50,
-    "max_retries": 5
+    "max_retries": 5,
+    "chat_open_retries": 3,
+    "chat_open_delay_ms": 1500,
+    "send_message_retries": 2
   }
 }

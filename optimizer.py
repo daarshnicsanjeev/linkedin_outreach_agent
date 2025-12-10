@@ -110,4 +110,88 @@ class AgentOptimizer:
                 self.log_change(f"Frequent errors detected. Increasing max_retries: {current_retries} -> {new_retries}")
                 self.config_manager.set("limits.max_retries", new_retries)
         
+        # 4. Optimize Chat Open Retries based on chat open failures
+        chat_open_failures = 0
+        for run in recent_runs:
+            if run["metrics"].get("chat_open_failed", False):
+                chat_open_failures += 1
+        
+        current_chat_retries = self.config_manager.get("limits.chat_open_retries", 3)
+        current_chat_delay = self.config_manager.get("limits.chat_open_delay_ms", 2000)
+        
+        if chat_open_failures >= 2:
+            # Frequent chat open failures -> Increase retries and delay
+            new_retries = min(current_chat_retries + 1, 6)
+            new_delay = min(current_chat_delay + 1000, 5000)  # Cap at 5s
+            
+            if new_retries > current_chat_retries:
+                self.log_change(f"Chat open failures detected. Increasing chat_open_retries: {current_chat_retries} -> {new_retries}")
+                self.config_manager.set("limits.chat_open_retries", new_retries)
+            if new_delay > current_chat_delay:
+                self.log_change(f"Chat open failures detected. Increasing chat_open_delay_ms: {current_chat_delay} -> {new_delay}")
+                self.config_manager.set("limits.chat_open_delay_ms", new_delay)
+        elif chat_open_failures == 0 and len(recent_runs) >= 5:
+            # No chat failures in last 5 runs -> Try to optimize (speed up)
+            new_delay = max(current_chat_delay - 500, 1500)  # Min 1.5s
+            if new_delay < current_chat_delay:
+                self.log_change(f"Stable chat opening. Decreasing chat_open_delay_ms: {current_chat_delay} -> {new_delay}")
+                self.config_manager.set("limits.chat_open_delay_ms", new_delay)
+        
+        # 5. Optimize Identity Verification based on failures
+        identity_failures = 0
+        for run in recent_runs:
+            if run["metrics"].get("identity_verification_failed", False):
+                identity_failures += 1
+        
+        current_id_retries = self.config_manager.get("timeouts.identity_poll_retries", 15)
+        current_id_delay = self.config_manager.get("timeouts.identity_poll_delay_ms", 300)
+        
+        if identity_failures >= 2:
+            # Increase polling retries and delay
+            new_retries = min(current_id_retries + 5, 30)
+            new_delay = min(current_id_delay + 100, 1000)
+            
+            if new_retries > current_id_retries:
+                self.log_change(f"Identity verification failures. Increasing identity_poll_retries: {current_id_retries} -> {new_retries}")
+                self.config_manager.set("timeouts.identity_poll_retries", new_retries)
+            if new_delay > current_id_delay:
+                self.log_change(f"Identity verification failures. Increasing identity_poll_delay_ms: {current_id_delay} -> {new_delay}")
+                self.config_manager.set("timeouts.identity_poll_delay_ms", new_delay)
+        elif identity_failures == 0 and len(recent_runs) >= 5:
+            # Stable - speed up polling
+            new_delay = max(current_id_delay - 50, 200)
+            if new_delay < current_id_delay:
+                self.log_change(f"Stable identity verification. Decreasing identity_poll_delay_ms: {current_id_delay} -> {new_delay}")
+                self.config_manager.set("timeouts.identity_poll_delay_ms", new_delay)
+        
+        # 6. Optimize File Upload Wait based on failures
+        file_failures = 0
+        for run in recent_runs:
+            if run["metrics"].get("file_upload_failed", False):
+                file_failures += 1
+        
+        current_upload_wait = self.config_manager.get("timeouts.file_upload_wait_ms", 5000)
+        
+        if file_failures >= 1:
+            # File upload is critical - increase wait
+            new_wait = min(current_upload_wait + 2000, 15000)
+            if new_wait > current_upload_wait:
+                self.log_change(f"File upload failures. Increasing file_upload_wait_ms: {current_upload_wait} -> {new_wait}")
+                self.config_manager.set("timeouts.file_upload_wait_ms", new_wait)
+        elif file_failures == 0 and len(recent_runs) >= 5:
+            # Stable - try to speed up
+            new_wait = max(current_upload_wait - 500, 3000)
+            if new_wait < current_upload_wait:
+                self.log_change(f"Stable file uploads. Decreasing file_upload_wait_ms: {current_upload_wait} -> {new_wait}")
+                self.config_manager.set("timeouts.file_upload_wait_ms", new_wait)
+        
+        # 7. Optimize UI Response Time
+        # If message verification failures occur, increase UI wait time
+        if msg_failures >= 1:
+            current_ui_wait = self.config_manager.get("timeouts.ui_response_wait_ms", 1000)
+            new_ui_wait = min(current_ui_wait + 500, 3000)
+            if new_ui_wait > current_ui_wait:
+                self.log_change(f"Increasing ui_response_wait_ms for stability: {current_ui_wait} -> {new_ui_wait}")
+                self.config_manager.set("timeouts.ui_response_wait_ms", new_ui_wait)
+        
         print("Optimization complete.")

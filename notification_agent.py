@@ -16,6 +16,10 @@ import socket
 import re
 from datetime import datetime
 from playwright.async_api import async_playwright
+from dotenv import load_dotenv
+
+# Load environment variables
+load_dotenv()
 
 
 # Configuration
@@ -54,6 +58,86 @@ class NotificationAgent:
         print(log_line)
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(log_line + "\n")
+    
+    def classify_notification_with_gemini(self, notification_text):
+        """Use Gemini AI to classify if a notification is an engagement notification.
+        
+        Returns:
+            dict: {"is_engagement": bool, "engagement_type": str} or None on error
+        """
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
+        if not api_key:
+            self.log("WARNING: No GEMINI_API_KEY found. Using fallback keyword detection.")
+            return None
+        
+        try:
+            from google import genai
+            client = genai.Client(api_key=api_key)
+            
+            prompt = f"""Classify this LinkedIn notification.
+
+Notification Text:
+\"\"\"
+{notification_text[:500]}
+\"\"\"
+
+Is this an ENGAGEMENT notification where someone interacted with my content?
+
+Engagement types include (but are not limited to):
+- Liked, loved, celebrated, supported, found insightful, found curious (any reaction)
+- Commented on my post/comment
+- Mentioned me in a post/comment
+- Shared or reposted my content
+- Replied to my comment
+- Viewed my profile
+
+NOT engagement (should be skipped):
+- Job recommendations
+- Birthday reminders
+- Work anniversaries
+- "You appeared in X searches"
+- Connection suggestions
+- News/trending posts
+- LinkedIn feature announcements
+
+Respond with ONLY a JSON object in this exact format:
+{{"is_engagement": true/false, "engagement_type": "liked"/"loved"/"commented"/"mentioned"/"shared"/"viewed"/"reacted"/"none"}}
+
+If not engagement, use "none" for type."""
+
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                contents=prompt
+            )
+            
+            result_text = response.text.strip()
+            # Extract JSON from response (handle markdown code blocks)
+            if "```" in result_text:
+                result_text = result_text.split("```")[1]
+                if result_text.startswith("json"):
+                    result_text = result_text[4:]
+                result_text = result_text.strip()
+            
+            result = json.loads(result_text)
+            self.log(f"  AI Classification: is_engagement={result.get('is_engagement')}, type={result.get('engagement_type')}")
+            return result
+            
+        except json.JSONDecodeError as e:
+            self.log(f"  AI response parse error: {e}. Response was: {result_text[:100]}")
+            return None
+        except Exception as e:
+            self.log(f"  AI classification error: {e}")
+            return None
+    
+    def fallback_keyword_detection(self, text_lower):
+        """Fallback keyword-based detection if AI fails."""
+        engagement_keywords = [
+            "liked your", "loves your", "loved your", "celebrated your",
+            "supported your", "found your", "reacted to", "commented on",
+            "mentioned you", "shared your", "reposted your", "replied to",
+            "viewed your profile", "and others"
+        ]
+        return any(kw in text_lower for kw in engagement_keywords)
     
     def load_history(self):
         """Load processing history from JSON file."""
@@ -305,25 +389,14 @@ class NotificationAgent:
                     clean_text = ' '.join(text.split())[:200]
                     self.log(f"  DEBUG [{i+1}]: {clean_text}")
                 
-                # Check if this is an engagement notification
-                engagement_keywords = [
-                    # Likes and reactions
-                    "liked your", "likes your", "reacted to", "reactions on", "reaction on",
-                    "liked a post", "liked a comment",
-                    # Comments
-                    "commented on", "comments on", "comment on", "replied to",
-                    # Mentions
-                    "mentioned you", "mentions you",
-                    # Shares
-                    "shared your", "reposted your",
-                    # Profile views
-                    "viewed your profile",
-                    # Multi-person patterns
-                    "and others liked", "and others commented", "and others reacted",
-                    "and 1 other", "and 2 others", "and 3 others"
-                ]
+                # Use AI to classify this notification
+                ai_result = self.classify_notification_with_gemini(text)
                 
-                is_engagement = any(kw in text_lower for kw in engagement_keywords)
+                if ai_result:
+                    is_engagement = ai_result.get("is_engagement", False)
+                else:
+                    # Fallback to keyword detection if AI fails
+                    is_engagement = self.fallback_keyword_detection(text_lower)
                 
                 if not is_engagement:
                     continue
@@ -346,42 +419,33 @@ class NotificationAgent:
                         "status is online", "status is reachable", "status is away",
                         "status is busy", "status is offline", "active status"
                     ]
-                    name_lower = name.lower()
+                    name_lower_local = name.lower()
                     for sp in status_patterns:
-                        if sp in name_lower:
-                            # Name contains status, extract from URL instead
+                        if sp in name_lower_local:
                             name = ""
                             break
                     
-                    # Less aggressive noise filtering - only skip very specific noise
+                    # Less aggressive noise filtering
                     noise_words = ["see all", "unread", "notification settings"]
                     is_noise = any(nw in name.lower() for nw in noise_words) if name else False
                     
                     # Log each link for debugging
-                    if len(links) <= 5:  # Only log if not too many
+                    if len(links) <= 5:
                         self.log(f"    Link: {name[:30] if name else 'NO NAME'} -> {href[:50] if href else 'NO HREF'}")
                     
                     if href and "/in/" in href:
-                        # Normalize URL
                         if not href.startswith("http"):
                             href = "https://www.linkedin.com" + href
-                        # Clean URL (remove query params)
                         href = href.split("?")[0]
                         
-                        # Extract name from URL if name is empty, noise, or very short
                         if not name or is_noise or len(name) < 2:
-                            # Extract from URL: /in/john-doe-123 -> John Doe
                             url_name = href.split("/in/")[-1].split("/")[0]
-                            # URL decode
                             url_name = url_name.replace("%2D", "-").replace("%20", " ")
-                            # Replace hyphens with spaces
                             url_name = url_name.replace("-", " ")
-                            # Remove trailing numbers/IDs
                             url_name = re.sub(r'\s+[a-z0-9]{6,}$', '', url_name, flags=re.IGNORECASE)
                             url_name = re.sub(r'\s*\d+$', '', url_name)
                             name = url_name.strip().title()
                         
-                        # Skip if name still looks like noise after extraction
                         if name and not any(nw in name.lower() for nw in noise_words):
                             profiles.append({
                                 "name": name,
@@ -389,7 +453,6 @@ class NotificationAgent:
                             })
                 
                 if profiles:
-                    # Deduplicate profiles by URL
                     seen_urls = set()
                     unique_profiles = []
                     for p in profiles:
@@ -398,20 +461,25 @@ class NotificationAgent:
                             unique_profiles.append(p)
                     profiles = unique_profiles
                     
-                    # Determine engagement type
-                    engagement_type = "engaged"
-                    if "viewed your profile" in text_lower:
-                        engagement_type = "viewed"
-                    elif "liked" in text_lower:
-                        engagement_type = "liked"
-                    elif "commented" in text_lower:
-                        engagement_type = "commented"
-                    elif "mentioned" in text_lower:
-                        engagement_type = "mentioned"
-                    elif "reacted" in text_lower:
-                        engagement_type = "reacted"
-                    elif "shared" in text_lower or "reposted" in text_lower:
-                        engagement_type = "shared"
+                    # Use AI result for engagement_type, or fallback to keyword detection
+                    if ai_result and ai_result.get("engagement_type") and ai_result["engagement_type"] != "none":
+                        engagement_type = ai_result["engagement_type"]
+                    else:
+                        engagement_type = "engaged"
+                        if "viewed your profile" in text_lower:
+                            engagement_type = "viewed"
+                        elif "loved" in text_lower:
+                            engagement_type = "loved"
+                        elif "liked" in text_lower:
+                            engagement_type = "liked"
+                        elif "commented" in text_lower:
+                            engagement_type = "commented"
+                        elif "mentioned" in text_lower:
+                            engagement_type = "mentioned"
+                        elif "reacted" in text_lower:
+                            engagement_type = "reacted"
+                        elif "shared" in text_lower or "reposted" in text_lower:
+                            engagement_type = "shared"
                     
                     notifications.append({
                         "text": text[:100] + "..." if len(text) > 100 else text,
@@ -419,7 +487,7 @@ class NotificationAgent:
                         "profiles": profiles
                     })
                     
-                    self.log(f"    ✓ Added {len(profiles)} profile(s): {', '.join([p['name'] for p in profiles[:3]])}")
+                    self.log(f"    Added {len(profiles)} profile(s): {', '.join([p['name'] for p in profiles[:3]])}")
                 else:
                     self.log(f"    ✗ No valid profiles extracted from this notification")
                     
