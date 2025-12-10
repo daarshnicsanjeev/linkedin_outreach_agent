@@ -5,6 +5,9 @@ import os
 import json
 import shutil
 import difflib
+import numpy as np
+import sounddevice as sd
+from winotify import Notification, audio
 from datetime import datetime, timedelta
 from playwright.async_api import async_playwright
 
@@ -50,11 +53,128 @@ class LinkedInAgent:
         
         self.history_file = "history.json"
         self.created_pdfs = [] # Track PDFs for cleanup
+        self.agent_pages = []  # Track pages created by agent for cleanup
+        self.chrome_pid = None  # Track Chrome process ID for cleanup
 
     def log(self, msg):
         print(msg)
         with open("agent_log.txt", "a", encoding="utf-8") as f:
             f.write(msg + "\n")
+
+    def find_speaker_device(self):
+        """Find laptop speaker device (not headphones) by name."""
+        try:
+            devices = sd.query_devices()
+            for i, d in enumerate(devices):
+                if d['max_output_channels'] > 0:
+                    name = d['name'].lower()
+                    # Look for built-in speakers - common names
+                    if any(kw in name for kw in ['speaker', 'realtek', 'intel', 'conexant', 'synaptics']):
+                        if not any(kw in name for kw in ['headphone', 'head', 'airpod', 'bluetooth', 'bt']):
+                            self.log(f"Found speaker device: {d['name']} (index {i})")
+                            return i
+            self.log("No specific speaker device found. Using default output.")
+            return None
+        except Exception as e:
+            self.log(f"Error finding speaker device: {e}")
+            return None
+
+    def play_login_alert(self):
+        """Play loud alert sound on laptop speaker (bypassing headphones if possible)."""
+        self.log("Playing login alert notification on speaker...")
+        try:
+            # Find speaker device
+            speaker_device = self.find_speaker_device()
+            
+            # Generate alert tone (1500 Hz beep for 500ms, repeat 3 times)
+            sample_rate = 44100
+            duration = 0.5  # seconds
+            frequency1 = 1500  # Hz
+            frequency2 = 1000  # Hz
+            
+            # Create alternating beeps
+            t = np.linspace(0, duration, int(sample_rate * duration), False)
+            tone1 = 0.8 * np.sin(2 * np.pi * frequency1 * t)
+            tone2 = 0.8 * np.sin(2 * np.pi * frequency2 * t)
+            silence = np.zeros(int(sample_rate * 0.1))  # 100ms gap
+            
+            # Combine: beep1, gap, beep2, gap, beep1, gap, beep2
+            alert = np.concatenate([
+                tone1, silence, tone2, silence,
+                tone1, silence, tone2, silence,
+                tone1, silence, tone2
+            ])
+            
+            # Ensure proper format
+            alert = alert.astype(np.float32)
+            
+            # Play on speaker device
+            if speaker_device is not None:
+                sd.play(alert, sample_rate, device=speaker_device)
+            else:
+                sd.play(alert, sample_rate)
+            sd.wait()  # Wait until done
+            
+            self.log("Alert sound played successfully.")
+        except Exception as e:
+            self.log(f"Could not play alert sound: {e}")
+            # Fallback to system beep
+            try:
+                import winsound
+                winsound.Beep(1500, 500)
+            except:
+                pass
+
+    async def show_login_toast_notification(self):
+        """Show Windows toast notification with Resume button."""
+        self.log("Showing Windows toast notification...")
+        
+        # Signal file to detect when user clicks Resume
+        signal_file = os.path.join(os.path.dirname(__file__), "resume_signal.txt")
+        
+        # Remove old signal file if exists
+        if os.path.exists(signal_file):
+            os.remove(signal_file)
+        
+        def show_toast():
+            try:
+                toast = Notification(
+                    app_id="LinkedIn Agent",
+                    title="🔐 Login Required",
+                    msg="Please log in to LinkedIn in the browser, then click Resume.",
+                    duration="long"
+                )
+                toast.set_audio(audio.Default, loop=False)
+                
+                # Create a batch script that will create the signal file
+                script_path = os.path.join(os.path.dirname(__file__), "resume_trigger.bat")
+                with open(script_path, "w") as f:
+                    f.write(f'@echo Resume > "{signal_file}"\n')
+                
+                toast.add_actions(label="▶ Resume Agent", launch=script_path)
+                toast.show()
+            except Exception as e:
+                self.log(f"Toast notification error: {e}")
+        
+        # Show toast in executor to not block
+        loop = asyncio.get_event_loop()
+        await loop.run_in_executor(None, show_toast)
+        
+        # Wait for user to click Resume (poll for signal file)
+        self.log("Waiting for user to click Resume in notification...")
+        while not os.path.exists(signal_file):
+            await asyncio.sleep(1)
+        
+        # Clean up
+        try:
+            os.remove(signal_file)
+            script_path = os.path.join(os.path.dirname(__file__), "resume_trigger.bat")
+            if os.path.exists(script_path):
+                os.remove(script_path)
+        except:
+            pass
+        
+        self.log("User clicked Resume. Continuing agent...")
 
     # --- V2.1 HELPER METHODS ---
 
@@ -76,6 +196,91 @@ class LinkedInAgent:
             self.log(f"History saved to {self.history_file}. Total entries: {len(data)}")
         except Exception as e:
             self.log(f"CRITICAL: Error saving history atomically: {e}")
+
+    def sanitize_for_pdf(self, text):
+        """Convert Unicode text to Latin-1 compatible text for FPDF."""
+        if not text:
+            return ""
+        # Comprehensive Unicode character replacements
+        replacements = {
+            '\u2013': '-',   # en-dash
+            '\u2014': '--',  # em-dash
+            '\u2015': '--',  # horizontal bar
+            '\u2018': "'",   # left single quote
+            '\u2019': "'",   # right single quote  
+            '\u201a': "'",   # single low-9 quote
+            '\u201b': "'",   # single high-reversed-9 quote
+            '\u201c': '"',   # left double quote
+            '\u201d': '"',   # right double quote
+            '\u201e': '"',   # double low-9 quote
+            '\u201f': '"',   # double high-reversed-9 quote
+            '\u2026': '...', # ellipsis
+            '\u2022': '*',   # bullet
+            '\u2023': '>',   # triangular bullet
+            '\u2027': '-',   # hyphenation point
+            '\u00a0': ' ',   # non-breaking space
+            '\u2010': '-',   # hyphen
+            '\u2011': '-',   # non-breaking hyphen
+            '\u2012': '-',   # figure dash
+            '\u00b7': '*',   # middle dot
+            '\u2032': "'",   # prime
+            '\u2033': '"',   # double prime
+            '\u2039': '<',   # single left angle quote
+            '\u203a': '>',   # single right angle quote
+            '\u00ab': '<<',  # left double angle quote
+            '\u00bb': '>>',  # right double angle quote
+            '\u00ae': '(R)', # registered trademark
+            '\u2122': '(TM)',# trademark
+            '\u00a9': '(C)', # copyright
+            '\u2020': '+',   # dagger
+            '\u2021': '++',  # double dagger
+            '\u00b0': 'deg', # degree
+            '\u2212': '-',   # minus sign
+            '\u00d7': 'x',   # multiplication sign
+            '\u00f7': '/',   # division sign
+        }
+        for unicode_char, replacement in replacements.items():
+            text = text.replace(unicode_char, replacement)
+        # Encode to latin-1, replacing any remaining unsupported chars with ?
+        return text.encode('latin-1', errors='replace').decode('latin-1')
+
+    def sanitize_filename(self, name):
+        """Sanitize a string for use as a Windows filename.
+        
+        Removes or replaces all characters illegal in Windows filenames:
+        \\ / : * ? " < > |
+        Also handles curly quotes and other problematic Unicode characters.
+        """
+        if not name:
+            return "Unknown"
+        
+        # First, normalize common Unicode quotes/characters
+        unicode_replacements = {
+            '\u201c': '',   # left double quote "
+            '\u201d': '',   # right double quote "
+            '\u201e': '',   # double low-9 quote „
+            '\u201f': '',   # double high-reversed-9 quote ‟
+            '\u2018': '',   # left single quote '
+            '\u2019': '',   # right single quote '
+            '\u2013': '-',  # en-dash –
+            '\u2014': '-',  # em-dash —
+        }
+        for char, replacement in unicode_replacements.items():
+            name = name.replace(char, replacement)
+        
+        # Remove Windows-illegal characters: \ / : * ? " < > |
+        illegal_chars = r'\/:*?"<>|'
+        for char in illegal_chars:
+            name = name.replace(char, '')
+        
+        # Replace multiple spaces/underscores with single
+        import re
+        name = re.sub(r'[\s_]+', '_', name)
+        
+        # Remove leading/trailing underscores or dots
+        name = name.strip('_.')
+        
+        return name if name else "Unknown"
 
     def parse_connection_date(self, text):
         # Parses "Connected 2 weeks ago", "Connected 1 month ago", etc.
@@ -252,40 +457,128 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
             return False
 
     async def inspect_chat_history(self, page=None):
+        """
+        Use Gemini Vision to analyze chat screenshot and detect if messages 
+        have already been sent by Sanjeev. More robust than CSS class parsing.
+        """
         page = page or self.page
         try:
             # Wait for messages to load
-            await asyncio.sleep(1)
+            await asyncio.sleep(1.5)
             
-            # Scrape last 5 message bubbles (increased from 3)
+            # First quick check: any message bubbles at all?
             bubbles = await page.query_selector_all(".msg-s-event-listitem__message-bubble")
             if not bubbles:
                 self.log("No message bubbles found in chat. Proceeding (new conversation).")
-                return True # No history is safe
+                return True  # No history is safe
             
-            self.log(f"Found {len(bubbles)} message bubbles in chat. Inspecting...")
+            self.log(f"Found {len(bubbles)} message bubbles in chat. Using Vision AI to check for duplicates...")
             
-            last_bubbles = bubbles[-5:] if len(bubbles) >= 5 else bubbles
-            for idx, bubble in enumerate(last_bubbles):
-                # Check if sent by "You"
-                # Method 1: Check for specific class on the bubble or its parent
-                # 'msg-s-event-listitem--other' vs 'msg-s-event-listitem--me' (common pattern)
+            # CRITICAL: Scroll to TOP of chat to see ALL messages (including older ones)
+            # Older messages may be hidden above the current view
+            try:
+                chat_container = await page.query_selector(".msg-s-message-list-container, .msg-s-event-listitem, .msg-thread")
+                if chat_container:
+                    # Scroll to top of the chat container
+                    await chat_container.evaluate("el => el.scrollTop = 0")
+                    await asyncio.sleep(0.5)
+                    self.log("Scrolled chat to top to view all messages.")
+                else:
+                    # Fallback: Try scrolling via keyboard
+                    await page.keyboard.press("Home")
+                    await asyncio.sleep(0.5)
+            except Exception as scroll_err:
+                self.log(f"Warning: Could not scroll chat: {scroll_err}")
+            
+            # Take screenshot of the chat area
+            screenshot_path = os.path.join(os.path.dirname(__file__), "chat_check_temp.png")
+            await page.screenshot(path=screenshot_path)
+            self.log(f"Screenshot saved for analysis.")
+            
+            # Use Gemini Vision to analyze
+            api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
+            if not api_key:
+                self.log("WARNING: No API key for vision check. Falling back to CSS method.")
+                return await self._fallback_css_check(page, bubbles)
+            
+            try:
+                from google import genai
+                from google.genai import types
+                import base64
                 
+                client = genai.Client(api_key=api_key)
+                
+                # Read and encode the screenshot
+                with open(screenshot_path, "rb") as f:
+                    image_data = f.read()
+                
+                prompt = """Look at this LinkedIn chat screenshot. 
+
+Has "Sanjeev" or "Sanjeev Chaodhari" already sent any messages in this conversation?
+
+Look for:
+- Messages on the RIGHT side (sent by the user)
+- Messages with "Sanjeev" as the sender name
+- Any outgoing messages from the account owner
+
+Answer with ONLY one word: YES or NO
+
+YES = Sanjeev has already sent messages (duplicate - do not send again)
+NO = Sanjeev has NOT sent any messages yet (safe to send)"""
+
+                response = client.models.generate_content(
+                    model="gemini-2.0-flash",
+                    contents=[
+                        types.Part.from_bytes(data=image_data, mime_type="image/png"),
+                        prompt
+                    ]
+                )
+                
+                result = response.text.strip().upper()
+                self.log(f"Vision AI response: {result}")
+                
+                # Clean up temp file
+                try:
+                    os.remove(screenshot_path)
+                except:
+                    pass
+                
+                if "YES" in result:
+                    self.log("DUPLICATE DETECTED (Vision AI): Sanjeev has already sent messages.")
+                    return False  # Block - already sent
+                elif "NO" in result:
+                    self.log("Vision AI confirms: No prior messages from Sanjeev. Safe to proceed.")
+                    return True  # Safe to send
+                else:
+                    self.log(f"Unexpected Vision AI response: {result}. Failing closed for safety.")
+                    return False  # Fail closed
+                    
+            except Exception as vision_error:
+                self.log(f"Vision AI error: {vision_error}. Falling back to CSS method.")
+                return await self._fallback_css_check(page, bubbles)
+                
+        except Exception as e:
+            self.log(f"Error in vision-based chat history check: {e}")
+            self.log("SAFETY: Failing closed due to history check error.")
+            return False
+    
+    async def _fallback_css_check(self, page, bubbles):
+        """Fallback CSS-based check if Vision AI fails."""
+        try:
+            last_bubbles = bubbles[-5:] if len(bubbles) >= 5 else bubbles
+            for bubble in last_bubbles:
                 list_item = await bubble.evaluate_handle("el => el.closest('.msg-s-event-listitem')")
                 if list_item:
                     class_attr = await list_item.get_attribute("class")
                     if class_attr and ("msg-s-event-listitem--me" in class_attr or "msg-s-message-group--align-right" in class_attr):
                         bubble_text = await bubble.inner_text()
-                        self.log(f"DUPLICATE DETECTED: Found message sent by YOU: '{bubble_text[:50]}...'")
+                        self.log(f"DUPLICATE DETECTED (CSS fallback): '{bubble_text[:50]}...'")
                         return False
-            
-            self.log("Chat history check passed. No prior messages from YOU detected.")
+            self.log("CSS fallback check passed. No prior messages detected.")
             return True
         except Exception as e:
-            self.log(f"Error inspecting chat history: {e}")
-            # FAIL CLOSED: If we can't verify, assume there's history to be safe
-            self.log("SAFETY: Failing closed due to history check error.")
-            return False
+            self.log(f"CSS fallback error: {e}")
+            return False  # Fail closed
 
     async def scrape_about_section(self, page=None):
         page = page or self.page
@@ -337,25 +630,69 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
             self.browser = await self.playwright.chromium.connect_over_cdp("http://127.0.0.1:9222")
             self.context = self.browser.contexts[0]
             self.page = await self.context.new_page()
+            self.agent_pages.append(self.page)  # Track for cleanup
             self.log("Connected to existing Chrome.")
         except Exception as e:
             self.log(f"Failed to connect to existing Chrome: {e}")
             self.log("Attempting to launch Chrome automatically...")
             await self.launch_browser()
             
-            # Try connecting again
-            await asyncio.sleep(3)
-            try:
-                self.browser = await self.playwright.chromium.connect_over_cdp("http://127.0.0.1:9222")
-                self.context = self.browser.contexts[0]
-                self.page = await self.context.new_page()
-                self.log("Connected to launched Chrome.")
-            except Exception as e2:
-                self.log(f"Failed to connect after launch: {e2}")
-                raise e2
+            # Try connecting with multiple retries
+            max_retries = 5
+            for attempt in range(max_retries):
+                await asyncio.sleep(3)  # Wait between attempts
+                try:
+                    self.log(f"Connection attempt {attempt + 1}/{max_retries}...")
+                    self.browser = await self.playwright.chromium.connect_over_cdp("http://127.0.0.1:9222")
+                    self.context = self.browser.contexts[0]
+                    
+                    # Get existing pages BEFORE creating new one
+                    existing_pages = list(self.context.pages)
+                    
+                    # Create our new page FIRST (so Chrome has at least one tab)
+                    self.page = await self.context.new_page()
+                    self.agent_pages.append(self.page)  # Track for cleanup
+                    
+                    # NOW close pre-existing tabs (safe because we just created one)
+                    if existing_pages:
+                        self.log(f"Closing {len(existing_pages)} pre-existing tab(s)...")
+                        for p in existing_pages:
+                            try:
+                                await p.close()
+                            except:
+                                pass
+                    
+                    self.log("Connected to launched Chrome.")
+                    return  # Success!
+                except Exception as e2:
+                    self.log(f"Attempt {attempt + 1} failed: {e2}")
+                    if attempt == max_retries - 1:
+                        raise e2
 
     async def launch_browser(self):
         import subprocess
+        import socket
+        
+        # First, kill any existing Chrome processes using port 9222
+        self.log("Checking for existing Chrome processes on port 9222...")
+        try:
+            # Use netstat to find process using port 9222
+            result = subprocess.run(
+                ['netstat', '-ano'],
+                capture_output=True,
+                text=True,
+                timeout=10
+            )
+            for line in result.stdout.split('\n'):
+                if ':9222' in line and 'LISTENING' in line:
+                    parts = line.split()
+                    if parts:
+                        old_pid = parts[-1]
+                        self.log(f"Found existing process on port 9222 (PID: {old_pid}). Terminating...")
+                        subprocess.run(['taskkill', '/F', '/PID', old_pid], capture_output=True)
+                        await asyncio.sleep(2)
+        except Exception as e:
+            self.log(f"Warning: Could not check for existing processes: {e}")
         
         # Define paths
         chrome_paths = [
@@ -373,17 +710,51 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
         if not chrome_path:
             self.log("Chrome executable not found.")
             return
-
+        
         user_data_dir = r"C:\ChromeAutomationProfile"
         cmd = [
             chrome_path,
             "--remote-debugging-port=9222",
-            f"--user-data-dir={user_data_dir}"
+            f"--user-data-dir={user_data_dir}",
+            "--no-first-run",
+            "--no-default-browser-check",
+            "--disable-background-networking",
+            "--disable-client-side-phishing-detection",
+            "--disable-hang-monitor"
         ]
         
         self.log(f"Launching Chrome: {' '.join(cmd)}")
-        subprocess.Popen(cmd)
-        await asyncio.sleep(5) # Wait for launch
+        process = subprocess.Popen(
+            cmd, 
+            creationflags=subprocess.CREATE_NEW_PROCESS_GROUP,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL
+        )
+        self.chrome_pid = process.pid  # Store PID for cleanup
+        self.log(f"Chrome launched with PID: {self.chrome_pid}")
+        
+        # Wait for Chrome to start and verify it's listening on port 9222
+        self.log("Waiting for Chrome to start and open debug port...")
+        for i in range(15):  # Up to 15 seconds
+            await asyncio.sleep(1)
+            # Check if process is still running
+            if process.poll() is not None:
+                self.log(f"ERROR: Chrome process exited prematurely with code {process.returncode}")
+                return
+            # Check if port 9222 is listening
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.settimeout(1)
+                result = sock.connect_ex(('127.0.0.1', 9222))
+                sock.close()
+                if result == 0:
+                    self.log(f"Chrome debug port is now listening (after {i+1}s)")
+                    await asyncio.sleep(2)  # Extra buffer for stability
+                    return
+            except:
+                pass
+        
+        self.log("WARNING: Chrome launched but port 9222 not detected after 15s")
 
     async def prepare_search_page(self):
         try:
@@ -400,13 +771,22 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
                 return True
             except Exception:
                 self.log("Login check failed or selector not found.")
-                self.log("Please log in to LinkedIn.")
+                self.log("Login required! Notifying user...")
+                
+                # Play loud alert and show resume dialog
+                self.play_login_alert()
+                await self.show_login_toast_notification()
+                
+                # Verify login after user clicks resume
                 while True:
                     url = self.page.url
                     if "feed" in url or "mynetwork" in url:
                         self.log("Login detected (URL match).")
                         break
-                    await asyncio.sleep(2)
+                    # Not logged in yet - alert again
+                    self.log("Still waiting for login... (URL does not indicate logged in)")
+                    self.play_login_alert()
+                    await self.show_login_toast_notification()
                 
                 self.log(f"Navigating to {LINKEDIN_CONNECTIONS_URL} again...")
                 await self.page.goto(LINKEDIN_CONNECTIONS_URL)
@@ -579,8 +959,46 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
                                 await file_input.set_input_files(attachment_path)
                                 await asyncio.sleep(5)
                 
-                # Click Send
-                send_btn = await page.query_selector("button[type='submit']")
+                # Click Send - try multiple selectors for robustness
+                send_btn = None
+                send_selectors = [
+                    "button[type='submit']",
+                    "button.msg-form__send-button",
+                    ".msg-form__send-button",
+                    "button[aria-label='Send']",
+                    "button[aria-label='Send message']",
+                    "button[data-control-name='send']",
+                    ".msg-form__send-btn",
+                    "button.msg-form__send-btn",
+                    # New LinkedIn UI selectors (2024)
+                    "button.msg-form__send-toggle",
+                    ".msg-form__right-actions button[type='submit']",
+                    "form.msg-form button[type='submit']",
+                ]
+                
+                for selector in send_selectors:
+                    try:
+                        send_btn = await page.query_selector(selector)
+                        if send_btn and await send_btn.is_visible():
+                            self.log(f"Found Send button with selector: {selector}")
+                            break
+                        send_btn = None
+                    except:
+                        continue
+                
+                # If still not found, try waiting for it to become enabled
+                if not send_btn:
+                    self.log("Send button not found immediately. Waiting 2s for UI to update...")
+                    await asyncio.sleep(2)
+                    for selector in send_selectors[:3]:  # Try top 3 again
+                        try:
+                            send_btn = await page.wait_for_selector(selector, timeout=3000, state="visible")
+                            if send_btn:
+                                self.log(f"Found Send button after wait with selector: {selector}")
+                                break
+                        except:
+                            continue
+                
                 if send_btn and await send_btn.is_enabled():
                     await send_btn.click()
                     self.log("Send button clicked.")
@@ -711,7 +1129,7 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
     # ... (I will split the replacement into two calls to be safe and avoid huge payload) ...
 
 
-    async def generate_report(self, input_data, input_type="url"):
+    async def generate_report(self, input_data, input_type="url", candidate_name=None):
         self.log(f"Generating report using input type: {input_type}...")
         
         api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
@@ -770,28 +1188,37 @@ You must strictly output VALID JSON with the following structure. Do not include
             prompt_content = []
             
             if input_type == "url":
+                # Include candidate name if provided (for URL case, website usually has name but this ensures correctness)
+                name_context = f"The lawyer's name is: {candidate_name}. " if candidate_name else ""
                 prompt_text = f"""
-                Perform a deep research analysis on this lawyer's website URL: {input_data}.
-                1. Use Google Search to find details about the lawyer, their firm, and their practice area focus.
+                {name_context}Perform a deep research analysis on this lawyer's website URL: {input_data}.
+                1. Use the provided name ('{candidate_name}') as the lawyer's name.
+                2. Use Google Search to find details about their firm and practice area focus.
                 """
                 prompt_content.append(prompt_text)
                 
             elif input_type == "text":
+                # Include candidate name if provided
+                name_context = f"The lawyer's name is: {candidate_name}\n" if candidate_name else ""
                 prompt_text = f"""
-                Analyze the following text extracted from the lawyer's LinkedIn profile (About Section/Headline):
+                {name_context}Analyze the following text extracted from the lawyer's LinkedIn profile (About Section/Headline):
                 
                 --- BEGIN PROFILE TEXT ---
                 {input_data}
                 --- END PROFILE TEXT ---
                 
-                1. Extract details about the lawyer, their firm, and their practice area focus from the text.
+                1. Use the provided name ('{candidate_name}') as the lawyer's name - do NOT guess or extract a different name.
+                2. Extract details about their firm and practice area focus from the text.
                 """
                 prompt_content.append(prompt_text)
                 
             elif input_type == "pdf":
-                prompt_text = """
-                Analyze the attached PDF of the lawyer's LinkedIn profile.
-                1. Extract details about the lawyer, their firm, and their practice area focus from the PDF.
+                # Include candidate name if provided
+                name_context = f"The lawyer's name is: {candidate_name}. " if candidate_name else ""
+                prompt_text = f"""
+                {name_context}Analyze the attached PDF of the lawyer's LinkedIn profile.
+                1. Use the provided name ('{candidate_name}') as the lawyer's name - do NOT guess or extract a different name.
+                2. Extract details about their firm and practice area focus from the PDF.
                 """
                 prompt_content.append(prompt_text)
                 
@@ -898,7 +1325,9 @@ You must strictly output VALID JSON with the following structure. Do not include
                     self.set_text_color(100, 116, 139) # Slate 500
                     self.cell(0, 10, f'Page {self.page_no()} - Generated by Sanjeev Chaodhari', 0, 0, 'C')
 
-            safe_name = result['profile']['name'].replace(' ', '_')
+            # Sanitize filename - remove any non-ASCII characters
+            raw_name = result.get('profile', {}).get('name', 'Unknown')
+            safe_name = self.sanitize_filename(raw_name)
             pdf_filename = f"Zero_Trust_AI_Strategy_for_{safe_name}.pdf"
             pdf_path = os.path.abspath(pdf_filename)
             
@@ -907,11 +1336,12 @@ You must strictly output VALID JSON with the following structure. Do not include
             
             # --- ACCESSIBILITY IMPROVEMENTS ---
             # 1. Set Document Metadata (Crucial for Screen Readers)
+            # NOTE: All metadata must be sanitized for Latin-1 encoding
             profile = result.get('profile', {})
-            doc_title = f"Zero-Trust AI Strategy for {profile.get('name')}"
+            doc_title = self.sanitize_for_pdf(f"Zero-Trust AI Strategy for {profile.get('name', 'Unknown')}")
             pdf.set_title(doc_title)
             pdf.set_author("Sanjeev Chaodhari")
-            pdf.set_subject(f"Legal AI Strategy for {profile.get('firmName')}")
+            pdf.set_subject(self.sanitize_for_pdf(f"Legal AI Strategy for {profile.get('firmName', 'Unknown Firm')}"))
             pdf.set_creator("Legal AI Consultant Agent")
             pdf.set_keywords("Legal, AI, Strategy, Zero-Trust, Privacy")
             
@@ -926,7 +1356,8 @@ You must strictly output VALID JSON with the following structure. Do not include
             pdf.set_font("Arial", size=12)
             pdf.set_text_color(51, 65, 85) # Slate 700
             # Use multi_cell for better reading flow
-            pdf.multi_cell(0, 6, f"Lawyer: {profile.get('name')}\nFirm: {profile.get('firmName')}\nPractice Area: {profile.get('practiceArea')}")
+            profile_text = f"Lawyer: {profile.get('name')}\nFirm: {profile.get('firmName')}\nPractice Area: {profile.get('practiceArea')}"
+            pdf.multi_cell(0, 6, self.sanitize_for_pdf(profile_text))
             pdf.ln(5)
             
             # 2. Safety Warning Bar (High Contrast Checked: ~7.5:1 ratio)
@@ -947,14 +1378,14 @@ You must strictly output VALID JSON with the following structure. Do not include
             
             pdf.set_font("Arial", size=10)
             pdf.set_text_color(51, 65, 85) # Slate 700
-            pdf.multi_cell(0, 5, desc)
+            pdf.multi_cell(0, 5, self.sanitize_for_pdf(desc))
             pdf.ln(3)
             
             steps = anon_tech.get('steps', [])
             for step in steps:
                 pdf.set_text_color(15, 23, 42)
                 pdf.cell(5) # Indent
-                pdf.cell(0, 5, f"- {step}", ln=True)
+                pdf.cell(0, 5, f"- {self.sanitize_for_pdf(step)}", ln=True)
             pdf.ln(8)
             
             # 4. Prompts Section
@@ -983,20 +1414,20 @@ You must strictly output VALID JSON with the following structure. Do not include
                 for i, p in enumerate(items):
                     # Prompt Title
                     pdf.set_font("Arial", 'B', 11)
-                    pdf.cell(0, 8, f"{i+1}. {p['title']}", ln=True)
+                    pdf.cell(0, 8, f"{i+1}. {self.sanitize_for_pdf(p['title'])}", ln=True)
                     
                     # Code Block (Grey Box)
                     # High contrast background for distinction
                     pdf.set_font("Courier", size=9)
                     pdf.set_fill_color(248, 250, 252) # Slate 50
                     pdf.set_draw_color(203, 213, 225) # Slate 300 Border
-                    pdf.multi_cell(0, 5, p['content'], border=1, fill=True)
+                    pdf.multi_cell(0, 5, self.sanitize_for_pdf(p['content']), border=1, fill=True)
                     pdf.ln(1)
                     
                     # Safety Check
                     pdf.set_font("Arial", 'I', 9)
                     pdf.set_text_color(22, 101, 52) # Green 800
-                    pdf.cell(0, 6, f"Safety Check: {p.get('safetyCheck', 'Safe usage confirmed.')}", ln=True)
+                    pdf.cell(0, 6, f"Safety Check: {self.sanitize_for_pdf(p.get('safetyCheck', 'Safe usage confirmed.'))}", ln=True)
                     pdf.ln(4)
                     pdf.set_text_color(15, 23, 42) # Reset color
                 pdf.ln(3)
@@ -1185,6 +1616,7 @@ You must strictly output VALID JSON with the following structure. Do not include
         
         # Open in new tab
         new_page = await self.context.new_page()
+        self.agent_pages.append(new_page)  # Track for cleanup
         try:
             target_url = candidate.get("original_url", candidate["url"])
             self.log(f"Opening new tab for {target_url}...")
@@ -1305,8 +1737,8 @@ You must strictly output VALID JSON with the following structure. Do not include
                             await new_page.close()
                             return False
 
-                # Generate Report
-                report_data = await self.generate_report(report_input, input_type=input_type)
+                # Generate Report - pass candidate name to ensure correct personalization
+                report_data = await self.generate_report(report_input, input_type=input_type, candidate_name=candidate["name"])
                 
                 if not report_data["pdf_path"]:
                     self.log("Failed to generate report. Skipping Message 2.")
@@ -1350,15 +1782,16 @@ You must strictly output VALID JSON with the following structure. Do not include
     async def stop(self):
         self.log("Stopping agent...")
         try:
-            # 1. Close all tabs/pages in the context
-            if self.context:
-                pages = self.context.pages
-                self.log(f"Closing {len(pages)} open tabs...")
-                for page in pages:
+            # 1. Close only pages created by the agent (not user's existing tabs)
+            if self.agent_pages:
+                self.log(f"Closing {len(self.agent_pages)} agent-created tabs...")
+                for page in self.agent_pages:
                     try:
-                        await page.close()
+                        if not page.is_closed():
+                            await page.close()
                     except:
                         pass
+                self.agent_pages = []
             
             # 2. Delete generated PDF files
             import glob
@@ -1373,10 +1806,18 @@ You must strictly output VALID JSON with the following structure. Do not include
                     except Exception as e:
                         self.log(f"Could not delete {pdf_file}: {e}")
             
-            # 3. Close the browser (this closes the window)
-            if self.browser:
-                self.log("Closing browser window...")
-                await self.browser.close()
+            # 3. Kill the Chrome process we launched (if any)
+            if self.chrome_pid:
+                import subprocess
+                self.log(f"Terminating Chrome process (PID: {self.chrome_pid})...")
+                try:
+                    subprocess.run(["taskkill", "/F", "/PID", str(self.chrome_pid)], 
+                                  capture_output=True, timeout=10)
+                    self.chrome_pid = None
+                except Exception as e:
+                    self.log(f"Could not kill Chrome process: {e}")
+            else:
+                self.log("No Chrome process to kill (connected to existing browser).")
             
             # 4. Stop playwright
             if self.playwright:

@@ -8,7 +8,6 @@ ChromeAutomationProfile/
 
 # Logs
 *.log
-agent_log.txt
 agent_log_view.txt
 agent_scheduler_log.txt
 debug_log.txt
@@ -24,8 +23,8 @@ Zero_Trust_AI_Strategy_*.pdf
 Audit_*.pdf
 
 # History Files (contain contact data)
-history.json
-agent_history.json
+# history.json
+# agent_history.json
 
 # Python
 __pycache__/

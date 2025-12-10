@@ -1,0 +1,624 @@
+[2025-12-09 19:39:36] ============================================================
+[2025-12-09 19:39:36] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:39:36] ============================================================
+[2025-12-09 19:39:36] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:39:36] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 19:39:36] Attempting to launch Chrome...
+[2025-12-09 19:39:36] Checking for existing Chrome processes on port 9222...
+[2025-12-09 19:39:36] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 19:39:36] Chrome launched with PID: 24408
+[2025-12-09 19:39:37] Chrome debug port ready (after 1s)
+[2025-12-09 19:39:42] Connection attempt 1/5...
+[2025-12-09 19:39:43] Connected to launched Chrome.
+[2025-12-09 19:39:43] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:39:50] Notifications page loaded.
+[2025-12-09 19:39:50] Extracting notifications...
+[2025-12-09 19:39:50] Found 10 notification cards with selector: article.nt-card
+[2025-12-09 19:39:50] Extracted 0 engagement notifications
+[2025-12-09 19:39:50] No engagement notifications found.
+[2025-12-09 19:39:50] 
+============================================================
+[2025-12-09 19:39:50] RUN SUMMARY
+[2025-12-09 19:39:50] ============================================================
+[2025-12-09 19:39:50]   Notifications processed: 0
+[2025-12-09 19:39:50]   Connection invites sent: 0
+[2025-12-09 19:39:50]   Already connected: 0
+[2025-12-09 19:39:50]   Already pending: 0
+[2025-12-09 19:39:50]   Errors/Skipped: 0
+[2025-12-09 19:39:50] ============================================================
+[2025-12-09 19:39:50] 
+Cleaning up...
+[2025-12-09 19:39:51] Agent stopped.
+[2025-12-09 19:40:53] ============================================================
+[2025-12-09 19:40:53] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:40:53] ============================================================
+[2025-12-09 19:40:53] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:40:53] Connected to existing Chrome.
+[2025-12-09 19:40:53] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:41:01] Notifications page loaded.
+[2025-12-09 19:41:01] Extracting notifications...
+[2025-12-09 19:41:01] Found 10 notification cards with selector: article.nt-card
+[2025-12-09 19:41:01] Extracted 0 engagement notifications
+[2025-12-09 19:41:01] No engagement notifications found.
+[2025-12-09 19:41:01] 
+============================================================
+[2025-12-09 19:41:01] RUN SUMMARY
+[2025-12-09 19:41:01] ============================================================
+[2025-12-09 19:41:01]   Notifications processed: 0
+[2025-12-09 19:41:01]   Connection invites sent: 0
+[2025-12-09 19:41:01]   Already connected: 0
+[2025-12-09 19:41:01]   Already pending: 0
+[2025-12-09 19:41:01]   Errors/Skipped: 0
+[2025-12-09 19:41:01] ============================================================
+[2025-12-09 19:41:01] 
+Cleaning up...
+[2025-12-09 19:41:01] Agent stopped.
+[2025-12-09 19:41:49] ============================================================
+[2025-12-09 19:41:49] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:41:49] ============================================================
+[2025-12-09 19:41:50] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:41:50] Connected to existing Chrome.
+[2025-12-09 19:41:50] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:41:58] Notifications page loaded.
+[2025-12-09 19:41:58] Extracting notifications...
+[2025-12-09 19:41:58] Found 10 notification cards with selector: article.nt-card
+[2025-12-09 19:41:58] Extracted 0 engagement notifications
+[2025-12-09 19:41:58] No engagement notifications found.
+[2025-12-09 19:41:58] 
+============================================================
+[2025-12-09 19:41:58] RUN SUMMARY
+[2025-12-09 19:41:58] ============================================================
+[2025-12-09 19:41:58]   Notifications processed: 0
+[2025-12-09 19:41:58]   Connection invites sent: 0
+[2025-12-09 19:41:58]   Already connected: 0
+[2025-12-09 19:41:58]   Already pending: 0
+[2025-12-09 19:41:58]   Errors/Skipped: 0
+[2025-12-09 19:41:58] ============================================================
+[2025-12-09 19:41:58] 
+Cleaning up...
+[2025-12-09 19:41:58] Agent stopped.
+[2025-12-09 19:46:18] ============================================================
+[2025-12-09 19:46:18] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:46:18] ============================================================
+[2025-12-09 19:46:18] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:46:19] Connected to existing Chrome.
+[2025-12-09 19:46:19] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:46:28] Notifications page loaded.
+[2025-12-09 19:46:28] Extracting notifications...
+[2025-12-09 19:46:28] Found 10 notification cards with selector: article.nt-card
+[2025-12-09 19:46:28]   DEBUG [1]: Unread notification. Your post has reached 41 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks 
+[2025-12-09 19:46:28]   DEBUG [2]: Unread notification. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. 38m
+[2025-12-09 19:46:28]   DEBUG [3]: Status is reachable Unread notification. Ravi Soni viewed your profile. See all views. 5h
+[2025-12-09 19:46:28]   DEBUG [4]: Unread notification. 🧠 Afzal and 17 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 5h
+[2025-12-09 19:46:28]   DEBUG [5]: Unread notification. Your posts got 83 impressions last week. View your analytics. Your posts got 83 impressions last week. View your analytics. 7h
+[2025-12-09 19:46:28] Extracted 0 engagement notifications
+[2025-12-09 19:46:28] No engagement notifications found.
+[2025-12-09 19:46:28] 
+============================================================
+[2025-12-09 19:46:28] RUN SUMMARY
+[2025-12-09 19:46:28] ============================================================
+[2025-12-09 19:46:28]   Notifications processed: 0
+[2025-12-09 19:46:28]   Connection invites sent: 0
+[2025-12-09 19:46:28]   Already connected: 0
+[2025-12-09 19:46:28]   Already pending: 0
+[2025-12-09 19:46:28]   Errors/Skipped: 0
+[2025-12-09 19:46:28] ============================================================
+[2025-12-09 19:46:28] 
+Cleaning up...
+[2025-12-09 19:46:29] Agent stopped.
+[2025-12-09 19:51:16] ============================================================
+[2025-12-09 19:51:16] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:51:16] ============================================================
+[2025-12-09 19:51:16] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:51:16] Connected to existing Chrome.
+[2025-12-09 19:51:16] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:51:24] Notifications page loaded.
+[2025-12-09 19:51:24] Extracting notifications...
+[2025-12-09 19:51:24] Scrolling to load more notifications...
+[2025-12-09 19:51:28] Found 10 notification cards with selector: article.nt-card
+[2025-12-09 19:51:28]   DEBUG [1]: Unread notification. Your post has reached 41 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks 
+[2025-12-09 19:51:28]   DEBUG [2]: Unread notification. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. 43m
+[2025-12-09 19:51:28]   DEBUG [3]: Status is reachable Unread notification. Ravi Soni viewed your profile. See all views. 5h
+[2025-12-09 19:51:28]   [3] viewed: 1 profile(s)
+[2025-12-09 19:51:28]   DEBUG [4]: Unread notification. 🧠 Afzal and 17 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 5h
+[2025-12-09 19:51:29]   DEBUG [5]: Unread notification. Your posts got 83 impressions last week. View your analytics. Your posts got 83 impressions last week. View your analytics. 7h
+[2025-12-09 19:51:29] Extracted 1 engagement notifications
+[2025-12-09 19:51:29] 
+Processing 1 notifications...
+[2025-12-09 19:51:29] Current invite count: 0/10
+[2025-12-09 19:51:29] 
+--- VIEWED: Status is reachable
+
+Unread notification.
+
+Ravi So...
+[2025-12-09 19:51:29]   Checking connection status: https://www.linkedin.com/in/ravi%2Dsoni%2D16358b184
+[2025-12-09 19:51:33]   Sending connection invite to: Status is reachable
+[2025-12-09 19:51:46]     ✓ Connection invite sent to Status is reachable
+[2025-12-09 19:51:46]   Progress: 1/10 invites sent
+[2025-12-09 19:51:46]   Waiting 7s before next action...
+[2025-12-09 19:51:56] 
+============================================================
+[2025-12-09 19:51:56] RUN SUMMARY
+[2025-12-09 19:51:56] ============================================================
+[2025-12-09 19:51:56]   Notifications processed: 1
+[2025-12-09 19:51:56]   Connection invites sent: 1
+[2025-12-09 19:51:56]   Already connected: 0
+[2025-12-09 19:51:56]   Already pending: 0
+[2025-12-09 19:51:56]   Errors/Skipped: 0
+[2025-12-09 19:51:56] ============================================================
+[2025-12-09 19:51:56] 
+Cleaning up...
+[2025-12-09 19:51:56] Agent stopped.
+[2025-12-09 19:55:54] ============================================================
+[2025-12-09 19:55:54] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 19:55:54] ============================================================
+[2025-12-09 19:55:54] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 19:55:54] Connected to existing Chrome.
+[2025-12-09 19:55:54] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 19:56:02] Notifications page loaded.
+[2025-12-09 19:56:02] Extracting notifications...
+[2025-12-09 19:56:02] Scrolling to load more notifications...
+[2025-12-09 19:56:06] Found 22 notification cards with selector: article.nt-card
+[2025-12-09 19:56:06]   DEBUG [1]: Unread notification. Your post has reached 41 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks 
+[2025-12-09 19:56:06]   DEBUG [2]: Unread notification. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. 47m
+[2025-12-09 19:56:06]   DEBUG [3]: Status is reachable Unread notification. Ravi Soni viewed your profile. See all views. 5h
+[2025-12-09 19:56:06]   DEBUG [4]: Unread notification. 🧠 Afzal and 17 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 5h
+[2025-12-09 19:56:06]   DEBUG [5]: Unread notification. Your posts got 83 impressions last week. View your analytics. Your posts got 83 impressions last week. View your analytics. 7h
+[2025-12-09 19:56:07]   [14] liked: 1 profile(s)
+[2025-12-09 19:56:07] Extracted 1 engagement notifications
+[2025-12-09 19:56:07] 
+Processing 1 notifications...
+[2025-12-09 19:56:07] Current invite count: 0/10
+[2025-12-09 19:56:07] 
+--- LIKED: Elizabeth Dorahy
+
+Unread notification.
+
+Elizabeth ...
+[2025-12-09 19:56:07]   Checking connection status: https://www.linkedin.com/in/elizabeth%2Ddorahy%2D28209a65
+[2025-12-09 19:56:15]   Sending connection invite to: Elizabeth Dorahy
+[2025-12-09 19:56:27]     ✓ Connection invite sent to Elizabeth Dorahy
+[2025-12-09 19:56:27]   Progress: 1/10 invites sent
+[2025-12-09 19:56:27]   Waiting 7s before next action...
+[2025-12-09 19:56:30] 
+Cleaning up...
+[2025-12-09 19:56:30] Agent stopped.
+[2025-12-09 21:23:32] ============================================================
+[2025-12-09 21:23:32] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 21:23:32] ============================================================
+[2025-12-09 21:23:32] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 21:23:32] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 21:23:32] Attempting to launch Chrome...
+[2025-12-09 21:23:32] Checking for existing Chrome processes on port 9222...
+[2025-12-09 21:23:32] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 21:23:32] Chrome launched with PID: 31336
+[2025-12-09 21:23:33] Chrome debug port ready (after 1s)
+[2025-12-09 21:23:38] Connection attempt 1/5...
+[2025-12-09 21:23:38] Connected to launched Chrome.
+[2025-12-09 21:23:38] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 21:23:46] Notifications page loaded.
+[2025-12-09 21:23:46] Extracting notifications...
+[2025-12-09 21:23:46] Scrolling to load more notifications...
+[2025-12-09 21:23:51] Found 30 notification cards with selector: article.nt-card
+[2025-12-09 21:23:51]   DEBUG [1]: Status is online Unread notification. Kyle Wright liked your comment. This really highlights how multi-faceted TBI care needs to be. Bringing together specialists like neuroradiologists, neuro-optomet
+[2025-12-09 21:23:51]   DEBUG [2]: Unread notification. Andrew Pickett and Kyle Wright reacted to a post: 2 minutes and 30 seconds. That's how long we had to learn about each person on our jury panel during jury selection. Typically, o
+[2025-12-09 21:23:51]   DEBUG [3]: Status is online Unread notification. Qarrar Somji posted: Your underwear colour isn't a business strategy. Yet here we are, on LinkedIn, discussing it. Don't get me wrong, I love seeing lawyers show 
+[2025-12-09 21:23:51]   DEBUG [4]: Status is online Unread notification. Kurt London posted: If you can’t live it, don’t sell it. If you’re selling clicks and content… but your own content is stale, your posts get no engagement, and yo
+[2025-12-09 21:23:51]   DEBUG [5]: Your post has reached 48 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks target small business
+[2025-12-09 21:23:51]   [18] liked: 1 profile(s)
+[2025-12-09 21:23:51] Extracted 1 engagement notifications
+[2025-12-09 21:23:51] 
+Processing 1 notifications...
+[2025-12-09 21:23:51] Current invite count: 0/10
+[2025-12-09 21:23:51] 
+--- LIKED: Elizabeth Dorahy
+Elizabeth Dorahy and 2 others lik...
+[2025-12-09 21:23:51]   Checking connection status: https://www.linkedin.com/in/elizabeth%2Ddorahy%2D28209a65
+[2025-12-09 21:23:55]   Sending connection invite to: Elizabeth Dorahy
+[2025-12-09 21:24:22]     ✓ Connection invite sent to Elizabeth Dorahy
+[2025-12-09 21:24:22]   Progress: 1/10 invites sent
+[2025-12-09 21:24:22]   Waiting 7s before next action...
+[2025-12-09 21:24:31] 
+============================================================
+[2025-12-09 21:24:31] RUN SUMMARY
+[2025-12-09 21:24:31] ============================================================
+[2025-12-09 21:24:31]   Notifications processed: 1
+[2025-12-09 21:24:31]   Connection invites sent: 1
+[2025-12-09 21:24:31]   Already connected: 0
+[2025-12-09 21:24:31]   Already pending: 0
+[2025-12-09 21:24:31]   Errors/Skipped: 0
+[2025-12-09 21:24:31] ============================================================
+[2025-12-09 21:24:31] 
+Cleaning up...
+[2025-12-09 21:24:31]   Closing agent page...
+[2025-12-09 21:24:32]   Closing additional page: chrome://new-tab-page/...
+[2025-12-09 21:24:32]   Stopping Playwright...
+[2025-12-09 21:24:32]   Terminating Chrome process (PID: 31336)...
+[2025-12-09 21:24:32]   Chrome termination result: ERROR: The process "31336" not found.
+[2025-12-09 21:24:32]   Run statistics saved to history.
+[2025-12-09 21:24:32] Agent stopped.
+[2025-12-09 21:40:04] ============================================================
+[2025-12-09 21:40:04] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 21:40:04] ============================================================
+[2025-12-09 21:40:04] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 21:40:04] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 21:40:04] Attempting to launch Chrome...
+[2025-12-09 21:40:04] Checking for existing Chrome processes on port 9222...
+[2025-12-09 21:40:04] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 21:40:04] Chrome launched with PID: 51312
+[2025-12-09 21:40:05] Chrome debug port ready (after 1s)
+[2025-12-09 21:40:10] Connection attempt 1/5...
+[2025-12-09 21:40:11] Connected to launched Chrome.
+[2025-12-09 21:40:11] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 21:40:18] Notifications page loaded.
+[2025-12-09 21:40:18] Extracting notifications...
+[2025-12-09 21:40:18] Scrolling to load more notifications...
+[2025-12-09 21:40:23]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-09 21:40:24] Found 31 notification cards with selector: article.nt-card
+[2025-12-09 21:40:24]   DEBUG [1]: Status is online Unread notification. Chong Ye posted: Early in my career, I used to think outcomes told the whole story. If a case fell apart, the first place I looked was the client. Did they treat 
+[2025-12-09 21:40:24]   DEBUG [2]: Status is online Unread notification. Kyle Wright liked your comment. This really highlights how multi-faceted TBI care needs to be. Bringing together specialists like neuroradiologists, neuro-optomet
+[2025-12-09 21:40:24]   DEBUG [3]: Status is online Unread notification. Andrew Pickett and Kyle Wright reacted to a post: 2 minutes and 30 seconds. That's how long we had to learn about each person on our jury panel during jury select
+[2025-12-09 21:40:24]   DEBUG [4]: Status is online Unread notification. Qarrar Somji posted: Your underwear colour isn't a business strategy. Yet here we are, on LinkedIn, discussing it. Don't get me wrong, I love seeing lawyers show 
+[2025-12-09 21:40:24]   DEBUG [5]: Unread notification. Kurt London posted: If you can’t live it, don’t sell it. If you’re selling clicks and content… but your own content is stale, your posts get no engagement, and your website hasn’t
+[2025-12-09 21:40:24]   [19] liked: 1 profile(s)
+[2025-12-09 21:40:24] Extracted 1 engagement notifications
+[2025-12-09 21:40:24] 
+Processing 1 notifications...
+[2025-12-09 21:40:24] Current invite count: 0/50
+[2025-12-09 21:40:24] 
+--- LIKED: Elizabeth Dorahy
+Elizabeth Dorahy and 2 others lik...
+[2025-12-09 21:40:24]   Skipping Elizabeth Dorahy - already invited previously
+[2025-12-09 21:40:26] 
+============================================================
+[2025-12-09 21:40:26] RUN SUMMARY
+[2025-12-09 21:40:26] ============================================================
+[2025-12-09 21:40:26]   Notifications processed: 0
+[2025-12-09 21:40:26]   Connection invites sent: 0
+[2025-12-09 21:40:26]   Already connected: 0
+[2025-12-09 21:40:26]   Already pending: 0
+[2025-12-09 21:40:26]   Errors/Skipped: 0
+[2025-12-09 21:40:26] ============================================================
+[2025-12-09 21:40:26] 
+Cleaning up...
+[2025-12-09 21:40:26]   Closing agent page...
+[2025-12-09 21:40:27]   Closing additional page: chrome://new-tab-page/...
+[2025-12-09 21:40:27]   Stopping Playwright...
+[2025-12-09 21:40:27]   Terminating Chrome process (PID: 51312)...
+[2025-12-09 21:40:28]   Chrome process terminated successfully.
+[2025-12-09 21:40:28]   Run statistics saved to history.
+[2025-12-09 21:40:28] Agent stopped.
+[2025-12-09 21:40:54] ============================================================
+[2025-12-09 21:40:54] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 21:40:54] ============================================================
+[2025-12-09 21:40:54] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 21:40:54] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 21:40:54] Attempting to launch Chrome...
+[2025-12-09 21:40:54] Checking for existing Chrome processes on port 9222...
+[2025-12-09 21:40:54] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 21:40:54] Chrome launched with PID: 28080
+[2025-12-09 21:40:55] Chrome debug port ready (after 1s)
+[2025-12-09 21:41:00] Connection attempt 1/5...
+[2025-12-09 21:41:00] Connected to launched Chrome.
+[2025-12-09 21:41:00] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 21:41:07] Notifications page loaded.
+[2025-12-09 21:41:07] Extracting notifications...
+[2025-12-09 21:41:07] Scrolling to load more notifications...
+[2025-12-09 21:41:12]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-09 21:41:13] Found 31 notification cards with selector: article.nt-card
+[2025-12-09 21:41:13]   DEBUG [1]: Status is online Unread notification. Chong Ye posted: Early in my career, I used to think outcomes told the whole story. If a case fell apart, the first place I looked was the client. Did they treat 
+[2025-12-09 21:41:13]   DEBUG [2]: Status is online Unread notification. Kyle Wright liked your comment. This really highlights how multi-faceted TBI care needs to be. Bringing together specialists like neuroradiologists, neuro-optomet
+[2025-12-09 21:41:13]   DEBUG [3]: Unread notification. Andrew Pickett and Kyle Wright reacted to a post: 2 minutes and 30 seconds. That's how long we had to learn about each person on our jury panel during jury selection. Typically, o
+[2025-12-09 21:41:13]   DEBUG [4]: Status is online Unread notification. Qarrar Somji posted: Your underwear colour isn't a business strategy. Yet here we are, on LinkedIn, discussing it. Don't get me wrong, I love seeing lawyers show 
+[2025-12-09 21:41:13]   DEBUG [5]: Unread notification. Kurt London posted: If you can’t live it, don’t sell it. If you’re selling clicks and content… but your own content is stale, your posts get no engagement, and your website hasn’t
+[2025-12-09 21:41:13]   [19] liked: 1 profile(s)
+[2025-12-09 21:41:13] Extracted 1 engagement notifications
+[2025-12-09 21:41:13] 
+Processing 1 notifications...
+[2025-12-09 21:41:13] Current invite count: 0/50
+[2025-12-09 21:41:13] 
+--- LIKED: Elizabeth Dorahy
+Elizabeth Dorahy and 2 others lik...
+[2025-12-09 21:41:13]   Skipping Elizabeth Dorahy - already invited previously
+[2025-12-09 21:41:15] 
+============================================================
+[2025-12-09 21:41:15] RUN SUMMARY
+[2025-12-09 21:41:15] ============================================================
+[2025-12-09 21:41:15]   Notifications processed: 0
+[2025-12-09 21:41:15]   Connection invites sent: 0
+[2025-12-09 21:41:15]   Already connected: 0
+[2025-12-09 21:41:15]   Already pending: 0
+[2025-12-09 21:41:15]   Errors/Skipped: 0
+[2025-12-09 21:41:15] ============================================================
+[2025-12-09 21:41:15] 
+Cleaning up...
+[2025-12-09 21:41:15]   Closing agent page...
+[2025-12-09 21:41:16]   Closing additional page: chrome://new-tab-page/...
+[2025-12-09 21:41:16]   Stopping Playwright...
+[2025-12-09 21:41:16]   Terminating Chrome process (PID: 28080)...
+[2025-12-09 21:41:16]   Chrome termination result: ERROR: The process with PID 28080 could not be terminated.
+Reason: There is no running instance of the task.
+[2025-12-09 21:41:16]   Run statistics saved to history.
+[2025-12-09 21:41:16] Agent stopped.
+[2025-12-09 21:43:07] ============================================================
+[2025-12-09 21:43:07] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 21:43:07] ============================================================
+[2025-12-09 21:43:08] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 21:43:08] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 21:43:08] Attempting to launch Chrome...
+[2025-12-09 21:43:08] Checking for existing Chrome processes on port 9222...
+[2025-12-09 21:43:08] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 21:43:08] Chrome launched with PID: 52804
+[2025-12-09 21:43:09] Chrome debug port ready (after 1s)
+[2025-12-09 21:43:14] Connection attempt 1/5...
+[2025-12-09 21:43:14] Connected to launched Chrome.
+[2025-12-09 21:43:14] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 21:43:21] Notifications page loaded.
+[2025-12-09 21:43:21] Extracting notifications...
+[2025-12-09 21:43:21] Scrolling to load more notifications...
+[2025-12-09 21:43:25]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-09 21:43:27] Found 31 notification cards with selector: article.nt-card
+[2025-12-09 21:43:27]   DEBUG [1]: Status is online Unread notification. Chong Ye posted: Early in my career, I used to think outcomes told the whole story. If a case fell apart, the first place I looked was the client. Did they treat 
+[2025-12-09 21:43:27]   DEBUG [2]: Status is online Unread notification. Kyle Wright liked your comment. This really highlights how multi-faceted TBI care needs to be. Bringing together specialists like neuroradiologists, neuro-optomet
+[2025-12-09 21:43:27]   [2] ENGAGEMENT DETECTED: Status is online  Unread notification.  Kyle Wright liked yo...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: Status is online -> /in/kyle%2Dwright%2D96b35019
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Status is online
+[2025-12-09 21:43:27]   DEBUG [3]: Unread notification. Andrew Pickett and Kyle Wright reacted to a post: 2 minutes and 30 seconds. That's how long we had to learn about each person on our jury panel during jury selection. Typically, o
+[2025-12-09 21:43:27]   [3] ENGAGEMENT DETECTED: Unread notification.  Andrew Pickett and Kyle Wright reacted...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: NO NAME -> /in/andrewburtonpickett
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Andrewburtonpickett
+[2025-12-09 21:43:27]   DEBUG [4]: Status is online Unread notification. Qarrar Somji posted: Your underwear colour isn't a business strategy. Yet here we are, on LinkedIn, discussing it. Don't get me wrong, I love seeing lawyers show 
+[2025-12-09 21:43:27]   DEBUG [5]: Unread notification. Kurt London posted: If you can’t live it, don’t sell it. If you’re selling clicks and content… but your own content is stale, your posts get no engagement, and your website hasn’t
+[2025-12-09 21:43:27]   DEBUG [6]: Your post has reached 48 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks target small business
+[2025-12-09 21:43:27]   DEBUG [7]: Worli’s ultra-luxury realty market is hitting record highs. Here’s more. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. 2h
+[2025-12-09 21:43:27]   DEBUG [8]: Status is reachable Ravi Soni viewed your profile. See all views. 7h
+[2025-12-09 21:43:27]   [8] ENGAGEMENT DETECTED: Status is reachable Ravi Soni viewed your profile. See all v...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: Status is reachable -> /in/ravi%2Dsoni%2D16358b184
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Status is reachable
+[2025-12-09 21:43:27]   DEBUG [9]: 🧠 Afzal and 17 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 7h
+[2025-12-09 21:43:27]   DEBUG [10]: Your posts got 83 impressions last week. View your analytics. Your posts got 83 impressions last week. View your analytics. 9h
+[2025-12-09 21:43:27]   [16] ENGAGEMENT DETECTED: Unread notification.  Chuck Sholtz and 22 others reacted to ...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: NO NAME -> /in/chuck%2Dsholtz%2D6a956b7
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Chuck Sholtz 6A956B
+[2025-12-09 21:43:27]   [17] ENGAGEMENT DETECTED: Status is reachable Diana White liked your comment. Your sto...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: Status is reachable -> /in/diana%2Dwhite%2D486920b5
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Status is reachable
+[2025-12-09 21:43:27]   [19] ENGAGEMENT DETECTED: Elizabeth Dorahy Elizabeth Dorahy and 2 others liked your co...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: Elizabeth Dorahy -> /in/elizabeth%2Ddorahy%2D28209a65
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Elizabeth Dorahy
+[2025-12-09 21:43:27]   [23] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji comment...
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: Status is online -> /in/qarrar%2Dsomji
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Status is online
+[2025-12-09 21:43:27]   [31] ENGAGEMENT DETECTED: Unread notification.  Apoorv Bansal replied to your comment....
+[2025-12-09 21:43:27]     Found 1 profile links in notification
+[2025-12-09 21:43:27]     Link: NO NAME -> /in/abdbansal
+[2025-12-09 21:43:27]     ✓ Added 1 profile(s): Abdbansal
+[2025-12-09 21:43:27] Extracted 8 engagement notifications
+[2025-12-09 21:43:27] 
+Processing 8 notifications...
+[2025-12-09 21:43:27] Current invite count: 0/50
+[2025-12-09 21:43:27] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Kyle Wrigh...
+[2025-12-09 21:43:27]   Checking connection status: https://www.linkedin.com/in/kyle%2Dwright%2D96b35019
+[2025-12-09 21:43:33]   Sending connection invite to: Status is online
+[2025-12-09 21:43:46]     ✓ Connection invite sent to Status is online
+[2025-12-09 21:43:46]   Progress: 1/50 invites sent
+[2025-12-09 21:43:46]   Waiting 5s before next action...
+[2025-12-09 21:43:51] 
+--- LIKED: Unread notification.
+
+Andrew Pickett and Kyle Wrig...
+[2025-12-09 21:43:51]   Checking connection status: https://www.linkedin.com/in/andrewburtonpickett
+[2025-12-09 21:43:57]   Sending connection invite to: Andrewburtonpickett
+[2025-12-09 21:44:04]     ✓ Connection invite sent to Andrewburtonpickett
+[2025-12-09 21:44:04]   Progress: 2/50 invites sent
+[2025-12-09 21:44:04]   Waiting 5s before next action...
+[2025-12-09 21:44:09] 
+--- VIEWED: Status is reachable
+Ravi Soni viewed your profile....
+[2025-12-09 21:44:09]   Skipping Status is reachable - already invited previously
+[2025-12-09 21:44:09] 
+--- MENTIONED: Unread notification.
+
+Chuck Sholtz and 22 others r...
+[2025-12-09 21:44:09]   Checking connection status: https://www.linkedin.com/in/chuck%2Dsholtz%2D6a956b7
+[2025-12-09 21:44:15]   Sending connection invite to: Chuck Sholtz 6A956B
+[2025-12-09 21:44:28]     ✓ Connection invite sent to Chuck Sholtz 6A956B
+[2025-12-09 21:44:28]   Progress: 3/50 invites sent
+[2025-12-09 21:44:28]   Waiting 5s before next action...
+[2025-12-09 21:44:33] 
+--- LIKED: Status is reachable
+Diana White liked your comment...
+[2025-12-09 21:44:33]   Checking connection status: https://www.linkedin.com/in/diana%2Dwhite%2D486920b5
+[2025-12-09 21:44:38]   Status is reachable - Already connected ✓
+[2025-12-09 21:44:38] 
+--- LIKED: Elizabeth Dorahy
+Elizabeth Dorahy and 2 others lik...
+[2025-12-09 21:44:38]   Skipping Elizabeth Dorahy - already invited previously
+[2025-12-09 21:44:38] 
+--- COMMENTED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-09 21:44:38]   Checking connection status: https://www.linkedin.com/in/qarrar%2Dsomji
+[2025-12-09 21:44:44]   Status is online - Already connected ✓
+[2025-12-09 21:44:44] 
+--- ENGAGED: Unread notification.
+
+Apoorv Bansal replied to you...
+[2025-12-09 21:44:44]   Checking connection status: https://www.linkedin.com/in/abdbansal
+[2025-12-09 21:44:51]   Abdbansal - Invite already pending
+[2025-12-09 21:44:53] 
+============================================================
+[2025-12-09 21:44:53] RUN SUMMARY
+[2025-12-09 21:44:53] ============================================================
+[2025-12-09 21:44:53]   Notifications processed: 6
+[2025-12-09 21:44:53]   Connection invites sent: 3
+[2025-12-09 21:44:53]   Already connected: 2
+[2025-12-09 21:44:53]   Already pending: 1
+[2025-12-09 21:44:53]   Errors/Skipped: 0
+[2025-12-09 21:44:53] ============================================================
+[2025-12-09 21:44:53] 
+Cleaning up...
+[2025-12-09 21:44:53]   Closing agent page...
+[2025-12-09 21:44:53]   Closing additional page: chrome://new-tab-page/...
+[2025-12-09 21:44:53]   Stopping Playwright...
+[2025-12-09 21:44:53]   Terminating Chrome process (PID: 52804)...
+[2025-12-09 21:44:54]   Chrome process terminated successfully.
+[2025-12-09 21:44:54]   Run statistics saved to history.
+[2025-12-09 21:44:54] Agent stopped.
+[2025-12-09 21:46:39] ============================================================
+[2025-12-09 21:46:39] LinkedIn Notification Engagement Agent Starting
+[2025-12-09 21:46:39] ============================================================
+[2025-12-09 21:46:39] Attempting to connect to existing Chrome on port 9222...
+[2025-12-09 21:46:39] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-09 21:46:39] Attempting to launch Chrome...
+[2025-12-09 21:46:39] Checking for existing Chrome processes on port 9222...
+[2025-12-09 21:46:39] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-09 21:46:39] Chrome launched with PID: 60000
+[2025-12-09 21:46:40] Chrome debug port ready (after 1s)
+[2025-12-09 21:46:45] Connection attempt 1/5...
+[2025-12-09 21:46:46] Connected to launched Chrome.
+[2025-12-09 21:46:46] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-09 21:46:52] Notifications page loaded.
+[2025-12-09 21:46:52] Extracting notifications...
+[2025-12-09 21:46:52] Scrolling to load more notifications...
+[2025-12-09 21:46:57]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-09 21:46:58] Found 31 notification cards with selector: article.nt-card
+[2025-12-09 21:46:58]   DEBUG [1]: Status is online Unread notification. Chong Ye posted: Early in my career, I used to think outcomes told the whole story. If a case fell apart, the first place I looked was the client. Did they treat 
+[2025-12-09 21:46:58]   DEBUG [2]: Status is online Unread notification. Kyle Wright liked your comment. This really highlights how multi-faceted TBI care needs to be. Bringing together specialists like neuroradiologists, neuro-optomet
+[2025-12-09 21:46:58]   [2] ENGAGEMENT DETECTED: Status is online  Unread notification.  Kyle Wright liked yo...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: NO NAME -> /in/kyle%2Dwright%2D96b35019
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Kyle Wright
+[2025-12-09 21:46:58]   DEBUG [3]: Unread notification. Andrew Pickett and Kyle Wright reacted to a post: 2 minutes and 30 seconds. That's how long we had to learn about each person on our jury panel during jury selection. Typically, o
+[2025-12-09 21:46:58]   [3] ENGAGEMENT DETECTED: Unread notification.  Andrew Pickett and Kyle Wright reacted...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: NO NAME -> /in/andrewburtonpickett
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Andrewburtonpickett
+[2025-12-09 21:46:58]   DEBUG [4]: Status is online Unread notification. Qarrar Somji posted: Your underwear colour isn't a business strategy. Yet here we are, on LinkedIn, discussing it. Don't get me wrong, I love seeing lawyers show 
+[2025-12-09 21:46:58]   DEBUG [5]: Unread notification. Kurt London posted: If you can’t live it, don’t sell it. If you’re selling clicks and content… but your own content is stale, your posts get no engagement, and your website hasn’t
+[2025-12-09 21:46:58]   DEBUG [6]: Your post has reached 48 impressions so far. View more analytics. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks target small business
+[2025-12-09 21:46:58]   DEBUG [7]: Worli’s ultra-luxury realty market is hitting record highs. Here’s more. Worli’s ultra-luxury realty market is hitting record highs. Here’s more. 2h
+[2025-12-09 21:46:58]   DEBUG [8]: Status is reachable Ravi Soni viewed your profile. See all views. 7h
+[2025-12-09 21:46:58]   [8] ENGAGEMENT DETECTED: Status is reachable Ravi Soni viewed your profile. See all v...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: NO NAME -> /in/ravi%2Dsoni%2D16358b184
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Ravi Soni
+[2025-12-09 21:46:58]   DEBUG [9]: 🧠 Afzal and 17 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 7h
+[2025-12-09 21:46:58]   DEBUG [10]: Your posts got 83 impressions last week. View your analytics. Your posts got 83 impressions last week. View your analytics. 9h
+[2025-12-09 21:46:58]   [16] ENGAGEMENT DETECTED: Unread notification.  Chuck Sholtz and 22 others reacted to ...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: NO NAME -> /in/chuck%2Dsholtz%2D6a956b7
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Chuck Sholtz
+[2025-12-09 21:46:58]   [17] ENGAGEMENT DETECTED: Status is reachable Diana White liked your comment. Your sto...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: NO NAME -> /in/diana%2Dwhite%2D486920b5
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Diana White
+[2025-12-09 21:46:58]   [19] ENGAGEMENT DETECTED: Elizabeth Dorahy Elizabeth Dorahy and 2 others liked your co...
+[2025-12-09 21:46:58]     Found 1 profile links in notification
+[2025-12-09 21:46:58]     Link: Elizabeth Dorahy -> /in/elizabeth%2Ddorahy%2D28209a65
+[2025-12-09 21:46:58]     ✓ Added 1 profile(s): Elizabeth Dorahy
+[2025-12-09 21:46:59]   [23] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji comment...
+[2025-12-09 21:46:59]     Found 1 profile links in notification
+[2025-12-09 21:46:59]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-09 21:46:59]     ✓ Added 1 profile(s): Qarrar Somji
+[2025-12-09 21:46:59]   [31] ENGAGEMENT DETECTED: Unread notification.  Apoorv Bansal replied to your comment....
+[2025-12-09 21:46:59]     Found 1 profile links in notification
+[2025-12-09 21:46:59]     Link: NO NAME -> /in/abdbansal
+[2025-12-09 21:46:59]     ✓ Added 1 profile(s): Abdbansal
+[2025-12-09 21:46:59] Extracted 8 engagement notifications
+[2025-12-09 21:46:59] 
+Processing 8 notifications...
+[2025-12-09 21:46:59] Current invite count: 0/50
+[2025-12-09 21:46:59] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Kyle Wrigh...
+[2025-12-09 21:46:59]   Skipping Kyle Wright - already invited previously
+[2025-12-09 21:46:59] 
+--- LIKED: Unread notification.
+
+Andrew Pickett and Kyle Wrig...
+[2025-12-09 21:46:59]   Skipping Andrewburtonpickett - already invited previously
+[2025-12-09 21:46:59] 
+--- VIEWED: Status is reachable
+Ravi Soni viewed your profile....
+[2025-12-09 21:46:59]   Skipping Ravi Soni - already invited previously
+[2025-12-09 21:46:59] 
+--- MENTIONED: Unread notification.
+
+Chuck Sholtz and 22 others r...
+[2025-12-09 21:46:59]   Skipping Chuck Sholtz - already invited previously
+[2025-12-09 21:46:59] 
+--- LIKED: Status is reachable
+Diana White liked your comment...
+[2025-12-09 21:46:59]   Skipping Diana White - already connected
+[2025-12-09 21:46:59] 
+--- LIKED: Elizabeth Dorahy
+Elizabeth Dorahy and 2 others lik...
+[2025-12-09 21:46:59]   Skipping Elizabeth Dorahy - already invited previously
+[2025-12-09 21:46:59] 
+--- COMMENTED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-09 21:46:59]   Skipping Qarrar Somji - already connected
+[2025-12-09 21:46:59] 
+--- ENGAGED: Unread notification.
+
+Apoorv Bansal replied to you...
+[2025-12-09 21:46:59]   Skipping Abdbansal - previously skipped
+[2025-12-09 21:47:00] 
+============================================================
+[2025-12-09 21:47:00] RUN SUMMARY
+[2025-12-09 21:47:00] ============================================================
+[2025-12-09 21:47:00]   Notifications processed: 0
+[2025-12-09 21:47:00]   Connection invites sent: 0
+[2025-12-09 21:47:00]   Already connected: 0
+[2025-12-09 21:47:00]   Already pending: 0
+[2025-12-09 21:47:00]   Errors/Skipped: 0
+[2025-12-09 21:47:00] ============================================================
+[2025-12-09 21:47:00] 
+Cleaning up...
+[2025-12-09 21:47:00]   Closing agent page...
+[2025-12-09 21:47:01]   Closing additional page: chrome://new-tab-page/...
+[2025-12-09 21:47:01]   Stopping Playwright...
+[2025-12-09 21:47:01]   Terminating Chrome process (PID: 60000)...
+[2025-12-09 21:47:01]   Chrome process terminated successfully.
+[2025-12-09 21:47:01]   Run statistics saved to history.
+[2025-12-09 21:47:01] Agent stopped.

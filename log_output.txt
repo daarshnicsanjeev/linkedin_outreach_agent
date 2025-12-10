@@ -1,0 +1,62 @@
+Total lines: 112
+--- Last 60 lines of agent_log.txt ---
+Starting agent...
+Attempting to connect to existing Chrome on port 9222...
+Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Attempting to launch Chrome automatically...
+Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile
+Failed to connect after launch: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+CRITICAL MAIN ERROR: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+Traceback (most recent call last):
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\linkedin_agent.py", line 1550, in <module>
+    asyncio.run(agent.run_workflow())
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 204, in run
+    return runner.run(main)
+           ~~~~~~~~~~^^^^^^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py", line 127, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 719, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\linkedin_agent.py", line 1390, in run_workflow
+    await self.start()
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\linkedin_agent.py", line 355, in start
+    raise e2
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\linkedin_agent.py", line 349, in start
+    self.browser = await self.playwright.chromium.connect_over_cdp("http://127.0.0.1:9222")
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\async_api\_generated.py", line 14898, in connect_over_cdp
+    await self._impl_obj.connect_over_cdp(
+    ...<4 lines>...
+    )
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_browser_type.py", line 207, in connect_over_cdp
+    response = await self._channel.send_return_as_dict(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        "connectOverCDP", TimeoutSettings.launch_timeout, params
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 83, in send_return_as_dict
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.Error: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+
