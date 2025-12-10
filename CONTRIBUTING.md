@@ -33,6 +33,15 @@ Thank you for your interest in contributing! This document provides guidelines f
    python test_connect.py
    ```
 
+## Project Components
+
+| File | Purpose |
+|------|---------|
+| `linkedin_agent.py` | Main outreach agent (messaging, PDF generation) |
+| `notification_agent.py` | Engagement-based connection invites |
+| `config_manager.py` | Configuration loading/saving |
+| `optimizer.py` | Self-optimization from run history |
+
 ## Code Guidelines
 
 ### Style
@@ -50,6 +59,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 - Add tests for new features
 - Ensure existing tests pass before submitting
 - Test with a real LinkedIn account (be mindful of rate limits)
+- Test both agents if changes affect shared code
 
 ## Pull Request Process
 

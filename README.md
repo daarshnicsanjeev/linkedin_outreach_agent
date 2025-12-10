@@ -1,159 +1,232 @@
-# 🚀 Zero-Trust LinkedIn AI Agent
+# 🚀 Zero-Trust LinkedIn AI Agent Suite
 
-A privacy-first AI agent that automates LinkedIn networking for legal professionals. Uses **AI-powered role classification** to intelligently identify target profiles, generates personalized "Zero-Trust" AI strategy reports using Google Gemini, and sends customized messages—all while keeping sensitive client data safe.
+A privacy-first AI automation suite for LinkedIn networking. Includes two powerful agents:
+- **Outreach Agent** - AI-powered messaging for legal professionals with personalized "Zero-Trust" strategy reports
+- **Notification Agent** - Automated connection invites to users who engage with your content
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green.svg)
 ![Gemini](https://img.shields.io/badge/Google-Gemini%20AI-orange.svg)
 ![License](https://img.shields.io/badge/License-MIT-lightgrey.svg)
 
+---
+
 ## ✨ Features
 
-### Core Capabilities
-- **🔍 AI-Powered Role Classification**: Uses Gemini AI to intelligently classify connections as:
-  - `PRACTICING` - Active legal professionals (Partners, Attorneys, Counsel)
-  - `GENERAL` - Legal-adjacent professionals (Legal Tech, Consultants)
-  - `SKIP` - Non-relevant profiles
-  
-- **📊 Zero-Trust Analysis**: Generates practice-specific AI prompts that require *no* PII (Personally Identifiable Information) to run
+### 🎯 LinkedIn Outreach Agent (`linkedin_agent.py`)
 
-- **📄 Accessible PDF Generation**: Creates professional, screen-reader friendly PDF reports ("Zero-Trust AI Strategy")
+| Feature | Description |
+|---------|-------------|
+| **AI Role Classification** | Uses Gemini AI to classify connections as `PRACTICING` (lawyers), `GENERAL` (legal-adjacent), or `SKIP` |
+| **Zero-Trust Analysis** | Generates AI prompts with bracketed placeholders—no PII ever exposed |
+| **PDF Reports** | Creates accessible, screen-reader friendly strategy PDFs |
+| **Smart Messaging** | Role-based messaging workflow with duplicate prevention |
+| **Self-Optimization** | Learns from run history to adjust timeouts automatically |
+| **Login Detection** | Audio alerts + toast notifications when login required |
 
-- **💬 Smart Messaging**: Role-based messaging with:
-  - Full workflow for PRACTICING lawyers (intro + personalized report)
-  - Intro-only for GENERAL contacts
-  - Auto-skip for non-relevant profiles
+### 🔔 Notification Engagement Agent (`notification_agent.py`)
 
-### Technical Features
-- **⚡ Dynamic Waiting**: Smart page load detection instead of fixed delays
-- **🎯 Identity Verification**: Multi-selector chat verification with fuzzy name matching
-- **🧹 Auto Cleanup**: Closes all tabs and deletes PDFs on session end
-- **📈 Self-Optimization**: Learns from run history to adjust timeouts and settings
-- **🔄 Duplicate Prevention**: Tracks message history to avoid re-messaging
+| Feature | Description |
+|---------|-------------|
+| **Engagement Monitoring** | Scans notifications for likes, comments, mentions, shares |
+| **Auto Connection Invites** | Sends invites to engaged non-connections (no note) |
+| **Rate Limiting** | Configurable limits (default: 50 invites/run, 5s delay) |
+| **Duplicate Prevention** | Tracks history to avoid re-inviting |
+| **Multi-Profile Support** | Handles notifications with multiple engagers |
+
+---
 
 ## 📋 Prerequisites
 
-- Windows OS (10/11)
-- [Python 3.8+](https://www.python.org/downloads/)
-- Google Chrome installed
-- [Google Gemini API Key](https://aistudio.google.com/)
+- **Windows 10/11**
+- **Python 3.8+** ([Download](https://www.python.org/downloads/))
+- **Google Chrome**
+- **Gemini API Key** ([Get one free](https://aistudio.google.com/))
+
+---
 
 ## 🛠️ Installation
 
-### 1. Clone the repository
+### 1. Clone the Repository
 ```bash
 git clone https://github.com/yourusername/linkedin-agent.git
 cd linkedin-agent
 ```
 
-### 2. Install dependencies
+### 2. Install Dependencies
 ```bash
 pip install -r requirements.txt
 playwright install chromium
 ```
 
 ### 3. Configure API Key
-Create a `.env` file in the project root:
+Create a `.env` file:
 ```env
 GEMINI_API_KEY=your_actual_api_key_here
 ```
 
+---
+
 ## 🚀 Usage
 
-### Quick Start
+### Outreach Agent (Messaging)
 ```bash
 python linkedin_agent.py
 ```
 
-> **Note**: On first run, Chrome will open. Log in to LinkedIn manually. The session persists for future runs.
-
-### What Happens
-1. Agent scans your LinkedIn connections
-2. AI classifies each connection's role
-3. For PRACTICING lawyers:
-   - Sends intro message
-   - Extracts their website/firm info
-   - Generates personalized AI strategy PDF
-   - Sends follow-up with PDF attached
-4. For GENERAL contacts: Sends intro only
+**What it does:**
+1. Scans your LinkedIn connections
+2. AI classifies each contact's role
+3. For **PRACTICING** lawyers: Sends intro → Generates personalized PDF → Sends follow-up with attachment
+4. For **GENERAL** contacts: Sends intro only
 5. Logs all activity and cleans up
 
-### Automated Scheduling
-To run daily (5 PM - 11 PM, 1 contact/hour):
+### Notification Agent (Connection Invites)
+```bash
+python notification_agent.py
+```
+Or use the batch file:
+```bash
+run_notification_agent.bat
+```
 
+**What it does:**
+1. Opens LinkedIn notifications page
+2. Identifies engagement notifications (likes, comments, etc.)
+3. Checks connection status for each engager
+4. Sends connection invites to non-connections
+5. Tracks history to prevent duplicates
+
+> **First Run**: Chrome will open. Log in to LinkedIn manually. The session persists for future runs.
+
+---
+
+## ⏰ Automated Scheduling
+
+### Outreach Agent (Daily 5PM-11PM, 1 contact/hour)
 1. Edit paths in `run_agent_background.bat`
 2. Run as Administrator:
 ```bash
 setup_schedule.bat
 ```
 
+### Manual Browser Launch
+If Chrome connection fails, start the debug browser first:
+```bash
+start_agent_browser.bat
+```
+
+---
+
 ## 📁 Project Structure
 
 ```
 linkedin-agent/
-├── linkedin_agent.py     # Main agent (browser control, AI, messaging)
-├── config.json           # Runtime configuration
-├── config_manager.py     # Configuration management
-├── optimizer.py          # Self-optimization logic
-├── requirements.txt      # Python dependencies
-├── .env                  # API keys (not committed)
-├── .gitignore           # Git ignore rules
-├── history.json         # Message history (auto-generated)
-├── agent_history.json   # Run metrics (auto-generated)
-├── run_agent_background.bat   # Background execution wrapper
-└── setup_schedule.bat   # Windows Task Scheduler setup
+├── linkedin_agent.py        # Main outreach agent
+├── notification_agent.py    # Notification engagement agent
+├── config.json              # Runtime configuration
+├── config_manager.py        # Configuration management
+├── optimizer.py             # Self-optimization logic
+├── requirements.txt         # Python dependencies
+├── .env                     # API keys (not committed)
+├── .env.example             # API key template
+├── .gitignore               # Git ignore rules
+│
+├── history.json             # Outreach message history (auto-generated)
+├── notification_history.json # Notification agent history (auto-generated)
+├── agent_history.json       # Run metrics for optimization (auto-generated)
+│
+├── run_agent_background.bat      # Background execution wrapper
+├── run_notification_agent.bat    # Notification agent launcher
+├── setup_schedule.bat            # Windows Task Scheduler setup
+└── start_agent_browser.bat       # Manual Chrome debug launcher
 ```
+
+---
 
 ## ⚙️ Configuration
 
-Edit `config.json` to customize behavior:
+### `config.json`
 
 ```json
 {
-  "timing": {
-    "page_load_wait": 5000,
+  "keywords_practicing": ["partner", "attorney", "counsel", ...],
+  "keywords_general": ["student", "paralegal", "legal tech", ...],
+  "timeouts": {
+    "page_load": 5000,
     "scroll_wait": 10000,
-    "message_send_wait": 3000
+    "message_send_wait": 2000
   },
   "limits": {
     "max_scrolls": 50,
-    "candidates_per_run": 1
+    "max_retries": 5
   }
 }
 ```
 
+### Notification Agent Constants (in `notification_agent.py`)
+
+| Constant | Default | Description |
+|----------|---------|-------------|
+| `MAX_NOTIFICATIONS_PER_RUN` | 100 | Max notifications to process |
+| `MAX_INVITES_PER_RUN` | 50 | Max invites per session |
+| `DELAY_BETWEEN_INVITES` | 5s | Rate limiting delay |
+
+---
+
 ## 🔒 Privacy & Security
 
-- **Local Execution**: Runs entirely on your machine
-- **No Data Storage**: No connection data sent to external servers
-- **Zero-Trust AI**: Generated prompts use bracketed placeholders, never real client data
-- **Session Isolation**: Chrome profile stored locally (`C:\ChromeAutomationProfile`)
+- **Local Execution** — Runs entirely on your machine
+- **No Cloud Storage** — No data sent to external servers
+- **Zero-Trust AI** — Generated prompts use `[PLACEHOLDER]` syntax, never real client data
+- **Session Isolation** — Chrome profile stored locally at `C:\ChromeAutomationProfile`
 
-## 📊 How AI Classification Works
-
-The agent uses Gemini AI to analyze:
-1. **Headline**: Job title and company
-2. **About Section**: Profile description (when available)
-
-Classification logic:
-- `PRACTICING`: Contains legal job titles (Partner, Attorney, Counsel, etc.)
-- `GENERAL`: Legal-adjacent but not practicing (Legal Tech, Consultant)
-- `SKIP`: Non-legal or insufficient information
+---
 
 ## 🧪 Testing
 
-Run tests to verify components:
 ```bash
 python test_connect.py      # Browser connection test
-python test_v2_logic.py     # Logic tests
+python test_v2_logic.py     # Business logic tests
 python test_optimizer.py    # Optimizer tests
 ```
 
-## 📝 Logs & History
+---
 
-- `agent_log.txt` - Detailed run logs
-- `history.json` - Message history per contact
-- `agent_history.json` - Run metrics for optimization
+## 📊 Logs & History
+
+| File | Purpose |
+|------|---------|
+| `agent_log.txt` | Detailed outreach agent logs |
+| `notification_agent_log.txt` | Notification agent logs |
+| `history.json` | Message history per contact |
+| `notification_history.json` | Invited profiles & run history |
+| `agent_history.json` | Run metrics for self-optimization |
+
+---
+
+## 🔧 Troubleshooting
+
+### Chrome Connection Failed (`ECONNREFUSED`)
+```bash
+# Option 1: Start debug browser manually
+start_agent_browser.bat
+
+# Option 2: Kill existing Chrome processes
+taskkill /F /IM chrome.exe
+# Then run agent again
+```
+
+### Login Required Alert
+- The agent will play an audio alert and show a Windows notification
+- Log in to LinkedIn in the opened browser
+- Click "Resume Agent" in the notification
+
+### PDF Generation Errors
+- Usually caused by Unicode characters in names
+- The agent auto-sanitizes text for PDF compatibility
+
+---
 
 ## ⚠️ Disclaimer
 
@@ -165,12 +238,19 @@ This tool is for **educational and productivity purposes**. Please:
 
 The "Zero-Trust" protocols minimize data exposure, but always exercise judgment.
 
+---
+
 ## 🤝 Contributing
 
-Contributions welcome! Please:
+Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+
 1. Fork the repository
-2. Create a feature branch
-3. Submit a pull request
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit changes (`git commit -m 'Add amazing feature'`)
+4. Push to branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+---
 
 ## 📄 License
 
