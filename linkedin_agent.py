@@ -4,6 +4,8 @@ import random
 import os
 import json
 import shutil
+import subprocess
+import sys
 import difflib
 import numpy as np
 import sounddevice as sd
@@ -368,6 +370,115 @@ Respond with ONLY one word: PRACTICING, GENERAL, or SKIP"""
             self.log(f"AI classification error: {e}. Defaulting to GENERAL.")
             return "GENERAL"
 
+    def validate_practice_area(self, lawyer_name, firm_name, claimed_practice_area, website_url=None):
+        """
+        Validates the AI-determined practice area by doing a reverse search.
+        Uses Gemini with Google Search to verify the lawyer's actual practice areas.
+        
+        Returns:
+            dict: {"valid": bool, "suggested_practice_area": str or None, "confidence": float}
+        """
+        import os
+        
+        self.log(f"Validating practice area: '{claimed_practice_area}' for {lawyer_name}...")
+        
+        api_key = os.environ.get("GEMINI_API_KEY") or os.environ.get("API_KEY")
+        if not api_key:
+            self.log("WARNING: No API key for practice area validation. Skipping validation.")
+            return {"valid": True, "suggested_practice_area": None, "confidence": 0.5}
+        
+        try:
+            from google import genai
+            client = genai.Client(api_key=api_key)
+            
+            # Build search context
+            search_context = f"{lawyer_name}"
+            if firm_name:
+                search_context += f" {firm_name}"
+            if website_url:
+                search_context += f" {website_url}"
+            
+            prompt = f"""You are verifying a lawyer's practice area classification.
+
+CLAIMED PRACTICE AREA: {claimed_practice_area}
+
+LAWYER INFO:
+- Name: {lawyer_name}
+- Firm: {firm_name or 'Unknown'}
+- Website: {website_url or 'Not provided'}
+
+TASK:
+1. Use Google Search to find {lawyer_name}'s actual practice areas and specializations.
+2. Search for their LinkedIn profile, law firm website, legal directories (Martindale, Avvo, etc.).
+3. Compare what you find with the CLAIMED PRACTICE AREA above.
+4. Determine if the classification is correct or if it's a significant mismatch.
+
+IMPORTANT: Minor variations are OK (e.g., "Litigation" vs "Civil Litigation"). 
+Flag as INVALID only if there's a clear mismatch (e.g., "Real Estate Law" when they actually do "Criminal Defense").
+
+RESPOND IN THIS EXACT FORMAT:
+VALID: YES or NO
+ACTUAL_PRACTICE_AREA: [The correct practice area based on your research]
+CONFIDENCE: [0.0 to 1.0]
+REASON: [Brief explanation of what you found]
+
+Example Response:
+VALID: NO
+ACTUAL_PRACTICE_AREA: Criminal Defense and Appellate Litigation
+CONFIDENCE: 0.9
+REASON: Found multiple sources indicating the lawyer specializes in criminal appeals and post-conviction work, not real estate."""
+
+            response = client.models.generate_content(
+                model="gemini-2.0-flash",
+                config={
+                    "tools": [{"google_search": {}}]
+                },
+                contents=prompt
+            )
+            
+            result_text = response.text.strip()
+            self.log(f"Practice Area Validation Response:\n{result_text}")
+            
+            # Parse the response
+            lines = result_text.split('\n')
+            valid = True
+            suggested = None
+            confidence = 0.5
+            reason = ""
+            
+            for line in lines:
+                line = line.strip()
+                if line.startswith("VALID:"):
+                    valid = "YES" in line.upper()
+                elif line.startswith("ACTUAL_PRACTICE_AREA:"):
+                    suggested = line.replace("ACTUAL_PRACTICE_AREA:", "").strip()
+                elif line.startswith("CONFIDENCE:"):
+                    try:
+                        conf_str = line.replace("CONFIDENCE:", "").strip()
+                        # Handle various formats like "0.9", "0.9/1.0", "90%"
+                        if "/" in conf_str:
+                            conf_str = conf_str.split("/")[0]
+                        if "%" in conf_str:
+                            conf_str = str(float(conf_str.replace("%", "")) / 100)
+                        confidence = float(conf_str)
+                    except:
+                        confidence = 0.5
+                elif line.startswith("REASON:"):
+                    reason = line.replace("REASON:", "").strip()
+            
+            self.log(f"Validation Result: valid={valid}, suggested={suggested}, confidence={confidence}")
+            
+            return {
+                "valid": valid,
+                "suggested_practice_area": suggested if not valid else None,
+                "confidence": confidence,
+                "reason": reason
+            }
+            
+        except Exception as e:
+            self.log(f"Practice area validation error: {e}. Assuming valid.")
+            return {"valid": True, "suggested_practice_area": None, "confidence": 0.5}
+
     async def verify_chat_identity(self, expected_name, page=None):
         page = page or self.page
         try:
@@ -632,31 +743,57 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             return False  # Fail closed
 
     async def scrape_about_section(self, page=None):
+        """Scrape About section with multiple fallback selectors."""
         page = page or self.page
         self.log("Scraping About section...")
+        
+        # Multiple selectors in priority order for different LinkedIn layouts
+        selectors = [
+            "#about",
+            "section.pv-about-section",
+            "[data-section='about']",
+            "section:has(> div > h2:has-text('About'))",
+            ".core-section-container:has(h2:has-text('About'))",
+            "#ember-about-section",
+            "section.artdeco-card:has(h2:has-text('About'))",
+            ".pv-shared-text-with-see-more",
+        ]
+        
+        for selector in selectors:
+            try:
+                about_section = await page.query_selector(selector)
+                if about_section:
+                    text = await about_section.inner_text()
+                    # Clean up header text
+                    text = text.replace("About", "").strip()
+                    if len(text) > 10:
+                        self.log(f"About section scraped ({len(text)} chars) using selector: {selector}")
+                        return text
+            except Exception as e:
+                # Silently continue to next selector
+                continue
+        
+        # Fallback: Try to find any section with 'About' header
         try:
-            # Try to find the About section
-            # Usually in a section with id 'about' or similar
-            about_section = await page.query_selector("#about")
-            if not about_section:
-                # Try finding by text
-                about_section = await page.query_selector("section:has-text('About')")
-            
-            if about_section:
-                # Get the text content of the sibling or child that holds the description
-                # Often it's in a div following the header
-                # Let's just grab the whole section text for simplicity
-                text = await about_section.inner_text()
-                # Clean up "About" header
-                text = text.replace("About", "").strip()
-                self.log(f"About section scraped ({len(text)} chars).")
-                return text
-            else:
-                self.log("About section not found.")
-                return None
+            all_sections = await page.query_selector_all("section")
+            for section in all_sections:
+                try:
+                    header = await section.query_selector("h2")
+                    if header:
+                        header_text = await header.inner_text()
+                        if "About" in header_text:
+                            text = await section.inner_text()
+                            text = text.replace("About", "").replace(header_text, "").strip()
+                            if len(text) > 10:
+                                self.log(f"About section found via fallback scan ({len(text)} chars)")
+                                return text
+                except:
+                    continue
         except Exception as e:
-            self.log(f"Error scraping About section: {e}")
-            return None
+            self.log(f"Fallback About section search failed: {e}")
+        
+        self.log("About section not found with any selector.")
+        return None
 
     async def save_profile_pdf(self, page=None):
         page = page or self.page
@@ -1397,43 +1534,99 @@ You must strictly output VALID JSON with the following structure. Do not include
             Return the result in valid JSON format.
             """)
 
+            # --- LOGGING: Log what we're analyzing ---
+            self.log(f"--- Report Generation Input ---")
+            self.log(f"Input Type: {input_type}")
+            if input_type == "url":
+                self.log(f"Website URL: {input_data}")
+            elif input_type == "text":
+                self.log(f"Text Preview: {input_data[:200]}..." if len(input_data) > 200 else f"Text: {input_data}")
+            elif input_type == "pdf":
+                self.log(f"PDF Path: {input_data}")
+            self.log(f"Candidate Name: {candidate_name}")
+            self.log(f"-------------------------------")
+
             self.log("Calling Gemini API...")
             
             # Configure tools
             tools = [{"google_search": {}}] if input_type == "url" else []
             
-            response = client.models.generate_content(
-                model="gemini-2.0-flash-exp", # Using Flash for speed/multimodal, or 3-pro if available. Spec said 3-pro.
-                # Spec: "Gemini 3 Pro exclusively".
-                # I will use "gemini-3-pro-preview" as requested.
-                config={
-                    "system_instruction": SYSTEM_INSTRUCTION,
-                    "tools": tools,
-                    "response_mime_type": "application/json"
-                },
-                contents=prompt_content
-            )
+            # --- VALIDATION RETRY LOOP ---
+            MAX_VALIDATION_RETRIES = 2
+            practice_area_hint = None  # Used for retry with corrected practice area
             
-            self.log(f"API Response: {response.text}")
-            text_content = response.text
-            # Try to find the start of the JSON
-            start_idx = text_content.find('{')
-            if start_idx != -1:
-                try:
-                    decoder = json.JSONDecoder()
-                    result, _ = decoder.raw_decode(text_content[start_idx:])
-                except json.JSONDecodeError:
-                     # Fallback to regex if raw_decode fails
-                     import re
-                     match = re.search(r"\{.*\}", text_content, re.DOTALL)
-                     if match:
-                        result = json.loads(match.group(0))
-                     else:
-                        raise
-            else:
-                raise ValueError("No JSON object found in response")
+            for validation_attempt in range(MAX_VALIDATION_RETRIES + 1):
+                # Build prompt with optional practice area hint for retry
+                current_prompt = prompt_content.copy()
+                if practice_area_hint:
+                    self.log(f"Retry {validation_attempt}: Using corrected practice area hint: {practice_area_hint}")
+                    current_prompt.insert(0, f"IMPORTANT CORRECTION: The lawyer's actual practice area is: {practice_area_hint}. Use this as the primary practice area for generating the report.")
+                
+                response = client.models.generate_content(
+                    model="gemini-2.0-flash-exp", # Using Flash for speed/multimodal, or 3-pro if available. Spec said 3-pro.
+                    # Spec: "Gemini 3 Pro exclusively".
+                    # I will use "gemini-3-pro-preview" as requested.
+                    config={
+                        "system_instruction": SYSTEM_INSTRUCTION,
+                        "tools": tools,
+                        "response_mime_type": "application/json"
+                    },
+                    contents=current_prompt
+                )
+                
+                self.log(f"API Response: {response.text}")
+                text_content = response.text
+                # Try to find the start of the JSON
+                start_idx = text_content.find('{')
+                if start_idx != -1:
+                    try:
+                        decoder = json.JSONDecoder()
+                        result, _ = decoder.raw_decode(text_content[start_idx:])
+                    except json.JSONDecodeError:
+                         # Fallback to regex if raw_decode fails
+                         import re
+                         match = re.search(r"\{.*\}", text_content, re.DOTALL)
+                         if match:
+                            result = json.loads(match.group(0))
+                         else:
+                            raise
+                else:
+                    raise ValueError("No JSON object found in response")
+                
+                self.log("JSON parsed successfully.")
+                
+                # --- PRACTICE AREA VALIDATION ---
+                practice_area = result.get('profile', {}).get('practiceArea', 'Unknown')
+                lawyer_name = result.get('profile', {}).get('name', candidate_name or 'Unknown')
+                firm_name = result.get('profile', {}).get('firmName', '')
+                
+                self.log(f"Initial Practice Area: {practice_area}")
+                
+                # Validate with reverse search
+                validation = self.validate_practice_area(
+                    lawyer_name=lawyer_name,
+                    firm_name=firm_name,
+                    claimed_practice_area=practice_area,
+                    website_url=input_data if input_type == "url" else None
+                )
+                
+                if validation["valid"] or validation["confidence"] >= 0.7:
+                    self.log(f"[OK] Practice Area Validated: {practice_area}")
+                    break  # Validation passed, exit retry loop
+                else:
+                    if validation["suggested_practice_area"] and validation_attempt < MAX_VALIDATION_RETRIES:
+                        self.log(f"[!] PRACTICE AREA VALIDATION FAILED (Attempt {validation_attempt + 1}/{MAX_VALIDATION_RETRIES + 1})")
+                        self.log(f"   Claimed: {practice_area}")
+                        self.log(f"   Suggested: {validation['suggested_practice_area']}")
+                        self.log(f"   Confidence: {validation['confidence']}")
+                        self.log(f"   Reason: {validation.get('reason', 'N/A')}")
+                        self.log("Re-generating report with corrected practice area...")
+                        practice_area_hint = validation["suggested_practice_area"]
+                        # Continue to next iteration of retry loop
+                    else:
+                        self.log(f"[!] Practice area validation failed but no retry available. Using: {practice_area}")
+                        break
             
-            self.log("JSON parsed successfully.")
             self.log("Analysis complete.")
             
             # Generate PDF
@@ -1598,6 +1791,107 @@ You must strictly output VALID JSON with the following structure. Do not include
         if "?" in url:
             return url.split("?")[0]
         return url
+
+    def trigger_troubleshooting(self, candidate, error_context):
+        """
+        Triggers the 'Crash Report Handoff' workflow.
+        1. Generates ANTIGRAVITY_MISSION.md with error details.
+        2. Force-opens the file/folder in Antigravity IDE (or default editor).
+        3. Pauses execution for user intervention.
+        """
+        self.log(f"[CRITICAL] FAILURE for {candidate['name']} ({candidate['role_type']}). Initiating Troubleshooting Handoff...")
+        
+        # Get log tail
+        log_tail = ""
+        try:
+            with open("agent_log.txt", "r", encoding="utf-8") as f:
+                lines = f.readlines()
+                log_tail = "".join(lines[-30:]) # Last 30 lines
+        except:
+            log_tail = "Could not read log file."
+
+        filename = "ANTIGRAVITY_MISSION.md"
+        
+        mission_content = f"""# AGENT HANDOVER: TROUBLESHOOTING REQUIRED
+
+## Status
+Local Agent failed to complete the workflow for candidate: **[{candidate['name']}]({candidate['url']})**
+**Error Context:** {error_context}
+
+## The Mission
+1. Analyze the error logs below.
+2. Review `linkedin_agent.py` to identify why `{error_context}` occurred.
+3. Fix the code.
+
+## Recent Logs
+```text
+{log_tail}
+```
+"""
+        # 1. Write the Mission File
+        try:
+            with open(filename, "w", encoding="utf-8") as f:
+                f.write(mission_content)
+            self.log(f"Mission file created: {filename}")
+        except Exception as e:
+            self.log(f"Failed to write mission file: {e}")
+
+        # 2. Try to Force Open in Antigravity
+        possible_paths = [
+            os.path.expandvars(r"%LOCALAPPDATA%\Programs\Google\Antigravity\antigravity.exe"),
+            os.path.expandvars(r"%LOCALAPPDATA%\Google\Antigravity\antigravity.exe"),
+            os.path.expandvars(r"%PROGRAMFILES%\Google\Antigravity\antigravity.exe"),
+        ]
+
+        launched = False
+
+        # A. Try to launch via direct path
+        for path in possible_paths:
+            if os.path.exists(path):
+                try:
+                    # Open the current folder AND the file
+                    subprocess.Popen([path, ".", filename])
+                    self.log("Launching Google Antigravity...")
+                    launched = True
+                    break
+                except Exception as e:
+                    self.log(f"Failed to launch exe: {e}")
+
+        # B. Try to launch via 'antigravity' command (if in PATH)
+        if not launched and shutil.which("antigravity"):
+            try:
+                subprocess.Popen(["antigravity", ".", filename])
+                self.log("Launching via 'antigravity' command...")
+                launched = True
+            except:
+                pass
+
+        # C. Fallback: standard system open
+        if not launched:
+            self.log("[!] Antigravity exe not found. Opening default editor.")
+            try:
+                os.startfile(os.getcwd()) # Open folder
+                os.startfile(filename)    # Open file
+            except:
+                self.log("Could not open file system.")
+
+        # 3. Pause/Stop Execution
+        print("\n" + "="*50)
+        print("[STOP] EXECUTION PAUSED FOR TROUBLESHOOTING")
+        print(f"Error: {error_context}")
+        print("Please review the opened ANTIGRAVITY_MISSION.md file.")
+        print("Fix the issue, then restart the agent.")
+        print("="*50 + "\n")
+        
+        # We exit here to force the user to deal with it
+        # sys.exit(1) would kill it, but maybe we want to keep the window open?
+        # The user said "agent should open... and send first instruction".
+        # Let's pause with input() so the console stays open.
+        try:
+            input("Press Enter to Exit Agent after troubleshooting...")
+        except:
+            pass
+        sys.exit(1)
 
     async def scan_visible_candidates(self):
         try:
@@ -1830,6 +2124,19 @@ You must strictly output VALID JSON with the following structure. Do not include
                 
                 self.log("Message 1 sent. Proceeding to Report Generation...")
                 
+                # CRITICAL: Log as PARTIAL immediately after Message 1 is sent
+                # This prevents duplicate messages if report generation fails
+                history_data = self.load_history_json()
+                history_data[candidate["url"]] = {
+                    "status": "PARTIAL", 
+                    "role": "PRACTICING", 
+                    "msg1_sent": True,
+                    "msg2_sent": False,
+                    "timestamp": datetime.now().isoformat()
+                }
+                self.save_history_json_atomic(history_data)
+                self.log("Logged as PARTIAL (Message 1 sent). Will skip on failure to prevent duplicates.")
+                
                 # Extract Data (Hierarchical)
                 await self.close_chat(page=new_page)
                 
@@ -1860,24 +2167,25 @@ You must strictly output VALID JSON with the following structure. Do not include
                             report_input = pdf_path
                             input_type = "pdf"
                         else:
-                            self.log("ALL Extraction Priorities Failed. Cannot generate report.")
+                            self.log("ALL Extraction Priorities Failed. Cannot generate report. (Logged as PARTIAL)")
                             await new_page.close()
-                            return False
+                            return True  # Return True since Message 1 was sent and candidate is logged
 
                 # Generate Report - pass candidate name to ensure correct personalization
                 report_data = await self.generate_report(report_input, input_type=input_type, candidate_name=candidate["name"])
                 
                 if not report_data["pdf_path"]:
-                    self.log("Failed to generate report. Skipping Message 2.")
+                    self.log("Failed to generate report. Skipping Message 2. (Logged as PARTIAL)")
                     await new_page.close()
-                    return False
+                    return True  # Return True since Message 1 was sent and candidate is logged
 
                 # Re-open Chat for Message 2
+                # Re-open Chat for Message 2
                 if not await self.open_chat(target_url, page=new_page):
-                    self.log("Could not re-open chat for Message 2. Aborting.")
-                    self.run_metrics["chat_open_failed"] = True  # Track for optimizer
+                    self.log("Could not re-open chat for Message 2. (Logged as PARTIAL)")
+                    self.run_metrics["chat_open_failed"] = True
                     await new_page.close()
-                    return False
+                    return True  # Return True since Message 1 was sent and candidate is logged
                 
                 # Send Message 2 with Attachment
                 msg2 = report_data["message"]
@@ -1896,9 +2204,10 @@ You must strictly output VALID JSON with the following structure. Do not include
                     await new_page.close()
                     return True
                 else:
-                    self.log("Failed to send Message 2.")
+                    self.log("Failed to send Message 2 or attachment.")
+                    self.trigger_troubleshooting(candidate, "Message 2 / Attachment Failed")
                     await new_page.close()
-                    return False
+                    return True  # Return True since Message 1 was sent and candidate is logged as PARTIAL
             
             return False
 

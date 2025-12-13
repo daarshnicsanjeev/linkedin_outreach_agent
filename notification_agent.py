@@ -604,8 +604,11 @@ If not engagement, use "none" for type."""
             await connect_btn.click()
             await asyncio.sleep(2)
             
+            action_taken = False
+            
             # Handle "Add a note?" modal - click "Send without a note"
             try:
+                # First check for the standard "Send without a note"
                 send_now_btn = await self.page.wait_for_selector(
                     "button:has-text('Send without a note'), " +
                     "button:has-text('Send now'), " +
@@ -613,25 +616,70 @@ If not engagement, use "none" for type."""
                     timeout=3000
                 )
                 if send_now_btn:
+                    self.log("    Clicking 'Send without a note'...")
                     await send_now_btn.click()
-                    await asyncio.sleep(1)
+                    action_taken = True
+                    await asyncio.sleep(2)
             except:
-                # Modal might not appear, that's OK
                 pass
             
-            # Alternative: Just click Send if there's a modal
+            # If we haven't sent yet, check for a generic "Send" button in a modal
+            # (Sometimes "Connect" opens a modal where the button is just "Send")
+            if not action_taken:
+                try:
+                    send_btn = await self.page.query_selector(
+                        "div.artdeco-modal button:has-text('Send'):not(:has-text('without'))"
+                    )
+                    if send_btn:
+                        self.log("    Clicking 'Send' in modal...")
+                        await send_btn.click()
+                        action_taken = True
+                        await asyncio.sleep(2)
+                except:
+                    pass
+
+            # Verification: Check if status changed to Pending
+            self.log("    Verifying invite status...")
+            await asyncio.sleep(2)
+            
+            is_pending = False
             try:
-                send_btn = await self.page.query_selector(
-                    "button:has-text('Send'):not(:has-text('without'))"
+                # Check for Pending button
+                pending_btn = await self.page.query_selector(
+                    "button:has-text('Pending'), " +
+                    "button[aria-label*='Pending']"
                 )
-                if send_btn:
-                    await send_btn.click()
-                    await asyncio.sleep(1)
+                if pending_btn:
+                    is_pending = True
             except:
                 pass
             
-            self.log(f"    ✓ Connection invite sent to {name}")
-            return True
+            if is_pending:
+                self.log(f"    ✓ Connection invite confirmed (Status: Pending)")
+                return True
+            else:
+                # If we clicked send but it's not pending, maybe it needs more time?
+                # Or maybe it failed silently.
+                if action_taken:
+                    self.log(f"    ⚠ Invite verify failed: Clicked send but status is not 'Pending'. Assuming success but check manually.")
+                    # We'll return True here to be optimistic if we actually clicked a send button,
+                    # but typically if it worked it SHOULD be pending. 
+                    # Let's return False to force a retry next time if it wasn't actually sent.
+                    # But if we return keys, we might loop. 
+                    # Let's check for 'Connect' button again. If Connect is still there, it failed.
+                    
+                    try:
+                        connect_again = await self.page.query_selector("button:has-text('Connect')")
+                        if connect_again:
+                             self.log(f"    ❌ Invite failed: 'Connect' button still present.")
+                             return False
+                    except:
+                        pass
+                        
+                    return True # Optimistic success if we clicked send and Connect is gone
+                else:
+                    self.log(f"    ❌ Invite failed: 'Connect' clicked but no 'Send' option found and status not Pending.")
+                    return False
             
         except Exception as e:
             self.log(f"    Error sending invite: {e}")
@@ -660,6 +708,8 @@ If not engagement, use "none" for type."""
                 if self.invites_sent >= MAX_INVITES_PER_RUN:
                     break
                 
+                self.notifications_processed += 1
+
                 profile_url = profile["profile_url"]
                 name = profile["name"]
                 
@@ -721,7 +771,6 @@ If not engagement, use "none" for type."""
                 
                 # Save history after each profile
                 self.save_history(history)
-                self.notifications_processed += 1
         
         # Navigate back to notifications page
         await self.page.goto(NOTIFICATIONS_URL, wait_until="domcontentloaded")

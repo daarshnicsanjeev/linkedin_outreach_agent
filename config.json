@@ -56,11 +56,11 @@
   "timeouts": {
     "page_load": 5000,
     "scroll_wait": 10000,
-    "message_send_wait": 2000,
-    "file_upload_wait_ms": 4500,
+    "message_send_wait": 3000,
+    "file_upload_wait_ms": 3000,
     "message_verify_wait_ms": 2000,
-    "ui_response_wait_ms": 1000,
-    "identity_poll_delay_ms": 250,
+    "ui_response_wait_ms": 1500,
+    "identity_poll_delay_ms": 200,
     "identity_poll_retries": 15
   },
   "selectors": {

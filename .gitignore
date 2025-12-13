@@ -8,8 +8,14 @@ ChromeAutomationProfile/
 
 # Logs
 *.log
+agent_log.txt
 agent_log_view.txt
+agent_log_copy.txt
 agent_scheduler_log.txt
+notification_agent_log.txt
+log_output.txt
+git_status.txt
+git_diff_stat.txt
 debug_log.txt
 stderr.txt
 stdout.txt
