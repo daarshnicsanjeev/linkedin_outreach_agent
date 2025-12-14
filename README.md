@@ -214,6 +214,7 @@ The `optimizer.py` automatically tunes these values based on run history:
 - **No Cloud Storage** — No data sent to external servers
 - **Zero-Trust AI** — Generated prompts use `[PLACEHOLDER]` syntax, never real client data
 - **Session Isolation** — Chrome profile stored locally at `C:\ChromeAutomationProfile`
+- **Auto-Cleanup** — All temporary PDFs and screenshots are deleted immediately after the session ends
 
 ---
 

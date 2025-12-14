@@ -2479,18 +2479,27 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                         pass
                 self.agent_pages = []
             
-            # 2. Delete generated PDF files
+            # 2. Delete generated PDF files and Screenshots
             import glob
-            pdf_pattern = os.path.join(os.path.dirname(os.path.abspath(__file__)), "Zero_Trust_AI_Strategy_*.pdf")
-            pdf_files = glob.glob(pdf_pattern)
-            if pdf_files:
-                self.log(f"Cleaning up {len(pdf_files)} generated PDF files...")
-                for pdf_file in pdf_files:
-                    try:
-                        os.remove(pdf_file)
-                        self.log(f"Deleted: {os.path.basename(pdf_file)}")
-                    except Exception as e:
-                        self.log(f"Could not delete {pdf_file}: {e}")
+            
+            # Define patterns for all temporary files to clean up
+            cleanup_patterns = [
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "Zero_Trust_AI_Strategy_*.pdf"),
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "profile_snapshot_*.pdf"),
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "identity_check_temp.png"),
+                os.path.join(os.path.dirname(os.path.abspath(__file__)), "debug_no_candidates.html")
+            ]
+            
+            for pattern in cleanup_patterns:
+                files = glob.glob(pattern)
+                if files:
+                    self.log(f"Cleaning up {len(files)} files matching '{os.path.basename(pattern)}'...")
+                    for file_path in files:
+                        try:
+                            os.remove(file_path)
+                            self.log(f"Deleted: {os.path.basename(file_path)}")
+                        except Exception as e:
+                            self.log(f"Could not delete {file_path}: {e}")
             
             # 3. Kill the Chrome process we launched (if any)
             if self.chrome_pid:
