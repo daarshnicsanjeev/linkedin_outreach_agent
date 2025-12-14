@@ -62,9 +62,16 @@ class LinkedInAgent:
         self.chrome_pid = None  # Track Chrome process ID for cleanup
 
     def log(self, msg):
-        print(msg)
+        # Write to file with full Unicode support
         with open("agent_log.txt", "a", encoding="utf-8") as f:
             f.write(msg + "\n")
+        # Print to console with safe encoding (replace emojis/unicode that console can't handle)
+        try:
+            print(msg)
+        except UnicodeEncodeError:
+            # Fallback: encode to ASCII-safe representation
+            safe_msg = msg.encode('ascii', errors='replace').decode('ascii')
+            print(safe_msg)
 
     def find_speaker_device(self):
         """Find laptop speaker device (not headphones) by name."""
@@ -201,6 +208,135 @@ class LinkedInAgent:
             self.log(f"History saved to {self.history_file}. Total entries: {len(data)}")
         except Exception as e:
             self.log(f"CRITICAL: Error saving history atomically: {e}")
+
+    # --- RESUME STATE MANAGEMENT ---
+    
+    def load_resume_state(self):
+        """Load the resume state from file. Returns empty dict if not found."""
+        resume_file = "resume_state.json"
+        if not os.path.exists(resume_file):
+            return {}
+        try:
+            with open(resume_file, "r", encoding="utf-8") as f:
+                state = json.load(f)
+                self.log(f"Loaded resume state: {state.get('last_connections_count', 0)} connections, last top: {state.get('last_top_connection_url', 'N/A')[:50]}...")
+                return state
+        except Exception as e:
+            self.log(f"Could not load resume state: {e}")
+            return {}
+    
+    def save_resume_state(self, connections_count, top_connection_url=None):
+        """Save the resume state. This is called at the END of each run."""
+        resume_file = "resume_state.json"
+        
+        # Load existing state to preserve it if needed
+        existing_state = self.load_resume_state()
+        existing_count = existing_state.get("last_connections_count", 0)
+        
+        # Only update if we've scrolled further than before
+        # This ensures we never lose progress when processing recent connections
+        new_count = max(connections_count, existing_count)
+        
+        state = {
+            "last_connections_count": new_count,
+            "last_top_connection_url": top_connection_url or existing_state.get("last_top_connection_url"),
+            "last_run_timestamp": datetime.now().isoformat()
+        }
+        
+        try:
+            with open(resume_file, "w", encoding="utf-8") as f:
+                json.dump(state, f, indent=2)
+            self.log(f"Saved resume state: {new_count} connections")
+        except Exception as e:
+            self.log(f"Could not save resume state: {e}")
+    
+    async def fast_forward_to_position(self, target_count):
+        """Quickly click 'Load more' to reach the target connection count.
+        
+        Uses faster wait times since we're just loading, not processing.
+        Returns the actual number of connections loaded.
+        """
+        self.log(f"Fast-forwarding to position {target_count}...")
+        
+        # Each "Load more" click typically adds ~10 connections
+        # We'll click until we reach the target or run out of buttons
+        
+        button_selectors = self.config_manager.get("selectors.show_more_btn", [
+            "button:has-text('Show more results')",
+            "button:has-text('Load more')",
+            "button:has-text('Show more')"
+        ])
+        
+        fast_forward_wait = 1.5  # Faster than normal scroll_wait (10s)
+        max_clicks = (target_count // 10) + 5  # Add buffer for safety
+        clicks = 0
+        
+        while clicks < max_clicks:
+            # Check current connection count
+            primary_selector = self.config_manager.get("selectors.connections_list", "div[data-view-name='connections-list']")
+            cards = await self.page.query_selector_all(primary_selector)
+            current_count = len(cards)
+            
+            if current_count >= target_count:
+                self.log(f"Fast-forward complete: {current_count} connections loaded (target: {target_count})")
+                return current_count
+            
+            # Find and click "Load more" button
+            show_more_btn = None
+            for sel in button_selectors:
+                btn = await self.page.query_selector(sel)
+                if btn and await btn.is_visible():
+                    show_more_btn = btn
+                    break
+            
+            if not show_more_btn:
+                self.log(f"No 'Load more' button found. Stopped at {current_count} connections.")
+                return current_count
+            
+            # Click with JS to bypass overlays
+            await show_more_btn.evaluate("node => node.click()")
+            await asyncio.sleep(fast_forward_wait)
+            clicks += 1
+            
+            # Progress log every 5 clicks
+            if clicks % 5 == 0:
+                self.log(f"Fast-forward progress: {clicks} clicks, {current_count} connections...")
+        
+        # Final count
+        cards = await self.page.query_selector_all(primary_selector)
+        self.log(f"Fast-forward finished: {len(cards)} connections after {clicks} clicks")
+        return len(cards)
+
+    def strip_emojis(self, text):
+        """Strip emojis and special Unicode characters from text.
+        
+        Useful for cleaning names like '🛡️ Ot van Daalen' -> 'Ot van Daalen'
+        """
+        if not text:
+            return ""
+        import re
+        # Regex pattern to match most emoji characters
+        emoji_pattern = re.compile(
+            "["
+            "\U0001F600-\U0001F64F"  # emoticons
+            "\U0001F300-\U0001F5FF"  # symbols & pictographs
+            "\U0001F680-\U0001F6FF"  # transport & map symbols
+            "\U0001F700-\U0001F77F"  # alchemical symbols
+            "\U0001F780-\U0001F7FF"  # Geometric Shapes Extended
+            "\U0001F800-\U0001F8FF"  # Supplemental Arrows-C
+            "\U0001F900-\U0001F9FF"  # Supplemental Symbols and Pictographs
+            "\U0001FA00-\U0001FA6F"  # Chess Symbols
+            "\U0001FA70-\U0001FAFF"  # Symbols and Pictographs Extended-A
+            "\U00002702-\U000027B0"  # Dingbats
+            "\U0001F1E0-\U0001F1FF"  # Flags (iOS)
+            "\U0000FE0F"             # Variation Selector-16 (makes emoji colorful)
+            "]+", 
+            flags=re.UNICODE
+        )
+        cleaned = emoji_pattern.sub('', text)
+        # Clean up multiple spaces and trim
+        cleaned = re.sub(r'\s+', ' ', cleaned).strip()
+        return cleaned
 
     def sanitize_for_pdf(self, text):
         """Convert Unicode text to Latin-1 compatible text for FPDF."""
@@ -439,32 +575,60 @@ REASON: Found multiple sources indicating the lawyer specializes in criminal app
             result_text = response.text.strip()
             self.log(f"Practice Area Validation Response:\n{result_text}")
             
-            # Parse the response
-            lines = result_text.split('\n')
+            # Parse the response - handle both JSON and plain text formats
             valid = True
             suggested = None
             confidence = 0.5
             reason = ""
             
-            for line in lines:
-                line = line.strip()
-                if line.startswith("VALID:"):
-                    valid = "YES" in line.upper()
-                elif line.startswith("ACTUAL_PRACTICE_AREA:"):
-                    suggested = line.replace("ACTUAL_PRACTICE_AREA:", "").strip()
-                elif line.startswith("CONFIDENCE:"):
-                    try:
-                        conf_str = line.replace("CONFIDENCE:", "").strip()
-                        # Handle various formats like "0.9", "0.9/1.0", "90%"
-                        if "/" in conf_str:
-                            conf_str = conf_str.split("/")[0]
-                        if "%" in conf_str:
-                            conf_str = str(float(conf_str.replace("%", "")) / 100)
-                        confidence = float(conf_str)
-                    except:
-                        confidence = 0.5
-                elif line.startswith("REASON:"):
-                    reason = line.replace("REASON:", "").strip()
+            # First, try to parse as JSON (AI sometimes returns JSON format)
+            try:
+                # Strip markdown code fences if present
+                json_text = result_text
+                if "```json" in json_text:
+                    json_text = json_text.split("```json")[1].split("```")[0].strip()
+                elif "```" in json_text:
+                    json_text = json_text.split("```")[1].split("```")[0].strip()
+                
+                import re
+                parsed_json = json.loads(json_text)
+                
+                # Extract values from JSON
+                if "VALID" in parsed_json:
+                    valid = str(parsed_json["VALID"]).upper() == "YES"
+                if "ACTUAL_PRACTICE_AREA" in parsed_json:
+                    suggested = parsed_json["ACTUAL_PRACTICE_AREA"]
+                if "CONFIDENCE" in parsed_json:
+                    confidence = float(parsed_json["CONFIDENCE"])
+                if "REASON" in parsed_json:
+                    reason = parsed_json["REASON"]
+                    
+                self.log(f"Parsed as JSON: valid={valid}, suggested={suggested}")
+            except (json.JSONDecodeError, KeyError, ValueError) as json_err:
+                # Fall back to plain text parsing
+                self.log(f"JSON parse failed ({json_err}), trying plain text parsing...")
+                lines = result_text.split('\n')
+                
+                for line in lines:
+                    line = line.strip()
+                    # Handle both "VALID: YES" and '"VALID": "YES"' formats
+                    if "VALID" in line.upper() and ("YES" in line.upper() or "NO" in line.upper()):
+                        valid = "YES" in line.upper() and "NO" not in line.upper()
+                    elif line.startswith("ACTUAL_PRACTICE_AREA:") or '"ACTUAL_PRACTICE_AREA"' in line:
+                        suggested = line.replace("ACTUAL_PRACTICE_AREA:", "").replace('"ACTUAL_PRACTICE_AREA":', "").strip().strip('",')
+                    elif line.startswith("CONFIDENCE:") or '"CONFIDENCE"' in line:
+                        try:
+                            conf_str = line.replace("CONFIDENCE:", "").replace('"CONFIDENCE":', "").strip().strip('",')
+                            # Handle various formats like "0.9", "0.9/1.0", "90%"
+                            if "/" in conf_str:
+                                conf_str = conf_str.split("/")[0]
+                            if "%" in conf_str:
+                                conf_str = str(float(conf_str.replace("%", "")) / 100)
+                            confidence = float(conf_str)
+                        except:
+                            confidence = 0.5
+                    elif line.startswith("REASON:") or '"REASON"' in line:
+                        reason = line.replace("REASON:", "").replace('"REASON":', "").strip().strip('",')
             
             self.log(f"Validation Result: valid={valid}, suggested={suggested}, confidence={confidence}")
             
@@ -820,6 +984,14 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             self.page = await self.context.new_page()
             self.agent_pages.append(self.page)  # Track for cleanup
             self.log("Connected to existing Chrome.")
+            
+            # Close any pre-existing chat popups across ALL pages to prevent identity confusion
+            self.log("Closing any pre-existing chat popups...")
+            for existing_page in self.context.pages:
+                try:
+                    await self.close_existing_chats(existing_page)
+                except:
+                    pass  # Ignore errors on pages we don't control
         except Exception as e:
             self.log(f"Failed to connect to existing Chrome: {e}")
             self.log("Attempting to launch Chrome automatically...")
@@ -993,7 +1165,11 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                 "button[data-control-name='overlay.close_conversation_window']",
                 ".msg-overlay-bubble-header__control--close",
                 "button[aria-label='Close your conversation']",
-                ".msg-overlay-bubble-header button svg[data-test-icon='close-small']"
+                ".msg-overlay-bubble-header button svg[data-test-icon='close-small']",
+                # Additional selectors for newer LinkedIn UI
+                "button[aria-label='Close conversation']",
+                "button[aria-label='Close message']",
+                ".msg-overlay-bubble-header__controls button"
             ]
             
             for selector in close_selectors:
@@ -1016,6 +1192,22 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                         await asyncio.sleep(0.3)
                 except:
                     pass
+            
+            # SAFETY: Clear any message input boxes to prevent stale content
+            try:
+                msg_boxes = await page.query_selector_all(".msg-form__contenteditable")
+                for msg_box in msg_boxes:
+                    try:
+                        await msg_box.fill("")
+                    except:
+                        pass
+            except:
+                pass
+            
+            # Final resort: Press Escape multiple times to close any overlays
+            for _ in range(3):
+                await page.keyboard.press("Escape")
+                await asyncio.sleep(0.2)
                     
         except Exception as e:
             self.log(f"Error closing existing chats: {e}")
@@ -1181,7 +1373,7 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
         except Exception as e:
             self.log(f"Error closing chat: {e}")
 
-    async def send_chat_message(self, message_text, attachment_path=None, page=None, verify=True, retries=None):
+    async def send_chat_message(self, message_text, attachment_path=None, page=None, verify=True, retries=None, expected_name=None):
         page = page or self.page
         
         # Dynamic config values
@@ -1189,6 +1381,16 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             retries = self.config_manager.get("limits.send_message_retries", 2)
         file_upload_wait = self.config_manager.get("timeouts.file_upload_wait_ms", 5000) / 1000
         ui_wait = self.config_manager.get("timeouts.ui_response_wait_ms", 1000) / 1000
+        
+        # Helper function to safely clear message input on failure
+        async def _clear_input_on_failure():
+            try:
+                msg_box = await page.query_selector(".msg-form__contenteditable")
+                if msg_box:
+                    await msg_box.fill("")  # Clear stale message to prevent wrong-person sends
+                    self.log("Cleared message input (safety cleanup).")
+            except:
+                pass
         
         for attempt in range(retries + 1):
             try:
@@ -1261,8 +1463,32 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                             continue
                 
                 if send_btn and await send_btn.is_enabled():
-                    await send_btn.click()
-                    self.log("Send button clicked.")
+                    # SAFETY CHECK: Re-verify chat identity before sending
+                    # This catches any chat window switches that may have occurred
+                    if expected_name:
+                        self.log(f"Safety re-verification before Send (expected: {expected_name})...")
+                        if not await self.verify_chat_identity(expected_name, page=page):
+                            self.log(f"SAFETY ABORT: Identity re-verification failed before Send!")
+                            await _clear_input_on_failure()
+                            return False
+                        self.log("Identity re-confirmed. Proceeding to send.")
+                    
+                    # Scroll button into view to prevent "outside of viewport" errors
+                    try:
+                        await send_btn.scroll_into_view_if_needed()
+                        await asyncio.sleep(0.3)
+                    except:
+                        pass
+                    
+                    # Try regular click first, fall back to JS click if it fails
+                    try:
+                        await send_btn.click(timeout=5000)
+                        self.log("Send button clicked.")
+                    except Exception as click_err:
+                        self.log(f"Regular click failed ({click_err}), trying JS click...")
+                        # JavaScript click bypasses viewport/overlay issues
+                        await send_btn.evaluate("node => node.click()")
+                        self.log("Send button clicked (via JS).")
                     
                     # Use configured wait time
                     wait_time = self.config_manager.get("timeouts.message_send_wait", 3000)
@@ -1304,14 +1530,17 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                         return True
                 else:
                     self.log("Send button not found or disabled.")
+                    await _clear_input_on_failure()  # Clear to prevent stale message
                     return False
             except Exception as e:
                 self.log(f"Error sending chat message: {e}")
                 self.run_metrics["errors"].append(str(e))
                 if attempt < retries:
                     continue
+                await _clear_input_on_failure()  # Clear to prevent stale message
                 return False
         
+        await _clear_input_on_failure()  # Clear to prevent stale message
         return False
 
     async def extract_website(self, page=None):
@@ -1937,89 +2166,96 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             history_data = self.load_history_json()
             
             for i, conn in enumerate(connections):
-                # Find the wrapper link that contains text (Name + Headline)
-                links = await conn.query_selector_all("a[data-view-name='connections-profile']")
-                wrapper = None
-                
-                for link in links:
-                    text = await link.inner_text()
-                    if text.strip():
-                        wrapper = link
-                        break
-                
-                if not wrapper:
-                    continue
-                
-                # The wrapper contains p tags. 
-                # First p is Name, Second p is Headline.
-                paragraphs = await wrapper.query_selector_all("p")
-                
-                if len(paragraphs) >= 2:
-                    name = await paragraphs[0].inner_text()
-                    headline = await paragraphs[1].inner_text()
-                else:
-                    # Fallback if structure is different
-                    full_text = await wrapper.inner_text()
-                    lines = [line.strip() for line in full_text.split('\n') if line.strip()]
-                    name = lines[0] if lines else "Unknown"
-                    headline = lines[1] if len(lines) > 1 else ""
-
-                profile_url = await wrapper.get_attribute('href')
-                if profile_url and profile_url.startswith("/"):
-                    profile_url = f"https://www.linkedin.com{profile_url}"
-                
-                # Normalize URL immediately
-                normalized_url = self.normalize_url(profile_url)
-                
-                name = name.strip()
-                headline = headline.strip()
-                
-                # --- V2.1 CONNECTION GATEKEEPER ---
-                
-                # 1. Local History Check (Layer 1)
-                if normalized_url in history_data:
-                    # self.log(f"Skipping {name}: Already in history.json")
-                    continue
-
-                # 2. Date Check
-                # Find the time badge, usually "Connected 2 weeks ago"
-                # It's often in a span or time tag inside the card
-                time_text = ""
                 try:
-                    time_el = await conn.query_selector("time")
-                    if not time_el:
-                         # Try searching for text containing "Connected"
-                         all_text = await conn.inner_text()
-                         lines = all_text.split('\n')
-                         for line in lines:
-                             if "Connected" in line:
-                                 time_text = line
-                                 break
-                    else:
-                        time_text = await time_el.inner_text()
-                except:
-                    pass
-                
-                if time_text:
-                    conn_date = self.parse_connection_date(time_text)
-                    days_diff = (datetime.now() - conn_date).days
-                    if days_diff > 90:
-                        # self.log(f"Skipping {name}: Connected {days_diff} days ago (>90).")
+                    # Find the wrapper link that contains text (Name + Headline)
+                    links = await conn.query_selector_all("a[data-view-name='connections-profile']")
+                    wrapper = None
+                    
+                    for link in links:
+                        text = await link.inner_text()
+                        if text.strip():
+                            wrapper = link
+                            break
+                    
+                    if not wrapper:
                         continue
-                
-                # 3. Mark all candidates as PENDING - AI will classify when profile is opened
-                #    (We don't call AI here as it would be too slow/expensive for initial scan)
-                role_type = "PENDING"
-                
-                self.log(f"CANDIDATE FOUND: {name} | Role: PENDING | URL: {normalized_url}")
-                candidates.append({
-                    "name": name,
-                    "headline": headline,
-                    "url": normalized_url,
-                    "original_url": profile_url,
-                    "role_type": role_type,
-                    "element": conn
-                })
+                    
+                    # The wrapper contains p tags. 
+                    # First p is Name, Second p is Headline.
+                    paragraphs = await wrapper.query_selector_all("p")
+                    
+                    if len(paragraphs) >= 2:
+                        name = await paragraphs[0].inner_text()
+                        headline = await paragraphs[1].inner_text()
+                    else:
+                        # Fallback if structure is different
+                        full_text = await wrapper.inner_text()
+                        lines = [line.strip() for line in full_text.split('\n') if line.strip()]
+                        name = lines[0] if lines else "Unknown"
+                        headline = lines[1] if len(lines) > 1 else ""
+
+                    profile_url = await wrapper.get_attribute('href')
+                    if profile_url and profile_url.startswith("/"):
+                        profile_url = f"https://www.linkedin.com{profile_url}"
+                    
+                    # Normalize URL immediately
+                    normalized_url = self.normalize_url(profile_url)
+                    
+                    # Clean name and headline - strip emojis and special characters
+                    name = self.strip_emojis(name.strip())
+                    headline = headline.strip()
+                    
+                    # --- V2.1 CONNECTION GATEKEEPER ---
+                    
+                    # 1. Local History Check (Layer 1)
+                    if normalized_url in history_data:
+                        # self.log(f"Skipping {name}: Already in history.json")
+                        continue
+
+                    # 2. Date Check
+                    # Find the time badge, usually "Connected 2 weeks ago"
+                    # It's often in a span or time tag inside the card
+                    time_text = ""
+                    try:
+                        time_el = await conn.query_selector("time")
+                        if not time_el:
+                             # Try searching for text containing "Connected"
+                             all_text = await conn.inner_text()
+                             lines = all_text.split('\n')
+                             for line in lines:
+                                 if "Connected" in line:
+                                     time_text = line
+                                     break
+                        else:
+                            time_text = await time_el.inner_text()
+                    except:
+                        pass
+                    
+                    if time_text:
+                        conn_date = self.parse_connection_date(time_text)
+                        days_diff = (datetime.now() - conn_date).days
+                        if days_diff > 90:
+                            # self.log(f"Skipping {name}: Connected {days_diff} days ago (>90).")
+                            continue
+                    
+                    # 3. Mark all candidates as PENDING - AI will classify when profile is opened
+                    #    (We don't call AI here as it would be too slow/expensive for initial scan)
+                    role_type = "PENDING"
+                    
+                    self.log(f"CANDIDATE FOUND: {name} | Role: PENDING | URL: {normalized_url}")
+                    candidates.append({
+                        "name": name,
+                        "headline": headline,
+                        "url": normalized_url,
+                        "original_url": profile_url,
+                        "role_type": role_type,
+                        "element": conn
+                    })
+                except Exception as candidate_error:
+                    # Log error but continue processing other candidates
+                    # This prevents one bad candidate (e.g., with emoji) from breaking the entire scan
+                    self.log(f"Warning: Skipped candidate {i} due to error: {str(candidate_error)[:50]}")
+                    continue
             
             return candidates
         except Exception as e:
@@ -2027,10 +2263,6 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             return []
 
     async def process_candidate(self, candidate):
-        if "Jennifer McDaniel" in candidate["name"]:
-            self.log("Skipping Jennifer McDaniel (Explicitly skipped for testing).")
-            return False
-
         self.log(f"--- Processing Candidate: {candidate['name']} ({candidate['role_type']}) ---")
         
         # Open in new tab
@@ -2053,6 +2285,15 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 
                 if role == "SKIP":
                     self.log(f"AI Classification: SKIP. Skipping {candidate['name']}.")
+                    # Track SKIP'd candidates in history so they're not re-processed
+                    # This enables fast-forward to work correctly on subsequent runs
+                    history_data = self.load_history_json()
+                    history_data[candidate["url"]] = {
+                        "status": "SKIPPED_NOT_LEGAL", 
+                        "reason": f"Not a lawyer: {candidate.get('headline', 'Unknown')[:50]}",
+                        "timestamp": datetime.now().isoformat()
+                    }
+                    self.save_history_json_atomic(history_data)
                     await new_page.close()
                     return False
                 
@@ -2069,6 +2310,8 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             if not await self.verify_chat_identity(candidate["name"], page=new_page):
                 self.log("Identity verification failed. Skipping.")
                 self.run_metrics["identity_verification_failed"] = True  # Track for optimizer
+                # Close the chat popup to prevent blocking subsequent candidates
+                await self.close_chat(page=new_page)
                 await new_page.close()
                 return False
 
@@ -2081,6 +2324,8 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 history_data[candidate["url"]] = {"status": "SKIPPED", "reason": "Manual history detected", "timestamp": datetime.now().isoformat()}
                 self.save_history_json_atomic(history_data)
                 
+                # Close the chat popup to prevent blocking subsequent candidates
+                await self.close_chat(page=new_page)
                 await new_page.close()
                 return False
 
@@ -2093,7 +2338,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 first_name = candidate["name"].split()[0]
                 msg = f"Hi {first_name},\n\nThank you for connecting! I'm expanding my network in the legal field and look forward to seeing your updates.\n\nBest,\nSanjeev"
                 
-                if await self.send_chat_message(msg, page=new_page):
+                if await self.send_chat_message(msg, page=new_page, expected_name=candidate["name"]):
                     self.log("Message 1 sent (General).")
                     
                     # Log Success
@@ -2106,6 +2351,8 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     return True
                 else:
                     self.log("Failed to send Message 1.")
+                    # Close chat popup before closing page to prevent floating chat
+                    await self.close_chat(page=new_page)
                     await new_page.close()
                     return False
 
@@ -2117,8 +2364,10 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 first_name = candidate["name"].split()[0]
                 msg1 = f"Hi {first_name},\n\nThank you for connecting. I noticed your work in {candidate.get('headline', 'law')} and wanted to share a resource I created on 'Zero-Trust' AI adoption for practicing lawyers.\n\nBest,\nSanjeev"
                 
-                if not await self.send_chat_message(msg1, page=new_page, verify=True):
+                if not await self.send_chat_message(msg1, page=new_page, verify=True, expected_name=candidate["name"]):
                     self.log("Failed to send Message 1. Aborting.")
+                    # Close chat popup before closing page to prevent floating chat
+                    await self.close_chat(page=new_page)
                     await new_page.close()
                     return False
                 
@@ -2192,7 +2441,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 if not msg2:
                     msg2 = f"Here is the Zero-Trust AI Strategy report I mentioned."
                 
-                if await self.send_chat_message(msg2, attachment_path=report_data["pdf_path"], page=new_page):
+                if await self.send_chat_message(msg2, attachment_path=report_data["pdf_path"], page=new_page, expected_name=candidate["name"]):
                     self.log("Message 2 sent successfully.")
                     
                     # Log Success
@@ -2276,11 +2525,60 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
         scroll_attempts = 0
         MAX_SCROLLS = self.config_manager.get("limits.max_scrolls", 50)
         
+        # --- RESUME STATE LOGIC ---
+        resume_state = self.load_resume_state()
+        resume_position = resume_state.get("last_connections_count", 0)
+        max_connections_reached = 0  # Track the furthest we've scrolled this run
+        top_connection_url = None    # Track the top connection for next run
+        
+        if resume_position > 0:
+            self.log(f"Resume state found: Last processed up to {resume_position} connections")
+            
+            # Step 1: Check top ~10 connections for new candidates (not in history)
+            self.log("Checking for new recent connections at top...")
+            initial_candidates = await self.scan_visible_candidates()
+            
+            # Store the top connection URL for next run's reference
+            if initial_candidates:
+                top_connection_url = initial_candidates[0].get('url')
+            
+            # Check if any are genuinely new (not in history)
+            history_data = self.load_history_json()
+            new_at_top = [c for c in initial_candidates if c['url'] not in history_data]
+            
+            if new_at_top:
+                self.log(f"Found {len(new_at_top)} new connection(s) at top! Processing first...")
+                # Process new connection(s) at top first (normal flow will handle this)
+                # We DON'T fast-forward, but we preserve the resume position
+            else:
+                self.log("No new connections at top. Fast-forwarding to resume position...")
+                # Fast-forward to where we left off
+                actual_count = await self.fast_forward_to_position(resume_position)
+                max_connections_reached = actual_count
+                self.log(f"Resumed at {actual_count} connections. Starting normal scan...")
+        else:
+            self.log("No resume state found. Starting fresh scan...")
+        
         while scroll_attempts < MAX_SCROLLS:
             self.log(f"--- Scan Loop {scroll_attempts + 1}/{MAX_SCROLLS} ---")
             self.run_metrics["scroll_attempts"] += 1
             
             candidates = await self.scan_visible_candidates()
+            
+            # Track the first connection URL (for resume state)
+            if candidates and not top_connection_url:
+                top_connection_url = candidates[0].get('url')
+            
+            # Update max connections reached (use TOTAL connection cards, not filtered candidates)
+            # Query the actual connection card count for accurate resume position
+            try:
+                primary_selector = self.config_manager.get("selectors.connections_list", "div[data-view-name='connections-list']")
+                all_cards = await self.page.query_selector_all(primary_selector)
+                total_connections_visible = len(all_cards)
+                max_connections_reached = max(max_connections_reached, total_connections_visible)
+            except:
+                # Fallback to candidate count if selector fails
+                max_connections_reached = max(max_connections_reached, len(candidates))
             
             # Filter using normalized URLs
             new_candidates = []
@@ -2306,6 +2604,8 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     break
             
             if processed_any:
+                # Save resume state before exiting (preserve max position)
+                self.save_resume_state(max_connections_reached, top_connection_url)
                 break
             
             # Count candidates before scroll
@@ -2418,11 +2718,66 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
         # Log run to optimizer
         self.log("Logging run metrics to history...")
         self.optimizer.log_run(self.run_metrics)
+        
+        # Save resume state for next run (always save, even if no candidate processed)
+        self.save_resume_state(max_connections_reached, top_connection_url)
             
         self.log("Workflow completed.")
         await self.stop()
 
+LOCK_FILE = "agent.lock"
+
+def acquire_lock():
+    """Acquire a lock to prevent multiple instances running simultaneously."""
+    import time
+    
+    if os.path.exists(LOCK_FILE):
+        try:
+            with open(LOCK_FILE, "r") as f:
+                data = json.load(f)
+                old_pid = data.get("pid")
+                start_time = data.get("started_at", "")
+            
+            # Check if process is still running
+            import psutil
+            if old_pid and psutil.pid_exists(old_pid):
+                print(f"ERROR: Another agent instance is already running (PID: {old_pid}, started: {start_time})")
+                print("If this is incorrect, delete 'agent.lock' and try again.")
+                return False
+            else:
+                # Old process died without cleanup, safe to proceed
+                print(f"Found stale lock file (PID {old_pid} not running). Cleaning up...")
+                os.remove(LOCK_FILE)
+        except (json.JSONDecodeError, KeyError, Exception) as e:
+            # Corrupted lock file, remove it
+            print(f"Removing corrupted lock file: {e}")
+            try:
+                os.remove(LOCK_FILE)
+            except:
+                pass
+    
+    # Create new lock
+    with open(LOCK_FILE, "w") as f:
+        json.dump({
+            "pid": os.getpid(),
+            "started_at": datetime.now().isoformat()
+        }, f)
+    
+    return True
+
+def release_lock():
+    """Release the lock file."""
+    try:
+        if os.path.exists(LOCK_FILE):
+            os.remove(LOCK_FILE)
+    except Exception as e:
+        print(f"Warning: Could not remove lock file: {e}")
+
 if __name__ == "__main__":
+    # Check for existing instance
+    if not acquire_lock():
+        sys.exit(1)
+    
     agent = LinkedInAgent()
     try:
         asyncio.run(agent.run_workflow())
@@ -2432,3 +2787,7 @@ if __name__ == "__main__":
             f.write(f"CRITICAL MAIN ERROR: {e}\n")
             f.write(traceback.format_exc() + "\n")
         print(f"CRITICAL MAIN ERROR: {e}")
+    finally:
+        # Always release lock
+        release_lock()
+

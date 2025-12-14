@@ -1,431 +1,5 @@
 [
   {
-    "timestamp": "2025-12-03T23:02:26.580975",
-    "metrics": {
-      "candidates_found": 11,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-04T19:17:13.123614",
-    "metrics": {
-      "candidates_found": 6,
-      "messages_sent": 0,
-      "scroll_attempts": 50,
-      "scroll_successes": 0,
-      "errors": [
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    14 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    14 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    14 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    15 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    14 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    9 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    13 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    13 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    15 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    12 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    10 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n    - waiting for element to be visible, enabled and stable\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    11 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Timeout 30000ms exceeded.\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    12 \u00d7 waiting for element to be visible, enabled and stable\n       - element is visible, enabled and stable\n       - scrolling into view if needed\n       - done scrolling\n       - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n     - retrying click action\n       - waiting 500ms\n",
-        "ElementHandle.click: Target page, context or browser has been closed\nCall log:\n  - attempting click action\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n    - waiting 20ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 100ms\n    2 \u00d7 waiting for element to be visible, enabled and stable\n      - element is visible, enabled and stable\n      - scrolling into view if needed\n      - done scrolling\n      - <div id=\"interop-outlet\" data-testid=\"interop-shadowdom\"></div> intercepts pointer events\n    - retrying click action\n      - waiting 500ms\n",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed",
-        "Page.query_selector: Target page, context or browser has been closed"
-      ],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T20:15:48.995763",
-    "metrics": {
-      "candidates_found": 29,
-      "messages_sent": 1,
-      "scroll_attempts": 14,
-      "scroll_successes": 3,
-      "errors": [
-        "ElementHandle.type: Timeout 30000ms exceeded.\nCall log:\n  - elementHandle.type(\"Hi Thomas,\n\nI noticed Finnegan, Henderson, Farabow, Garrett & Dunner, LLP specializes in Patent Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows\u2014including Evaluate Patent Claim Construction and Assess Patent Validity based on Prior Art\u2014that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev\")\n",
-        "ElementHandle.type: Timeout 30000ms exceeded.\nCall log:\n  - elementHandle.type(\"Hi Thomas,\n\nI noticed Finnegan, Henderson, Farabow, Garrett & Dunner, LLP specializes in Patent Law, so I generated a **\"Zero-Trust\" AI Strategy** specifically for your practice.\n\nIt includes 10 ready-to-use workflows\u2014including Evaluate Patent Claim Construction and Assess Patent Validity based on Prior Art\u2014that use an \"anonymization sandwich\" technique. This allows your team to use AI for complex drafting without ever exposing privileged client data.\n\nI've attached the PDF. You can preview the prompts directly here in the chat.\n\nBest,\nSanjeev\")\n"
-      ],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.21428571428571427
-    }
-  },
-  {
-    "timestamp": "2025-12-04T21:39:42.618666",
-    "metrics": {
-      "candidates_found": 10,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T21:41:43.759636",
-    "metrics": {
-      "candidates_found": 10,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T22:09:51.990974",
-    "metrics": {
-      "candidates_found": 9,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T22:54:04.318569",
-    "metrics": {
-      "candidates_found": 8,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T23:01:15.726259",
-    "metrics": {
-      "candidates_found": 7,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-04T23:26:39.520662",
-    "metrics": {
-      "candidates_found": 6,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-05T07:12:13.671682",
-    "metrics": {
-      "candidates_found": 5,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-05T07:29:30.525766",
-    "metrics": {
-      "candidates_found": 4,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-05T17:01:41.234114",
-    "metrics": {
-      "candidates_found": 3,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-05T19:01:58.866750",
-    "metrics": {
-      "candidates_found": 11,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T20:01:43.727525",
-    "metrics": {
-      "candidates_found": 10,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T21:37:58.745079",
-    "metrics": {
-      "candidates_found": 9,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T21:44:21.723404",
-    "metrics": {
-      "candidates_found": 8,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T22:03:09.541736",
-    "metrics": {
-      "candidates_found": 7,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T22:28:01.049930",
-    "metrics": {
-      "candidates_found": 6,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T22:32:34.835392",
-    "metrics": {
-      "candidates_found": 5,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T22:36:03.276202",
-    "metrics": {
-      "candidates_found": 4,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T22:40:16.230365",
-    "metrics": {
-      "candidates_found": 3,
-      "messages_sent": 1,
-      "scroll_attempts": 2,
-      "scroll_successes": 1,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.5
-    }
-  },
-  {
-    "timestamp": "2025-12-05T23:01:56.843260",
-    "metrics": {
-      "candidates_found": 2,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-06T09:12:18.769515",
-    "metrics": {
-      "candidates_found": 2,
-      "messages_sent": 1,
-      "scroll_attempts": 1,
-      "scroll_successes": 0,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.0
-    }
-  },
-  {
-    "timestamp": "2025-12-06T17:03:38.992013",
-    "metrics": {
-      "candidates_found": 9,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T17:24:41.509492",
-    "metrics": {
-      "candidates_found": 8,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T19:37:03.228350",
-    "metrics": {
-      "candidates_found": 7,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T20:03:10.560422",
-    "metrics": {
-      "candidates_found": 6,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T20:27:30.999265",
-    "metrics": {
-      "candidates_found": 5,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T20:51:11.487118",
-    "metrics": {
-      "candidates_found": 3,
-      "messages_sent": 1,
-      "scroll_attempts": 3,
-      "scroll_successes": 2,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.6666666666666666
-    }
-  },
-  {
-    "timestamp": "2025-12-06T21:04:20.489206",
-    "metrics": {
-      "candidates_found": 12,
-      "messages_sent": 1,
-      "scroll_attempts": 4,
-      "scroll_successes": 3,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.75
-    }
-  },
-  {
-    "timestamp": "2025-12-06T22:02:32.013917",
-    "metrics": {
-      "candidates_found": 11,
-      "messages_sent": 1,
-      "scroll_attempts": 4,
-      "scroll_successes": 3,
-      "errors": [],
-      "message_verification_failed": false,
-      "scroll_success_rate": 0.75
-    }
-  },
-  {
     "timestamp": "2025-12-06T22:24:47.315380",
     "metrics": {
       "candidates_found": 10,
@@ -618,6 +192,516 @@
       "identity_verification_failed": false,
       "file_upload_failed": false,
       "scroll_success_rate": 0.8
+    }
+  },
+  {
+    "timestamp": "2025-12-10T22:06:01.468318",
+    "metrics": {
+      "candidates_found": 12,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-10T23:05:23.914782",
+    "metrics": {
+      "candidates_found": 11,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-11T17:04:47.512847",
+    "metrics": {
+      "candidates_found": 10,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-11T18:42:13.718903",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 1,
+      "scroll_attempts": 1,
+      "scroll_successes": 0,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.0
+    }
+  },
+  {
+    "timestamp": "2025-12-11T19:05:35.737700",
+    "metrics": {
+      "candidates_found": 7,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-11T20:01:48.251388",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 1,
+      "scroll_attempts": 1,
+      "scroll_successes": 0,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.0
+    }
+  },
+  {
+    "timestamp": "2025-12-11T21:03:50.030649",
+    "metrics": {
+      "candidates_found": 6,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-11T22:02:38.332796",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 1,
+      "scroll_attempts": 1,
+      "scroll_successes": 0,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.0
+    }
+  },
+  {
+    "timestamp": "2025-12-11T23:03:46.664973",
+    "metrics": {
+      "candidates_found": 4,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-12T17:05:32.053451",
+    "metrics": {
+      "candidates_found": 13,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-12T18:02:21.911999",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 1,
+      "scroll_attempts": 1,
+      "scroll_successes": 0,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.0
+    }
+  },
+  {
+    "timestamp": "2025-12-12T19:05:06.590879",
+    "metrics": {
+      "candidates_found": 11,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-12T20:05:42.662408",
+    "metrics": {
+      "candidates_found": 10,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-12T21:03:37.438723",
+    "metrics": {
+      "candidates_found": 3,
+      "messages_sent": 1,
+      "scroll_attempts": 6,
+      "scroll_successes": 5,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8333333333333334
+    }
+  },
+  {
+    "timestamp": "2025-12-12T22:08:48.860063",
+    "metrics": {
+      "candidates_found": 8,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": true,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-12T23:05:19.091046",
+    "metrics": {
+      "candidates_found": 7,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-13T17:05:08.243422",
+    "metrics": {
+      "candidates_found": 6,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-13T18:25:35.920394",
+    "metrics": {
+      "candidates_found": 5,
+      "messages_sent": 0,
+      "scroll_attempts": 50,
+      "scroll_successes": 32,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": true,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.64
+    }
+  },
+  {
+    "timestamp": "2025-12-13T19:30:32.092361",
+    "metrics": {
+      "candidates_found": 4,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-13T19:37:10.912760",
+    "metrics": {
+      "candidates_found": 3,
+      "messages_sent": 1,
+      "scroll_attempts": 7,
+      "scroll_successes": 6,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8571428571428571
+    }
+  },
+  {
+    "timestamp": "2025-12-13T20:21:51.942523",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 0,
+      "scroll_attempts": 50,
+      "scroll_successes": 32,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.64
+    }
+  },
+  {
+    "timestamp": "2025-12-13T20:37:06.819323",
+    "metrics": {
+      "candidates_found": 12,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T20:43:03.508119",
+    "metrics": {
+      "candidates_found": 11,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T20:54:09.391418",
+    "metrics": {
+      "candidates_found": 10,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T21:22:50.277002",
+    "metrics": {
+      "candidates_found": 2,
+      "messages_sent": 0,
+      "scroll_attempts": 50,
+      "scroll_successes": 32,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.64
+    }
+  },
+  {
+    "timestamp": "2025-12-13T22:44:18.205487",
+    "metrics": {
+      "candidates_found": 9,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T22:54:56.534640",
+    "metrics": {
+      "candidates_found": 8,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T23:03:35.299840",
+    "metrics": {
+      "candidates_found": 7,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-13T23:32:05.063001",
+    "metrics": {
+      "candidates_found": 6,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:02:19.490248",
+    "metrics": {
+      "candidates_found": 15,
+      "messages_sent": 1,
+      "scroll_attempts": 9,
+      "scroll_successes": 8,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.8888888888888888
+    }
+  },
+  {
+    "timestamp": "2025-12-14T00:59:33.183427",
+    "metrics": {
+      "candidates_found": 8,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:25:31.604449",
+    "metrics": {
+      "candidates_found": 7,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": true,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:47:24.846771",
+    "metrics": {
+      "candidates_found": 6,
+      "messages_sent": 1,
+      "scroll_attempts": 8,
+      "scroll_successes": 7,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.875
+    }
+  },
+  {
+    "timestamp": "2025-12-14T01:52:50.445343",
+    "metrics": {
+      "candidates_found": 5,
+      "messages_sent": 1,
+      "scroll_attempts": 1,
+      "scroll_successes": 0,
+      "errors": [],
+      "message_verification_failed": false,
+      "chat_open_failed": false,
+      "identity_verification_failed": false,
+      "file_upload_failed": false,
+      "scroll_success_rate": 0.0
     }
   }
 ]

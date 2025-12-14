@@ -1,0 +1,25 @@
+On branch main
+Your branch is up to date with 'origin/main'.
+
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+	modified:   .gitignore
+	modified:   config.json
+	new file:   debug_search.py
+	modified:   linkedin_agent.py
+	modified:   notification_agent.py
+
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   agent_history.json
+	modified:   agent_log.txt
+	modified:   history.json
+	modified:   notification_agent_log.txt
+	modified:   notification_history.json
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	add_output.txt
+	current_status.txt
+

@@ -168,11 +168,18 @@ The agent uses a dynamic configuration that the self-optimizer adjusts automatic
     "identity_poll_delay_ms": 300,
     "identity_poll_retries": 15
   },
+  "selectors": {
+    "connections_list": "div[data-view-name='connections-list']",
+    "show_more_btn": [
+      "button:has-text('Show more results')",
+      "button:has-text('Load more')"
+    ]
+  },
   "limits": {
     "max_scrolls": 50,
     "max_retries": 5,
     "chat_open_retries": 3,
-    "chat_open_delay_ms": 2000,
+    "chat_open_delay_ms": 1500,
     "send_message_retries": 2
   }
 }
@@ -229,6 +236,7 @@ python test_optimizer.py    # Optimizer tests
 | `history.json` | Message history per contact |
 | `notification_history.json` | Invited profiles & run history |
 | `agent_history.json` | Run metrics for self-optimization |
+| `resume_state.json` | Saves scrolling progress to resume after interruptions |
 
 ---
 

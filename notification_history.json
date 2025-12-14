@@ -23,7 +23,7 @@
     },
     "https://www.linkedin.com/in/chuck%2Dsholtz%2D6a956b7": {
       "name": "Chuck Sholtz 6A956B",
-      "invited_at": "2025-12-09T21:44:28.758750",
+      "invited_at": "2025-12-09T21:44:28.75875",
       "engagement_type": "mentioned"
     },
     "https://www.linkedin.com/in/pranaygadodia": {
@@ -70,6 +70,51 @@
       "name": "Sofia Maria Silva De Almeida E Souza Netto",
       "invited_at": "2025-12-10T19:57:59.888911",
       "engagement_type": "reacted"
+    },
+    "https://www.linkedin.com/in/patrick%2Dmceuen": {
+      "name": "Patrick",
+      "invited_at": "2025-12-11T17:07:52.007276",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/lisa%2Dparlagreco": {
+      "name": "Lisa",
+      "invited_at": "2025-12-11T17:08:12.862764",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/natanmohart": {
+      "name": "Natanmohart",
+      "invited_at": "2025-12-11T19:08:44.549376",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/robert%2Dadams%2Dleader": {
+      "name": "Robert Adams",
+      "invited_at": "2025-12-11T19:09:01.583853",
+      "engagement_type": "mentioned"
+    },
+    "https://www.linkedin.com/in/panchalvinayak": {
+      "name": "Panchalvinayak",
+      "invited_at": "2025-12-12T17:52:13.445628",
+      "engagement_type": "shared"
+    },
+    "https://www.linkedin.com/in/kyree%2Drobinson%2Dbanks": {
+      "name": "Kyree Robinson Banks",
+      "invited_at": "2025-12-12T17:52:29.327442",
+      "engagement_type": "reacted"
+    },
+    "https://www.linkedin.com/in/mitchell%2Dchubb": {
+      "name": "Mitchell Chubb",
+      "invited_at": "2025-12-12T17:52:45.837466",
+      "engagement_type": "reacted"
+    },
+    "https://www.linkedin.com/in/tom%2Dirving%2D9459b610": {
+      "name": "Tom Irving",
+      "invited_at": "2025-12-12T17:53:02.380785",
+      "engagement_type": "reacted"
+    },
+    "https://www.linkedin.com/in/jonathangms": {
+      "name": "Jonathangms",
+      "invited_at": "2025-12-12T17:53:27.254164",
+      "engagement_type": "liked"
     }
   },
   "already_connected": [
@@ -77,7 +122,9 @@
     "https://www.linkedin.com/in/qarrar%2Dsomji"
   ],
   "skipped_profiles": [
-    "https://www.linkedin.com/in/abdbansal"
+    "https://www.linkedin.com/in/abdbansal",
+    "https://www.linkedin.com/in/munir%2Dmachmud%2Dali%2D1b2a4774",
+    "https://www.linkedin.com/in/mandy%2Drodriguez%2D63987817"
   ],
   "run_history": [
     {
@@ -142,6 +189,78 @@
       "invites_sent": 4,
       "already_connected": 0,
       "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-11T17:08:20.657882",
+      "notifications_processed": 4,
+      "invites_sent": 4,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-11T17:13:50.355818",
+      "notifications_processed": 0,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-11T18:44:13.279359",
+      "notifications_processed": 0,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-11T19:06:35.807166",
+      "notifications_processed": 0,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-11T19:09:15.552294",
+      "notifications_processed": 16,
+      "invites_sent": 2,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-12T17:53:35.864438",
+      "notifications_processed": 9,
+      "invites_sent": 5,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-12T22:27:16.616250",
+      "notifications_processed": 7,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-13T18:33:33.568770",
+      "notifications_processed": 9,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 0,
+      "errors": 0
+    },
+    {
+      "timestamp": "2025-12-13T20:26:00.193864",
+      "notifications_processed": 11,
+      "invites_sent": 0,
+      "already_connected": 0,
+      "already_invited": 2,
       "errors": 0
     }
   ]

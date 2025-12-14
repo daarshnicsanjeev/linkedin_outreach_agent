@@ -17,3 +17,7 @@ winotify>=1.1.0
 
 # PDF Generation
 fpdf>=1.7.2
+
+# Process Management (for instance locking)
+psutil>=5.9.0
+

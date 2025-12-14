@@ -8,7 +8,7 @@ ChromeAutomationProfile/
 
 # Logs
 *.log
-agent_log.txt
+# agent_log.txt
 agent_log_view.txt
 agent_log_copy.txt
 agent_scheduler_log.txt
@@ -31,6 +31,12 @@ Audit_*.pdf
 # History Files (contain contact data)
 # history.json
 # agent_history.json
+
+# Resume State (local scroll position)
+resume_state.json
+
+# Instance Lock (prevents concurrent runs)
+agent.lock
 
 # Python
 __pycache__/

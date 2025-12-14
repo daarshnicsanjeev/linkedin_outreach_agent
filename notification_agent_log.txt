@@ -1138,3 +1138,1657 @@ Cleaning up...
 [2025-12-10 19:58:08]   Chrome process terminated successfully.
 [2025-12-10 19:58:08]   Run statistics saved to history.
 [2025-12-10 19:58:08] Agent stopped.
+[2025-12-11 17:05:50] ============================================================
+[2025-12-11 17:05:50] LinkedIn Notification Engagement Agent Starting
+[2025-12-11 17:05:50] ============================================================
+[2025-12-11 17:05:51] Attempting to connect to existing Chrome on port 9222...
+[2025-12-11 17:05:51] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-11 17:05:51] Attempting to launch Chrome...
+[2025-12-11 17:05:51] Checking for existing Chrome processes on port 9222...
+[2025-12-11 17:05:51] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-11 17:05:51] Chrome launched with PID: 24232
+[2025-12-11 17:05:52] Chrome debug port ready (after 1s)
+[2025-12-11 17:05:57] Connection attempt 1/5...
+[2025-12-11 17:05:57] Connected to launched Chrome.
+[2025-12-11 17:05:57] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-11 17:06:05] Notifications page loaded.
+[2025-12-11 17:06:05] Extracting notifications...
+[2025-12-11 17:06:05] Scrolling to load more notifications...
+[2025-12-11 17:06:08]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-11 17:06:09] Found 30 notification cards with selector: article.nt-card
+[2025-12-11 17:06:09]   DEBUG [1]: Unread notification. Babban Yadav and 9 other people viewed your profile. See the full list with Premium. Try Premium for ₹0 1-month free trial. We’ll send you a reminder 7 days before your trial ends
+[2025-12-11 17:06:12]   AI Classification: is_engagement=True, type=viewed
+[2025-12-11 17:06:12]   [1] ENGAGEMENT DETECTED: Unread notification.  Babban Yadav and 9 other people viewed...
+[2025-12-11 17:06:12]     Found 0 profile links in notification
+[2025-12-11 17:06:12]     ✗ No valid profiles extracted from this notification
+[2025-12-11 17:06:12]   DEBUG [2]: Unread notification. Natan Mohart reacted to your post. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks target small businesses. Why? Y
+[2025-12-11 17:06:13]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:06:13]   [2] ENGAGEMENT DETECTED: Unread notification.  Natan Mohart reacted to your post. One...
+[2025-12-11 17:06:14]     Found 1 profile links in notification
+[2025-12-11 17:06:14]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 17:06:14]     Added 1 profile(s): Natanmohart
+[2025-12-11 17:06:14]   DEBUG [3]: Unread notification. Natan Mohart liked your comment. Natan, your post brilliantly captures why empathy is essential in leadership. The step-by-step approach you’ve shared makes it actionable and clea
+[2025-12-11 17:06:15]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:15]   [3] ENGAGEMENT DETECTED: Unread notification.  Natan Mohart liked your comment. Natan...
+[2025-12-11 17:06:15]     Found 1 profile links in notification
+[2025-12-11 17:06:15]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 17:06:15]     Added 1 profile(s): Natanmohart
+[2025-12-11 17:06:15]   DEBUG [4]: Unread notification. Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at MathCo. Explore jobs in your network. Kiran Chavan's connection is hiring for a Gen AI Data Governan
+[2025-12-11 17:06:17]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:17]   DEBUG [5]: Unread notification. 🧠 samreen and 18 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 2h
+[2025-12-11 17:06:19]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:19]   DEBUG [6]: Unread notification. Big Tech is pouring billions into India’s AI future. Here’s why. Big Tech is pouring billions into India’s AI future. Here’s why. 3h
+[2025-12-11 17:06:21]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:21]   DEBUG [7]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 6h
+[2025-12-11 17:06:23]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:23]   DEBUG [8]: Unread notification. Robert Adams mentioned you in a comment. Sanjeev, Appreciate this thoughtful take. When leaders focus on outcomes and trust people to own the path, teams move faster and grow stro
+[2025-12-11 17:06:24]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 17:06:24]   [8] ENGAGEMENT DETECTED: Unread notification.  Robert Adams mentioned you in a commen...
+[2025-12-11 17:06:24]     Found 1 profile links in notification
+[2025-12-11 17:06:24]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 17:06:24]     Added 1 profile(s): Robert Adams
+[2025-12-11 17:06:24]   DEBUG [9]: Unread notification. Suggested for you: The interviewer is 15 minutes late: ‘So sorry, back-to-back meetings!’ The candidate is 2 minutes late: ‘This shows a lack of professionalism.’ Make it make sen
+[2025-12-11 17:06:26]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:26]   DEBUG [10]: Unread notification. Patrick McEuen liked your comment. This shift to in-house marketing leadership is such a smart move. Having someone who truly understands your business and can communicate effecti
+[2025-12-11 17:06:28]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:28]   [10] ENGAGEMENT DETECTED: Unread notification.  Patrick McEuen liked your comment. Thi...
+[2025-12-11 17:06:28]     Found 1 profile links in notification
+[2025-12-11 17:06:28]     Link: NO NAME -> /in/patrick%2Dmceuen
+[2025-12-11 17:06:28]     Added 1 profile(s): Patrick
+[2025-12-11 17:06:30]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:31]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:33]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:35]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 17:06:35]   [14] ENGAGEMENT DETECTED: Unread notification.  Robert Adams loved your comment. This ...
+[2025-12-11 17:06:35]     Found 1 profile links in notification
+[2025-12-11 17:06:35]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 17:06:35]     Added 1 profile(s): Robert Adams
+[2025-12-11 17:06:37]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:39]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:39]   [16] ENGAGEMENT DETECTED: Lisa Parlagreco liked your comment. Absolutely agree—maintai...
+[2025-12-11 17:06:39]     Found 1 profile links in notification
+[2025-12-11 17:06:39]     Link: NO NAME -> /in/lisa%2Dparlagreco
+[2025-12-11 17:06:39]     Added 1 profile(s): Lisa
+[2025-12-11 17:06:41]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:41]   [17] ENGAGEMENT DETECTED: Larry Kotlyar liked your comment. What an inspiring journey!...
+[2025-12-11 17:06:41]     Found 1 profile links in notification
+[2025-12-11 17:06:41]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-11 17:06:41]     Added 1 profile(s): Larry
+[2025-12-11 17:06:43]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 17:06:43]   [18] ENGAGEMENT DETECTED: Matt Nakajima replied to your comment. Sanjeev Chaodhari Wel...
+[2025-12-11 17:06:43]     Found 1 profile links in notification
+[2025-12-11 17:06:43]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 17:06:43]     Added 1 profile(s): Matt
+[2025-12-11 17:06:44]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:44]   [19] ENGAGEMENT DETECTED: Matt Nakajima liked your comment. I can appreciate this pers...
+[2025-12-11 17:06:45]     Found 1 profile links in notification
+[2025-12-11 17:06:45]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 17:06:45]     Added 1 profile(s): Matt
+[2025-12-11 17:06:47]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:47]   [20] ENGAGEMENT DETECTED: Kevin McManus liked your comment. Great post, Kevin. It's in...
+[2025-12-11 17:06:47]     Found 1 profile links in notification
+[2025-12-11 17:06:47]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 17:06:47]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 17:06:48]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 17:06:48]   [21] ENGAGEMENT DETECTED: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari ...
+[2025-12-11 17:06:48]     Found 1 profile links in notification
+[2025-12-11 17:06:49]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 17:06:49]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 17:06:50]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 17:06:50]   [22] ENGAGEMENT DETECTED: Carrie Gray, D.B.A. loved your comment. This is such a helpf...
+[2025-12-11 17:06:50]     Found 1 profile links in notification
+[2025-12-11 17:06:50]     Link: NO NAME -> /in/carriegraydba
+[2025-12-11 17:06:50]     Added 1 profile(s): Carriegraydba
+[2025-12-11 17:06:52]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:54]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 17:06:54]   [24] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 17:06:54]     Found 1 profile links in notification
+[2025-12-11 17:06:54]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 17:06:54]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 17:06:56]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:06:56]   [25] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 17:06:56]     Found 1 profile links in notification
+[2025-12-11 17:06:56]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 17:06:56]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 17:06:57]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:06:59]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:07:01]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:07:01]   [28] ENGAGEMENT DETECTED: Status is reachable People are engaging with Sofia Maria Sil...
+[2025-12-11 17:07:01]     Found 1 profile links in notification
+[2025-12-11 17:07:01]     Link: NO NAME -> /in/sofia%2Dmaria%2Dsilva%2Dde%2Dalmeida%2De%2Dsou
+[2025-12-11 17:07:01]     Added 1 profile(s): Sofia Maria Silva De Almeida E Souza Netto
+[2025-12-11 17:07:03]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:07:05]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:07:05]   [30] ENGAGEMENT DETECTED: Status is reachable Pranay Gadodia, He/Him/His and Rt n. Tah...
+[2025-12-11 17:07:05]     Found 1 profile links in notification
+[2025-12-11 17:07:05]     Link: NO NAME -> /in/pranaygadodia
+[2025-12-11 17:07:05]     Added 1 profile(s): Pranaygadodia
+[2025-12-11 17:07:05] Extracted 16 engagement notifications
+[2025-12-11 17:07:05] 
+Processing 16 notifications...
+[2025-12-11 17:07:05] Current invite count: 0/50
+[2025-12-11 17:07:05] 
+--- REACTED: Unread notification.
+
+Natan Mohart reacted to your...
+[2025-12-11 17:07:05]   Checking connection status: https://www.linkedin.com/in/natanmohart
+[2025-12-11 17:07:09]   Sending connection invite to: Natanmohart
+[2025-12-11 17:07:15]     ✓ Connection invite sent to Natanmohart
+[2025-12-11 17:07:15]   Progress: 1/50 invites sent
+[2025-12-11 17:07:15]   Waiting 5s before next action...
+[2025-12-11 17:07:20] 
+--- LIKED: Unread notification.
+
+Natan Mohart liked your comm...
+[2025-12-11 17:07:20]   Skipping Natanmohart - already invited previously
+[2025-12-11 17:07:20] 
+--- MENTIONED: Unread notification.
+
+Robert Adams mentioned you i...
+[2025-12-11 17:07:20]   Checking connection status: https://www.linkedin.com/in/robert%2Dadams%2Dleader
+[2025-12-11 17:07:24]   Sending connection invite to: Robert Adams
+[2025-12-11 17:07:29]     ✓ Connection invite sent to Robert Adams
+[2025-12-11 17:07:29]   Progress: 2/50 invites sent
+[2025-12-11 17:07:29]   Waiting 5s before next action...
+[2025-12-11 17:07:34] 
+--- LIKED: Unread notification.
+
+Patrick McEuen liked your co...
+[2025-12-11 17:07:34]   Checking connection status: https://www.linkedin.com/in/patrick%2Dmceuen
+[2025-12-11 17:07:39]   Sending connection invite to: Patrick
+[2025-12-11 17:07:52]     ✓ Connection invite sent to Patrick
+[2025-12-11 17:07:52]   Progress: 3/50 invites sent
+[2025-12-11 17:07:52]   Waiting 5s before next action...
+[2025-12-11 17:07:57] 
+--- LOVED: Unread notification.
+
+Robert Adams loved your comm...
+[2025-12-11 17:07:57]   Skipping Robert Adams - already invited previously
+[2025-12-11 17:07:57] 
+--- LIKED: Lisa Parlagreco liked your comment.
+Absolutely agr...
+[2025-12-11 17:07:57]   Checking connection status: https://www.linkedin.com/in/lisa%2Dparlagreco
+[2025-12-11 17:08:00]   Sending connection invite to: Lisa
+[2025-12-11 17:08:12]     ✓ Connection invite sent to Lisa
+[2025-12-11 17:08:12]   Progress: 4/50 invites sent
+[2025-12-11 17:08:12]   Waiting 5s before next action...
+[2025-12-11 17:08:17] 
+--- LIKED: Larry Kotlyar liked your comment.
+What an inspirin...
+[2025-12-11 17:08:17]   Skipping Larry - already invited previously
+[2025-12-11 17:08:17] 
+--- REPLIED: Matt Nakajima replied to your comment.
+Sanjeev Cha...
+[2025-12-11 17:08:17]   Skipping Matt - already invited previously
+[2025-12-11 17:08:17] 
+--- LIKED: Matt Nakajima liked your comment.
+I can appreciate...
+[2025-12-11 17:08:17]   Skipping Matt - already invited previously
+[2025-12-11 17:08:17] 
+--- LIKED: Kevin McManus liked your comment.
+Great post, Kevi...
+[2025-12-11 17:08:17]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 17:08:17] 
+--- MENTIONED: Kevin McManus mentioned you in a comment.
+Sanjeev ...
+[2025-12-11 17:08:17]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 17:08:17] 
+--- LOVED: Carrie Gray, D.B.A. loved your comment.
+This is su...
+[2025-12-11 17:08:17]   Skipping Carriegraydba - already invited previously
+[2025-12-11 17:08:17] 
+--- REPLIED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 17:08:17]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 17:08:17] 
+--- LIKED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 17:08:17]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 17:08:17] 
+--- REACTED: Status is reachable
+People are engaging with Sofia...
+[2025-12-11 17:08:17]   Skipping Sofia Maria Silva De Almeida E Souza Netto - already invited previously
+[2025-12-11 17:08:17] 
+--- REACTED: Status is reachable
+Pranay Gadodia, He/Him/His and...
+[2025-12-11 17:08:17]   Skipping Pranaygadodia - already invited previously
+[2025-12-11 17:08:19] 
+============================================================
+[2025-12-11 17:08:19] RUN SUMMARY
+[2025-12-11 17:08:19] ============================================================
+[2025-12-11 17:08:19]   Notifications processed: 4
+[2025-12-11 17:08:19]   Connection invites sent: 4
+[2025-12-11 17:08:19]   Already connected: 0
+[2025-12-11 17:08:19]   Already pending: 0
+[2025-12-11 17:08:19]   Errors/Skipped: 0
+[2025-12-11 17:08:19] ============================================================
+[2025-12-11 17:08:19] 
+Cleaning up...
+[2025-12-11 17:08:19]   Closing agent page...
+[2025-12-11 17:08:20]   Closing additional page: chrome://new-tab-page/...
+[2025-12-11 17:08:20]   Stopping Playwright...
+[2025-12-11 17:08:20]   Terminating Chrome process (PID: 24232)...
+[2025-12-11 17:08:20]   Chrome process terminated successfully.
+[2025-12-11 17:08:20]   Run statistics saved to history.
+[2025-12-11 17:08:20] Agent stopped.
+[2025-12-11 17:12:32] ============================================================
+[2025-12-11 17:12:32] LinkedIn Notification Engagement Agent Starting
+[2025-12-11 17:12:32] ============================================================
+[2025-12-11 17:12:33] Attempting to connect to existing Chrome on port 9222...
+[2025-12-11 17:12:33] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-11 17:12:33] Attempting to launch Chrome...
+[2025-12-11 17:12:33] Checking for existing Chrome processes on port 9222...
+[2025-12-11 17:12:33] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-11 17:12:33] Chrome launched with PID: 3728
+[2025-12-11 17:12:34] Chrome debug port ready (after 1s)
+[2025-12-11 17:12:39] Connection attempt 1/5...
+[2025-12-11 17:12:39] Connected to launched Chrome.
+[2025-12-11 17:12:39] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-11 17:12:46] Notifications page loaded.
+[2025-12-11 17:12:46] Extracting notifications...
+[2025-12-11 17:12:46] Scrolling to load more notifications...
+[2025-12-11 17:12:49]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-11 17:12:50] Found 30 notification cards with selector: article.nt-card
+[2025-12-11 17:12:50]   DEBUG [1]: Unread notification. Babban Yadav and 9 other people viewed your profile. See the full list with Premium. Try Premium for ₹0 1-month free trial. We’ll send you a reminder 7 days before your trial ends
+[2025-12-11 17:12:53]   AI Classification: is_engagement=True, type=viewed
+[2025-12-11 17:12:53]   [1] ENGAGEMENT DETECTED: Unread notification.  Babban Yadav and 9 other people viewed...
+[2025-12-11 17:12:53]     Found 0 profile links in notification
+[2025-12-11 17:12:53]     ✗ No valid profiles extracted from this notification
+[2025-12-11 17:12:53]   DEBUG [2]: Unread notification. Natan Mohart reacted to your post. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks target small businesses. Why? Y
+[2025-12-11 17:12:54]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:12:54]   [2] ENGAGEMENT DETECTED: Unread notification.  Natan Mohart reacted to your post. One...
+[2025-12-11 17:12:54]     Found 1 profile links in notification
+[2025-12-11 17:12:54]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 17:12:54]     Added 1 profile(s): Natanmohart
+[2025-12-11 17:12:54]   DEBUG [3]: Unread notification. Natan Mohart liked your comment. Natan, your post brilliantly captures why empathy is essential in leadership. The step-by-step approach you’ve shared makes it actionable and clea
+[2025-12-11 17:12:56]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:12:56]   [3] ENGAGEMENT DETECTED: Unread notification.  Natan Mohart liked your comment. Natan...
+[2025-12-11 17:12:56]     Found 1 profile links in notification
+[2025-12-11 17:12:56]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 17:12:56]     Added 1 profile(s): Natanmohart
+[2025-12-11 17:12:56]   DEBUG [4]: Unread notification. Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at MathCo. Explore jobs in your network. Kiran Chavan's connection is hiring for a Gen AI Data Governan
+[2025-12-11 17:12:58]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:12:58]   DEBUG [5]: Unread notification. 🧠 samreen and 18 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 3h
+[2025-12-11 17:12:59]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:12:59]   DEBUG [6]: Unread notification. Big Tech is pouring billions into India’s AI future. Here’s why. Big Tech is pouring billions into India’s AI future. Here’s why. 4h
+[2025-12-11 17:13:01]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:01]   DEBUG [7]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 7h
+[2025-12-11 17:13:03]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:03]   DEBUG [8]: Robert Adams mentioned you in a comment. Sanjeev, Appreciate this thoughtful take. When leaders focus on outcomes and trust people to own the path, teams move faster and grow stronger. Thanks for addi
+[2025-12-11 17:13:05]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 17:13:05]   [8] ENGAGEMENT DETECTED: Robert Adams mentioned you in a comment. Sanjeev, Appreciate...
+[2025-12-11 17:13:05]     Found 1 profile links in notification
+[2025-12-11 17:13:05]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 17:13:05]     Added 1 profile(s): Robert Adams
+[2025-12-11 17:13:05]   DEBUG [9]: Unread notification. Suggested for you: The interviewer is 15 minutes late: ‘So sorry, back-to-back meetings!’ The candidate is 2 minutes late: ‘This shows a lack of professionalism.’ Make it make sen
+[2025-12-11 17:13:07]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:07]   DEBUG [10]: Unread notification. Patrick McEuen liked your comment. This shift to in-house marketing leadership is such a smart move. Having someone who truly understands your business and can communicate effecti
+[2025-12-11 17:13:09]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:09]   [10] ENGAGEMENT DETECTED: Unread notification.  Patrick McEuen liked your comment. Thi...
+[2025-12-11 17:13:09]     Found 1 profile links in notification
+[2025-12-11 17:13:09]     Link: NO NAME -> /in/patrick%2Dmceuen
+[2025-12-11 17:13:09]     Added 1 profile(s): Patrick
+[2025-12-11 17:13:11]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:12]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:15]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:17]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 17:13:17]   [14] ENGAGEMENT DETECTED: Unread notification.  Robert Adams loved your comment. This ...
+[2025-12-11 17:13:17]     Found 1 profile links in notification
+[2025-12-11 17:13:17]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 17:13:17]     Added 1 profile(s): Robert Adams
+[2025-12-11 17:13:19]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:21]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:21]   [16] ENGAGEMENT DETECTED: Lisa Parlagreco liked your comment. Absolutely agree—maintai...
+[2025-12-11 17:13:21]     Found 1 profile links in notification
+[2025-12-11 17:13:21]     Link: NO NAME -> /in/lisa%2Dparlagreco
+[2025-12-11 17:13:21]     Added 1 profile(s): Lisa
+[2025-12-11 17:13:23]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:23]   [17] ENGAGEMENT DETECTED: Larry Kotlyar liked your comment. What an inspiring journey!...
+[2025-12-11 17:13:23]     Found 1 profile links in notification
+[2025-12-11 17:13:23]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-11 17:13:23]     Added 1 profile(s): Larry
+[2025-12-11 17:13:25]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 17:13:25]   [18] ENGAGEMENT DETECTED: Matt Nakajima replied to your comment. Sanjeev Chaodhari Wel...
+[2025-12-11 17:13:25]     Found 1 profile links in notification
+[2025-12-11 17:13:25]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 17:13:25]     Added 1 profile(s): Matt
+[2025-12-11 17:13:26]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:26]   [19] ENGAGEMENT DETECTED: Matt Nakajima liked your comment. I can appreciate this pers...
+[2025-12-11 17:13:26]     Found 1 profile links in notification
+[2025-12-11 17:13:26]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 17:13:26]     Added 1 profile(s): Matt
+[2025-12-11 17:13:28]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:28]   [20] ENGAGEMENT DETECTED: Kevin McManus liked your comment. Great post, Kevin. It's in...
+[2025-12-11 17:13:28]     Found 1 profile links in notification
+[2025-12-11 17:13:28]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 17:13:28]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 17:13:30]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 17:13:30]   [21] ENGAGEMENT DETECTED: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari ...
+[2025-12-11 17:13:30]     Found 1 profile links in notification
+[2025-12-11 17:13:30]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 17:13:30]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 17:13:31]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 17:13:31]   [22] ENGAGEMENT DETECTED: Carrie Gray, D.B.A. loved your comment. This is such a helpf...
+[2025-12-11 17:13:31]     Found 1 profile links in notification
+[2025-12-11 17:13:31]     Link: NO NAME -> /in/carriegraydba
+[2025-12-11 17:13:31]     Added 1 profile(s): Carriegraydba
+[2025-12-11 17:13:33]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:35]   AI Classification: is_engagement=True, type=commented
+[2025-12-11 17:13:35]   [24] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 17:13:35]     Found 1 profile links in notification
+[2025-12-11 17:13:35]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 17:13:35]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 17:13:37]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 17:13:37]   [25] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 17:13:37]     Found 1 profile links in notification
+[2025-12-11 17:13:37]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 17:13:37]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 17:13:39]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:41]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:43]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:13:43]   [28] ENGAGEMENT DETECTED: Status is reachable People are engaging with Sofia Maria Sil...
+[2025-12-11 17:13:43]     Found 1 profile links in notification
+[2025-12-11 17:13:43]     Link: NO NAME -> /in/sofia%2Dmaria%2Dsilva%2Dde%2Dalmeida%2De%2Dsou
+[2025-12-11 17:13:43]     Added 1 profile(s): Sofia Maria Silva De Almeida E Souza Netto
+[2025-12-11 17:13:44]   AI Classification: is_engagement=False, type=none
+[2025-12-11 17:13:47]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 17:13:47]   [30] ENGAGEMENT DETECTED: Status is reachable Pranay Gadodia, He/Him/His and Rt n. Tah...
+[2025-12-11 17:13:47]     Found 1 profile links in notification
+[2025-12-11 17:13:47]     Link: NO NAME -> /in/pranaygadodia
+[2025-12-11 17:13:47]     Added 1 profile(s): Pranaygadodia
+[2025-12-11 17:13:47] Extracted 16 engagement notifications
+[2025-12-11 17:13:47] 
+Processing 16 notifications...
+[2025-12-11 17:13:47] Current invite count: 0/50
+[2025-12-11 17:13:47] 
+--- REACTED: Unread notification.
+
+Natan Mohart reacted to your...
+[2025-12-11 17:13:47]   Skipping Natanmohart - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Unread notification.
+
+Natan Mohart liked your comm...
+[2025-12-11 17:13:47]   Skipping Natanmohart - already invited previously
+[2025-12-11 17:13:47] 
+--- MENTIONED: Robert Adams mentioned you in a comment.
+Sanjeev, ...
+[2025-12-11 17:13:47]   Skipping Robert Adams - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Unread notification.
+
+Patrick McEuen liked your co...
+[2025-12-11 17:13:47]   Skipping Patrick - already invited previously
+[2025-12-11 17:13:47] 
+--- LOVED: Unread notification.
+
+Robert Adams loved your comm...
+[2025-12-11 17:13:47]   Skipping Robert Adams - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Lisa Parlagreco liked your comment.
+Absolutely agr...
+[2025-12-11 17:13:47]   Skipping Lisa - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Larry Kotlyar liked your comment.
+What an inspirin...
+[2025-12-11 17:13:47]   Skipping Larry - already invited previously
+[2025-12-11 17:13:47] 
+--- REPLIED: Matt Nakajima replied to your comment.
+Sanjeev Cha...
+[2025-12-11 17:13:47]   Skipping Matt - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Matt Nakajima liked your comment.
+I can appreciate...
+[2025-12-11 17:13:47]   Skipping Matt - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Kevin McManus liked your comment.
+Great post, Kevi...
+[2025-12-11 17:13:47]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 17:13:47] 
+--- MENTIONED: Kevin McManus mentioned you in a comment.
+Sanjeev ...
+[2025-12-11 17:13:47]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 17:13:47] 
+--- LOVED: Carrie Gray, D.B.A. loved your comment.
+This is su...
+[2025-12-11 17:13:47]   Skipping Carriegraydba - already invited previously
+[2025-12-11 17:13:47] 
+--- COMMENTED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 17:13:47]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 17:13:47] 
+--- LIKED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 17:13:47]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 17:13:47] 
+--- REACTED: Status is reachable
+People are engaging with Sofia...
+[2025-12-11 17:13:47]   Skipping Sofia Maria Silva De Almeida E Souza Netto - already invited previously
+[2025-12-11 17:13:47] 
+--- REACTED: Status is reachable
+Pranay Gadodia, He/Him/His and...
+[2025-12-11 17:13:47]   Skipping Pranaygadodia - already invited previously
+[2025-12-11 17:13:49] 
+============================================================
+[2025-12-11 17:13:49] RUN SUMMARY
+[2025-12-11 17:13:49] ============================================================
+[2025-12-11 17:13:49]   Notifications processed: 0
+[2025-12-11 17:13:49]   Connection invites sent: 0
+[2025-12-11 17:13:49]   Already connected: 0
+[2025-12-11 17:13:49]   Already pending: 0
+[2025-12-11 17:13:49]   Errors/Skipped: 0
+[2025-12-11 17:13:49] ============================================================
+[2025-12-11 17:13:49] 
+Cleaning up...
+[2025-12-11 17:13:49]   Closing agent page...
+[2025-12-11 17:13:50]   Closing additional page: chrome://new-tab-page/...
+[2025-12-11 17:13:50]   Stopping Playwright...
+[2025-12-11 17:13:50]   Terminating Chrome process (PID: 3728)...
+[2025-12-11 17:13:50]   Chrome process terminated successfully.
+[2025-12-11 17:13:50]   Run statistics saved to history.
+[2025-12-11 17:13:50] Agent stopped.
+[2025-12-11 18:42:34] ============================================================
+[2025-12-11 18:42:34] LinkedIn Notification Engagement Agent Starting
+[2025-12-11 18:42:34] ============================================================
+[2025-12-11 18:42:34] Attempting to connect to existing Chrome on port 9222...
+[2025-12-11 18:42:34] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-11 18:42:34] Attempting to launch Chrome...
+[2025-12-11 18:42:34] Checking for existing Chrome processes on port 9222...
+[2025-12-11 18:42:34] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-11 18:42:34] Chrome launched with PID: 20604
+[2025-12-11 18:42:35] Chrome debug port ready (after 1s)
+[2025-12-11 18:42:40] Connection attempt 1/5...
+[2025-12-11 18:42:41] Connected to launched Chrome.
+[2025-12-11 18:42:41] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-11 18:42:50] Notifications page loaded.
+[2025-12-11 18:42:50] Extracting notifications...
+[2025-12-11 18:42:50] Scrolling to load more notifications...
+[2025-12-11 18:42:55]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-11 18:42:56] Found 30 notification cards with selector: article.nt-card
+[2025-12-11 18:42:56]   DEBUG [1]: Status is online Unread notification. Qarrar Somji viewed your profile. See all views. 4m
+[2025-12-11 18:43:00]   AI Classification: is_engagement=True, type=viewed
+[2025-12-11 18:43:00]   [1] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji viewed ...
+[2025-12-11 18:43:00]     Found 1 profile links in notification
+[2025-12-11 18:43:00]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 18:43:00]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 18:43:00]   DEBUG [2]: Status is online Unread notification. Qarrar Somji commented on your post. Half the breaches happen because someone clicked an email that said “urgent invoice” One Data Breach Will Cost You $500K+ and
+[2025-12-11 18:43:03]   AI Classification: is_engagement=True, type=commented
+[2025-12-11 18:43:03]   [2] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji comment...
+[2025-12-11 18:43:03]     Found 1 profile links in notification
+[2025-12-11 18:43:03]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 18:43:03]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 18:43:03]   DEBUG [3]: Status is online Unread notification. Qarrar Somji and 1 other reacted to your post. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks ta
+[2025-12-11 18:43:05]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 18:43:05]   [3] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji and 1 o...
+[2025-12-11 18:43:05]     Found 1 profile links in notification
+[2025-12-11 18:43:05]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 18:43:05]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 18:43:05]   DEBUG [4]: Unread notification. AI Implementation Manager at Sutra.AI and 9 other recommendations for you. AI Implementation Manager at Sutra.AI and 9 other recommendations for you. View jobs 34m
+[2025-12-11 18:43:07]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:07]   DEBUG [5]: Unread notification. Jennifer Bade, Esq. posted: Think About It Thursday 💭 H-1B Applicants Face Months-Long Consular Delays After New Vetting Rule Since December 8, many H-1B and H-4 applicants with i
+[2025-12-11 18:43:09]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:10]   DEBUG [6]: Natan Mohart liked your comment. Natan, your post brilliantly captures why empathy is essential in leadership. The step-by-step approach you’ve shared makes it actionable and clear how leaders can fos
+[2025-12-11 18:43:12]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:12]   [6] ENGAGEMENT DETECTED: Natan Mohart liked your comment. Natan, your post brilliantl...
+[2025-12-11 18:43:12]     Found 1 profile links in notification
+[2025-12-11 18:43:12]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 18:43:12]     Added 1 profile(s): Natanmohart
+[2025-12-11 18:43:12]   DEBUG [7]: Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at MathCo. Explore jobs in your network. Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at Math
+[2025-12-11 18:43:14]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:14]   DEBUG [8]: Unread notification. 🧠 samreen and 18 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 4h
+[2025-12-11 18:43:16]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:16]   DEBUG [9]: Unread notification. Big Tech is pouring billions into India’s AI future. Here’s why. Big Tech is pouring billions into India’s AI future. Here’s why. 5h
+[2025-12-11 18:43:18]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:18]   DEBUG [10]: Profile image for several companies on LinkedIn Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 8h
+[2025-12-11 18:43:20]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:22]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 18:43:22]   [11] ENGAGEMENT DETECTED: Robert Adams mentioned you in a comment. Sanjeev, Appreciate...
+[2025-12-11 18:43:22]     Found 1 profile links in notification
+[2025-12-11 18:43:22]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 18:43:22]     Added 1 profile(s): Robert Adams
+[2025-12-11 18:43:25]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:27]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:27]   [13] ENGAGEMENT DETECTED: Patrick McEuen liked your comment. This shift to in-house ma...
+[2025-12-11 18:43:27]     Found 1 profile links in notification
+[2025-12-11 18:43:27]     Link: NO NAME -> /in/patrick%2Dmceuen
+[2025-12-11 18:43:27]     Added 1 profile(s): Patrick
+[2025-12-11 18:43:29]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:31]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:33]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:36]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 18:43:36]   [17] ENGAGEMENT DETECTED: Robert Adams loved your comment. This is a great breakdown, ...
+[2025-12-11 18:43:36]     Found 1 profile links in notification
+[2025-12-11 18:43:36]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 18:43:36]     Added 1 profile(s): Robert Adams
+[2025-12-11 18:43:39]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:43:43]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:43]   [19] ENGAGEMENT DETECTED: Lisa Parlagreco liked your comment. Absolutely agree—maintai...
+[2025-12-11 18:43:43]     Found 1 profile links in notification
+[2025-12-11 18:43:43]     Link: NO NAME -> /in/lisa%2Dparlagreco
+[2025-12-11 18:43:43]     Added 1 profile(s): Lisa
+[2025-12-11 18:43:45]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:45]   [20] ENGAGEMENT DETECTED: Larry Kotlyar liked your comment. What an inspiring journey!...
+[2025-12-11 18:43:45]     Found 1 profile links in notification
+[2025-12-11 18:43:45]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-11 18:43:45]     Added 1 profile(s): Larry
+[2025-12-11 18:43:47]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 18:43:48]   [21] ENGAGEMENT DETECTED: Matt Nakajima replied to your comment. Sanjeev Chaodhari Wel...
+[2025-12-11 18:43:48]     Found 1 profile links in notification
+[2025-12-11 18:43:48]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 18:43:48]     Added 1 profile(s): Matt
+[2025-12-11 18:43:51]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:51]   [22] ENGAGEMENT DETECTED: Matt Nakajima liked your comment. I can appreciate this pers...
+[2025-12-11 18:43:51]     Found 1 profile links in notification
+[2025-12-11 18:43:51]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 18:43:51]     Added 1 profile(s): Matt
+[2025-12-11 18:43:54]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:43:54]   [23] ENGAGEMENT DETECTED: Kevin McManus liked your comment. Great post, Kevin. It's in...
+[2025-12-11 18:43:54]     Found 1 profile links in notification
+[2025-12-11 18:43:54]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 18:43:54]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 18:43:56]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 18:43:56]   [24] ENGAGEMENT DETECTED: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari ...
+[2025-12-11 18:43:56]     Found 1 profile links in notification
+[2025-12-11 18:43:56]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 18:43:56]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 18:43:58]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 18:43:58]   [25] ENGAGEMENT DETECTED: Carrie Gray, D.B.A. loved your comment. This is such a helpf...
+[2025-12-11 18:43:58]     Found 1 profile links in notification
+[2025-12-11 18:43:58]     Link: NO NAME -> /in/carriegraydba
+[2025-12-11 18:43:58]     Added 1 profile(s): Carriegraydba
+[2025-12-11 18:44:00]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:44:02]   AI Classification: is_engagement=True, type=commented
+[2025-12-11 18:44:02]   [27] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 18:44:02]     Found 1 profile links in notification
+[2025-12-11 18:44:02]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 18:44:02]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 18:44:05]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 18:44:05]   [28] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 18:44:05]     Found 1 profile links in notification
+[2025-12-11 18:44:05]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 18:44:05]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 18:44:07]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:44:09]   AI Classification: is_engagement=False, type=none
+[2025-12-11 18:44:09] Extracted 16 engagement notifications
+[2025-12-11 18:44:09] 
+Processing 16 notifications...
+[2025-12-11 18:44:09] Current invite count: 0/50
+[2025-12-11 18:44:09] 
+--- VIEWED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-11 18:44:09]   Skipping Qarrar Somji - already connected
+[2025-12-11 18:44:09] 
+--- COMMENTED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-11 18:44:09]   Skipping Qarrar Somji - already connected
+[2025-12-11 18:44:09] 
+--- REACTED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-11 18:44:09]   Skipping Qarrar Somji - already connected
+[2025-12-11 18:44:09] 
+--- LIKED: Natan Mohart liked your comment.
+Natan, your post ...
+[2025-12-11 18:44:09]   Skipping Natanmohart - already invited previously
+[2025-12-11 18:44:09] 
+--- MENTIONED: Robert Adams mentioned you in a comment.
+Sanjeev, ...
+[2025-12-11 18:44:09]   Skipping Robert Adams - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Patrick McEuen liked your comment.
+This shift to i...
+[2025-12-11 18:44:09]   Skipping Patrick - already invited previously
+[2025-12-11 18:44:09] 
+--- LOVED: Robert Adams loved your comment.
+This is a great b...
+[2025-12-11 18:44:09]   Skipping Robert Adams - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Lisa Parlagreco liked your comment.
+Absolutely agr...
+[2025-12-11 18:44:09]   Skipping Lisa - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Larry Kotlyar liked your comment.
+What an inspirin...
+[2025-12-11 18:44:09]   Skipping Larry - already invited previously
+[2025-12-11 18:44:09] 
+--- REPLIED: Matt Nakajima replied to your comment.
+Sanjeev Cha...
+[2025-12-11 18:44:09]   Skipping Matt - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Matt Nakajima liked your comment.
+I can appreciate...
+[2025-12-11 18:44:09]   Skipping Matt - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Kevin McManus liked your comment.
+Great post, Kevi...
+[2025-12-11 18:44:09]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 18:44:09] 
+--- MENTIONED: Kevin McManus mentioned you in a comment.
+Sanjeev ...
+[2025-12-11 18:44:09]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 18:44:09] 
+--- LOVED: Carrie Gray, D.B.A. loved your comment.
+This is su...
+[2025-12-11 18:44:09]   Skipping Carriegraydba - already invited previously
+[2025-12-11 18:44:09] 
+--- COMMENTED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 18:44:09]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 18:44:09] 
+--- LIKED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 18:44:09]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 18:44:11] 
+============================================================
+[2025-12-11 18:44:11] RUN SUMMARY
+[2025-12-11 18:44:11] ============================================================
+[2025-12-11 18:44:11]   Notifications processed: 0
+[2025-12-11 18:44:11]   Connection invites sent: 0
+[2025-12-11 18:44:11]   Already connected: 0
+[2025-12-11 18:44:11]   Already pending: 0
+[2025-12-11 18:44:11]   Errors/Skipped: 0
+[2025-12-11 18:44:11] ============================================================
+[2025-12-11 18:44:11] 
+Cleaning up...
+[2025-12-11 18:44:11]   Closing agent page...
+[2025-12-11 18:44:12]   Closing additional page: chrome://new-tab-page/...
+[2025-12-11 18:44:12]   Stopping Playwright...
+[2025-12-11 18:44:12]   Terminating Chrome process (PID: 20604)...
+[2025-12-11 18:44:13]   Chrome process terminated successfully.
+[2025-12-11 18:44:13]   Run statistics saved to history.
+[2025-12-11 18:44:13] Agent stopped.
+[2025-12-11 19:05:58] ============================================================
+[2025-12-11 19:05:58] LinkedIn Notification Engagement Agent Starting
+[2025-12-11 19:05:58] ============================================================
+[2025-12-11 19:05:59] Attempting to connect to existing Chrome on port 9222...
+[2025-12-11 19:05:59] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-11 19:05:59] Attempting to launch Chrome...
+[2025-12-11 19:05:59] Checking for existing Chrome processes on port 9222...
+[2025-12-11 19:05:59] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-11 19:05:59] Chrome launched with PID: 33520
+[2025-12-11 19:06:00] Chrome debug port ready (after 1s)
+[2025-12-11 19:06:05] Connection attempt 1/5...
+[2025-12-11 19:06:05] Connected to launched Chrome.
+[2025-12-11 19:06:05] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-11 19:06:35] CRITICAL ERROR: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.linkedin.com/notifications/", waiting until "domcontentloaded"
+
+[2025-12-11 19:06:35] Traceback (most recent call last):
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\notification_agent.py", line 863, in run
+    if not await self.navigate_to_notifications():
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\daars\.gemini\antigravity\scratch\linkedin_outreach_agent\notification_agent.py", line 306, in navigate_to_notifications
+    await self.page.goto(NOTIFICATIONS_URL, wait_until="domcontentloaded")
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\async_api\_generated.py", line 8992, in goto
+    await self._impl_obj.goto(
+        url=url, timeout=timeout, waitUntil=wait_until, referer=referer
+    )
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_page.py", line 555, in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_frame.py", line 153, in goto
+    await self._channel.send(
+        "goto", self._navigation_timeout, locals_to_params(locals())
+    )
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 69, in send
+    return await self._connection.wrap_api_call(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+    )
+    ^
+  File "C:\Users\daars\AppData\Local\Programs\Python\Python314\Lib\site-packages\playwright\_impl\_connection.py", line 559, in wrap_api_call
+    raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+playwright._impl._errors.TimeoutError: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://www.linkedin.com/notifications/", waiting until "domcontentloaded"
+
+
+[2025-12-11 19:06:35] 
+Cleaning up...
+[2025-12-11 19:06:35]   Closing agent page...
+[2025-12-11 19:06:35]   Closing additional page: chrome://new-tab-page/...
+[2025-12-11 19:06:35]   Stopping Playwright...
+[2025-12-11 19:06:35]   Terminating Chrome process (PID: 33520)...
+[2025-12-11 19:06:35]   Chrome process terminated successfully.
+[2025-12-11 19:06:35]   Run statistics saved to history.
+[2025-12-11 19:06:35] Agent stopped.
+[2025-12-11 19:07:10] ============================================================
+[2025-12-11 19:07:10] LinkedIn Notification Engagement Agent Starting
+[2025-12-11 19:07:10] ============================================================
+[2025-12-11 19:07:10] Attempting to connect to existing Chrome on port 9222...
+[2025-12-11 19:07:10] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-11 19:07:10] Attempting to launch Chrome...
+[2025-12-11 19:07:10] Checking for existing Chrome processes on port 9222...
+[2025-12-11 19:07:11] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-11 19:07:11] Chrome launched with PID: 35208
+[2025-12-11 19:07:12] Chrome debug port ready (after 1s)
+[2025-12-11 19:07:17] Connection attempt 1/5...
+[2025-12-11 19:07:17] Connected to launched Chrome.
+[2025-12-11 19:07:17] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-11 19:07:24] Notifications page loaded.
+[2025-12-11 19:07:24] Extracting notifications...
+[2025-12-11 19:07:24] Scrolling to load more notifications...
+[2025-12-11 19:07:29]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-11 19:07:30] Found 30 notification cards with selector: article.nt-card
+[2025-12-11 19:07:30]   DEBUG [1]: Status is online Unread notification. Qarrar Somji viewed your profile. See all views. 29m
+[2025-12-11 19:07:33]   AI Classification: is_engagement=True, type=viewed
+[2025-12-11 19:07:33]   [1] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji viewed ...
+[2025-12-11 19:07:33]     Found 1 profile links in notification
+[2025-12-11 19:07:33]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 19:07:33]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 19:07:33]   DEBUG [2]: Status is online Qarrar Somji commented on your post. Half the breaches happen because someone clicked an email that said “urgent invoice” One Data Breach Will Cost You $500K+ and Destroy Your Reputat
+[2025-12-11 19:07:35]   AI Classification: is_engagement=True, type=commented
+[2025-12-11 19:07:35]   [2] ENGAGEMENT DETECTED: Status is online Qarrar Somji commented on your post. Half t...
+[2025-12-11 19:07:35]     Found 1 profile links in notification
+[2025-12-11 19:07:35]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 19:07:35]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 19:07:35]   DEBUG [3]: Status is online Unread notification. Qarrar Somji and 1 other reacted to your post. One Data Breach Will Cost You $500K+ and Destroy Your Reputation. Here's How AI Prevents It. 71% of cyberattacks ta
+[2025-12-11 19:07:37]   AI Classification: is_engagement=True, type=reacted
+[2025-12-11 19:07:37]   [3] ENGAGEMENT DETECTED: Status is online  Unread notification.  Qarrar Somji and 1 o...
+[2025-12-11 19:07:37]     Found 1 profile links in notification
+[2025-12-11 19:07:37]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-11 19:07:37]     Added 1 profile(s): Qarrar Somji
+[2025-12-11 19:07:37]   DEBUG [4]: Unread notification. AI Implementation Manager at Sutra.AI and 9 other recommendations for you. AI Implementation Manager at Sutra.AI and 9 other recommendations for you. View jobs 59m
+[2025-12-11 19:07:39]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:39]   DEBUG [5]: Unread notification. Jennifer Bade, Esq. posted: Think About It Thursday 💭 H-1B Applicants Face Months-Long Consular Delays After New Vetting Rule Since December 8, many H-1B and H-4 applicants with i
+[2025-12-11 19:07:41]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:41]   DEBUG [6]: Natan Mohart liked your comment. Natan, your post brilliantly captures why empathy is essential in leadership. The step-by-step approach you’ve shared makes it actionable and clear how leaders can fos
+[2025-12-11 19:07:43]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:07:43]   [6] ENGAGEMENT DETECTED: Natan Mohart liked your comment. Natan, your post brilliantl...
+[2025-12-11 19:07:43]     Found 1 profile links in notification
+[2025-12-11 19:07:43]     Link: NO NAME -> /in/natanmohart
+[2025-12-11 19:07:43]     Added 1 profile(s): Natanmohart
+[2025-12-11 19:07:43]   DEBUG [7]: Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at MathCo. Explore jobs in your network. Kiran Chavan's connection is hiring for a Gen AI Data Governance Consultant at Math
+[2025-12-11 19:07:45]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:45]   DEBUG [8]: Unread notification. 🧠 samreen and 18 others solved this puzzle. Try it now. 🎉 Solve now (quick win!) 🎉 Solve now (quick win!) 4h
+[2025-12-11 19:07:47]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:47]   DEBUG [9]: Unread notification. Big Tech is pouring billions into India’s AI future. Here’s why. Big Tech is pouring billions into India’s AI future. Here’s why. 5h
+[2025-12-11 19:07:50]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:50]   DEBUG [10]: Profile image for several companies on LinkedIn Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 8h
+[2025-12-11 19:07:52]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:54]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 19:07:54]   [11] ENGAGEMENT DETECTED: Robert Adams mentioned you in a comment. Sanjeev, Appreciate...
+[2025-12-11 19:07:54]     Found 1 profile links in notification
+[2025-12-11 19:07:54]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 19:07:54]     Added 1 profile(s): Robert Adams
+[2025-12-11 19:07:56]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:07:58]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:07:58]   [13] ENGAGEMENT DETECTED: Status is reachable Patrick McEuen liked your comment. This ...
+[2025-12-11 19:07:58]     Found 1 profile links in notification
+[2025-12-11 19:07:58]     Link: NO NAME -> /in/patrick%2Dmceuen
+[2025-12-11 19:07:58]     Added 1 profile(s): Patrick
+[2025-12-11 19:08:00]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:02]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:05]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:07]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 19:08:07]   [17] ENGAGEMENT DETECTED: Robert Adams loved your comment. This is a great breakdown, ...
+[2025-12-11 19:08:07]     Found 1 profile links in notification
+[2025-12-11 19:08:07]     Link: NO NAME -> /in/robert%2Dadams%2Dleader
+[2025-12-11 19:08:07]     Added 1 profile(s): Robert Adams
+[2025-12-11 19:08:09]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:11]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:08:11]   [19] ENGAGEMENT DETECTED: Lisa Parlagreco liked your comment. Absolutely agree—maintai...
+[2025-12-11 19:08:11]     Found 1 profile links in notification
+[2025-12-11 19:08:11]     Link: NO NAME -> /in/lisa%2Dparlagreco
+[2025-12-11 19:08:11]     Added 1 profile(s): Lisa
+[2025-12-11 19:08:13]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:08:13]   [20] ENGAGEMENT DETECTED: Larry Kotlyar liked your comment. What an inspiring journey!...
+[2025-12-11 19:08:13]     Found 1 profile links in notification
+[2025-12-11 19:08:13]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-11 19:08:13]     Added 1 profile(s): Larry
+[2025-12-11 19:08:15]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 19:08:15]   [21] ENGAGEMENT DETECTED: Matt Nakajima replied to your comment. Sanjeev Chaodhari Wel...
+[2025-12-11 19:08:15]     Found 1 profile links in notification
+[2025-12-11 19:08:16]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 19:08:16]     Added 1 profile(s): Matt
+[2025-12-11 19:08:18]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:08:18]   [22] ENGAGEMENT DETECTED: Matt Nakajima liked your comment. I can appreciate this pers...
+[2025-12-11 19:08:18]     Found 1 profile links in notification
+[2025-12-11 19:08:18]     Link: NO NAME -> /in/matt%2Dnakajima
+[2025-12-11 19:08:18]     Added 1 profile(s): Matt
+[2025-12-11 19:08:20]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:08:20]   [23] ENGAGEMENT DETECTED: Kevin McManus liked your comment. Great post, Kevin. It's in...
+[2025-12-11 19:08:20]     Found 1 profile links in notification
+[2025-12-11 19:08:20]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 19:08:20]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 19:08:21]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-11 19:08:21]   [24] ENGAGEMENT DETECTED: Kevin McManus mentioned you in a comment. Sanjeev Chaodhari ...
+[2025-12-11 19:08:21]     Found 1 profile links in notification
+[2025-12-11 19:08:21]     Link: NO NAME -> /in/kevinjmcmanus
+[2025-12-11 19:08:21]     Added 1 profile(s): Kevinjmcmanus
+[2025-12-11 19:08:24]   AI Classification: is_engagement=True, type=loved
+[2025-12-11 19:08:24]   [25] ENGAGEMENT DETECTED: Carrie Gray, D.B.A. loved your comment. This is such a helpf...
+[2025-12-11 19:08:24]     Found 1 profile links in notification
+[2025-12-11 19:08:24]     Link: NO NAME -> /in/carriegraydba
+[2025-12-11 19:08:24]     Added 1 profile(s): Carriegraydba
+[2025-12-11 19:08:25]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:27]   AI Classification: is_engagement=True, type=replied
+[2025-12-11 19:08:27]   [27] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 19:08:27]     Found 1 profile links in notification
+[2025-12-11 19:08:27]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 19:08:27]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 19:08:29]   AI Classification: is_engagement=True, type=liked
+[2025-12-11 19:08:29]   [28] ENGAGEMENT DETECTED: Status is online Joel Goldstein - The Dauntless Entrepreneur...
+[2025-12-11 19:08:29]     Found 1 profile links in notification
+[2025-12-11 19:08:29]     Link: NO NAME -> /in/dauntlessentrepreneur
+[2025-12-11 19:08:29]     Added 1 profile(s): Dauntlessentrepreneur
+[2025-12-11 19:08:31]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:32]   AI Classification: is_engagement=False, type=none
+[2025-12-11 19:08:32] Extracted 16 engagement notifications
+[2025-12-11 19:08:32] 
+Processing 16 notifications...
+[2025-12-11 19:08:32] Current invite count: 0/50
+[2025-12-11 19:08:32] 
+--- VIEWED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-11 19:08:32]   Skipping Qarrar Somji - already connected
+[2025-12-11 19:08:32] 
+--- COMMENTED: Status is online
+Qarrar Somji commented on your po...
+[2025-12-11 19:08:32]   Skipping Qarrar Somji - already connected
+[2025-12-11 19:08:32] 
+--- REACTED: Status is online
+
+Unread notification.
+
+Qarrar Som...
+[2025-12-11 19:08:32]   Skipping Qarrar Somji - already connected
+[2025-12-11 19:08:32] 
+--- LIKED: Natan Mohart liked your comment.
+Natan, your post ...
+[2025-12-11 19:08:32]   Checking connection status: https://www.linkedin.com/in/natanmohart
+[2025-12-11 19:08:37]   Sending connection invite to: Natanmohart
+[2025-12-11 19:08:42]     Verifying invite status...
+[2025-12-11 19:08:44]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-11 19:08:44]   Progress: 1/50 invites sent
+[2025-12-11 19:08:44]   Waiting 5s before next action...
+[2025-12-11 19:08:49] 
+--- MENTIONED: Robert Adams mentioned you in a comment.
+Sanjeev, ...
+[2025-12-11 19:08:49]   Checking connection status: https://www.linkedin.com/in/robert%2Dadams%2Dleader
+[2025-12-11 19:08:54]   Sending connection invite to: Robert Adams
+[2025-12-11 19:08:59]     Verifying invite status...
+[2025-12-11 19:09:01]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-11 19:09:01]   Progress: 2/50 invites sent
+[2025-12-11 19:09:01]   Waiting 5s before next action...
+[2025-12-11 19:09:06] 
+--- LIKED: Status is reachable
+Patrick McEuen liked your comm...
+[2025-12-11 19:09:06]   Skipping Patrick - already invited previously
+[2025-12-11 19:09:06] 
+--- LOVED: Robert Adams loved your comment.
+This is a great b...
+[2025-12-11 19:09:06]   Skipping Robert Adams - already invited previously
+[2025-12-11 19:09:06] 
+--- LIKED: Lisa Parlagreco liked your comment.
+Absolutely agr...
+[2025-12-11 19:09:06]   Skipping Lisa - already invited previously
+[2025-12-11 19:09:06] 
+--- LIKED: Larry Kotlyar liked your comment.
+What an inspirin...
+[2025-12-11 19:09:06]   Skipping Larry - already invited previously
+[2025-12-11 19:09:06] 
+--- REPLIED: Matt Nakajima replied to your comment.
+Sanjeev Cha...
+[2025-12-11 19:09:06]   Skipping Matt - already invited previously
+[2025-12-11 19:09:06] 
+--- LIKED: Matt Nakajima liked your comment.
+I can appreciate...
+[2025-12-11 19:09:06]   Skipping Matt - already invited previously
+[2025-12-11 19:09:06] 
+--- LIKED: Kevin McManus liked your comment.
+Great post, Kevi...
+[2025-12-11 19:09:06]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 19:09:06] 
+--- MENTIONED: Kevin McManus mentioned you in a comment.
+Sanjeev ...
+[2025-12-11 19:09:06]   Skipping Kevinjmcmanus - already invited previously
+[2025-12-11 19:09:06] 
+--- LOVED: Carrie Gray, D.B.A. loved your comment.
+This is su...
+[2025-12-11 19:09:06]   Skipping Carriegraydba - already invited previously
+[2025-12-11 19:09:06] 
+--- REPLIED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 19:09:06]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 19:09:06] 
+--- LIKED: Status is online
+Joel Goldstein - The Dauntless En...
+[2025-12-11 19:09:06]   Skipping Dauntlessentrepreneur - already invited previously
+[2025-12-11 19:09:15] 
+============================================================
+[2025-12-11 19:09:15] RUN SUMMARY
+[2025-12-11 19:09:15] ============================================================
+[2025-12-11 19:09:15]   Notifications processed: 16
+[2025-12-11 19:09:15]   Connection invites sent: 2
+[2025-12-11 19:09:15]   Already connected: 0
+[2025-12-11 19:09:15]   Already pending: 0
+[2025-12-11 19:09:15]   Errors/Skipped: 0
+[2025-12-11 19:09:15] ============================================================
+[2025-12-11 19:09:15] 
+Cleaning up...
+[2025-12-11 19:09:15]   Closing agent page...
+[2025-12-11 19:09:15]   Closing additional page: chrome://new-tab-page/...
+[2025-12-11 19:09:15]   Stopping Playwright...
+[2025-12-11 19:09:15]   Terminating Chrome process (PID: 35208)...
+[2025-12-11 19:09:15]   Chrome process terminated successfully.
+[2025-12-11 19:09:15]   Run statistics saved to history.
+[2025-12-11 19:09:15] Agent stopped.
+[2025-12-12 17:50:58] ============================================================
+[2025-12-12 17:50:58] LinkedIn Notification Engagement Agent Starting
+[2025-12-12 17:50:58] ============================================================
+[2025-12-12 17:50:59] Attempting to connect to existing Chrome on port 9222...
+[2025-12-12 17:50:59] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-12 17:50:59] Attempting to launch Chrome...
+[2025-12-12 17:50:59] Checking for existing Chrome processes on port 9222...
+[2025-12-12 17:50:59] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-12 17:50:59] Chrome launched with PID: 39120
+[2025-12-12 17:51:00] Chrome debug port ready (after 1s)
+[2025-12-12 17:51:05] Connection attempt 1/5...
+[2025-12-12 17:51:05] Connected to launched Chrome.
+[2025-12-12 17:51:05] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-12 17:51:12] Notifications page loaded.
+[2025-12-12 17:51:12] Extracting notifications...
+[2025-12-12 17:51:12] Scrolling to load more notifications...
+[2025-12-12 17:51:15]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-12 17:51:16] Found 22 notification cards with selector: article.nt-card
+[2025-12-12 17:51:16]   DEBUG [1]: Status is online Unread notification. Qarrar Somji posted: Legal advice looked pricey to me. Ignorance was premium. I genuinely thought lawyers were too expensive for regular people. Picture baby lawy
+[2025-12-12 17:51:19]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:19]   DEBUG [2]: Status is reachable Unread notification. Vinayak Panchal reposted Vinayak Panchal's post: 🎓 Excited to Share a Milestone! Thrilled to share that I’ve completed my PGDM in Project Management from MIT S
+[2025-12-12 17:51:21]   AI Classification: is_engagement=True, type=shared
+[2025-12-12 17:51:21]   [2] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Vinayak Panchal r...
+[2025-12-12 17:51:21]     Found 1 profile links in notification
+[2025-12-12 17:51:21]     Link: NO NAME -> /in/panchalvinayak
+[2025-12-12 17:51:21]     Added 1 profile(s): Panchalvinayak
+[2025-12-12 17:51:21]   DEBUG [3]: Unread notification. Larry Kotlyar viewed your profile. See all views. 3h
+[2025-12-12 17:51:23]   AI Classification: is_engagement=True, type=viewed
+[2025-12-12 17:51:23]   [3] ENGAGEMENT DETECTED: Unread notification.  Larry Kotlyar viewed your profile. See...
+[2025-12-12 17:51:23]     Found 1 profile links in notification
+[2025-12-12 17:51:23]     Link: NO NAME -> /in/larry%2Dkotlyar
+[2025-12-12 17:51:23]     Added 1 profile(s): Larry
+[2025-12-12 17:51:23]   DEBUG [4]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 3h
+[2025-12-12 17:51:25]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:25]   DEBUG [5]: Unread notification. People are engaging with Kyree Robinson-Banks’ post: With my time in D.C. now concluded, I’d like to mention the amazing experience I had interning in the office of Congresswoman 
+[2025-12-12 17:51:27]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 17:51:27]   [5] ENGAGEMENT DETECTED: Unread notification.  People are engaging with Kyree Robinso...
+[2025-12-12 17:51:27]     Found 1 profile links in notification
+[2025-12-12 17:51:27]     Link: NO NAME -> /in/kyree%2Drobinson%2Dbanks
+[2025-12-12 17:51:27]     Added 1 profile(s): Kyree Robinson Banks
+[2025-12-12 17:51:27]   DEBUG [6]: Status is reachable Unread notification. Mitchell Chubb, Andrew Pickett, and 3 other connections reacted to a post: A lawyer I've known for years was surprised to see me at a misdemeanor court a few w
+[2025-12-12 17:51:29]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 17:51:29]   [6] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Mitchell Chubb, A...
+[2025-12-12 17:51:29]     Found 1 profile links in notification
+[2025-12-12 17:51:29]     Link: NO NAME -> /in/mitchell%2Dchubb
+[2025-12-12 17:51:29]     Added 1 profile(s): Mitchell Chubb
+[2025-12-12 17:51:29]   DEBUG [7]: Status is reachable Unread notification. Rt n. Taha Haaziq shared about starting a new position as president at rotary club of bardez coastal, Rotary District 3170. : I’m happy to share that I’m start
+[2025-12-12 17:51:31]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:31]   DEBUG [8]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 7h
+[2025-12-12 17:51:33]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:33]   DEBUG [9]: Status is reachable Unread notification. Tom Irving reacted to Tina Dorr's post: I left a recent patent strategy panel I moderated at a national conference thinking about one thing: IP systems are str
+[2025-12-12 17:51:35]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 17:51:35]   [9] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Tom Irving reacte...
+[2025-12-12 17:51:35]     Found 1 profile links in notification
+[2025-12-12 17:51:35]     Link: NO NAME -> /in/tom%2Dirving%2D9459b610
+[2025-12-12 17:51:35]     Added 1 profile(s): Tom Irving
+[2025-12-12 17:51:35]   DEBUG [10]: Unread notification. Your post has reached 22 impressions so far. View more analytics. Enterprise-Level Security for Your Firm on a Shoestring Budget You can't afford a $50K cybersecurity setup. You a
+[2025-12-12 17:51:37]   AI Classification: is_engagement=True, type=none
+[2025-12-12 17:51:37]   [10] ENGAGEMENT DETECTED: Unread notification.  Your post has reached 22 impressions s...
+[2025-12-12 17:51:37]     Found 0 profile links in notification
+[2025-12-12 17:51:37]     ✗ No valid profiles extracted from this notification
+[2025-12-12 17:51:39]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:42]   AI Classification: is_engagement=True, type=liked
+[2025-12-12 17:51:42]   [12] ENGAGEMENT DETECTED: Unread notification.  Jonathan Vasquez and 2 others liked yo...
+[2025-12-12 17:51:42]     Found 1 profile links in notification
+[2025-12-12 17:51:42]     Link: NO NAME -> /in/jonathangms
+[2025-12-12 17:51:42]     Added 1 profile(s): Jonathangms
+[2025-12-12 17:51:43]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:45]   AI Classification: is_engagement=True, type=none
+[2025-12-12 17:51:45]   [14] ENGAGEMENT DETECTED: Unread notification.  Your comment has gained 440 impression...
+[2025-12-12 17:51:45]     Found 0 profile links in notification
+[2025-12-12 17:51:45]     ✗ No valid profiles extracted from this notification
+[2025-12-12 17:51:48]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:50]   AI Classification: is_engagement=True, type=commented
+[2025-12-12 17:51:50]   [16] ENGAGEMENT DETECTED: Status is online Qarrar Somji commented on your post. Half t...
+[2025-12-12 17:51:50]     Found 1 profile links in notification
+[2025-12-12 17:51:50]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-12 17:51:50]     Added 1 profile(s): Qarrar Somji
+[2025-12-12 17:51:52]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 17:51:52]   [17] ENGAGEMENT DETECTED: Status is online Qarrar Somji and 1 other reacted to your po...
+[2025-12-12 17:51:52]     Found 1 profile links in notification
+[2025-12-12 17:51:52]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-12 17:51:52]     Added 1 profile(s): Qarrar Somji
+[2025-12-12 17:51:54]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:56]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:51:57]   AI Classification: is_engagement=True, type=liked
+[2025-12-12 17:51:57]   [20] ENGAGEMENT DETECTED: Natan Mohart liked your comment. Natan, your post brilliantl...
+[2025-12-12 17:51:57]     Found 1 profile links in notification
+[2025-12-12 17:51:57]     Link: NO NAME -> /in/natanmohart
+[2025-12-12 17:51:57]     Added 1 profile(s): Natanmohart
+[2025-12-12 17:51:59]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:52:01]   AI Classification: is_engagement=False, type=none
+[2025-12-12 17:52:01] Extracted 9 engagement notifications
+[2025-12-12 17:52:01] 
+Processing 9 notifications...
+[2025-12-12 17:52:01] Current invite count: 0/50
+[2025-12-12 17:52:01] 
+--- SHARED: Status is reachable
+
+Unread notification.
+
+Vinayak...
+[2025-12-12 17:52:01]   Checking connection status: https://www.linkedin.com/in/panchalvinayak
+[2025-12-12 17:52:06]   Sending connection invite to: Panchalvinayak
+[2025-12-12 17:52:11]     Verifying invite status...
+[2025-12-12 17:52:13]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-12 17:52:13]   Progress: 1/50 invites sent
+[2025-12-12 17:52:13]   Waiting 5s before next action...
+[2025-12-12 17:52:18] 
+--- VIEWED: Unread notification.
+
+Larry Kotlyar viewed your pr...
+[2025-12-12 17:52:18]   Skipping Larry - already invited previously
+[2025-12-12 17:52:18] 
+--- REACTED: Unread notification.
+
+People are engaging with Kyr...
+[2025-12-12 17:52:18]   Checking connection status: https://www.linkedin.com/in/kyree%2Drobinson%2Dbanks
+[2025-12-12 17:52:22]   Sending connection invite to: Kyree Robinson Banks
+[2025-12-12 17:52:27]     Verifying invite status...
+[2025-12-12 17:52:29]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-12 17:52:29]   Progress: 2/50 invites sent
+[2025-12-12 17:52:29]   Waiting 5s before next action...
+[2025-12-12 17:52:34] 
+--- REACTED: Status is reachable
+
+Unread notification.
+
+Mitchel...
+[2025-12-12 17:52:34]   Checking connection status: https://www.linkedin.com/in/mitchell%2Dchubb
+[2025-12-12 17:52:38]   Sending connection invite to: Mitchell Chubb
+[2025-12-12 17:52:43]     Verifying invite status...
+[2025-12-12 17:52:45]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-12 17:52:45]   Progress: 3/50 invites sent
+[2025-12-12 17:52:45]   Waiting 5s before next action...
+[2025-12-12 17:52:50] 
+--- REACTED: Status is reachable
+
+Unread notification.
+
+Tom Irv...
+[2025-12-12 17:52:50]   Checking connection status: https://www.linkedin.com/in/tom%2Dirving%2D9459b610
+[2025-12-12 17:52:54]   Sending connection invite to: Tom Irving
+[2025-12-12 17:53:00]     Verifying invite status...
+[2025-12-12 17:53:02]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-12 17:53:02]   Progress: 4/50 invites sent
+[2025-12-12 17:53:02]   Waiting 5s before next action...
+[2025-12-12 17:53:07] 
+--- LIKED: Unread notification.
+
+Jonathan Vasquez and 2 other...
+[2025-12-12 17:53:07]   Checking connection status: https://www.linkedin.com/in/jonathangms
+[2025-12-12 17:53:11]   Sending connection invite to: Jonathangms
+[2025-12-12 17:53:23]     Clicking 'Send without a note'...
+[2025-12-12 17:53:25]     Verifying invite status...
+[2025-12-12 17:53:27]     ✓ Connection invite confirmed (Status: Pending)
+[2025-12-12 17:53:27]   Progress: 5/50 invites sent
+[2025-12-12 17:53:27]   Waiting 5s before next action...
+[2025-12-12 17:53:32] 
+--- COMMENTED: Status is online
+Qarrar Somji commented on your po...
+[2025-12-12 17:53:32]   Skipping Qarrar Somji - already connected
+[2025-12-12 17:53:32] 
+--- REACTED: Status is online
+Qarrar Somji and 1 other reacted ...
+[2025-12-12 17:53:32]   Skipping Qarrar Somji - already connected
+[2025-12-12 17:53:32] 
+--- LIKED: Natan Mohart liked your comment.
+Natan, your post ...
+[2025-12-12 17:53:32]   Skipping Natanmohart - already invited previously
+[2025-12-12 17:53:34] 
+============================================================
+[2025-12-12 17:53:34] RUN SUMMARY
+[2025-12-12 17:53:34] ============================================================
+[2025-12-12 17:53:34]   Notifications processed: 9
+[2025-12-12 17:53:34]   Connection invites sent: 5
+[2025-12-12 17:53:34]   Already connected: 0
+[2025-12-12 17:53:34]   Already pending: 0
+[2025-12-12 17:53:34]   Errors/Skipped: 0
+[2025-12-12 17:53:34] ============================================================
+[2025-12-12 17:53:34] 
+Cleaning up...
+[2025-12-12 17:53:34]   Closing agent page...
+[2025-12-12 17:53:35]   Closing additional page: chrome://new-tab-page/...
+[2025-12-12 17:53:35]   Stopping Playwright...
+[2025-12-12 17:53:35]   Terminating Chrome process (PID: 39120)...
+[2025-12-12 17:53:35]   Chrome process terminated successfully.
+[2025-12-12 17:53:35]   Run statistics saved to history.
+[2025-12-12 17:53:35] Agent stopped.
+[2025-12-12 22:26:06] ============================================================
+[2025-12-12 22:26:06] LinkedIn Notification Engagement Agent Starting
+[2025-12-12 22:26:06] ============================================================
+[2025-12-12 22:26:06] Attempting to connect to existing Chrome on port 9222...
+[2025-12-12 22:26:06] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-12 22:26:06] Attempting to launch Chrome...
+[2025-12-12 22:26:06] Checking for existing Chrome processes on port 9222...
+[2025-12-12 22:26:06] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-12 22:26:06] Chrome launched with PID: 30084
+[2025-12-12 22:26:07] Chrome debug port ready (after 1s)
+[2025-12-12 22:26:12] Connection attempt 1/5...
+[2025-12-12 22:26:13] Connected to launched Chrome.
+[2025-12-12 22:26:13] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-12 22:26:21] Notifications page loaded.
+[2025-12-12 22:26:21] Extracting notifications...
+[2025-12-12 22:26:21] Scrolling to load more notifications...
+[2025-12-12 22:26:24]   Stopped scrolling after 2 attempts (no new content)
+[2025-12-12 22:26:25] Found 22 notification cards with selector: article.nt-card
+[2025-12-12 22:26:25]   DEBUG [1]: Unread notification. New from Nicole Black in Legaltech Reality Check: Legaltech Reality Check | December 12, 2025 47m
+[2025-12-12 22:26:28]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:29]   DEBUG [2]: Unread notification. 2 people viewed your profile. See the full list with Premium. Try Premium for ₹0 1-month free trial. We’ll send you a reminder 7 days before your trial ends. 1h
+[2025-12-12 22:26:31]   AI Classification: is_engagement=True, type=viewed
+[2025-12-12 22:26:31]   [2] ENGAGEMENT DETECTED: Unread notification.  2 people viewed your profile. See the ...
+[2025-12-12 22:26:31]     Found 0 profile links in notification
+[2025-12-12 22:26:31]     ✗ No valid profiles extracted from this notification
+[2025-12-12 22:26:31]   DEBUG [3]: Unread notification. Skill Arbitrage was live for Pre-Bootcamp Session - AMA on getting US support & ops jobs & clients: This is a pre-bootcamp session, ask me anything where you can get all your ques
+[2025-12-12 22:26:33]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:33]   DEBUG [4]: Unread notification. Your post has reached 25 impressions so far. View more analytics. Enterprise-Level Security for Your Firm on a Shoestring Budget You can't afford a $50K cybersecurity setup. You a
+[2025-12-12 22:26:35]   AI Classification: is_engagement=True, type=none
+[2025-12-12 22:26:35]   [4] ENGAGEMENT DETECTED: Unread notification.  Your post has reached 25 impressions s...
+[2025-12-12 22:26:35]     Found 0 profile links in notification
+[2025-12-12 22:26:35]     ✗ No valid profiles extracted from this notification
+[2025-12-12 22:26:35]   DEBUG [5]: Unread notification. Kurt London posted: Employee of the Month… who technically doesn’t work here. Every law firm has that one MVP who keeps morale high, productivity up, and spirits lifted. At our fi
+[2025-12-12 22:26:37]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:37]   DEBUG [6]: Status is reachable Unread notification. Ankita Maurya posted: #wearehiring #Javafullstack 3h
+[2025-12-12 22:26:39]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:39]   DEBUG [7]: Status is online Qarrar Somji posted: Legal advice looked pricey to me. Ignorance was premium. I genuinely thought lawyers were too expensive for regular people. Picture baby lawyer me, fresh out of l
+[2025-12-12 22:26:42]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:42]   DEBUG [8]: Status is reachable Vinayak Panchal reposted Vinayak Panchal's post: 🎓 Excited to Share a Milestone! Thrilled to share that I’ve completed my PGDM in Project Management from MIT School of Distance Edu
+[2025-12-12 22:26:44]   AI Classification: is_engagement=True, type=shared
+[2025-12-12 22:26:44]   [8] ENGAGEMENT DETECTED: Status is reachable Vinayak Panchal reposted Vinayak Panchal...
+[2025-12-12 22:26:44]     Found 1 profile links in notification
+[2025-12-12 22:26:44]     Link: NO NAME -> /in/panchalvinayak
+[2025-12-12 22:26:44]     Added 1 profile(s): Panchalvinayak
+[2025-12-12 22:26:44]   DEBUG [9]: Profile image for several companies on LinkedIn Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 8h
+[2025-12-12 22:26:46]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:46]   DEBUG [10]: People are engaging with Kyree Robinson-Banks’ post: With my time in D.C. now concluded, I’d like to mention the amazing experience I had interning in the office of Congresswoman LaMonica McIver of Ne
+[2025-12-12 22:26:48]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 22:26:48]   [10] ENGAGEMENT DETECTED: People are engaging with Kyree Robinson-Banks’ post: With my...
+[2025-12-12 22:26:48]     Found 1 profile links in notification
+[2025-12-12 22:26:48]     Link: NO NAME -> /in/kyree%2Drobinson%2Dbanks
+[2025-12-12 22:26:48]     Added 1 profile(s): Kyree Robinson Banks
+[2025-12-12 22:26:50]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 22:26:50]   [11] ENGAGEMENT DETECTED: Status is online Mitchell Chubb, Andrew Pickett, and 3 other...
+[2025-12-12 22:26:50]     Found 1 profile links in notification
+[2025-12-12 22:26:50]     Link: NO NAME -> /in/mitchell%2Dchubb
+[2025-12-12 22:26:50]     Added 1 profile(s): Mitchell Chubb
+[2025-12-12 22:26:52]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:54]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:26:56]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 22:26:56]   [14] ENGAGEMENT DETECTED: Status is reachable Tom Irving reacted to Tina Dorr's post: ...
+[2025-12-12 22:26:56]     Found 1 profile links in notification
+[2025-12-12 22:26:56]     Link: NO NAME -> /in/tom%2Dirving%2D9459b610
+[2025-12-12 22:26:56]     Added 1 profile(s): Tom Irving
+[2025-12-12 22:26:58]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:27:00]   AI Classification: is_engagement=True, type=liked
+[2025-12-12 22:27:00]   [16] ENGAGEMENT DETECTED: Unread notification.  Jonathan Vasquez and 2 others liked yo...
+[2025-12-12 22:27:00]     Found 1 profile links in notification
+[2025-12-12 22:27:00]     Link: NO NAME -> /in/jonathangms
+[2025-12-12 22:27:00]     Added 1 profile(s): Jonathangms
+[2025-12-12 22:27:02]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:27:04]   AI Classification: is_engagement=True, type=none
+[2025-12-12 22:27:04]   [18] ENGAGEMENT DETECTED: Your comment has gained 441 impressions. Your comment has ga...
+[2025-12-12 22:27:04]     Found 0 profile links in notification
+[2025-12-12 22:27:04]     ✗ No valid profiles extracted from this notification
+[2025-12-12 22:27:06]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:27:08]   AI Classification: is_engagement=True, type=commented
+[2025-12-12 22:27:08]   [20] ENGAGEMENT DETECTED: Status is online Qarrar Somji commented on your post. Half t...
+[2025-12-12 22:27:08]     Found 1 profile links in notification
+[2025-12-12 22:27:08]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-12 22:27:08]     Added 1 profile(s): Qarrar Somji
+[2025-12-12 22:27:10]   AI Classification: is_engagement=True, type=reacted
+[2025-12-12 22:27:10]   [21] ENGAGEMENT DETECTED: Status is online Qarrar Somji and 1 other reacted to your po...
+[2025-12-12 22:27:10]     Found 1 profile links in notification
+[2025-12-12 22:27:10]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-12 22:27:10]     Added 1 profile(s): Qarrar Somji
+[2025-12-12 22:27:12]   AI Classification: is_engagement=False, type=none
+[2025-12-12 22:27:12] Extracted 7 engagement notifications
+[2025-12-12 22:27:12] 
+Processing 7 notifications...
+[2025-12-12 22:27:12] Current invite count: 0/50
+[2025-12-12 22:27:12] 
+--- SHARED: Status is reachable
+Vinayak Panchal reposted Vinay...
+[2025-12-12 22:27:12]   Skipping Panchalvinayak - already invited previously
+[2025-12-12 22:27:12] 
+--- REACTED: People are engaging with Kyree Robinson-Banks’ pos...
+[2025-12-12 22:27:12]   Skipping Kyree Robinson Banks - already invited previously
+[2025-12-12 22:27:12] 
+--- REACTED: Status is online
+Mitchell Chubb, Andrew Pickett, a...
+[2025-12-12 22:27:12]   Skipping Mitchell Chubb - already invited previously
+[2025-12-12 22:27:12] 
+--- REACTED: Status is reachable
+Tom Irving reacted to Tina Dor...
+[2025-12-12 22:27:12]   Skipping Tom Irving - already invited previously
+[2025-12-12 22:27:12] 
+--- LIKED: Unread notification.
+
+Jonathan Vasquez and 2 other...
+[2025-12-12 22:27:12]   Skipping Jonathangms - already invited previously
+[2025-12-12 22:27:12] 
+--- COMMENTED: Status is online
+Qarrar Somji commented on your po...
+[2025-12-12 22:27:12]   Skipping Qarrar Somji - already connected
+[2025-12-12 22:27:12] 
+--- REACTED: Status is online
+Qarrar Somji and 1 other reacted ...
+[2025-12-12 22:27:12]   Skipping Qarrar Somji - already connected
+[2025-12-12 22:27:15] 
+============================================================
+[2025-12-12 22:27:15] RUN SUMMARY
+[2025-12-12 22:27:15] ============================================================
+[2025-12-12 22:27:15]   Notifications processed: 7
+[2025-12-12 22:27:15]   Connection invites sent: 0
+[2025-12-12 22:27:15]   Already connected: 0
+[2025-12-12 22:27:15]   Already pending: 0
+[2025-12-12 22:27:15]   Errors/Skipped: 0
+[2025-12-12 22:27:15] ============================================================
+[2025-12-12 22:27:15] 
+Cleaning up...
+[2025-12-12 22:27:15]   Closing agent page...
+[2025-12-12 22:27:16]   Closing additional page: chrome://new-tab-page/...
+[2025-12-12 22:27:16]   Stopping Playwright...
+[2025-12-12 22:27:16]   Terminating Chrome process (PID: 30084)...
+[2025-12-12 22:27:16]   Chrome process terminated successfully.
+[2025-12-12 22:27:16]   Run statistics saved to history.
+[2025-12-12 22:27:16] Agent stopped.
+[2025-12-13 18:32:03] ============================================================
+[2025-12-13 18:32:03] LinkedIn Notification Engagement Agent Starting
+[2025-12-13 18:32:03] ============================================================
+[2025-12-13 18:32:03] Attempting to connect to existing Chrome on port 9222...
+[2025-12-13 18:32:03] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-13 18:32:03] Attempting to launch Chrome...
+[2025-12-13 18:32:03] Checking for existing Chrome processes on port 9222...
+[2025-12-13 18:32:03] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-13 18:32:03] Chrome launched with PID: 22552
+[2025-12-13 18:32:04] Chrome debug port ready (after 1s)
+[2025-12-13 18:32:09] Connection attempt 1/5...
+[2025-12-13 18:32:09] Connected to launched Chrome.
+[2025-12-13 18:32:09] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-13 18:32:18] Notifications page loaded.
+[2025-12-13 18:32:18] Extracting notifications...
+[2025-12-13 18:32:18] Scrolling to load more notifications...
+[2025-12-13 18:32:22]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-13 18:32:23] Found 32 notification cards with selector: article.nt-card
+[2025-12-13 18:32:23]   DEBUG [1]: Unread notification. Knowledge Management Specialist at Network Science and 9 other recommendations for you. Knowledge Management Specialist at Network Science and 9 other recommendations for you. Vie
+[2025-12-13 18:32:26]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:26]   DEBUG [2]: Unread notification. Here are the top tech stories you may have missed this week. Here are the top tech stories you may have missed this week. 7h
+[2025-12-13 18:32:28]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:28]   DEBUG [3]: Profile image for several companies on LinkedIn Unread notification. Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 8h
+[2025-12-13 18:32:30]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:30]   DEBUG [4]: Status is reachable Unread notification. Ruhin Bhattasali posted: Hi connections 👋 The past week has been one of the most enriching experiences of this year for me. I had the opportunity to participat
+[2025-12-13 18:32:32]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:32]   DEBUG [5]: Status is reachable Unread notification. Kyle Wright posted: Your family/close friends can tell the difference. One of the reasons I always speak with a client’s spouse, family, or close friends in a 
+[2025-12-13 18:32:34]   AI Classification: is_engagement=True, type=none
+[2025-12-13 18:32:34]   [5] ENGAGEMENT DETECTED: Status is reachable  Unread notification.  Kyle Wright poste...
+[2025-12-13 18:32:34]     Found 1 profile links in notification
+[2025-12-13 18:32:34]     Link: NO NAME -> /in/kyle%2Dwright%2D96b35019
+[2025-12-13 18:32:34]     Added 1 profile(s): Kyle Wright
+[2025-12-13 18:32:34]   DEBUG [6]: Unread notification. Research Skills request from GAUTAM SAHU and other clients are available. Show Requests. Research Skills request from GAUTAM SAHU and other clients are available. Show Requests. 1
+[2025-12-13 18:32:37]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:37]   DEBUG [7]: Unread notification. Suggested for you: I’ve got a proper ethical quandary on my mind today. ⚖️ Imagine this: a lawyer provides advice to a client. The client then feeds it into ChatGPT for a second o
+[2025-12-13 18:32:39]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:39]   DEBUG [8]: New from Nicole Black in Legaltech Reality Check: Legaltech Reality Check | December 12, 2025 20h
+[2025-12-13 18:32:41]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:41]   DEBUG [9]: 2 people viewed your profile. See the full list with Premium. Try Premium for ₹0 1-month free trial. We’ll send you a reminder 7 days before your trial ends. 21h
+[2025-12-13 18:32:43]   AI Classification: is_engagement=True, type=viewed
+[2025-12-13 18:32:43]   [9] ENGAGEMENT DETECTED: 2 people viewed your profile. See the full list with Premium...
+[2025-12-13 18:32:43]     Found 0 profile links in notification
+[2025-12-13 18:32:43]     ✗ No valid profiles extracted from this notification
+[2025-12-13 18:32:43]   DEBUG [10]: Skill Arbitrage was live for Pre-Bootcamp Session - AMA on getting US support & ops jobs & clients: This is a pre-bootcamp session, ask me anything where you can get all your questions answered, and b
+[2025-12-13 18:32:45]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:47]   AI Classification: is_engagement=True, type=none
+[2025-12-13 18:32:47]   [11] ENGAGEMENT DETECTED: Your post has reached 28 impressions so far. View more analy...
+[2025-12-13 18:32:47]     Found 0 profile links in notification
+[2025-12-13 18:32:47]     ✗ No valid profiles extracted from this notification
+[2025-12-13 18:32:49]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:51]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:53]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:55]   AI Classification: is_engagement=True, type=shared
+[2025-12-13 18:32:55]   [15] ENGAGEMENT DETECTED: Status is reachable Vinayak Panchal reposted Vinayak Panchal...
+[2025-12-13 18:32:55]     Found 1 profile links in notification
+[2025-12-13 18:32:55]     Link: NO NAME -> /in/panchalvinayak
+[2025-12-13 18:32:55]     Added 1 profile(s): Panchalvinayak
+[2025-12-13 18:32:57]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:32:59]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 18:32:59]   [17] ENGAGEMENT DETECTED: People are engaging with Kyree Robinson-Banks’ post: With my...
+[2025-12-13 18:32:59]     Found 1 profile links in notification
+[2025-12-13 18:32:59]     Link: NO NAME -> /in/kyree%2Drobinson%2Dbanks
+[2025-12-13 18:32:59]     Added 1 profile(s): Kyree Robinson Banks
+[2025-12-13 18:33:00]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 18:33:00]   [18] ENGAGEMENT DETECTED: Status is reachable Mitchell Chubb, Andrew Pickett, and 3 ot...
+[2025-12-13 18:33:00]     Found 1 profile links in notification
+[2025-12-13 18:33:00]     Link: NO NAME -> /in/mitchell%2Dchubb
+[2025-12-13 18:33:00]     Added 1 profile(s): Mitchell Chubb
+[2025-12-13 18:33:02]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:03]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 18:33:03]   [20] ENGAGEMENT DETECTED: Status is reachable Tom Irving reacted to Tina Dorr's post: ...
+[2025-12-13 18:33:03]     Found 1 profile links in notification
+[2025-12-13 18:33:03]     Link: NO NAME -> /in/tom%2Dirving%2D9459b610
+[2025-12-13 18:33:03]     Added 1 profile(s): Tom Irving
+[2025-12-13 18:33:05]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:08]   AI Classification: is_engagement=True, type=liked
+[2025-12-13 18:33:08]   [22] ENGAGEMENT DETECTED: Jonathan Vasquez and 2 others liked your comment. Your refle...
+[2025-12-13 18:33:08]     Found 1 profile links in notification
+[2025-12-13 18:33:08]     Link: NO NAME -> /in/jonathangms
+[2025-12-13 18:33:08]     Added 1 profile(s): Jonathangms
+[2025-12-13 18:33:09]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:11]   AI Classification: is_engagement=True, type=none
+[2025-12-13 18:33:11]   [24] ENGAGEMENT DETECTED: Your comment has gained 457 impressions. Your comment has ga...
+[2025-12-13 18:33:11]     Found 0 profile links in notification
+[2025-12-13 18:33:11]     ✗ No valid profiles extracted from this notification
+[2025-12-13 18:33:14]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:16]   AI Classification: is_engagement=True, type=commented
+[2025-12-13 18:33:16]   [26] ENGAGEMENT DETECTED: Status is online Qarrar Somji commented on your post. Half t...
+[2025-12-13 18:33:16]     Found 1 profile links in notification
+[2025-12-13 18:33:16]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-13 18:33:16]     Added 1 profile(s): Qarrar Somji
+[2025-12-13 18:33:19]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 18:33:19]   [27] ENGAGEMENT DETECTED: Status is online Qarrar Somji and 1 other reacted to your po...
+[2025-12-13 18:33:19]     Found 1 profile links in notification
+[2025-12-13 18:33:19]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-13 18:33:19]     Added 1 profile(s): Qarrar Somji
+[2025-12-13 18:33:21]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:23]   AI Classification: is_engagement=True, type=liked
+[2025-12-13 18:33:23]   [29] ENGAGEMENT DETECTED: Natan Mohart liked your comment. Natan, your post brilliantl...
+[2025-12-13 18:33:23]     Found 1 profile links in notification
+[2025-12-13 18:33:23]     Link: NO NAME -> /in/natanmohart
+[2025-12-13 18:33:23]     Added 1 profile(s): Natanmohart
+[2025-12-13 18:33:25]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:28]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:30]   AI Classification: is_engagement=False, type=none
+[2025-12-13 18:33:30] Extracted 9 engagement notifications
+[2025-12-13 18:33:30] 
+Processing 9 notifications...
+[2025-12-13 18:33:30] Current invite count: 0/50
+[2025-12-13 18:33:30] 
+--- ENGAGED: Status is reachable
+
+Unread notification.
+
+Kyle Wr...
+[2025-12-13 18:33:30]   Skipping Kyle Wright - already invited previously
+[2025-12-13 18:33:30] 
+--- SHARED: Status is reachable
+Vinayak Panchal reposted Vinay...
+[2025-12-13 18:33:30]   Skipping Panchalvinayak - already invited previously
+[2025-12-13 18:33:30] 
+--- REACTED: People are engaging with Kyree Robinson-Banks’ pos...
+[2025-12-13 18:33:30]   Skipping Kyree Robinson Banks - already invited previously
+[2025-12-13 18:33:30] 
+--- REACTED: Status is reachable
+Mitchell Chubb, Andrew Pickett...
+[2025-12-13 18:33:30]   Skipping Mitchell Chubb - already invited previously
+[2025-12-13 18:33:30] 
+--- REACTED: Status is reachable
+Tom Irving reacted to Tina Dor...
+[2025-12-13 18:33:30]   Skipping Tom Irving - already invited previously
+[2025-12-13 18:33:30] 
+--- LIKED: Jonathan Vasquez and 2 others liked your comment.
+...
+[2025-12-13 18:33:30]   Skipping Jonathangms - already invited previously
+[2025-12-13 18:33:30] 
+--- COMMENTED: Status is online
+Qarrar Somji commented on your po...
+[2025-12-13 18:33:30]   Skipping Qarrar Somji - already connected
+[2025-12-13 18:33:30] 
+--- REACTED: Status is online
+Qarrar Somji and 1 other reacted ...
+[2025-12-13 18:33:30]   Skipping Qarrar Somji - already connected
+[2025-12-13 18:33:30] 
+--- LIKED: Natan Mohart liked your comment.
+Natan, your post ...
+[2025-12-13 18:33:30]   Skipping Natanmohart - already invited previously
+[2025-12-13 18:33:33] 
+============================================================
+[2025-12-13 18:33:33] RUN SUMMARY
+[2025-12-13 18:33:33] ============================================================
+[2025-12-13 18:33:33]   Notifications processed: 9
+[2025-12-13 18:33:33]   Connection invites sent: 0
+[2025-12-13 18:33:33]   Already connected: 0
+[2025-12-13 18:33:33]   Already pending: 0
+[2025-12-13 18:33:33]   Errors/Skipped: 0
+[2025-12-13 18:33:33] ============================================================
+[2025-12-13 18:33:33] 
+Cleaning up...
+[2025-12-13 18:33:33]   Closing agent page...
+[2025-12-13 18:33:33]   Closing additional page: chrome://new-tab-page/...
+[2025-12-13 18:33:33]   Stopping Playwright...
+[2025-12-13 18:33:33]   Terminating Chrome process (PID: 22552)...
+[2025-12-13 18:33:33]   Chrome process terminated successfully.
+[2025-12-13 18:33:33]   Run statistics saved to history.
+[2025-12-13 18:33:33] Agent stopped.
+[2025-12-13 20:24:21] ============================================================
+[2025-12-13 20:24:21] LinkedIn Notification Engagement Agent Starting
+[2025-12-13 20:24:21] ============================================================
+[2025-12-13 20:24:22] Attempting to connect to existing Chrome on port 9222...
+[2025-12-13 20:24:22] Failed to connect to existing Chrome: BrowserType.connect_over_cdp: connect ECONNREFUSED 127.0.0.1:9222
+Call log:
+  - <ws preparing> retrieving websocket url from http://127.0.0.1:9222
+
+[2025-12-13 20:24:22] Attempting to launch Chrome...
+[2025-12-13 20:24:22] Checking for existing Chrome processes on port 9222...
+[2025-12-13 20:24:22] Launching Chrome: C:\Program Files\Google\Chrome\Application\chrome.exe --remote-debugging-port=9222 --user-data-dir=C:\ChromeAutomationProfile --no-first-run --no-default-browser-check --disable-background-networking --disable-client-side-phishing-detection --disable-hang-monitor
+[2025-12-13 20:24:22] Chrome launched with PID: 12960
+[2025-12-13 20:24:23] Chrome debug port ready (after 1s)
+[2025-12-13 20:24:28] Connection attempt 1/5...
+[2025-12-13 20:24:28] Connected to launched Chrome.
+[2025-12-13 20:24:28] Navigating to notifications: https://www.linkedin.com/notifications/
+[2025-12-13 20:24:35] Notifications page loaded.
+[2025-12-13 20:24:35] Extracting notifications...
+[2025-12-13 20:24:35] Scrolling to load more notifications...
+[2025-12-13 20:24:40]   Stopped scrolling after 3 attempts (no new content)
+[2025-12-13 20:24:41] Found 32 notification cards with selector: article.nt-card
+[2025-12-13 20:24:41]   DEBUG [1]: Unread notification. Munir Machmud Ali reposted Eko Satrio's article: Kuliah Umum Informatika & Komputer 16m
+[2025-12-13 20:24:44]   AI Classification: is_engagement=True, type=shared
+[2025-12-13 20:24:44]   [1] ENGAGEMENT DETECTED: Unread notification.  Munir Machmud Ali reposted Eko Satrio'...
+[2025-12-13 20:24:44]     Found 1 profile links in notification
+[2025-12-13 20:24:44]     Link: NO NAME -> /in/munir%2Dmachmud%2Dali%2D1b2a4774
+[2025-12-13 20:24:44]     Added 1 profile(s): Munir Machmud Ali
+[2025-12-13 20:24:44]   DEBUG [2]: Status is online Unread notification. Mandy Rodriguez mentioned you in a comment. Sanjeev Chaodhari Very welcome. I agree with you, results and professionalism is what defines our success… doesn’t mat
+[2025-12-13 20:24:46]   AI Classification: is_engagement=True, type=mentioned
+[2025-12-13 20:24:46]   [2] ENGAGEMENT DETECTED: Status is online  Unread notification.  Mandy Rodriguez ment...
+[2025-12-13 20:24:46]     Found 1 profile links in notification
+[2025-12-13 20:24:46]     Link: NO NAME -> /in/mandy%2Drodriguez%2D63987817
+[2025-12-13 20:24:46]     Added 1 profile(s): Mandy Rodriguez
+[2025-12-13 20:24:46]   DEBUG [3]: Status is online Unread notification. Mandy Rodriguez liked your comment. Thank you for sharing this insightful experience. Your perspective on focusing on qualifications and effective advocacy, rathe
+[2025-12-13 20:24:48]   AI Classification: is_engagement=True, type=liked
+[2025-12-13 20:24:48]   [3] ENGAGEMENT DETECTED: Status is online  Unread notification.  Mandy Rodriguez like...
+[2025-12-13 20:24:48]     Found 1 profile links in notification
+[2025-12-13 20:24:48]     Link: NO NAME -> /in/mandy%2Drodriguez%2D63987817
+[2025-12-13 20:24:48]     Added 1 profile(s): Mandy Rodriguez
+[2025-12-13 20:24:48]   DEBUG [4]: Unread notification. Munir Machmud Ali reposted Cindi Wirawan 林幸妮's post: Best networking event of 2025 🙌 Completely biased but vibes don’t lie. Our Vibe Tribe lunch at LinkedIn APAC HQ felt nothing l
+[2025-12-13 20:24:50]   AI Classification: is_engagement=True, type=shared
+[2025-12-13 20:24:50]   [4] ENGAGEMENT DETECTED: Unread notification.  Munir Machmud Ali reposted Cindi Wiraw...
+[2025-12-13 20:24:50]     Found 1 profile links in notification
+[2025-12-13 20:24:50]     Link: NO NAME -> /in/munir%2Dmachmud%2Dali%2D1b2a4774
+[2025-12-13 20:24:50]     Added 1 profile(s): Munir Machmud Ali
+[2025-12-13 20:24:50]   DEBUG [5]: Status is online Qarrar Somji posted: Everyone thinks lawyers spend their days battling villains. Some days, the villain is a raccoon with a hangover. I walked into the office, shook the rain off my c
+[2025-12-13 20:24:52]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:24:52]   DEBUG [6]: Knowledge Management Specialist at Network Science and 9 other recommendations for you. Knowledge Management Specialist at Network Science and 9 other recommendations for you. View jobs 2h
+[2025-12-13 20:24:54]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:24:54]   DEBUG [7]: Here are the top tech stories you may have missed this week. Here are the top tech stories you may have missed this week. 9h
+[2025-12-13 20:24:56]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:24:56]   DEBUG [8]: Profile image for several companies on LinkedIn Administrative Manager: new opportunities in Mumbai. Administrative Manager: new opportunities in Mumbai. View jobs View jobs 10h
+[2025-12-13 20:24:58]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:24:58]   DEBUG [9]: Status is reachable Ruhin Bhattasali posted: Hi connections 👋 The past week has been one of the most enriching experiences of this year for me. I had the opportunity to participate in the Google Vibe 
+[2025-12-13 20:25:01]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:01]   DEBUG [10]: Status is reachable Kyle Wright posted: Your family/close friends can tell the difference. One of the reasons I always speak with a client’s spouse, family, or close friends in a brain injury case is 
+[2025-12-13 20:25:03]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:05]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:07]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:09]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:11]   AI Classification: is_engagement=True, type=viewed
+[2025-12-13 20:25:11]   [14] ENGAGEMENT DETECTED: 2 people viewed your profile. See the full list with Premium...
+[2025-12-13 20:25:11]     Found 0 profile links in notification
+[2025-12-13 20:25:11]     ✗ No valid profiles extracted from this notification
+[2025-12-13 20:25:13]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:15]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:17]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:19]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:21]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:23]   AI Classification: is_engagement=True, type=shared
+[2025-12-13 20:25:23]   [20] ENGAGEMENT DETECTED: Status is reachable Vinayak Panchal reposted Vinayak Panchal...
+[2025-12-13 20:25:23]     Found 1 profile links in notification
+[2025-12-13 20:25:23]     Link: NO NAME -> /in/panchalvinayak
+[2025-12-13 20:25:23]     Added 1 profile(s): Panchalvinayak
+[2025-12-13 20:25:25]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:27]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 20:25:27]   [22] ENGAGEMENT DETECTED: People are engaging with Kyree Robinson-Banks’ post: With my...
+[2025-12-13 20:25:27]     Found 1 profile links in notification
+[2025-12-13 20:25:27]     Link: NO NAME -> /in/kyree%2Drobinson%2Dbanks
+[2025-12-13 20:25:27]     Added 1 profile(s): Kyree Robinson Banks
+[2025-12-13 20:25:29]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 20:25:29]   [23] ENGAGEMENT DETECTED: Status is online Mitchell Chubb, Andrew Pickett, and 3 other...
+[2025-12-13 20:25:29]     Found 1 profile links in notification
+[2025-12-13 20:25:29]     Link: NO NAME -> /in/mitchell%2Dchubb
+[2025-12-13 20:25:29]     Added 1 profile(s): Mitchell Chubb
+[2025-12-13 20:25:31]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:33]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 20:25:33]   [25] ENGAGEMENT DETECTED: Status is reachable Tom Irving reacted to Tina Dorr's post: ...
+[2025-12-13 20:25:33]     Found 1 profile links in notification
+[2025-12-13 20:25:33]     Link: NO NAME -> /in/tom%2Dirving%2D9459b610
+[2025-12-13 20:25:33]     Added 1 profile(s): Tom Irving
+[2025-12-13 20:25:35]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:37]   AI Classification: is_engagement=True, type=liked
+[2025-12-13 20:25:37]   [27] ENGAGEMENT DETECTED: Jonathan Vasquez and 2 others liked your comment. Your refle...
+[2025-12-13 20:25:37]     Found 1 profile links in notification
+[2025-12-13 20:25:37]     Link: NO NAME -> /in/jonathangms
+[2025-12-13 20:25:37]     Added 1 profile(s): Jonathangms
+[2025-12-13 20:25:39]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:41]   AI Classification: is_engagement=True, type=none
+[2025-12-13 20:25:41]   [29] ENGAGEMENT DETECTED: Your comment has gained 457 impressions. Your comment has ga...
+[2025-12-13 20:25:41]     Found 0 profile links in notification
+[2025-12-13 20:25:41]     ✗ No valid profiles extracted from this notification
+[2025-12-13 20:25:43]   AI Classification: is_engagement=False, type=none
+[2025-12-13 20:25:45]   AI Classification: is_engagement=True, type=commented
+[2025-12-13 20:25:45]   [31] ENGAGEMENT DETECTED: Status is online Qarrar Somji commented on your post. Half t...
+[2025-12-13 20:25:45]     Found 1 profile links in notification
+[2025-12-13 20:25:45]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-13 20:25:45]     Added 1 profile(s): Qarrar Somji
+[2025-12-13 20:25:47]   AI Classification: is_engagement=True, type=reacted
+[2025-12-13 20:25:47]   [32] ENGAGEMENT DETECTED: Status is online Qarrar Somji and 1 other reacted to your po...
+[2025-12-13 20:25:47]     Found 1 profile links in notification
+[2025-12-13 20:25:47]     Link: NO NAME -> /in/qarrar%2Dsomji
+[2025-12-13 20:25:47]     Added 1 profile(s): Qarrar Somji
+[2025-12-13 20:25:47] Extracted 11 engagement notifications
+[2025-12-13 20:25:47] 
+Processing 11 notifications...
+[2025-12-13 20:25:47] Current invite count: 0/50
+[2025-12-13 20:25:47] 
+--- SHARED: Unread notification.
+
+Munir Machmud Ali reposted E...
+[2025-12-13 20:25:47]   Checking connection status: https://www.linkedin.com/in/munir%2Dmachmud%2Dali%2D1b2a4774
+[2025-12-13 20:25:51]   Munir Machmud Ali - Invite already pending
+[2025-12-13 20:25:51] 
+--- MENTIONED: Status is online
+
+Unread notification.
+
+Mandy Rodr...
+[2025-12-13 20:25:51]   Checking connection status: https://www.linkedin.com/in/mandy%2Drodriguez%2D63987817
+[2025-12-13 20:25:57]   Mandy Rodriguez - Invite already pending
+[2025-12-13 20:25:57] 
+--- LIKED: Status is online
+
+Unread notification.
+
+Mandy Rodr...
+[2025-12-13 20:25:57]   Skipping Mandy Rodriguez - previously skipped
+[2025-12-13 20:25:57] 
+--- SHARED: Unread notification.
+
+Munir Machmud Ali reposted C...
+[2025-12-13 20:25:57]   Skipping Munir Machmud Ali - previously skipped
+[2025-12-13 20:25:57] 
+--- SHARED: Status is reachable
+Vinayak Panchal reposted Vinay...
+[2025-12-13 20:25:57]   Skipping Panchalvinayak - already invited previously
+[2025-12-13 20:25:57] 
+--- REACTED: People are engaging with Kyree Robinson-Banks’ pos...
+[2025-12-13 20:25:57]   Skipping Kyree Robinson Banks - already invited previously
+[2025-12-13 20:25:57] 
+--- REACTED: Status is online
+Mitchell Chubb, Andrew Pickett, a...
+[2025-12-13 20:25:57]   Skipping Mitchell Chubb - already invited previously
+[2025-12-13 20:25:57] 
+--- REACTED: Status is reachable
+Tom Irving reacted to Tina Dor...
+[2025-12-13 20:25:57]   Skipping Tom Irving - already invited previously
+[2025-12-13 20:25:57] 
+--- LIKED: Jonathan Vasquez and 2 others liked your comment.
+...
+[2025-12-13 20:25:57]   Skipping Jonathangms - already invited previously
+[2025-12-13 20:25:57] 
+--- COMMENTED: Status is online
+Qarrar Somji commented on your po...
+[2025-12-13 20:25:57]   Skipping Qarrar Somji - already connected
+[2025-12-13 20:25:57] 
+--- REACTED: Status is online
+Qarrar Somji and 1 other reacted ...
+[2025-12-13 20:25:57]   Skipping Qarrar Somji - already connected
+[2025-12-13 20:25:59] 
+============================================================
+[2025-12-13 20:25:59] RUN SUMMARY
+[2025-12-13 20:25:59] ============================================================
+[2025-12-13 20:25:59]   Notifications processed: 11
+[2025-12-13 20:25:59]   Connection invites sent: 0
+[2025-12-13 20:25:59]   Already connected: 0
+[2025-12-13 20:25:59]   Already pending: 2
+[2025-12-13 20:25:59]   Errors/Skipped: 0
+[2025-12-13 20:25:59] ============================================================
+[2025-12-13 20:25:59] 
+Cleaning up...
+[2025-12-13 20:25:59]   Closing agent page...
+[2025-12-13 20:25:59]   Closing additional page: chrome://new-tab-page/...
+[2025-12-13 20:25:59]   Stopping Playwright...
+[2025-12-13 20:26:00]   Terminating Chrome process (PID: 12960)...
+[2025-12-13 20:26:00]   Chrome process terminated successfully.
+[2025-12-13 20:26:00]   Run statistics saved to history.
+[2025-12-13 20:26:00] Agent stopped.
