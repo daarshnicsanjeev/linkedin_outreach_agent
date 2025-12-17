@@ -1462,7 +1462,25 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                         except:
                             continue
                 
-                if send_btn and await send_btn.is_enabled():
+                # Wait for send button to become enabled (poll with configurable retries)
+                # This handles cases where LinkedIn is still processing an uploaded file
+                send_enabled_retries = self.config_manager.get("limits.send_button_enabled_retries", 5)
+                send_enabled_poll = self.config_manager.get("timeouts.send_button_enabled_poll_ms", 500) / 1000
+                
+                button_enabled = False
+                if send_btn:
+                    for poll_attempt in range(send_enabled_retries):
+                        try:
+                            if await send_btn.is_enabled():
+                                button_enabled = True
+                                break
+                        except:
+                            pass
+                        if poll_attempt < send_enabled_retries - 1:
+                            self.log(f"Send button not yet enabled, waiting {send_enabled_poll}s (attempt {poll_attempt + 1}/{send_enabled_retries})...")
+                            await asyncio.sleep(send_enabled_poll)
+                
+                if button_enabled:
                     # SAFETY CHECK: Re-verify chat identity before sending
                     # This catches any chat window switches that may have occurred
                     if expected_name:
@@ -1529,7 +1547,7 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                     else:
                         return True
                 else:
-                    self.log("Send button not found or disabled.")
+                    self.log("Send button not found or still disabled after polling.")
                     await _clear_input_on_failure()  # Clear to prevent stale message
                     return False
             except Exception as e:

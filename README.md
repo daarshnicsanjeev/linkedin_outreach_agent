@@ -3,6 +3,7 @@
 A privacy-first AI automation suite for LinkedIn networking. Includes two powerful agents:
 - **Outreach Agent** - AI-powered messaging for legal professionals with personalized "Zero-Trust" strategy reports
 - **Notification Agent** - Automated connection invites to users who engage with your content
+- **Invite Withdrawal Agent** - Automated cleanup of old, pending connection invites
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green.svg)
@@ -36,6 +37,15 @@ A privacy-first AI automation suite for LinkedIn networking. Includes two powerf
 | **Duplicate Prevention** | Tracks history to avoid re-inviting |
 | **Multi-Profile Support** | Handles notifications with multiple engagers |
 | **Fallback Detection** | Keyword-based fallback if AI unavailable |
+
+### 🧹 Invite Withdrawal Agent (`invite_withdrawal_agent.py`)
+
+| Feature | Description |
+|---------|-------------|
+| **Age-Based Cleanup** | Automatically withdraws invites older than 1 month (configurable) |
+| **Smart Filtering** | Skips newer invites to give them time to accept |
+| **Dialog Handling** | Automatically handles "Withdraw invite?" confirmation dialogs |
+| **Bulk Processing** | Efficiently processes and withdraws multiple pages of sent invites |
 
 ---
 
@@ -101,6 +111,17 @@ run_notification_agent.bat
 5. Sends connection invites to non-connections
 6. Tracks history to prevent duplicates
 
+### 🧹 Invite Withdrawal Agent (Cleanup)
+```bash
+python invite_withdrawal_agent.py
+```
+
+**What it does:**
+1. Navigates to "Sent Invites" page
+2. identify invites older than the threshold (default: 1 month)
+3. Withdraws them one by one
+4. Handles confirmation dialogs automatically
+
 > **First Run**: Chrome will open. Log in to LinkedIn manually. The session persists for future runs.
 
 ---
@@ -128,6 +149,7 @@ start_agent_browser.bat
 linkedin-agent/
 ├── linkedin_agent.py        # Main outreach agent
 ├── notification_agent.py    # Notification engagement agent
+├── invite_withdrawal_agent.py # Invite withdrawal agent
 ├── config.json              # Runtime configuration
 ├── config_manager.py        # Configuration management
 ├── optimizer.py             # Self-optimization logic

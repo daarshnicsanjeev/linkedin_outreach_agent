@@ -51,6 +51,9 @@ class NotificationAgent:
         self.already_invited = 0
         self.errors = 0
         
+        # User profile URL for identifying user's own comments
+        self.user_profile_url = None
+        
     def log(self, msg):
         """Log message to console and file."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -300,6 +303,49 @@ If not engagement, use "none" for type."""
         
         return True
     
+    async def detect_user_profile(self):
+        """Detect the logged-in user's LinkedIn profile URL."""
+        try:
+            # Look for the user's profile link in the global nav
+            profile_link = await self.page.query_selector("a[href*='/in/'][data-control-name='identity_profile_photo']")
+            if not profile_link:
+                profile_link = await self.page.query_selector("img.global-nav__me-photo")
+                if profile_link:
+                    # Get parent anchor
+                    profile_link = await profile_link.evaluate_handle("el => el.closest('a')")
+            
+            if not profile_link:
+                # Try the "Me" dropdown
+                profile_link = await self.page.query_selector("a.ember-view.global-nav__secondary-link[href*='/in/']")
+            
+            if profile_link:
+                href = await profile_link.get_attribute("href")
+                if href and "/in/" in href:
+                    # Clean up the URL
+                    if not href.startswith("http"):
+                        href = "https://www.linkedin.com" + href
+                    href = href.split("?")[0].rstrip("/")
+                    self.user_profile_url = href
+                    self.log(f"Detected user profile: {self.user_profile_url}")
+                    return True
+            
+            # Fallback: navigate to /in/me and get the redirected URL
+            self.log("Trying fallback: navigating to /in/me to detect profile...")
+            await self.page.goto("https://www.linkedin.com/in/me/", wait_until="domcontentloaded")
+            await asyncio.sleep(2)
+            current_url = self.page.url
+            if "/in/" in current_url and "/me" not in current_url:
+                self.user_profile_url = current_url.split("?")[0].rstrip("/")
+                self.log(f"Detected user profile via redirect: {self.user_profile_url}")
+                return True
+            
+            self.log("WARNING: Could not detect user profile URL.")
+            return False
+            
+        except Exception as e:
+            self.log(f"Error detecting user profile: {e}")
+            return False
+    
     async def navigate_to_notifications(self):
         """Navigate to LinkedIn notifications page."""
         self.log(f"Navigating to notifications: {NOTIFICATIONS_URL}")
@@ -452,6 +498,59 @@ If not engagement, use "none" for type."""
                                 "profile_url": href
                             })
                 
+                
+                # Check for "and X others" expansion
+                # Usually text is like "Person A and 5 others liked..."
+                if "and" in text_lower and "others" in text_lower:
+                    # Expand all grouped notifications (comments and non-comments)
+                    match = re.search(r'and\s+(\d+)\s+others', text_lower)
+                    if match:
+                        count = match.group(1)
+                        self.log(f"    Found grouped notification (+{count} others). Expanding...")
+
+                        # Find the link to the post/activity
+                        # Strategy: Look for the "others" link first, then fallback to general activity link
+                        expansion_url = None
+
+                        # 1. Try to find link with text "others"
+                        try:
+                            others_link = await card.query_selector("a:has-text('others')")
+                            if others_link:
+                                expansion_url = await others_link.get_attribute("href")
+                        except:
+                            pass
+
+                        # 2. If no specific "others" link, try to find the main activity link
+                        # (often the timestamp or the headline link)
+                        if not expansion_url:
+                            try:
+                                # Look for links that are NOT profile links
+                                all_links = await card.query_selector_all("a")
+                                for l in all_links:
+                                    h = await l.get_attribute("href")
+                                    if h and "/in/" not in h and "linkedin.com/feed/update" in h:
+                                        expansion_url = h
+                                        break
+                            except:
+                                pass
+
+                        if expansion_url:
+                            if not expansion_url.startswith("http"):
+                                expansion_url = "https://www.linkedin.com" + expansion_url
+
+                            # Use comment-specific scraping for comment notifications
+                            if "comment" in text_lower or "replied" in text_lower:
+                                self.log("    Using comment-specific reactor extraction...")
+                                additional_profiles = await self.process_comment_reactions(expansion_url)
+                            else:
+                                additional_profiles = await self.process_related_content_page(expansion_url)
+
+                            if additional_profiles:
+                                self.log(f"    Merging {len(additional_profiles)} additional profiles...")
+                                profiles.extend(additional_profiles)
+                        else:
+                            self.log("    Could not find expansion URL for grouped notification.")
+
                 if profiles:
                     seen_urls = set()
                     unique_profiles = []
@@ -499,6 +598,214 @@ If not engagement, use "none" for type."""
         
         self.log(f"Extracted {len(notifications)} engagement notifications")
         return notifications
+
+    async def process_related_content_page(self, url):
+        """
+        Open the content page (post/comment) in a new tab and extract reactors.
+        Returns a list of profile dicts.
+        """
+        self.log(f"    Opening related content in new tab: {url}")
+        new_page = None
+        profiles = []
+        
+        try:
+            # Open new page in background
+            new_page = await self.context.new_page()
+            await new_page.goto(url, wait_until="domcontentloaded")
+            await asyncio.sleep(3)
+            
+            # Check for "Reactions" or "Likes" count to click
+            # This is usually a button like "1,234 reactions" or similar
+            # that opens the list modal.
+            
+            reaction_trigger_selectors = [
+                "button.social-details-social-counts__count-value",
+                "button[aria-label*='reactions']",
+                "button:has-text('reactions')",
+                "button[aria-label*='likes']",
+                "span.social-details-social-counts__reactions-count"
+            ]
+            
+            trigger_btn = None
+            for selector in reaction_trigger_selectors:
+                try:
+                    trigger_btn = await new_page.query_selector(selector)
+                    if trigger_btn:
+                        self.log(f"    Found reaction list trigger: {selector}")
+                        break
+                except:
+                    continue
+            
+            if trigger_btn:
+                # Click to open modal
+                await trigger_btn.click()
+                await asyncio.sleep(2)
+                
+                # Wait for modal
+                try:
+                    await new_page.wait_for_selector("div.artdeco-modal", timeout=5000)
+                    self.log("    Reactions modal opened.")
+                    
+                    # Scroll the modal to load more (basic scroll)
+                    modal_content = await new_page.query_selector("div.artdeco-modal__content")
+                    if modal_content:
+                        for _ in range(3):
+                            await modal_content.evaluate("element => element.scrollTop = element.scrollHeight")
+                            await asyncio.sleep(1)
+                    
+                    # Scrape profiles from modal
+                    modal_links = await new_page.query_selector_all("div.artdeco-modal a[href*='/in/']")
+                    
+                    for link in modal_links:
+                        href = await link.get_attribute("href")
+                        name_elem = await link.inner_text()
+                        name = name_elem.strip() if name_elem else ""
+                        
+                        if href and "/in/" in href and name and len(name) > 2:
+                            if not href.startswith("http"):
+                                href = "https://www.linkedin.com" + href
+                            href = href.split("?")[0]
+                            
+                            # Basic cleanup
+                            if "View profile" not in name:
+                                profiles.append({
+                                    "name": name,
+                                    "profile_url": href
+                                })
+                    
+                    self.log(f"    Extracted {len(profiles)} profiles from details page.")
+                    
+                except Exception as e:
+                    self.log(f"    Failed to open/scrape reactions modal: {e}")
+            else:
+                self.log("    No reactions trigger found on details page.")
+
+        except Exception as e:
+            self.log(f"    Error processing related content page: {e}")
+        
+        finally:
+            if new_page:
+                try:
+                    await new_page.close()
+                except:
+                    pass
+        
+        return profiles
+    
+    async def process_comment_reactions(self, url):
+        """
+        Open the content page, find the user's comment, and extract only its reactors.
+        This is used for comment-related notifications to avoid pulling all post reactors.
+        Returns a list of profile dicts.
+        """
+        self.log(f"    Opening comment page to extract comment-specific reactors: {url}")
+        new_page = None
+        profiles = []
+        
+        if not self.user_profile_url:
+            self.log("    WARNING: User profile URL not detected. Falling back to all reactors.")
+            return await self.process_related_content_page(url)
+        
+        try:
+            new_page = await self.context.new_page()
+            await new_page.goto(url, wait_until="domcontentloaded")
+            await asyncio.sleep(3)
+            
+            # Extract the user's profile slug from their URL (e.g., "john-doe-123abc")
+            user_slug = self.user_profile_url.split("/in/")[-1].rstrip("/")
+            self.log(f"    Looking for user's comment (profile slug: {user_slug})")
+            
+            # Scroll to load comments
+            for _ in range(3):
+                await new_page.evaluate("window.scrollBy(0, 500)")
+                await asyncio.sleep(1)
+            
+            # Find the user's comment by looking for their profile link in comment containers
+            comment_containers = await new_page.query_selector_all("article.comments-comment-item, div.comments-comment-item, div[data-id]")
+            
+            user_comment = None
+            for container in comment_containers:
+                try:
+                    # Check if this comment is by the user
+                    author_link = await container.query_selector(f"a[href*='/in/{user_slug}']")
+                    if author_link:
+                        user_comment = container
+                        self.log("    Found user's comment!")
+                        break
+                except:
+                    continue
+            
+            if not user_comment:
+                # Try alternative: look for any comment with the user's profile link
+                user_comment = await new_page.query_selector(f"article:has(a[href*='/in/{user_slug}']), div.comments-comment-item:has(a[href*='/in/{user_slug}'])")
+            
+            if user_comment:
+                # Find the reactions/likes button on this specific comment
+                reaction_btn = await user_comment.query_selector("button[aria-label*='reaction'], button:has-text('like'), span.comments-comment-social-bar__reactions-count")
+                
+                if not reaction_btn:
+                    # Try to find any clickable reaction count
+                    reaction_btn = await user_comment.query_selector("button.comments-comment-social-bar__reactions-count, button[aria-label*='likes']")
+                
+                if reaction_btn:
+                    self.log("    Clicking on comment's reaction count...")
+                    await reaction_btn.click()
+                    await asyncio.sleep(2)
+                    
+                    # Wait for modal
+                    try:
+                        await new_page.wait_for_selector("div.artdeco-modal", timeout=5000)
+                        self.log("    Comment reactions modal opened.")
+                        
+                        # Scroll the modal
+                        modal_content = await new_page.query_selector("div.artdeco-modal__content")
+                        if modal_content:
+                            for _ in range(3):
+                                await modal_content.evaluate("element => element.scrollTop = element.scrollHeight")
+                                await asyncio.sleep(1)
+                        
+                        # Scrape profiles from modal
+                        modal_links = await new_page.query_selector_all("div.artdeco-modal a[href*='/in/']")
+                        
+                        for link in modal_links:
+                            href = await link.get_attribute("href")
+                            name_elem = await link.inner_text()
+                            name = name_elem.strip() if name_elem else ""
+                            
+                            if href and "/in/" in href and name and len(name) > 2:
+                                if not href.startswith("http"):
+                                    href = "https://www.linkedin.com" + href
+                                href = href.split("?")[0]
+                                
+                                # Skip the user's own profile
+                                if user_slug not in href:
+                                    if "View profile" not in name:
+                                        profiles.append({
+                                            "name": name,
+                                            "profile_url": href
+                                        })
+                        
+                        self.log(f"    Extracted {len(profiles)} profiles from comment reactions.")
+                        
+                    except Exception as e:
+                        self.log(f"    Failed to open comment reactions modal: {e}")
+                else:
+                    self.log("    No reactions button found on user's comment.")
+            else:
+                self.log("    Could not find user's comment on the page. Falling back to all reactors.")
+                profiles = await self.process_related_content_page(url)
+                
+        except Exception as e:
+            self.log(f"    Error processing comment reactions: {e}")
+        
+        finally:
+            if new_page:
+                try:
+                    await new_page.close()
+                except:
+                    pass
+        
+        return profiles
     
     async def check_connection_status(self, profile_url):
         """
@@ -863,6 +1170,9 @@ If not engagement, use "none" for type."""
             if not await self.navigate_to_notifications():
                 self.log("Failed to navigate to notifications. Exiting.")
                 return
+            
+            # Detect user's profile URL for comment-specific filtering
+            await self.detect_user_profile()
             
             await self.process_notifications()
             

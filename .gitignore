@@ -6,22 +6,22 @@
 user_data/
 ChromeAutomationProfile/
 
-# Logs
-*.log
+# Logs - moved to .git/info/exclude so agent can read them
+# *.log
 # agent_log.txt
-agent_log_view.txt
-agent_log_copy.txt
-agent_scheduler_log.txt
-notification_agent_log.txt
-log_output.txt
-git_status.txt
-git_diff_stat.txt
-debug_log.txt
-stderr.txt
-stdout.txt
-run_log*.txt
-temp_log*.txt
-check_log*.txt
+# agent_log_view.txt
+# agent_log_copy.txt
+# agent_scheduler_log.txt
+# notification_agent_log.txt
+# log_output.txt
+# git_status.txt
+# git_diff_stat.txt
+# debug_log.txt
+# stderr.txt
+# stdout.txt
+# run_log*.txt
+# temp_log*.txt
+# check_log*.txt
 
 # Generated Reports
 *.pdf
