@@ -178,55 +178,66 @@ The agent uses a dynamic configuration that the self-optimizer adjusts automatic
 
 ```json
 {
-  "keywords_practicing": ["partner", "attorney", "counsel", ...],
-  "keywords_general": ["student", "paralegal", "legal tech", ...],
+  "keywords_practicing": ["partner", "attorney", ...],
+  "keywords_general": ["student", "paralegal", ...],
   "timeouts": {
     "page_load": 5000,
     "scroll_wait": 10000,
     "message_send_wait": 2000,
-    "file_upload_wait_ms": 5000,
-    "message_verify_wait_ms": 2000,
-    "ui_response_wait_ms": 1000,
-    "identity_poll_delay_ms": 300,
-    "identity_poll_retries": 15
-  },
-  "selectors": {
-    "connections_list": "div[data-view-name='connections-list']",
-    "show_more_btn": [
-      "button:has-text('Show more results')",
-      "button:has-text('Load more')"
-    ]
+    ...
   },
   "limits": {
     "max_scrolls": 50,
     "max_retries": 5,
-    "chat_open_retries": 3,
-    "chat_open_delay_ms": 1500,
-    "send_message_retries": 2
+    ...
+  },
+  "outreach_agent": {
+    "fast_forward_wait": 1.5,
+    "login_wait_timeout_seconds": 300
+  },
+  "notification_agent": {
+    "max_notifications_per_run": 100,
+    "max_invites_per_run": 50,
+    "delay_between_invites": 5,
+    "scroll_attempts": 15
+  },
+  "invite_withdrawal": {
+    "min_age_days": 31,
+    "delay_between_withdrawals": 2,
+    "max_withdrawals_per_run": 100,
+    "dialog_timeout_ms": 3000
   }
 }
 ```
 
 ### Self-Optimizer Rules
 
-The `optimizer.py` automatically tunes these values based on run history:
+The `optimizer.py` automatically tunes these values based on run history for **each agent type**:
 
-| Metric | Action |
-|--------|--------|
-| Low scroll success rate | Increases `scroll_wait` |
-| Message verification failures | Increases `message_send_wait`, `ui_response_wait_ms` |
-| Chat open failures | Increases `chat_open_retries`, `chat_open_delay_ms` |
-| Identity verification failures | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
-| File upload failures | Increases `file_upload_wait_ms` |
-| **Stable performance** | **Decreases waits to speed up** |
+| Agent | Metric | Action |
+|-------|--------|--------|
+| **Outreach** | Low scroll success rate | Increases `scroll_wait` |
+| **Outreach** | Message verification failures | Increases `message_send_wait`, `ui_response_wait_ms` |
+| **Outreach** | Chat open failures | Increases `chat_open_retries`, `chat_open_delay_ms` |
+| **Outreach** | Identity verification failures | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
+| **Outreach** | File upload failures | Increases `file_upload_wait_ms` |
+| **Notification** | Invite errors | Increases `delay_between_invites` |
+| **Withdrawal** | Dialog timeouts | Increases `dialog_timeout_ms` |
+| **All** | **Stable performance** | **Decreases waits/delays to speed up** |
 
-### Notification Agent Constants (in `notification_agent.py`)
+### Agent Specific Configuration
 
-| Constant | Default | Description |
-|----------|---------|-------------|
-| `MAX_NOTIFICATIONS_PER_RUN` | 100 | Max notifications to process |
-| `MAX_INVITES_PER_RUN` | 50 | Max invites per session |
-| `DELAY_BETWEEN_INVITES` | 5s | Rate limiting delay |
+All agent parameters are now centralzied in `config.json`.
+
+**Notification Agent Settings:**
+- `max_notifications_per_run`: Limit processing per session
+- `max_invites_per_run`: Limit outgoing invites
+- `delay_between_invites`: Base delay (optimized automatically)
+
+**Invite Withdrawal Settings:**
+- `min_age_days`: Invites older than this are withdrawn
+- `max_withdrawals_per_run`: Safety limit per session
+- `dialog_timeout_ms`: Wait time for confirmation dialogs (optimized automatically)
 
 ---
 

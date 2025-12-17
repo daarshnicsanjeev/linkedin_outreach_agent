@@ -53,7 +53,8 @@ class LinkedInAgent:
             "message_verification_failed": False,
             "chat_open_failed": False,
             "identity_verification_failed": False,
-            "file_upload_failed": False
+            "file_upload_failed": False,
+            "agent_type": "outreach_agent"
         }
         
         self.history_file = "history.json"
@@ -267,7 +268,7 @@ class LinkedInAgent:
             "button:has-text('Show more')"
         ])
         
-        fast_forward_wait = 1.5  # Faster than normal scroll_wait (10s)
+        fast_forward_wait = self.config_manager.get("outreach_agent.fast_forward_wait", 1.5)
         max_clicks = (target_count // 10) + 5  # Add buffer for safety
         clicks = 0
         
@@ -1121,8 +1122,9 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             self.log(f"Navigating to {LINKEDIN_CONNECTIONS_URL}...")
             await self.page.goto(LINKEDIN_CONNECTIONS_URL)
             
-            self.log("Waiting 5s for page load...")
-            await asyncio.sleep(5)
+            page_load_wait = self.config_manager.get("timeouts.page_load", 5000) / 1000
+            self.log(f"Waiting {page_load_wait}s for page load...")
+            await asyncio.sleep(page_load_wait)
             
             # Check login
             try:

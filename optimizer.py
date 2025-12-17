@@ -50,148 +50,126 @@ class AgentOptimizer:
         if not history:
             return
 
-        # Advanced Optimization Logic
-        recent_runs = history[-5:] # Look at last 5 runs
+        # Group runs by agent type
+        runs_by_type = {
+            "outreach_agent": [],
+            "invite_withdrawal": [],
+            "notification_agent": []
+        }
+        
+        for run in history:
+            metrics = run.get("metrics", {})
+            agent_type = metrics.get("agent_type", "outreach_agent") # Default to outreach for old logs
+            if agent_type in runs_by_type:
+                runs_by_type[agent_type].append(run)
+        
+        # Optimize each agent type
+        self.optimize_outreach(runs_by_type["outreach_agent"][-5:])
+        self.optimize_invite_withdrawal(runs_by_type["invite_withdrawal"][-5:])
+        self.optimize_notification(runs_by_type["notification_agent"][-5:])
+
+    def optimize_outreach(self, recent_runs):
         if len(recent_runs) < 3:
-            # Need at least 3 runs to make decisions
             return
 
-        # 1. Optimize Scroll Wait (Bidirectional)
+        # 1. Optimize Scroll Wait
         scroll_success_rates = [run["metrics"].get("scroll_success_rate", 1.0) for run in recent_runs]
         avg_scroll_success = sum(scroll_success_rates) / len(scroll_success_rates)
-        
         current_scroll_wait = self.config_manager.get("timeouts.scroll_wait", 3000)
         
         if avg_scroll_success < 0.6:
-            # Low success rate -> Increase wait
-            new_wait = min(current_scroll_wait + 1000, 10000) # Cap at 10s
+            new_wait = min(current_scroll_wait + 1000, 10000)
             if new_wait > current_scroll_wait:
-                self.log_change(f"Low scroll success ({avg_scroll_success:.2f}). Increasing scroll_wait: {current_scroll_wait} -> {new_wait}")
+                self.log_change(f"[Outreach] Low scroll success ({avg_scroll_success:.2f}). Increasing scroll_wait: {current_scroll_wait} -> {new_wait}")
                 self.config_manager.set("timeouts.scroll_wait", new_wait)
         elif avg_scroll_success > 0.9:
-            # High success rate -> Try to decrease wait (Speed up)
-            new_wait = max(current_scroll_wait - 500, 2000) # Min 2s
+            new_wait = max(current_scroll_wait - 500, 2000)
             if new_wait < current_scroll_wait:
-                self.log_change(f"High scroll success ({avg_scroll_success:.2f}). Decreasing scroll_wait: {current_scroll_wait} -> {new_wait}")
+                self.log_change(f"[Outreach] High scroll success ({avg_scroll_success:.2f}). Decreasing scroll_wait: {current_scroll_wait} -> {new_wait}")
                 self.config_manager.set("timeouts.scroll_wait", new_wait)
 
-        # 2. Optimize Message Wait (Bidirectional)
-        msg_failures = 0
-        for run in recent_runs:
-            if run["metrics"].get("message_verification_failed", False):
-                msg_failures += 1
-        
+        # 2. Optimize Message Wait & Retries (Existing logic adapted)
+        msg_failures = sum(1 for run in recent_runs if run["metrics"].get("message_verification_failed", False))
         current_msg_wait = self.config_manager.get("timeouts.message_send_wait", 3000)
         
         if msg_failures >= 1:
-            # Failures detected -> Increase wait
             new_wait = min(current_msg_wait + 1000, 10000)
             if new_wait > current_msg_wait:
-                self.log_change(f"Message verification failures detected. Increasing message_send_wait: {current_msg_wait} -> {new_wait}")
+                self.log_change(f"[Outreach] Message verification failures. Increasing message_send_wait: {current_msg_wait} -> {new_wait}")
                 self.config_manager.set("timeouts.message_send_wait", new_wait)
         elif msg_failures == 0 and len(recent_runs) >= 5:
-            # No failures in last 5 runs -> Try to decrease wait
-            new_wait = max(current_msg_wait - 500, 2000) # Min 2s
+            new_wait = max(current_msg_wait - 500, 2000)
             if new_wait < current_msg_wait:
-                self.log_change(f"Stable message sending. Decreasing message_send_wait: {current_msg_wait} -> {new_wait}")
+                self.log_change(f"[Outreach] Stable message sending. Decreasing message_send_wait: {current_msg_wait} -> {new_wait}")
                 self.config_manager.set("timeouts.message_send_wait", new_wait)
 
-        # 3. Optimize Retries based on Errors
-        error_runs = 0
-        for run in recent_runs:
-            if run["metrics"].get("errors"):
-                error_runs += 1
-        
-        current_retries = self.config_manager.get("limits.max_retries", 2)
-        if error_runs >= 2:
-            # Frequent errors -> Increase retries
-            new_retries = min(current_retries + 1, 5)
-            if new_retries > current_retries:
-                self.log_change(f"Frequent errors detected. Increasing max_retries: {current_retries} -> {new_retries}")
-                self.config_manager.set("limits.max_retries", new_retries)
-        
-        # 4. Optimize Chat Open Retries based on chat open failures
-        chat_open_failures = 0
-        for run in recent_runs:
-            if run["metrics"].get("chat_open_failed", False):
-                chat_open_failures += 1
-        
-        current_chat_retries = self.config_manager.get("limits.chat_open_retries", 3)
-        current_chat_delay = self.config_manager.get("limits.chat_open_delay_ms", 2000)
-        
-        if chat_open_failures >= 2:
-            # Frequent chat open failures -> Increase retries and delay
-            new_retries = min(current_chat_retries + 1, 6)
-            new_delay = min(current_chat_delay + 1000, 5000)  # Cap at 5s
-            
-            if new_retries > current_chat_retries:
-                self.log_change(f"Chat open failures detected. Increasing chat_open_retries: {current_chat_retries} -> {new_retries}")
+        # 3. Optimize Chat Open
+        chat_failures = sum(1 for run in recent_runs if run["metrics"].get("chat_open_failed", False))
+        if chat_failures >= 2:
+            cur_retries = self.config_manager.get("limits.chat_open_retries", 3)
+            new_retries = min(cur_retries + 1, 6)
+            if new_retries > cur_retries:
+                self.log_change(f"[Outreach] Chat open failures. Increasing retries: {cur_retries} -> {new_retries}")
                 self.config_manager.set("limits.chat_open_retries", new_retries)
-            if new_delay > current_chat_delay:
-                self.log_change(f"Chat open failures detected. Increasing chat_open_delay_ms: {current_chat_delay} -> {new_delay}")
-                self.config_manager.set("limits.chat_open_delay_ms", new_delay)
-        elif chat_open_failures == 0 and len(recent_runs) >= 5:
-            # No chat failures in last 5 runs -> Try to optimize (speed up)
-            new_delay = max(current_chat_delay - 500, 1500)  # Min 1.5s
-            if new_delay < current_chat_delay:
-                self.log_change(f"Stable chat opening. Decreasing chat_open_delay_ms: {current_chat_delay} -> {new_delay}")
-                self.config_manager.set("limits.chat_open_delay_ms", new_delay)
+
+        # 4. Optimize Identity Verification
+        id_failures = sum(1 for run in recent_runs if run["metrics"].get("identity_verification_failed", False))
+        cur_id_retries = self.config_manager.get("timeouts.identity_poll_retries", 15)
         
-        # 5. Optimize Identity Verification based on failures
-        identity_failures = 0
-        for run in recent_runs:
-            if run["metrics"].get("identity_verification_failed", False):
-                identity_failures += 1
-        
-        current_id_retries = self.config_manager.get("timeouts.identity_poll_retries", 15)
-        current_id_delay = self.config_manager.get("timeouts.identity_poll_delay_ms", 300)
-        
-        if identity_failures >= 2:
-            # Increase polling retries and delay
-            new_retries = min(current_id_retries + 5, 30)
-            new_delay = min(current_id_delay + 100, 1000)
-            
-            if new_retries > current_id_retries:
-                self.log_change(f"Identity verification failures. Increasing identity_poll_retries: {current_id_retries} -> {new_retries}")
+        if id_failures >= 2:
+            new_retries = min(cur_id_retries + 5, 30)
+            if new_retries > cur_id_retries:
+                self.log_change(f"[Outreach] Identity failures. Increasing poll retries: {cur_id_retries} -> {new_retries}")
                 self.config_manager.set("timeouts.identity_poll_retries", new_retries)
-            if new_delay > current_id_delay:
-                self.log_change(f"Identity verification failures. Increasing identity_poll_delay_ms: {current_id_delay} -> {new_delay}")
-                self.config_manager.set("timeouts.identity_poll_delay_ms", new_delay)
-        elif identity_failures == 0 and len(recent_runs) >= 5:
-            # Stable - speed up polling
-            new_delay = max(current_id_delay - 50, 200)
-            if new_delay < current_id_delay:
-                self.log_change(f"Stable identity verification. Decreasing identity_poll_delay_ms: {current_id_delay} -> {new_delay}")
-                self.config_manager.set("timeouts.identity_poll_delay_ms", new_delay)
         
-        # 6. Optimize File Upload Wait based on failures
-        file_failures = 0
-        for run in recent_runs:
-            if run["metrics"].get("file_upload_failed", False):
-                file_failures += 1
-        
-        current_upload_wait = self.config_manager.get("timeouts.file_upload_wait_ms", 5000)
+        # 5. Optimize File Upload Wait
+        file_failures = sum(1 for run in recent_runs if run["metrics"].get("file_upload_failed", False))
+        cur_upload_wait = self.config_manager.get("timeouts.file_upload_wait_ms", 5000)
         
         if file_failures >= 1:
-            # File upload is critical - increase wait
-            new_wait = min(current_upload_wait + 2000, 15000)
-            if new_wait > current_upload_wait:
-                self.log_change(f"File upload failures. Increasing file_upload_wait_ms: {current_upload_wait} -> {new_wait}")
+            new_wait = min(cur_upload_wait + 2000, 15000)
+            if new_wait > cur_upload_wait:
+                self.log_change(f"[Outreach] File upload failures. Increasing wait: {cur_upload_wait} -> {new_wait}")
                 self.config_manager.set("timeouts.file_upload_wait_ms", new_wait)
-        elif file_failures == 0 and len(recent_runs) >= 5:
-            # Stable - try to speed up
-            new_wait = max(current_upload_wait - 500, 3000)
-            if new_wait < current_upload_wait:
-                self.log_change(f"Stable file uploads. Decreasing file_upload_wait_ms: {current_upload_wait} -> {new_wait}")
-                self.config_manager.set("timeouts.file_upload_wait_ms", new_wait)
+
+    def optimize_invite_withdrawal(self, recent_runs):
+        if len(recent_runs) < 3:
+            return
+            
+        # Optimize Dialog Timeout based on timeouts count
+        timeouts = sum(run["metrics"].get("dialog_timeout_count", 0) for run in recent_runs)
+        current_timeout = self.config_manager.get("invite_withdrawal.dialog_timeout_ms", 3000)
         
-        # 7. Optimize UI Response Time
-        # If message verification failures occur, increase UI wait time
-        if msg_failures >= 1:
-            current_ui_wait = self.config_manager.get("timeouts.ui_response_wait_ms", 1000)
-            new_ui_wait = min(current_ui_wait + 500, 3000)
-            if new_ui_wait > current_ui_wait:
-                self.log_change(f"Increasing ui_response_wait_ms for stability: {current_ui_wait} -> {new_ui_wait}")
-                self.config_manager.set("timeouts.ui_response_wait_ms", new_ui_wait)
+        if timeouts >= 2:
+            new_timeout = min(current_timeout + 1000, 8000)
+            if new_timeout > current_timeout:
+                self.log_change(f"[Withdrawal] frequent dialog timeouts. Increasing dialog_timeout_ms: {current_timeout} -> {new_timeout}")
+                self.config_manager.set("invite_withdrawal.dialog_timeout_ms", new_timeout)
+        elif timeouts == 0 and len(recent_runs) >= 5:
+            # Try to speed up if stable
+            new_timeout = max(current_timeout - 500, 2000)
+            if new_timeout < current_timeout:
+                self.log_change(f"[Withdrawal] Stable dialogs. Decreasing dialog_timeout_ms: {current_timeout} -> {new_timeout}")
+                self.config_manager.set("invite_withdrawal.dialog_timeout_ms", new_timeout)
+
+    def optimize_notification(self, recent_runs):
+        if len(recent_runs) < 3:
+            return
+            
+        # Optimize Delay Between Invites based on errors
+        errors = sum(run["metrics"].get("errors", 0) for run in recent_runs)
+        current_delay = self.config_manager.get("notification_agent.delay_between_invites", 5)
         
-        print("Optimization complete.")
+        if errors >= 3:
+            # High errors -> Slow down
+            new_delay = min(current_delay + 2, 15)
+            if new_delay > current_delay:
+                self.log_change(f"[Notification] High errors ({errors}). Increasing delay_between_invites: {current_delay} -> {new_delay}")
+                self.config_manager.set("notification_agent.delay_between_invites", new_delay)
+        elif errors == 0 and len(recent_runs) >= 5:
+            # No errors -> Speed up slightly
+            new_delay = max(current_delay - 1, 3)
+            if new_delay < current_delay:
+                self.log_change(f"[Notification] Zero errors. Decreasing delay_between_invites: {current_delay} -> {new_delay}")
+                self.config_manager.set("notification_agent.delay_between_invites", new_delay)
+

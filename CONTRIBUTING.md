@@ -39,6 +39,7 @@ Thank you for your interest in contributing! This document provides guidelines f
 |------|---------|
 | `linkedin_agent.py` | Main outreach agent (messaging, PDF generation) |
 | `notification_agent.py` | Engagement-based connection invites |
+| `invite_withdrawal_agent.py` | Automated invite cleanup agent |
 | `config_manager.py` | Configuration loading/saving |
 | `optimizer.py` | Self-optimization from run history |
 

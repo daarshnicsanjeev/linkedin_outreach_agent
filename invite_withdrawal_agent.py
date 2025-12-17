@@ -16,15 +16,14 @@ import re
 from datetime import datetime
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
+from config_manager import ConfigManager
+from optimizer import AgentOptimizer
 
 # Load environment variables
 load_dotenv()
 
 # Configuration
 SENT_INVITES_URL = "https://www.linkedin.com/mynetwork/invitation-manager/sent/"
-MIN_AGE_DAYS = 31  # Only withdraw invites older than this (> 1 month)
-DELAY_BETWEEN_WITHDRAWALS = 2  # seconds between withdrawals to avoid rate limits
-MAX_WITHDRAWALS_PER_RUN = 100  # Safety limit
 
 # Paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -41,11 +40,24 @@ class InviteWithdrawalAgent:
         self.playwright = None
         self.chrome_pid = None
         
-        # Statistics
+        # Self-Optimization
+        self.config_manager = ConfigManager()
+        self.agent_optimizer = AgentOptimizer(config_manager=self.config_manager)
+        
+        # Statistics & Metrics
         self.total_invites = 0
         self.withdrawn_count = 0
         self.skipped_count = 0
         self.errors = 0
+        
+        # Run Metrics for Optimization
+        self.run_metrics = {
+            "withdrawals_attempted": 0,
+            "withdrawals_success": 0,
+            "errors": 0,
+            "dialog_timeout_count": 0,
+            "agent_type": "invite_withdrawal"
+        }
         
     def log(self, msg):
         """Log message to console and file."""
@@ -203,10 +215,25 @@ class InviteWithdrawalAgent:
                     self.page = await self.context.new_page()
                     self.log("Connected to launched Chrome.")
                     return
+                    self.log(f"Connected to launched Chrome.")
+                    return
                 except Exception as e2:
                     self.log(f"Attempt {attempt + 1} failed: {e2}")
                     if attempt == 4:
                         raise e2
+
+    def save_metrics(self):
+        """Save run metrics to history."""
+        try:
+            # Update error count
+            self.run_metrics["errors"] = self.errors
+            self.run_metrics["withdrawals_attempted"] = self.withdrawn_count + self.errors # Approx
+            self.run_metrics["withdrawals_success"] = self.withdrawn_count
+            
+            self.agent_optimizer.log_run(self.run_metrics)
+            self.log(f"Metrics saved: {self.run_metrics}")
+        except Exception as e:
+            self.log(f"Error saving metrics: {e}")
     
     async def check_login_required(self):
         """Check if LinkedIn login is required."""
@@ -258,7 +285,7 @@ class InviteWithdrawalAgent:
         """
         self.log("Loading all invites by clicking 'Load more' button...")
         load_more_clicks = 0
-        max_clicks = 100  # Safety limit for 800+ invites (loads ~10 per click)
+        max_clicks = self.config_manager.get("invite_withdrawal.max_load_more_clicks", 100)
         consecutive_failures = 0
         max_failures = 3  # Allow a few retries before giving up
         
@@ -658,7 +685,8 @@ class InviteWithdrawalAgent:
                     # Try to click with a short timeout (3s instead of default 30s)
                     # This allows us to fail fast and try to clear blockers
                     t0 = time.time()
-                    await withdraw_btn.click(timeout=3000)
+                    click_timeout = self.config_manager.get("invite_withdrawal.withdrawal_click_timeout_ms", 3000)
+                    await withdraw_btn.click(timeout=click_timeout)
                     t1 = time.time()
                     self.log(f"    [P] Clicked initial withdraw button (took {t1-t0:.2f}s)")
                     clicked = True
@@ -686,7 +714,8 @@ class InviteWithdrawalAgent:
             try:
                 # Wait for confirmation dialog to appear
                 t2 = time.time()
-                dialog = await self.page.wait_for_selector("dialog[data-testid='dialog']", state="visible", timeout=3000)
+                dialog_timeout = self.config_manager.get("invite_withdrawal.dialog_timeout_ms", 3000)
+                dialog = await self.page.wait_for_selector("dialog[data-testid='dialog']", state="visible", timeout=dialog_timeout)
                 t3 = time.time()
                 if dialog:
                     self.log(f"    [P] Dialog appeared (took {t3-t2:.2f}s)")
@@ -719,6 +748,7 @@ class InviteWithdrawalAgent:
                     self.log(f"    [P] Dialog not found (timeout?)")
             except Exception as e:
                  self.log(f"    [P] Error waiting for dialog: {str(e)[:100]}")
+                 self.run_metrics["dialog_timeout_count"] += 1
                  pass  # No confirmation dialog appeared (or we missed it)
             
             # Verify by waiting for dialog to close
@@ -760,7 +790,8 @@ class InviteWithdrawalAgent:
         """Main processing loop - withdraw old invites in reverse order."""
         self.log("=" * 60)
         self.log("Processing Sent Invites")
-        self.log(f"Will withdraw invites older than {MIN_AGE_DAYS} days (> 1 month)")
+        min_age_days = self.config_manager.get("invite_withdrawal.min_age_days", 31)
+        self.log(f"Will withdraw invites older than {min_age_days} days (> 1 month)")
         self.log("=" * 60)
         
         # Navigate to sent invites page
@@ -779,11 +810,11 @@ class InviteWithdrawalAgent:
             return
         
         # Filter invites older than MIN_AGE_DAYS
-        old_invites = [inv for inv in invites if inv["age_days"] > MIN_AGE_DAYS]
+        old_invites = [inv for inv in invites if inv["age_days"] > min_age_days]
         
         self.log(f"\nTotal invites: {len(invites)}")
-        self.log(f"Invites older than {MIN_AGE_DAYS} days: {len(old_invites)}")
-        self.log(f"Invites to skip (≤ {MIN_AGE_DAYS} days): {len(invites) - len(old_invites)}")
+        self.log(f"Invites older than {min_age_days} days: {len(old_invites)}")
+        self.log(f"Invites to skip (≤ {min_age_days} days): {len(invites) - len(old_invites)}")
         
         if not old_invites:
             self.log("\nNo invites older than 1 month. Nothing to withdraw.")
@@ -796,8 +827,9 @@ class InviteWithdrawalAgent:
         self.log("-" * 40)
         
         for i, invite in enumerate(old_invites):
-            if i >= MAX_WITHDRAWALS_PER_RUN:
-                self.log(f"\nReached max withdrawals per run ({MAX_WITHDRAWALS_PER_RUN}). Stopping.")
+            max_withdrawals = self.config_manager.get("invite_withdrawal.max_withdrawals_per_run", 100)
+            if i >= max_withdrawals:
+                self.log(f"\nReached max withdrawals per run ({max_withdrawals}). Stopping.")
                 break
             
             self.log(f"[{i+1}/{len(old_invites)}] Processing: {invite['name']} ({invite['age_days']} days old)")
@@ -862,6 +894,8 @@ class InviteWithdrawalAgent:
         try:
             await self.start()
             await self.process_invites()
+            # Save metrics at the end of successful run
+            self.save_metrics()
         except Exception as e:
             self.log(f"CRITICAL ERROR: {e}")
             import traceback

@@ -17,6 +17,8 @@ import re
 from datetime import datetime
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
+from config_manager import ConfigManager
+from optimizer import AgentOptimizer
 
 # Load environment variables
 load_dotenv()
@@ -24,9 +26,6 @@ load_dotenv()
 
 # Configuration
 NOTIFICATIONS_URL = "https://www.linkedin.com/notifications/"
-MAX_NOTIFICATIONS_PER_RUN = 100  # Process up to 100 notifications per run
-MAX_INVITES_PER_RUN = 50  # Send up to 50 invites per run (LinkedIn daily limit ~100)
-DELAY_BETWEEN_INVITES = 5  # seconds between invites to avoid rate limits
 
 # Paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -42,7 +41,12 @@ class NotificationAgent:
         self.context = None
         self.page = None
         self.playwright = None
+        self.playwright = None
         self.chrome_pid = None
+        
+        # Self-Optimization
+        self.config_manager = ConfigManager()
+        self.agent_optimizer = AgentOptimizer(config_manager=self.config_manager)
         
         # Statistics
         self.notifications_processed = 0
@@ -50,6 +54,14 @@ class NotificationAgent:
         self.already_connected = 0
         self.already_invited = 0
         self.errors = 0
+        
+        # Run Metrics
+        self.run_metrics = {
+            "notifications_processed": 0,
+            "invites_sent": 0,
+            "errors": 0,
+            "agent_type": "notification_agent"
+        }
         
         # User profile URL for identifying user's own comments
         self.user_profile_url = None
@@ -141,6 +153,18 @@ If not engagement, use "none" for type."""
             "viewed your profile", "and others"
         ]
         return any(kw in text_lower for kw in engagement_keywords)
+
+    def save_metrics(self):
+        """Save run metrics to agent history for optimization."""
+        try:
+            self.run_metrics["notifications_processed"] = self.notifications_processed
+            self.run_metrics["invites_sent"] = self.invites_sent
+            self.run_metrics["errors"] = self.errors
+            
+            self.agent_optimizer.log_run(self.run_metrics)
+            self.log(f"Optimization metrics saved: {self.run_metrics}")
+        except Exception as e:
+            self.log(f"Error saving optimization metrics: {e}")
     
     def load_history(self):
         """Load processing history from JSON file."""
@@ -375,7 +399,7 @@ If not engagement, use "none" for type."""
         self.log("Scrolling to load more notifications...")
         last_height = 0
         scroll_attempts = 0
-        max_scroll_attempts = 15  # Scroll up to 15 times
+        max_scroll_attempts = self.config_manager.get("notification_agent.scroll_attempts", 15)
         
         while scroll_attempts < max_scroll_attempts:
             # Scroll down
@@ -423,7 +447,8 @@ If not engagement, use "none" for type."""
             cards = await self.page.query_selector_all("div.nt-card, article")
             self.log(f"Fallback: Found {len(cards)} potential notification elements")
         
-        for i, card in enumerate(cards[:MAX_NOTIFICATIONS_PER_RUN]):
+        max_notifications = self.config_manager.get("notification_agent.max_notifications_per_run", 100)
+        for i, card in enumerate(cards[:max_notifications]):
             try:
                 # Get notification text
                 text = await card.inner_text()
@@ -1002,17 +1027,18 @@ If not engagement, use "none" for type."""
             return
         
         self.log(f"\nProcessing {len(notifications)} notifications...")
-        self.log(f"Current invite count: {self.invites_sent}/{MAX_INVITES_PER_RUN}")
+        max_invites = self.config_manager.get("notification_agent.max_invites_per_run", 50)
+        self.log(f"Current invite count: {self.invites_sent}/{max_invites}")
         
         for notif in notifications:
-            if self.invites_sent >= MAX_INVITES_PER_RUN:
-                self.log(f"\nReached max invites per run ({MAX_INVITES_PER_RUN}). Stopping.")
+            if self.invites_sent >= max_invites:
+                self.log(f"\nReached max invites per run ({max_invites}). Stopping.")
                 break
             
             self.log(f"\n--- {notif['engagement_type'].upper()}: {notif['text'][:50]}...")
             
             for profile in notif["profiles"]:
-                if self.invites_sent >= MAX_INVITES_PER_RUN:
+                if self.invites_sent >= max_invites:
                     break
                 
                 self.notifications_processed += 1
@@ -1057,12 +1083,13 @@ If not engagement, use "none" for type."""
                             "engagement_type": notif["engagement_type"]
                         }
                         self.invites_sent += 1
-                        self.log(f"  Progress: {self.invites_sent}/{MAX_INVITES_PER_RUN} invites sent")
+                        self.log(f"  Progress: {self.invites_sent}/{max_invites} invites sent")
                         
                         # Delay between invites
-                        if self.invites_sent < MAX_INVITES_PER_RUN:
-                            self.log(f"  Waiting {DELAY_BETWEEN_INVITES}s before next action...")
-                            await asyncio.sleep(DELAY_BETWEEN_INVITES)
+                        if self.invites_sent < max_invites:
+                            delay = self.config_manager.get("notification_agent.delay_between_invites", 5)
+                            self.log(f"  Waiting {delay}s before next action...")
+                            await asyncio.sleep(delay)
                     else:
                         self.errors += 1
                         history["skipped_profiles"].append(profile_url)
@@ -1175,6 +1202,9 @@ If not engagement, use "none" for type."""
             await self.detect_user_profile()
             
             await self.process_notifications()
+
+            # Save metrics for optimization
+            self.save_metrics()
             
             # Print summary
             self.log("\n" + "=" * 60)
