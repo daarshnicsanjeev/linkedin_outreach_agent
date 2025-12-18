@@ -216,13 +216,13 @@ The `optimizer.py` automatically tunes these values based on run history for **e
 
 | Agent | Metric | Action |
 |-------|--------|--------|
-| **Outreach** | Low scroll success rate | Increases `scroll_wait` |
-| **Outreach** | Message verification failures | Increases `message_send_wait`, `ui_response_wait_ms` |
-| **Outreach** | Chat open failures | Increases `chat_open_retries`, `chat_open_delay_ms` |
-| **Outreach** | Identity verification failures | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
-| **Outreach** | File upload failures | Increases `file_upload_wait_ms` |
-| **Notification** | Invite errors | Increases `delay_between_invites` |
-| **Withdrawal** | Dialog timeouts | Increases `dialog_timeout_ms` |
+| **Outreach** | Low scroll success rate (`scroll_success_rates`) | Increases `scroll_wait` |
+| **Outreach** | Message verification failures (`message_verification_failed`) | Increases `message_send_wait`, `ui_response_wait_ms` |
+| **Outreach** | Chat open failures (`chat_open_failed`) | Increases `chat_open_retries`, `chat_open_delay_ms` |
+| **Outreach** | Identity verification failures (`identity_verification_failed`) | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
+| **Outreach** | File upload failures (`file_upload_failed`) | Increases `file_upload_wait_ms` |
+| **Notification** | Invite errors (`errors`) | Increases `delay_between_invites` |
+| **Withdrawal** | Dialog timeouts (`dialog_timeout_count`) | Increases `dialog_timeout_ms` |
 | **All** | **Stable performance** | **Decreases waits/delays to speed up** |
 
 ### Agent Specific Configuration

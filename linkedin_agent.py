@@ -36,7 +36,9 @@ class LinkedInAgent:
         self.page = None
         
         # Self-Improving Components
+        # ConfigManager loads settings from config.json to allow dynamic updates
         self.config_manager = ConfigManager()
+        # AgentOptimizer analyzes run history to tune parameters automatically
         self.optimizer = AgentOptimizer(config_manager=self.config_manager)
         
         # Run optimization at startup
@@ -44,6 +46,7 @@ class LinkedInAgent:
         self.optimizer.optimize()
         
         # Metrics for current run
+        # These are tracked and saved to agent_history.json for the optimizer to analyze
         self.run_metrics = {
             "candidates_found": 0,
             "messages_sent": 0,
@@ -54,7 +57,7 @@ class LinkedInAgent:
             "chat_open_failed": False,
             "identity_verification_failed": False,
             "file_upload_failed": False,
-            "agent_type": "outreach_agent"
+            "agent_type": "outreach_agent"  # Identifier for optimizer
         }
         
         self.history_file = "history.json"

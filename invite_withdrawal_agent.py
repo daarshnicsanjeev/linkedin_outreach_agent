@@ -40,7 +40,7 @@ class InviteWithdrawalAgent:
         self.playwright = None
         self.chrome_pid = None
         
-        # Self-Optimization
+        # Self-Optimization Components
         self.config_manager = ConfigManager()
         self.agent_optimizer = AgentOptimizer(config_manager=self.config_manager)
         
@@ -51,6 +51,7 @@ class InviteWithdrawalAgent:
         self.errors = 0
         
         # Run Metrics for Optimization
+        # Tracks dialog timeouts specifically to tune 'dialog_timeout_ms'
         self.run_metrics = {
             "withdrawals_attempted": 0,
             "withdrawals_success": 0,

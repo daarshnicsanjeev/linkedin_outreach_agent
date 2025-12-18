@@ -45,6 +45,7 @@ class NotificationAgent:
         self.chrome_pid = None
         
         # Self-Optimization
+        # Loads dynamic config and logs performance for auto-tuning
         self.config_manager = ConfigManager()
         self.agent_optimizer = AgentOptimizer(config_manager=self.config_manager)
         
@@ -55,7 +56,8 @@ class NotificationAgent:
         self.already_invited = 0
         self.errors = 0
         
-        # Run Metrics
+        # Run Metrics for Self-Optimization
+        # agent_type="notification_agent" ensures the optimizer applies the correct rules
         self.run_metrics = {
             "notifications_processed": 0,
             "invites_sent": 0,
