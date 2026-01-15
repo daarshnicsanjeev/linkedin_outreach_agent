@@ -1,9 +1,6 @@
 # 🚀 Zero-Trust LinkedIn AI Agent Suite
 
-A privacy-first AI automation suite for LinkedIn networking. Includes two powerful agents:
-- **Outreach Agent** - AI-powered messaging for legal professionals with personalized "Zero-Trust" strategy reports
-- **Notification Agent** - Automated connection invites to users who engage with your content
-- **Invite Withdrawal Agent** - Automated cleanup of old, pending connection invites
+A privacy-first AI automation suite for LinkedIn networking with modular, maintainable architecture.
 
 ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
 ![Playwright](https://img.shields.io/badge/Playwright-Automation-green.svg)
@@ -12,67 +9,30 @@ A privacy-first AI automation suite for LinkedIn networking. Includes two powerf
 
 ---
 
-## ✨ Features
+## ✨ Agent Suite
 
-### 🎯 LinkedIn Outreach Agent (`linkedin_agent.py`)
-
-| Feature | Description |
-|---------|-------------|
-| **AI Role Classification** | Uses Gemini AI to classify connections as `PRACTICING` (lawyers), `GENERAL` (legal-adjacent), or `SKIP` |
-| **Zero-Trust Analysis** | Generates AI prompts with bracketed placeholders—no PII ever exposed |
-| **PDF Reports** | Creates accessible, screen-reader friendly strategy PDFs |
-| **Smart Messaging** | Role-based messaging workflow with duplicate prevention |
-| **Vision AI Identity Verification** | Uses Gemini Vision to verify chat participant name before sending—prevents wrong-person messages |
-| **Robust Chat Retry** | Dynamic retry logic with multiple fallback selectors for reliable chat opening |
-| **Self-Optimization** | Learns from run history to automatically adjust 7 different timeout/retry settings |
-| **Login Detection** | Audio alerts + toast notifications when login required |
-
-### 🔔 Notification Engagement Agent (`notification_agent.py`)
-
-| Feature | Description |
-|---------|-------------|
-| **AI Engagement Detection** | Uses Gemini AI to classify notifications—handles all reaction types (like, love, celebrate, insightful, etc.) |
-| **Auto Connection Invites** | Sends invites to engaged non-connections (no note) |
-| **Rate Limiting** | Configurable limits (default: 50 invites/run, 5s delay) |
-| **Duplicate Prevention** | Tracks history to avoid re-inviting |
-| **Multi-Profile Support** | Handles notifications with multiple engagers |
-| **Fallback Detection** | Keyword-based fallback if AI unavailable |
-
-### 🧹 Invite Withdrawal Agent (`invite_withdrawal_agent.py`)
-
-| Feature | Description |
-|---------|-------------|
-| **Age-Based Cleanup** | Automatically withdraws invites older than 1 month (configurable) |
-| **Smart Filtering** | Skips newer invites to give them time to accept |
-| **Dialog Handling** | Automatically handles "Withdraw invite?" confirmation dialogs |
-| **Bulk Processing** | Efficiently processes and withdraws multiple pages of sent invites |
-
----
-
-## 📋 Prerequisites
-
-- **Windows 10/11**
-- **Python 3.8+** ([Download](https://www.python.org/downloads/))
-- **Google Chrome**
-- **Gemini API Key** ([Get one free](https://aistudio.google.com/))
+| Agent | Purpose | Entry Point |
+|-------|---------|-------------|
+| **Outreach Agent** | AI-powered messaging to legal professionals with PDF reports | `outreach` |
+| **Comment Agent** | Automated commenting on posts by legal professionals | `comment` |
+| **Engagement Agent** | Likes mentions and replies to your content | `engagement` |
+| **Notification Agent** | Sends connection invites to users who engage | `notification` |
+| **Search Agent** | Boolean search for legal automation opportunities | `search` |
+| **Invite Withdrawal Agent** | Cleanup old pending connection invites | `withdraw` |
 
 ---
 
 ## 🛠️ Installation
 
-### 1. Clone the Repository
+### 1. Clone & Install
 ```bash
 git clone https://github.com/yourusername/linkedin-agent.git
 cd linkedin-agent
-```
-
-### 2. Install Dependencies
-```bash
 pip install -r requirements.txt
 playwright install chromium
 ```
 
-### 3. Configure API Key
+### 2. Configure API Key
 Create a `.env` file:
 ```env
 GEMINI_API_KEY=your_actual_api_key_here
@@ -82,64 +42,40 @@ GEMINI_API_KEY=your_actual_api_key_here
 
 ## 🚀 Usage
 
-### Outreach Agent (Messaging)
+### Using the CLI (Recommended)
+
 ```bash
-python linkedin_agent.py
+# Run any agent using the unified CLI
+python -m src.linkedin_agent.cli <agent>
+
+# Examples:
+python -m src.linkedin_agent.cli outreach
+python -m src.linkedin_agent.cli comment
+python -m src.linkedin_agent.cli engagement
+python -m src.linkedin_agent.cli notification
+python -m src.linkedin_agent.cli search
 ```
 
-**What it does:**
-1. Scans your LinkedIn connections
-2. AI classifies each contact's role
-3. For **PRACTICING** lawyers: Sends intro → Generates personalized PDF → Sends follow-up with attachment
-4. For **GENERAL** contacts: Sends intro only
-5. Logs all activity and cleans up
+### CLI Options
+```bash
+python -m src.linkedin_agent.cli <agent> [options]
 
-### Notification Agent (Connection Invites)
-```bash
-python notification_agent.py
-```
-Or use the batch file:
-```bash
-run_notification_agent.bat
+Options:
+  --config, -c    Path to config file (default: config.json)
+  --headless      Run browser in headless mode
+  --debug         Enable debug mode with extra logging
 ```
 
-**What it does:**
-1. Opens LinkedIn notifications page
-2. Uses **Gemini AI** to classify each notification as engagement or not
-3. Handles all reaction types: like, love, celebrate, insightful, curious, etc.
-4. Checks connection status for each engager
-5. Sends connection invites to non-connections
-6. Tracks history to prevent duplicates
-
-### 🧹 Invite Withdrawal Agent (Cleanup)
+### Legacy Entry Points (Still Supported)
 ```bash
-python invite_withdrawal_agent.py
+# Original scripts in project root still work
+python linkedin_agent.py       # Outreach
+python comment_agent.py        # Comment
+python engagement_agent.py     # Engagement
+python notification_agent.py   # Notification
 ```
-
-**What it does:**
-1. Navigates to "Sent Invites" page
-2. identify invites older than the threshold (default: 1 month)
-3. Withdraws them one by one
-4. Handles confirmation dialogs automatically
 
 > **First Run**: Chrome will open. Log in to LinkedIn manually. The session persists for future runs.
-
----
-
-## ⏰ Automated Scheduling
-
-### Outreach Agent (Daily 5PM-11PM, 1 contact/hour)
-1. Edit paths in `run_agent_background.bat`
-2. Run as Administrator:
-```bash
-setup_schedule.bat
-```
-
-### Manual Browser Launch
-If Chrome connection fails, start the debug browser first:
-```bash
-start_agent_browser.bat
-```
 
 ---
 
@@ -147,25 +83,101 @@ start_agent_browser.bat
 
 ```
 linkedin-agent/
-├── linkedin_agent.py        # Main outreach agent
-├── notification_agent.py    # Notification engagement agent
-├── invite_withdrawal_agent.py # Invite withdrawal agent
-├── config.json              # Runtime configuration
-├── config_manager.py        # Configuration management
-├── optimizer.py             # Self-optimization logic
-├── requirements.txt         # Python dependencies
-├── .env                     # API keys (not committed)
-├── .env.example             # API key template
-├── .gitignore               # Git ignore rules
+├── src/linkedin_agent/          # Main package
+│   ├── agents/                  # Agent implementations
+│   │   ├── base_agent.py        # Shared agent functionality (~300 lines)
+│   │   ├── outreach_agent.py    # Connection messaging
+│   │   ├── comment_agent.py     # Auto-commenting
+│   │   ├── engagement_agent.py  # Mentions & replies
+│   │   ├── notification_agent.py # Connection invites
+│   │   └── search_agent.py      # Prospect search
+│   │
+│   ├── core/                    # Core infrastructure
+│   │   ├── config.py            # ConfigManager
+│   │   ├── optimizer.py         # Self-optimization
+│   │   └── constants.py         # Shared constants
+│   │
+│   ├── utils/                   # Shared utilities
+│   │   ├── browser.py           # BrowserManager
+│   │   ├── audio.py             # AudioManager
+│   │   ├── gemini.py            # GeminiClient
+│   │   └── anti_detection.py    # Human-like behavior
+│   │
+│   ├── templates/               # HTML templates
+│   │   └── review_base.html     # Review page styling
+│   │
+│   └── cli.py                   # Command-line interface
 │
-├── history.json             # Outreach message history (auto-generated)
-├── notification_history.json # Notification agent history (auto-generated)
-├── agent_history.json       # Run metrics for optimization (auto-generated)
+├── data/                        # Persistent data (gitignored)
+├── logs/                        # Log files (gitignored)
+├── debug/                       # Debug artifacts (gitignored)
+├── user_data/                   # Chrome profile (gitignored)
 │
-├── run_agent_background.bat      # Background execution wrapper
-├── run_notification_agent.bat    # Notification agent launcher
-├── setup_schedule.bat            # Windows Task Scheduler setup
-└── start_agent_browser.bat       # Manual Chrome debug launcher
+├── linkedin_agent.py            # Legacy entry point
+├── comment_agent.py             # Legacy entry point
+├── engagement_agent.py          # Legacy entry point
+├── notification_agent.py        # Legacy entry point
+│
+├── config.json                  # Runtime configuration
+├── pyproject.toml               # Python packaging
+├── requirements.txt             # Dependencies
+└── .env                         # API keys (not committed)
+```
+
+---
+
+## 🏗️ Architecture
+
+### BaseAgent Design
+
+All agents inherit from `BaseAgent`, which provides:
+
+```python
+class BaseAgent(ABC):
+    # Browser Management
+    async def start_browser()      # Connect to Chrome with debugging
+    async def navigate(url)        # Human-like navigation
+    async def close_chat_popups()  # Handle LinkedIn chat modals
+    async def stop_browser()       # Clean disconnect
+    
+    # Logging & Config
+    def log(msg)                   # Console + file logging
+    def get_config(key, default)   # Dot-notation config access
+    
+    # AI Integration  
+    @property gemini               # Lazy-loaded GeminiClient
+    
+    # Audio Alerts
+    def play_ready_sound()         # Multi-tone attention alert
+    def play_complete_sound()      # Victory fanfare
+    def show_notification(...)     # Windows toast notification
+    
+    # History Management
+    def load_history(filename)     # Load JSON from data/
+    def save_history(filename)     # Atomic save to data/
+    
+    # Debug Utilities
+    async def capture_debug_screenshot()
+    async def capture_debug_html()
+    
+    # Lifecycle
+    async def execute()            # Main entry point (start → run → stop)
+```
+
+### Creating a New Agent
+
+```python
+from ..agents.base_agent import BaseAgent
+
+class MyAgent(BaseAgent):
+    def get_agent_name(self) -> str:
+        return "MyAgent"
+    
+    async def run(self):
+        """Your agent logic here."""
+        await self.navigate("https://www.linkedin.com/")
+        # ... do work ...
+        self.play_complete_sound()
 ```
 
 ---
@@ -174,8 +186,6 @@ linkedin-agent/
 
 ### `config.json`
 
-The agent uses a dynamic configuration that the self-optimizer adjusts automatically:
-
 ```json
 {
   "keywords_practicing": ["partner", "attorney", ...],
@@ -183,61 +193,47 @@ The agent uses a dynamic configuration that the self-optimizer adjusts automatic
   "timeouts": {
     "page_load": 5000,
     "scroll_wait": 10000,
-    "message_send_wait": 2000,
-    ...
+    "message_send_wait": 2000
   },
   "limits": {
     "max_scrolls": 50,
-    "max_retries": 5,
-    ...
-  },
-  "outreach_agent": {
-    "fast_forward_wait": 1.5,
-    "login_wait_timeout_seconds": 300
+    "max_retries": 5
   },
   "notification_agent": {
     "max_notifications_per_run": 100,
     "max_invites_per_run": 50,
-    "delay_between_invites": 5,
-    "scroll_attempts": 15
+    "delay_between_invites": 5
   },
-  "invite_withdrawal": {
-    "min_age_days": 31,
-    "delay_between_withdrawals": 2,
-    "max_withdrawals_per_run": 100,
-    "dialog_timeout_ms": 3000
+  "engagement_agent": {
+    "max_scroll_attempts": 10,
+    "max_notifications_per_run": 50,
+    "review_server_port": 8000
   }
 }
 ```
 
-### Self-Optimizer Rules
+### Self-Optimizer
 
-The `optimizer.py` automatically tunes these values based on run history for **each agent type**:
+The `AgentOptimizer` automatically tunes values based on run history:
 
-| Agent | Metric | Action |
-|-------|--------|--------|
-| **Outreach** | Low scroll success rate (`scroll_success_rates`) | Increases `scroll_wait` |
-| **Outreach** | Message verification failures (`message_verification_failed`) | Increases `message_send_wait`, `ui_response_wait_ms` |
-| **Outreach** | Chat open failures (`chat_open_failed`) | Increases `chat_open_retries`, `chat_open_delay_ms` |
-| **Outreach** | Identity verification failures (`identity_verification_failed`) | Increases `identity_poll_retries`, `identity_poll_delay_ms` |
-| **Outreach** | File upload failures (`file_upload_failed`) | Increases `file_upload_wait_ms` |
-| **Notification** | Invite errors (`errors`) | Increases `delay_between_invites` |
-| **Withdrawal** | Dialog timeouts (`dialog_timeout_count`) | Increases `dialog_timeout_ms` |
-| **All** | **Stable performance** | **Decreases waits/delays to speed up** |
+| Metric | Action |
+|--------|--------|
+| Low scroll success rate | Increases `scroll_wait` |
+| Message verification failures | Increases `message_send_wait` |
+| Chat open failures | Increases `chat_open_retries` |
+| Stable performance | Decreases waits to speed up |
 
-### Agent Specific Configuration
+---
 
-All agent parameters are now centralzied in `config.json`.
+## 📊 Data Files
 
-**Notification Agent Settings:**
-- `max_notifications_per_run`: Limit processing per session
-- `max_invites_per_run`: Limit outgoing invites
-- `delay_between_invites`: Base delay (optimized automatically)
-
-**Invite Withdrawal Settings:**
-- `min_age_days`: Invites older than this are withdrawn
-- `max_withdrawals_per_run`: Safety limit per session
-- `dialog_timeout_ms`: Wait time for confirmation dialogs (optimized automatically)
+| File | Location | Purpose |
+|------|----------|---------|
+| `history.json` | `data/` | Outreach message history |
+| `comment_history.json` | `data/` | Posted comments tracking |
+| `notification_history.json` | `data/` | Invited profiles |
+| `*.log` | `logs/` | Agent-specific logs |
+| `debug_*.png` | `debug/screenshots/` | Debug screenshots |
 
 ---
 
@@ -245,55 +241,34 @@ All agent parameters are now centralzied in `config.json`.
 
 - **Local Execution** — Runs entirely on your machine
 - **No Cloud Storage** — No data sent to external servers
-- **Zero-Trust AI** — Generated prompts use `[PLACEHOLDER]` syntax, never real client data
-- **Session Isolation** — Chrome profile stored locally at `C:\ChromeAutomationProfile`
-- **Auto-Cleanup** — All temporary PDFs and screenshots are deleted immediately after the session ends
-
----
-
-## 🧪 Testing
-
-```bash
-python test_connect.py      # Browser connection test
-python test_v2_logic.py     # Business logic tests
-python test_optimizer.py    # Optimizer tests
-```
-
----
-
-## 📊 Logs & History
-
-| File | Purpose |
-|------|---------|
-| `agent_log.txt` | Detailed outreach agent logs |
-| `notification_agent_log.txt` | Notification agent logs |
-| `history.json` | Message history per contact |
-| `notification_history.json` | Invited profiles & run history |
-| `agent_history.json` | Run metrics for self-optimization |
-| `resume_state.json` | Saves scrolling progress to resume after interruptions |
+- **Zero-Trust AI** — Generated prompts use `[PLACEHOLDER]` syntax
+- **Session Isolation** — Chrome profile stored locally
+- **Auto-Cleanup** — Temporary files deleted after sessions
 
 ---
 
 ## 🔧 Troubleshooting
 
-### Chrome Connection Failed (`ECONNREFUSED`)
+### Chrome Connection Failed
 ```bash
-# Option 1: Start debug browser manually
-start_agent_browser.bat
-
-# Option 2: Kill existing Chrome processes
+# Kill existing Chrome and try again
 taskkill /F /IM chrome.exe
-# Then run agent again
+python -m src.linkedin_agent.cli engagement
 ```
 
-### Login Required Alert
-- The agent will play an audio alert and show a Windows notification
+### Login Required
+- Agent plays audio alert and shows Windows notification
 - Log in to LinkedIn in the opened browser
-- Click "Resume Agent" in the notification
+- Agent continues automatically
 
-### PDF Generation Errors
-- Usually caused by Unicode characters in names
-- The agent auto-sanitizes text for PDF compatibility
+### Import Errors
+```bash
+# Make sure you're in the project root
+cd linkedin_outreach_agent
+
+# Run with explicit path
+python -m src.linkedin_agent.cli engagement
+```
 
 ---
 
@@ -304,20 +279,6 @@ This tool is for **educational and productivity purposes**. Please:
 - Adhere to [LinkedIn's User Agreement](https://www.linkedin.com/legal/user-agreement)
 - Review AI outputs before sending
 - Respect LinkedIn's rate limits
-
-The "Zero-Trust" protocols minimize data exposure, but always exercise judgment.
-
----
-
-## 🤝 Contributing
-
-Contributions welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
 
 ---
 

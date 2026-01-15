@@ -1,635 +1,197 @@
 {
-  "https://www.linkedin.com/in/mitchell-chubb/": {
+  "https://www.linkedin.com/in/michael-millstein-ba995414b": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-04T19:50:00",
-    "note": "Manually added to prevent further duplicates"
+    "timestamp": "2026-01-12T17:04:40.381456"
   },
-  "https://www.linkedin.com/in/tom-irving-9459b610/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-04T20:15:47.736390"
-  },
-  "https://www.linkedin.com/in/henry-ezeribe/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-04T21:41:43.119417"
-  },
-  "https://www.linkedin.com/in/kara-leary-domingos-13289b44/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-04T22:09:51.382956"
-  },
-  "https://www.linkedin.com/in/rhonda-anderson-9913092/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-04T22:54:03.659071"
-  },
-  "https://www.linkedin.com/in/galaxai/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-04T23:01:15.090550"
-  },
-  "https://www.linkedin.com/in/charles-vaughan-41b270160/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-04T23:26:38.904533"
-  },
-  "https://www.linkedin.com/in/rajithaboer/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T07:12:12.984213"
-  },
-  "https://www.linkedin.com/in/michael-rabinovich-72192121/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T07:29:29.896055"
-  },
-  "https://www.linkedin.com/in/charul-moona-00ba512a5/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T17:01:40.446461"
-  },
-  "https://www.linkedin.com/in/kyree-robinson-banks/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T19:01:58.240195"
-  },
-  "https://www.linkedin.com/in/iva-ivanova-b09972250/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T20:01:43.082447"
-  },
-  "https://www.linkedin.com/in/sm411/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T21:37:58.089944"
-  },
-  "https://www.linkedin.com/in/lorraine-gauli-rufo-273b8933/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T21:44:21.006658"
-  },
-  "https://www.linkedin.com/in/ravi-soni-16358b184/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T22:03:08.915079"
-  },
-  "https://www.linkedin.com/in/qarrar-somji/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T22:28:00.393856"
-  },
-  "https://www.linkedin.com/in/kyle-wright-96b35019/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T22:32:34.235816"
-  },
-  "https://www.linkedin.com/in/nataliegregg/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T22:36:02.649765"
-  },
-  "https://www.linkedin.com/in/todd-villarrubia/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-05T22:40:15.621113"
-  },
-  "https://www.linkedin.com/in/pavithra-kumar-phd-cfa/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-05T23:01:56.224825"
-  },
-  "https://www.linkedin.com/in/dustin-slade-6406904/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T09:12:18.160145"
-  },
-  "https://www.linkedin.com/in/robert-knight-516b6934/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T17:03:38.276766"
-  },
-  "https://www.linkedin.com/in/jennifer-case-1b5486b/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-06T17:24:40.740344"
-  },
-  "https://www.linkedin.com/in/hisham-kassim/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T19:37:02.590953"
-  },
-  "https://www.linkedin.com/in/david-bressman-2a77258/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T20:03:09.929533"
-  },
-  "https://www.linkedin.com/in/dwcattorneys/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-06T20:26:33.510272"
-  },
-  "https://www.linkedin.com/in/carina-liuxy/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-06T20:27:30.322319"
-  },
-  "https://www.linkedin.com/in/michaelmnelson/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-06T20:51:10.870746"
-  },
-  "https://www.linkedin.com/in/matthew-leider-6bb06543/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T21:04:19.878533"
-  },
-  "https://www.linkedin.com/in/bethanylaflam/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-06T22:02:31.343214"
-  },
-  "https://www.linkedin.com/in/karelsuarezcuba/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-06T22:24:46.709315"
-  },
-  "https://www.linkedin.com/in/andrewrapackepatents/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-08T17:20:16.933842"
-  },
-  "https://www.linkedin.com/in/rebecca-hickman-8138876/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-08T22:44:10.006098"
-  },
-  "https://www.linkedin.com/in/winston-l-438a0a12/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-08T23:02:43.972872"
-  },
-  "https://www.linkedin.com/in/tinadorr/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-08T23:07:53.965300"
-  },
-  "https://www.linkedin.com/in/regina-kiperman/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T17:03:27.521053"
-  },
-  "https://www.linkedin.com/in/babban-y-520235b3/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-09T19:01:42.840851"
-  },
-  "https://www.linkedin.com/in/joseph-%E2%80%9Cjay%E2%80%9D-diaco-jr-esq-1bb3b0342/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-09T19:03:48.973963"
-  },
-  "https://www.linkedin.com/in/chong-ye-ab84317/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T19:07:27.699560"
-  },
-  "https://www.linkedin.com/in/harinathankalyan/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T20:04:07.548026"
-  },
-  "https://www.linkedin.com/in/fortlauderdalecriminallawyer/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T21:07:12.000726"
-  },
-  "https://www.linkedin.com/in/erika-bieberbach-esq-32848951/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T22:03:51.629787"
-  },
-  "https://www.linkedin.com/in/andrewburtonpickett/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-09T23:04:02.523526"
-  },
-  "https://www.linkedin.com/in/bradsingerlaw/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-10T18:06:00.223222"
-  },
-  "https://www.linkedin.com/in/john-benemerito-234984101/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-10T19:09:07.468062"
-  },
-  "https://www.linkedin.com/in/jake-eldemire-smith-b2b06350/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-10T20:04:35.408400"
-  },
-  "https://www.linkedin.com/in/jeffrey-gross-6968683/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-10T20:06:31.672150"
-  },
-  "https://www.linkedin.com/in/lastminutetriallawyer/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-10T21:05:33.980922"
-  },
-  "https://www.linkedin.com/in/kurtlondon/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-10T22:06:00.844934"
-  },
-  "https://www.linkedin.com/in/vittal10x/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-10T23:05:23.257480"
-  },
-  "https://www.linkedin.com/in/merium-malik-4737024/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-11T17:04:46.895111"
-  },
-  "https://www.linkedin.com/in/joshua-akinboro-029517212/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-11T18:42:13.012765"
-  },
-  "https://www.linkedin.com/in/brookssaible/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-11T19:05:35.065923"
-  },
-  "https://www.linkedin.com/in/patrick-mceuen/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-11T20:01:47.530454"
-  },
-  "https://www.linkedin.com/in/sofia-maria-silva-de-almeida-e-souza-netto/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-11T21:03:49.399888"
-  },
-  "https://www.linkedin.com/in/matt-nakajima/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-11T22:02:37.679561"
-  },
-  "https://www.linkedin.com/in/danielle-falls-63795134/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-11T23:03:46.047866"
-  },
-  "https://www.linkedin.com/in/tadanelson/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-12T17:05:31.405795"
-  },
-  "https://www.linkedin.com/in/lisa-parlagreco/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-12T18:02:21.270106"
-  },
-  "https://www.linkedin.com/in/matthew-galati-1a842419/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-12T19:05:05.966437"
-  },
-  "https://www.linkedin.com/in/parisa-khademi-48266a8/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-12T20:05:42.024225"
-  },
-  "https://www.linkedin.com/in/srikanth-mangali-074a1822b/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-12T21:03:36.814125"
-  },
-  "https://www.linkedin.com/in/adv-penav-mota-27b208138/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-12T22:08:48.252866"
-  },
-  "https://www.linkedin.com/in/richard-keyt-a30a885/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-12T23:05:18.463269"
-  },
-  "https://www.linkedin.com/in/smsabercrombiesanchezlaw/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T17:05:07.650157"
-  },
-  "https://www.linkedin.com/in/jigna-mehta-a64a3827a/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-13T18:04:15.578971"
-  },
-  "https://www.linkedin.com/in/ume-ra-5a7304342/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-13T19:30:31.473552"
-  },
-  "https://www.linkedin.com/in/tinaazarvand/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T19:37:10.299254"
-  },
-  "https://www.linkedin.com/in/williamkozub/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T20:37:06.232507"
-  },
-  "https://www.linkedin.com/in/jennifer-allen-3b783884/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T20:43:02.910533"
-  },
-  "https://www.linkedin.com/in/james-vasselli/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T20:54:08.792287"
-  },
-  "https://www.linkedin.com/in/attorney-tom-bosworth-765a0864/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T22:44:17.601616"
-  },
-  "https://www.linkedin.com/in/%F0%9F%9B%A1%EF%B8%8F-ot-van-daalen-94b197258/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T22:54:55.939861"
-  },
-  "https://www.linkedin.com/in/angus-ejiofor-266703262/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T23:03:34.669013"
-  },
-  "https://www.linkedin.com/in/david-tejtel-09035412/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-13T23:32:04.426567"
-  },
-  "https://www.linkedin.com/in/gabrielle-bond-5a62b13a0/": {
+  "https://www.linkedin.com/in/andrewpeterkato": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Seasonal Fundraiser (Bell Ringer) at The Salvation",
-    "timestamp": "2025-12-13T23:55:28.758721"
+    "reason": "Not a lawyer: Managing Director | Board-Certified Valuer | ESG &",
+    "timestamp": "2026-01-12T18:00:41.821309"
   },
-  "https://www.linkedin.com/in/niphy-deena-cherian-42703434/": {
+  "https://www.linkedin.com/in/kumarshivam621": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Employer Connect-Dr. Reddy's Foundation",
-    "timestamp": "2025-12-13T23:59:01.838161"
+    "reason": "Not a lawyer: .NET | Angular |JavaScript  | SQL | AWS | Full sta",
+    "timestamp": "2026-01-12T18:00:50.674939"
   },
-  "https://www.linkedin.com/in/brinda-r-658564320/": {
+  "https://www.linkedin.com/in/girish-darji-19799534b": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Product Owner skilled in Agile, Team Management, S",
-    "timestamp": "2025-12-13T23:59:11.837875"
+    "reason": "Not a lawyer: \u201cUS Accounting & Bookkeeping Professional | QuickB",
+    "timestamp": "2026-01-12T18:01:00.362240"
   },
-  "https://www.linkedin.com/in/neha-lohia-6881a5321/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Executive Virtual Assistant | MBA in Marketing & H",
-    "timestamp": "2025-12-13T23:59:21.831932"
-  },
-  "https://www.linkedin.com/in/yasser-ibrahim-esq-96b242217/": {
+  "https://www.linkedin.com/in/michaellamarra": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-14T00:02:18.804923"
+    "timestamp": "2026-01-12T18:05:01.707029"
   },
-  "https://www.linkedin.com/in/jennifer-mcdaniel-66a03414/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-14T00:09:22.106242"
-  },
-  "https://www.linkedin.com/in/brian-bishop-881a58207/": {
+  "https://www.linkedin.com/in/ale-albornoz/en": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: --",
-    "timestamp": "2025-12-14T00:16:09.609621"
+    "reason": "Not a lawyer: Senior Specialist in Medical Informatics | Digital",
+    "timestamp": "2026-01-12T19:00:33.707036"
   },
-  "https://www.linkedin.com/in/dr-gareth-roberts/": {
+  "https://www.linkedin.com/in/matt-dery-58958a120": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Principal AI Specialist @ Culture Amp | Deep Learn",
-    "timestamp": "2025-12-14T00:29:06.365208"
+    "reason": "Not a lawyer: Marketing and Business Development Director at Fin",
+    "timestamp": "2026-01-12T19:00:44.244082"
   },
-  "https://www.linkedin.com/in/jesse-hamilton-6706b292/": {
+  "https://www.linkedin.com/in/adam-wolk-ba236a3a": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-12T19:04:31.289359"
+  },
+  "https://www.linkedin.com/in/ben-mcpherson-3a34a282": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Private Equity Professional",
-    "timestamp": "2025-12-14T00:29:19.634422"
+    "reason": "Not a lawyer: Headteacher @ Oxfordshire Schools Diocese Trust | ",
+    "timestamp": "2026-01-12T20:00:55.671652"
   },
-  "https://www.linkedin.com/in/samreen-khan-8a2237197z/": {
+  "https://www.linkedin.com/in/avi-azoulay-2861873": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: administrator at wipro",
-    "timestamp": "2025-12-14T00:29:31.671018"
+    "reason": "Not a lawyer: Group Director and SVP at Dime Community Bank",
+    "timestamp": "2026-01-12T20:01:08.336986"
   },
-  "https://www.linkedin.com/in/raj-das-5b9a6116a/": {
+  "https://www.linkedin.com/in/darryl-fairfax-price-528501167": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: \ud83d\udd25 SHOPIFY Store Expert | FREELANCING & PERSONAL BR",
-    "timestamp": "2025-12-14T00:29:43.296739"
+    "reason": "Not a lawyer: Head Teacher",
+    "timestamp": "2026-01-12T20:01:53.639557"
   },
-  "https://www.linkedin.com/in/sarah-o%E2%80%99reilly-7761a81ab/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-14T00:33:56.590259"
+  "https://www.linkedin.com/in/kurt-lyn-48274242": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-12T20:11:18.112715"
   },
-  "https://www.linkedin.com/in/robert-hyte-59486218a/": {
-    "status": "SKIPPED",
-    "reason": "Manual history detected",
-    "timestamp": "2025-12-14T00:34:48.014449"
-  },
-  "https://www.linkedin.com/in/pranav-borkar-282303216/": {
+  "https://www.linkedin.com/in/greg-harlow-67829935": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Software Developer | Technical Support | PHP | SQL",
-    "timestamp": "2025-12-14T00:35:01.018220"
+    "reason": "Not a lawyer: vice president at Harlow Agency, Inc.",
+    "timestamp": "2026-01-12T21:01:46.350124"
   },
-  "https://www.linkedin.com/in/sunil-shukla-137a062/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Generative AI",
-    "timestamp": "2025-12-14T00:35:12.879879"
+  "https://www.linkedin.com/in/caesar-villanueva": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-12T21:07:12.558399"
   },
-  "https://www.linkedin.com/in/biju-c-467818252/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Global SecOps lead (Hybrid Cloud & infrastructure ",
-    "timestamp": "2025-12-14T00:35:24.286149"
-  },
-  "https://www.linkedin.com/in/dipti-prasad-670832198/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Accessibility | Equality | National Awardee 2024 F",
-    "timestamp": "2025-12-14T00:35:35.147646"
-  },
-  "https://www.linkedin.com/in/ruhin-bhattasali-711a72311/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Sophomore @IIT-H BTech CSE\u201928 | Semi-Finalist @Goo",
-    "timestamp": "2025-12-14T00:35:47.745062"
-  },
-  "https://www.linkedin.com/in/vikrant-ahir-7518a027a/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Software developer @inquizity | Angular| Java | UI",
-    "timestamp": "2025-12-14T00:35:59.861222"
-  },
-  "https://www.linkedin.com/in/neelam-rajiwade-647324236/": {
-    "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Talent Acquisition Strategist | Building Future-Re",
-    "timestamp": "2025-12-14T00:36:12.198691"
-  },
-  "https://www.linkedin.com/in/jaredcorreia/": {
+  "https://www.linkedin.com/in/megha-patangi-029241168": {
     "status": "COMPLETED",
     "role": "GENERAL",
-    "timestamp": "2025-12-14T00:59:32.572132"
+    "timestamp": "2026-01-12T22:01:47.902780"
   },
-  "https://www.linkedin.com/in/tabber-b-benedict/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T01:25:30.983045"
-  },
-  "https://www.linkedin.com/in/tamar-m-477078116/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T01:47:24.220400"
-  },
-  "https://www.linkedin.com/in/gary-tonsley/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-14T01:52:49.854744"
-  },
-  "https://www.linkedin.com/in/mariotmilano/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T17:03:56.015618"
-  },
-  "https://www.linkedin.com/in/parri-abbott-79b48144/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-14T18:02:18.821628"
-  },
-  "https://www.linkedin.com/in/ramonurteaga/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T19:04:19.222823"
-  },
-  "https://www.linkedin.com/in/kellisia-hazlewood-esq-ll-m-446697246/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T20:03:44.015929"
-  },
-  "https://www.linkedin.com/in/roseanngathoni/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T21:04:19.065350"
-  },
-  "https://www.linkedin.com/in/poonam-bhuchar/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-14T22:02:25.435722"
-  },
-  "https://www.linkedin.com/in/liliani-olafu-85645b282/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-14T23:04:15.464432"
-  },
-  "https://www.linkedin.com/in/vipul-ladwa/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-15T17:02:17.148215"
-  },
-  "https://www.linkedin.com/in/daniel-martin-89327a34/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-15T19:04:18.517806"
-  },
-  "https://www.linkedin.com/in/kristen-goss-00b68969/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-15T20:03:55.956341"
-  },
-  "https://www.linkedin.com/in/sandy-p-1492b016/": {
+  "https://www.linkedin.com/in/michael-puderbeutel": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: our favorite places.com",
-    "timestamp": "2025-12-15T21:00:32.889628"
+    "reason": "Not a lawyer: CEO, Parkstone Capital LLC | Multifamily Real Esta",
+    "timestamp": "2026-01-12T23:00:32.147736"
   },
-  "https://www.linkedin.com/in/dan-anixt-b29a484/": {
+  "https://www.linkedin.com/in/aakritiraizada": {
+    "status": "COMPLETED",
+    "role": "GENERAL",
+    "timestamp": "2026-01-12T23:01:37.730116"
+  },
+  "https://www.linkedin.com/in/robin-remley-9b55a7206": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-15T21:04:04.303356"
+    "timestamp": "2026-01-13T17:06:30.033572"
   },
-  "https://www.linkedin.com/in/ojas-patil-esq-306413101/": {
+  "https://www.linkedin.com/in/nicolechessin": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-15T22:03:32.076304"
+    "timestamp": "2026-01-13T18:58:29.395173"
   },
-  "https://www.linkedin.com/in/daniel-hill-b5bb639/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-15T23:03:06.524174"
-  },
-  "https://www.linkedin.com/in/sophiebestai/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-16T17:03:26.139106"
-  },
-  "https://www.linkedin.com/in/vaishnavi-geda-36002a333/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-16T18:07:10.037599"
-  },
-  "https://www.linkedin.com/in/kristi-patrice-carter-213a72b/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-16T19:02:07.500319"
-  },
-  "https://www.linkedin.com/in/matic-research-8073a9305/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-16T20:02:07.323306"
-  },
-  "https://www.linkedin.com/in/sallikaelegalforensicnurse/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-16T21:04:06.258407"
-  },
-  "https://www.linkedin.com/in/kenneth-w-878095195/": {
-    "status": "COMPLETED",
-    "role": "PRACTICING",
-    "timestamp": "2025-12-16T22:09:06.329357"
-  },
-  "https://www.linkedin.com/in/jerry-bruce-a0a77637/": {
-    "status": "PARTIAL",
-    "role": "PRACTICING",
-    "msg1_sent": true,
-    "msg2_sent": false,
-    "timestamp": "2025-12-17T17:02:13.276439"
-  },
-  "https://www.linkedin.com/in/cwilsongriffin/": {
-    "status": "COMPLETED",
-    "role": "GENERAL",
-    "timestamp": "2025-12-17T18:02:07.066488"
-  },
-  "https://www.linkedin.com/in/muhammad-amir-bin-mohamed-anwar/": {
+  "https://www.linkedin.com/in/buildprocs": {
     "status": "SKIPPED_NOT_LEGAL",
-    "reason": "Not a lawyer: Attended Multimedia University",
-    "timestamp": "2025-12-17T19:01:58.087886"
+    "reason": "Not a lawyer: Real Estate Development / General Construction / O",
+    "timestamp": "2026-01-13T19:00:33.157224"
   },
-  "https://www.linkedin.com/in/casey-gartland-esq-353a7396/": {
+  "https://www.linkedin.com/in/chirayu-bhatt-10202a119": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Empowering Organizations,One Talent at At Time !! ",
+    "timestamp": "2026-01-13T19:00:45.673637"
+  },
+  "https://www.linkedin.com/in/tyler-wilk-550818a4": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-17T19:05:10.434722"
+    "timestamp": "2026-01-13T19:04:44.110479"
   },
-  "https://www.linkedin.com/in/vedransolaja/": {
+  "https://www.linkedin.com/in/anthonyrizzo3": {
     "status": "COMPLETED",
     "role": "GENERAL",
-    "timestamp": "2025-12-17T21:03:40.591087"
+    "timestamp": "2026-01-13T20:01:37.710669"
   },
-  "https://www.linkedin.com/in/hebba-hassanein-aa6372b/": {
+  "https://www.linkedin.com/in/s-irfan-ali-md": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Physician | CEO, Pioneer Medical and Pioneer Healt",
+    "timestamp": "2026-01-13T21:06:18.082596"
+  },
+  "https://www.linkedin.com/in/nicole-withroder": {
+    "status": "COMPLETED",
+    "role": "GENERAL",
+    "timestamp": "2026-01-13T21:07:31.343317"
+  },
+  "https://www.linkedin.com/in/rachel-nordahl-59831a282": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Trauma-Informed Intuitive Strategist | Emotional A",
+    "timestamp": "2026-01-13T22:00:33.217604"
+  },
+  "https://www.linkedin.com/in/paul-sasse-movemydocs": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Gold Certified Universal Migrator. 140+ apps suppo",
+    "timestamp": "2026-01-13T22:00:41.375195"
+  },
+  "https://www.linkedin.com/in/michael-elkon-9657487": {
     "status": "COMPLETED",
     "role": "PRACTICING",
-    "timestamp": "2025-12-17T22:05:49.010575"
+    "timestamp": "2026-01-13T22:04:24.764424"
   },
-  "https://www.linkedin.com/in/chitraksh-mayank-7705a9205/": {
+  "https://www.linkedin.com/in/eduardo-r-parra-29622776": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-13T23:05:17.354081"
+  },
+  "https://www.linkedin.com/in/rodolforodriguezchomat": {
     "status": "COMPLETED",
     "role": "GENERAL",
-    "timestamp": "2025-12-17T23:02:23.566706"
+    "timestamp": "2026-01-14T17:03:54.046949"
+  },
+  "https://www.linkedin.com/in/gizelle-thorpe-70310b341": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Founder of I AM BEING & Head of UK at Keith\u2019s Caca",
+    "timestamp": "2026-01-14T18:00:32.765266"
+  },
+  "https://www.linkedin.com/in/andres-h-173670b1": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Payments | Consumer Finance | Healthcare | Plant S",
+    "timestamp": "2026-01-14T18:00:40.896914"
+  },
+  "https://www.linkedin.com/in/guneytopcu": {
+    "status": "SKIPPED_NOT_LEGAL",
+    "reason": "Not a lawyer: Tech Leader at Google | The Weekend Builder. Helpi",
+    "timestamp": "2026-01-14T18:00:48.895613"
+  },
+  "https://www.linkedin.com/in/neil-marion-25842083": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-14T18:06:02.247718"
+  },
+  "https://www.linkedin.com/in/bvrechek": {
+    "status": "COMPLETED",
+    "role": "GENERAL",
+    "timestamp": "2026-01-14T19:29:10.230956"
+  },
+  "https://www.linkedin.com/in/mercedesquinonez": {
+    "status": "COMPLETED",
+    "role": "GENERAL",
+    "timestamp": "2026-01-14T20:02:41.147008"
+  },
+  "https://www.linkedin.com/in/manuel-gonzales-4240947": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-14T21:05:38.116564"
+  },
+  "https://www.linkedin.com/in/simon-aziz-budhwani-esq-7a186918": {
+    "status": "COMPLETED",
+    "role": "PRACTICING",
+    "timestamp": "2026-01-14T22:06:05.361067"
+  },
+  "https://www.linkedin.com/in/joanbullock": {
+    "status": "COMPLETED",
+    "role": "GENERAL",
+    "timestamp": "2026-01-14T23:02:40.068595"
   }
 }

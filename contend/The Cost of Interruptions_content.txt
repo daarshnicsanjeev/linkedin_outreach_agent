@@ -1,0 +1,11 @@
+'pulse-accent': 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+
+A preview of your latest insight.
+
+It takes 23 minutes to refocus after a single interruption. How many times did your phone ring today? For legal professionals, this isn't just an annoyance; it's a significant drain on productivity and quality of work. We need to talk about **The Cost of Interruptions**.
+
+Lawyers thrive on 'Deep Work' – that focused, uninterrupted time essential for drafting complex motions, meticulously reviewing contracts, or strategizing intricate cases. Every email notification, every Slack ping, and especially every phone call isn't just a brief pause; it shatters that deep concentration, forcing a complete cognitive reset.
+
+Imagine reclaiming those lost 23-minute blocks, multiplied by every interruption. On a typical Jan 14 (Wed), how much deep work time is truly available? This is where legal AI isn't just a time-saver; it's a **'Focus Defender.'** By intelligently handling routine inquiries, scheduling, document review, and administrative noise, AI creates a protective shield around your most valuable asset: your uninterrupted thought. It allows legal minds to engage in the high-value, strategic work that only they can do, without the constant onslaught of distractions.
+
+I help lawyers build 'Focus Mode' workflows. DM me if you want to stop the constant interruptions.

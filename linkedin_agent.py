@@ -17,6 +17,12 @@ from dotenv import load_dotenv
 from config_manager import ConfigManager
 from optimizer import AgentOptimizer
 
+# Anti-detection utilities
+from anti_detection import (
+    human_delay, human_scroll, human_mouse_move, 
+    human_like_navigate, human_like_click, human_like_type
+)
+
 # Load environment variables
 load_dotenv()
 
@@ -223,7 +229,8 @@ class LinkedInAgent:
         try:
             with open(resume_file, "r", encoding="utf-8") as f:
                 state = json.load(f)
-                self.log(f"Loaded resume state: {state.get('last_connections_count', 0)} connections, last top: {state.get('last_top_connection_url', 'N/A')[:50]}...")
+                url_preview = (state.get('last_top_connection_url') or 'N/A')[:50]
+                self.log(f"Loaded resume state: {state.get('last_connections_count', 0)} connections, last top: {url_preview}...")
                 return state
         except Exception as e:
             self.log(f"Could not load resume state: {e}")
@@ -458,9 +465,22 @@ class LinkedInAgent:
                         years = int(p)
                         return today - timedelta(days=years*365)
                         
-            return today # Default to today if unsure (safe side? No, safe is SKIP. But let's assume recent if unparseable to be checked by history)
+            # Try absolute date "Connected on December 19, 2025" using Regex for robustness
+            import re
+            # Match Month Day, Year (ignoring case and extra spaces)
+            match = re.search(r'(?i)([a-z]+)\s+(\d{1,2}),?\s+(\d{4})', text)
+            if match:
+                month, day, year = match.groups()
+                # Normalize to "Month Day Year" (e.g. "December 19 2025")
+                clean_date = f"{month.title()} {day} {year}"
+                try:
+                    return datetime.strptime(clean_date, "%B %d %Y")
+                except:
+                    pass
+
+            return None # Fail closed: if we can't parse, we don't know it's new.
         except:
-            return today
+            return None
 
     def classify_role(self, headline, about_text=None):
         """Classify role using Gemini AI based on headline and About section."""
@@ -1162,32 +1182,60 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             return False
 
     async def close_existing_chats(self, page=None):
-        """Close any existing chat overlays to prevent interference."""
+        """Close any existing chat overlays (conversations AND lists) to prevent interference."""
         page = page or self.page
+        self.log("DEBUG: Starting close_existing_chats...")
         try:
-            # Find and close all chat overlay close buttons
-            close_selectors = [
+            # 1. Close specific conversation windows (the 1-on-1 chats)
+            close_conversation_selectors = [
                 "button[data-control-name='overlay.close_conversation_window']",
                 ".msg-overlay-bubble-header__control--close",
                 "button[aria-label='Close your conversation']",
                 ".msg-overlay-bubble-header button svg[data-test-icon='close-small']",
-                # Additional selectors for newer LinkedIn UI
                 "button[aria-label='Close conversation']",
                 "button[aria-label='Close message']",
                 ".msg-overlay-bubble-header__controls button"
             ]
             
-            for selector in close_selectors:
+            for selector in close_conversation_selectors:
                 close_buttons = await page.query_selector_all(selector)
+                if close_buttons:
+                    self.log(f"DEBUG: Found {len(close_buttons)} close buttons with selector: {selector}")
                 for btn in close_buttons:
                     try:
                         if await btn.is_visible():
+                            self.log("DEBUG: Clicking close button...")
                             await btn.click()
                             await asyncio.sleep(0.3)
-                    except:
+                    except Exception as e:
+                        self.log(f"DEBUG: Error clicking close button: {e}")
                         pass
             
-            # Also try to close by clicking outside any overlay
+            # 2. Minimize the main Messaging List (the "Messaging" tab at bottom right)
+            # This is critical as it can expand and block other elements
+            try:
+                # Selectors for the "Messaging" header button that toggles minimize/maximize
+                list_header_selectors = [
+                    "header.msg-overlay-bubble-header[data-control-name='overlay.minimize_connection_list_bar']",
+                    "button[data-control-name='overlay.minimize_connection_list_bar']",
+                    "header.msg-overlay-list-bubble__header", 
+                    ".msg-overlay-list-bubble--is-expanded header"
+                ]
+                
+                # Check if list is expanded
+                is_expanded = await page.query_selector(".msg-overlay-list-bubble--is-expanded")
+                if is_expanded:
+                    self.log("Found expanded messaging list. Minimizing...")
+                    for sel in list_header_selectors:
+                        header = await page.query_selector(sel)
+                        if header and await header.is_visible():
+                            await header.click()
+                            await asyncio.sleep(0.5)
+                            break
+            except Exception as e:
+                pass
+
+            # 3. Also try to close by clicking outside any overlay (generic cleanup)
             minimized_chats = await page.query_selector_all(".msg-overlay-conversation-bubble--is-active")
             for chat in minimized_chats:
                 try:
@@ -1357,26 +1405,71 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
             return []
 
     async def close_chat(self, page=None):
+        """Close any open chat/messaging popups (conversations and lists)."""
         page = page or self.page
         try:
-            close_btn_selectors = [
-                "button[data-control-name='overlay.close_conversation_window']",
-                "button[aria-label='Close conversation']",
-                "button[aria-label='Close message']"
+            # 1. Close Conversation Windows
+            close_selectors = [
+                 "button[data-control-name='overlay.close_conversation_window']",
+                 "button[aria-label^='Close conversation']",
+                 "button[aria-label^='Close message']",
+                 "aside.msg-overlay-conversation-bubble button[type='button'] svg[data-supported-dps-icon-name='compact-close-small']",
+                 "aside.msg-overlay-conversation-bubble header button"
             ]
-            for selector in close_btn_selectors:
-                btn = await page.query_selector(selector)
-                if btn and await btn.is_visible():
-                    await btn.click()
-                    await asyncio.sleep(1)
-                    return
             
-            # Fallback
-            await page.keyboard.press("Escape")
-            await asyncio.sleep(0.5)
-            await page.keyboard.press("Escape")
+            # Specific open windows
+            open_chats = await page.query_selector_all("aside.msg-overlay-conversation-bubble")
+            if open_chats:
+                self.log(f"Found {len(open_chats)} open chat popups. Closing...")
+                for chat in open_chats:
+                    close_btn = await chat.query_selector("button[aria-label^='Close'], button.msg-overlay-bubble-header__control--close-btn")
+                    
+                    if not close_btn:
+                         close_btn = await chat.query_selector("button:has(svg[data-supported-dps-icon-name='compact-close-small'])")
+
+                    if close_btn and await close_btn.is_visible():
+                        await close_btn.click()
+                        await asyncio.sleep(0.5)
+            
+            # Global close buttons fallback
+            for sel in close_selectors:
+                btns = await page.query_selector_all(sel)
+                for btn in btns:
+                    if await btn.is_visible():
+                        await btn.click()
+                        await asyncio.sleep(0.5)
+
+            # 2. Minimize Messaging List (Crucial update)
+            try:
+                # Check for Expanded List
+                is_list_expanded = await page.query_selector(".msg-overlay-list-bubble--is-expanded")
+                if is_list_expanded:
+                    self.log("Minimizing expanded messaging list (in close_chat)...")
+                    # Click the header to toggle/minimize
+                    header = await page.query_selector(".msg-overlay-list-bubble__header button, header.msg-overlay-list-bubble__header")
+                    if header and await header.is_visible():
+                        await header.click()
+                        await asyncio.sleep(0.5)
+
+                # Check for "Messages" tab header that might be open
+                # The messaging tab usually has 'msg-overlay-bubble-header'
+                msg_tab = await page.query_selector(".msg-overlay-list-bubble:not(.msg-overlay-list-bubble--is-minimized)")
+                if msg_tab:
+                     self.log("Found open messaging list bubble. Attempting to minimize...")
+                     header = await msg_tab.query_selector("header")
+                     if header:
+                         await header.click()
+                         await asyncio.sleep(0.5)
+
+            except Exception as e:
+                self.log(f"Error minimizing list in close_chat: {e}")
+                        
+            # Final Fallback: Escape key
+            if not open_chats:
+                 await page.keyboard.press("Escape")
+                 
         except Exception as e:
-            self.log(f"Error closing chat: {e}")
+            self.log(f"Warning: Error closing chat popups: {e}")
 
     async def send_chat_message(self, message_text, attachment_path=None, page=None, verify=True, retries=None, expected_name=None):
         page = page or self.page
@@ -1400,32 +1493,67 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
         for attempt in range(retries + 1):
             try:
                 self.log(f"Sending message (Attempt {attempt + 1}/{retries + 1})...")
+                
+                # ANTI-DETECTION: Human-like delay before starting
+                await human_delay(1.0, 2.5)
+                
                 msg_form = await page.wait_for_selector(".msg-form__contenteditable", timeout=5000)
                 if not msg_form:
                     self.log("Message input not found.")
                     return False
                 
-                await msg_form.fill("") # Clear first
-                await msg_form.type(message_text)
-                await asyncio.sleep(ui_wait)
+                # ANTI-DETECTION: Human-like behavior with slight delays
+                await msg_form.fill("")  # Clear first
+                await human_delay(0.3, 0.8)
+                
+                # Use fill() for instant input (type() with delay times out on long messages)
+                # The 50-100ms per char * 500 chars = 25-50s > 30s timeout
+                await msg_form.fill(message_text)
+                await human_delay(1.5, 2.5)  # Slightly longer pause after "typing"
 
                 if attachment_path:
                     self.log(f"Attaching file: {attachment_path}")
                     file_input = await page.query_selector("input[type='file']")
                     if file_input:
                         await file_input.set_input_files(attachment_path)
-                        self.log("File uploaded. Waiting for processing...")
-                        await asyncio.sleep(file_upload_wait)
+                        self.log("File uploaded. Waiting for attachment to process...")
+                        
+                        # Wait for attachment thumbnail to appear (confirms LinkedIn processed the file)
+                        attachment_thumbnail_selectors = [
+                            ".msg-form__attachment-container",
+                            ".msg-form__file-attachment",
+                            "div[data-attachment-type]",
+                            ".msg-form__message-attachment",
+                            ".msg-form__attachment",
+                        ]
+                        thumbnail_found = False
+                        for sel in attachment_thumbnail_selectors:
+                            try:
+                                await page.wait_for_selector(sel, timeout=15000, state="visible")
+                                self.log(f"Attachment thumbnail visible: {sel}")
+                                thumbnail_found = True
+                                break
+                            except:
+                                continue
+                        
+                        if not thumbnail_found:
+                            self.log("WARNING: Attachment thumbnail not found. Falling back to time-based wait...")
+                            await human_delay(file_upload_wait, file_upload_wait + 2)
+                        else:
+                            # Brief additional wait for UI to stabilize after thumbnail appears
+                            await human_delay(1.5, 2.5)
                     else:
                         # Try clicking attach button
                         attach_btn = await page.query_selector("button[aria-label='Attach file']")
                         if attach_btn:
+                            await human_delay(0.5, 1.0)
                             await attach_btn.click()
-                            await asyncio.sleep(ui_wait)
+                            await human_delay(0.5, 1.5)
                             file_input = await page.query_selector("input[type='file']")
                             if file_input:
                                 await file_input.set_input_files(attachment_path)
-                                await asyncio.sleep(file_upload_wait)
+                                self.log("File uploaded via attach button. Waiting for processing...")
+                                await human_delay(file_upload_wait, file_upload_wait + 2)
                 
                 # Click Send - try multiple selectors for robustness
                 send_btn = None
@@ -1469,8 +1597,8 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                 
                 # Wait for send button to become enabled (poll with configurable retries)
                 # This handles cases where LinkedIn is still processing an uploaded file
-                send_enabled_retries = self.config_manager.get("limits.send_button_enabled_retries", 5)
-                send_enabled_poll = self.config_manager.get("timeouts.send_button_enabled_poll_ms", 500) / 1000
+                send_enabled_retries = self.config_manager.get("limits.send_button_enabled_retries", 10)
+                send_enabled_poll = self.config_manager.get("timeouts.send_button_enabled_poll_ms", 1000) / 1000
                 
                 button_enabled = False
                 if send_btn:
@@ -1540,15 +1668,26 @@ NO = Sanjeev has NOT sent any messages yet (safe to send)"""
                             self.log("Message verified in history.")
                             return True
                         else:
-                            self.log("Message NOT found in history after sending.")
-                            self.run_metrics["message_verification_failed"] = True
-                            if attempt < retries:
-                                self.log("Retrying...")
-                                await asyncio.sleep(2)
-                                continue
+                            self.log("Message NOT found in history via CSS. Checking with Vision AI fallback...")
+                            # Vision AI Check:
+                            # inspect_chat_history returns False if it sees "Sanjeev" messages (which is what we WANT here)
+                            # It returns True if it sees NO messages (which means verification failed)
+                            is_safe_to_send = await self.inspect_chat_history(page)
+                            
+                            if not is_safe_to_send:
+                                # "Not safe to send" means "Duplicate detected" -> Message verification SUCCESS
+                                self.log("Vision AI confirmed message was sent (Duplicate detected).")
+                                return True
                             else:
-                                self.log("Max retries reached. Verification failed.")
-                                return False
+                                self.log("Vision AI also failed to find the message.")
+                                self.run_metrics["message_verification_failed"] = True
+                                if attempt < retries:
+                                    self.log("Retrying sending...")
+                                    await asyncio.sleep(2)
+                                    continue
+                                else:
+                                    self.log("Max retries reached. Verification failed.")
+                                    return False
                     else:
                         return True
                 else:
@@ -1862,21 +2001,33 @@ You must strictly output VALID JSON with the following structure. Do not include
                     website_url=input_data if input_type == "url" else None
                 )
                 
-                if validation["valid"] or validation["confidence"] >= 0.7:
+                if validation["valid"]:
+                    # Practice area confirmed correct
                     self.log(f"[OK] Practice Area Validated: {practice_area}")
                     break  # Validation passed, exit retry loop
                 else:
+                    # Validation FAILED - the AI's practice area is WRONG
+                    # High confidence here means validator is confident in the CORRECTION
                     if validation["suggested_practice_area"] and validation_attempt < MAX_VALIDATION_RETRIES:
                         self.log(f"[!] PRACTICE AREA VALIDATION FAILED (Attempt {validation_attempt + 1}/{MAX_VALIDATION_RETRIES + 1})")
-                        self.log(f"   Claimed: {practice_area}")
-                        self.log(f"   Suggested: {validation['suggested_practice_area']}")
-                        self.log(f"   Confidence: {validation['confidence']}")
-                        self.log(f"   Reason: {validation.get('reason', 'N/A')}")
-                        self.log("Re-generating report with corrected practice area...")
+                        self.log(f"    Claimed: {practice_area}")
+                        self.log(f"    Actual: {validation['suggested_practice_area']}")
+                        self.log(f"    Confidence: {validation['confidence']}")
+                        self.log(f"    Reason: {validation.get('reason', 'N/A')}")
+                        self.log("Re-generating report with CORRECTED practice area...")
                         practice_area_hint = validation["suggested_practice_area"]
                         # Continue to next iteration of retry loop
+                    elif validation["suggested_practice_area"] and validation["confidence"] >= 0.8:
+                        # No retries left but high-confidence correction available
+                        # Update the result directly with the corrected practice area
+                        self.log(f"[!] Practice area mismatch detected with high confidence ({validation['confidence']})")
+                        self.log(f"    Correcting: {practice_area} -> {validation['suggested_practice_area']}")
+                        result['profile']['practiceArea'] = validation['suggested_practice_area']
+                        practice_area = validation['suggested_practice_area']
+                        self.log(f"[OK] Practice Area Corrected to: {practice_area}")
+                        break
                     else:
-                        self.log(f"[!] Practice area validation failed but no retry available. Using: {practice_area}")
+                        self.log(f"[!] Practice area validation failed but no correction available. Using: {practice_area}")
                         break
             
             self.log("Analysis complete.")
@@ -2041,7 +2192,10 @@ You must strictly output VALID JSON with the following structure. Do not include
             return ""
         # Remove query parameters
         if "?" in url:
-            return url.split("?")[0]
+            url = url.split("?")[0]
+        # Remove trailing slash
+        if url.endswith("/"):
+            url = url[:-1]
         return url
 
     def trigger_troubleshooting(self, candidate, error_context):
@@ -2146,8 +2300,13 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
         sys.exit(1)
 
     async def scan_visible_candidates(self):
+        should_stop = False
         try:
             self.log("Scanning visible connections...")
+            
+            # Ensure view is clear of chat popups
+            await self.close_chat()
+            
             # Get selector from config
             primary_selector = self.config_manager.get("selectors.connections_list", "div[data-view-name='connections-list']")
             
@@ -2180,7 +2339,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     self.log(f"Saved debug_no_candidates.html at {debug_file}")
                 except Exception as e:
                     self.log(f"Failed to save debug snapshot: {e}")
-                return []
+                return [], False
             
             self.log(f"Found {len(connections)} connection cards in current view.")
             candidates = []
@@ -2232,7 +2391,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     
                     # 1. Local History Check (Layer 1)
                     if normalized_url in history_data:
-                        # self.log(f"Skipping {name}: Already in history.json")
+                        self.log(f"Skipping {name}: Already in history.json")
                         continue
 
                     # 2. Date Check
@@ -2256,10 +2415,18 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     
                     if time_text:
                         conn_date = self.parse_connection_date(time_text)
-                        days_diff = (datetime.now() - conn_date).days
-                        if days_diff > 90:
-                            # self.log(f"Skipping {name}: Connected {days_diff} days ago (>90).")
-                            continue
+                        if conn_date:
+                            days_diff = (datetime.now() - conn_date).days
+                            if days_diff > 90:
+                                self.log(f"Hit 90-day limit at {name} ({days_diff} days). Stopping scan.")
+                                should_stop = True
+                                break
+                        else:
+                             self.log(f"Skipping {name}: Could not parse connection date from '{time_text}'")
+                             continue
+                    else:
+                        self.log(f"Skipping {name}: No connection date found.")
+                        continue
                     
                     # 3. Mark all candidates as PENDING - AI will classify when profile is opened
                     #    (We don't call AI here as it would be too slow/expensive for initial scan)
@@ -2280,10 +2447,10 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     self.log(f"Warning: Skipped candidate {i} due to error: {str(candidate_error)[:50]}")
                     continue
             
-            return candidates
+            return candidates, should_stop
         except Exception as e:
             self.log(f"Error in scan_visible_candidates: {e}")
-            return []
+            return [], False
 
     async def process_candidate(self, candidate):
         self.log(f"--- Processing Candidate: {candidate['name']} ({candidate['role_type']}) ---")
@@ -2568,7 +2735,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             
             # Step 1: Check top ~10 connections for new candidates (not in history)
             self.log("Checking for new recent connections at top...")
-            initial_candidates = await self.scan_visible_candidates()
+            initial_candidates, _ = await self.scan_visible_candidates()
             
             # Store the top connection URL for next run's reference
             if initial_candidates:
@@ -2579,9 +2746,23 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             new_at_top = [c for c in initial_candidates if c['url'] not in history_data]
             
             if new_at_top:
-                self.log(f"Found {len(new_at_top)} new connection(s) at top! Processing first...")
-                # Process new connection(s) at top first (normal flow will handle this)
-                # We DON'T fast-forward, but we preserve the resume position
+                self.log(f"Found {len(new_at_top)} new connection(s) at top! Processing them first...")
+                # Process these specific new candidates immediately
+                # Process these specific new candidates immediately
+                for candidate in new_at_top:
+                     if await self.process_candidate(candidate):
+                         self.log("Candidate processed successfully (from top). Stopping agent (one per run).")
+                         self.run_metrics["messages_sent"] += 1
+                         # Exit completely since we've done our one job
+                         await self.stop()
+                         return
+                
+                # After processing top items, we STILL want to fast-forward to where we left off
+                # unless we are super early in the list.
+                self.log("Top items processed. Now attempting to fast-forward to resume position...")
+                actual_count = await self.fast_forward_to_position(resume_position)
+                max_connections_reached = actual_count
+                self.log(f"Resumed at {actual_count} connections. Starting normal scan...")
             else:
                 self.log("No new connections at top. Fast-forwarding to resume position...")
                 # Fast-forward to where we left off
@@ -2595,7 +2776,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
             self.log(f"--- Scan Loop {scroll_attempts + 1}/{MAX_SCROLLS} ---")
             self.run_metrics["scroll_attempts"] += 1
             
-            candidates = await self.scan_visible_candidates()
+            candidates, should_stop = await self.scan_visible_candidates()
             
             # Track the first connection URL (for resume state)
             if candidates and not top_connection_url:
@@ -2622,6 +2803,13 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     pass
 
             self.log(f"Found {len(candidates)} candidates ({len(new_candidates)} new).")
+            # MONITORING: Take a screenshot to verify view state
+            try:
+                await self.page.screenshot(path="monitor_view.png")
+                self.log("Saved monitor_view.png")
+            except:
+                pass
+
             self.run_metrics["candidates_found"] += len(new_candidates)
             
             processed_any = False
@@ -2640,10 +2828,19 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                 self.save_resume_state(max_connections_reached, top_connection_url)
                 break
             
+            if should_stop:
+                self.log("90-day limit reached (all subsequent connections are older). Ending session.")
+                break
+            
             # Count candidates before scroll
             candidates_before = len(candidates)
             
             self.log("No new candidates processed in this view. Scrolling...")
+            
+            # CRITICAL: Ensure overlays are closed before scrolling
+            # The messaging list overlay often blocks the "Load More" button or scroll area
+            await self.close_existing_chats()
+            await asyncio.sleep(0.5)
             
             # --- SCROLL LAST CARD INTO VIEW STRATEGY ---
             scroll_effective = False
@@ -2716,7 +2913,7 @@ Local Agent failed to complete the workflow for candidate: **[{candidate['name']
                     await asyncio.sleep(2)
                     
                 # Check if new candidates loaded
-                new_scan = await self.scan_visible_candidates()
+                new_scan, _ = await self.scan_visible_candidates()
                 candidates_after = len(new_scan)
                 
                 if candidates_after > candidates_before:

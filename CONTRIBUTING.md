@@ -28,47 +28,117 @@ Thank you for your interest in contributing! This document provides guidelines f
    cp .env.example .env
    ```
 
-3. Run tests to verify setup:
+3. Test the CLI works:
    ```bash
-   python test_connect.py
+   python -m src.linkedin_agent.cli --help
    ```
 
-## Project Components
+---
 
-| File | Purpose |
-|------|---------|
-| `linkedin_agent.py` | Main outreach agent (messaging, PDF generation) |
-| `notification_agent.py` | Engagement-based connection invites |
-| `invite_withdrawal_agent.py` | Automated invite cleanup agent |
-| `config_manager.py` | Configuration loading/saving |
-| `optimizer.py` | Self-optimization from run history |
+## Project Architecture
+
+### Package Structure
+
+```
+src/linkedin_agent/
+├── agents/           # Agent implementations (inherit from BaseAgent)
+├── core/             # ConfigManager, AgentOptimizer, constants
+├── utils/            # BrowserManager, AudioManager, GeminiClient
+├── templates/        # HTML templates for review pages
+└── cli.py            # Unified CLI entry point
+```
+
+### Key Components
+
+| Component | Location | Purpose |
+|-----------|----------|---------|
+| `BaseAgent` | `agents/base_agent.py` | Abstract base class with shared functionality |
+| `BrowserManager` | `utils/browser.py` | Chrome automation with debugging |
+| `GeminiClient` | `utils/gemini.py` | Gemini AI integration |
+| `AudioManager` | `utils/audio.py` | Sound alerts and notifications |
+| `ConfigManager` | `core/config.py` | Configuration loading |
+| `AgentOptimizer` | `core/optimizer.py` | Self-tuning based on run history |
+
+---
+
+## Creating a New Agent
+
+All agents must inherit from `BaseAgent`:
+
+```python
+from ..agents.base_agent import BaseAgent
+
+class MyNewAgent(BaseAgent):
+    def get_agent_name(self) -> str:
+        return "MyNewAgent"
+    
+    async def run(self):
+        """Your agent logic here."""
+        # Use inherited methods:
+        await self.navigate("https://www.linkedin.com/")
+        history = self.load_history("my_history.json")
+        response = self.gemini.generate("prompt...")
+        self.log("Processing...")
+        self.play_ready_sound()
+```
+
+### Adding to CLI
+
+1. Create your agent in `src/linkedin_agent/agents/`
+2. Add to `src/linkedin_agent/agents/__init__.py`
+3. Add case to `src/linkedin_agent/cli.py`
+
+---
 
 ## Code Guidelines
 
 ### Style
 - Follow PEP 8 for Python code
-- Use descriptive variable and function names
-- Add docstrings to functions and classes
+- Use type hints where possible
+- Add docstrings to all public methods
 - Keep functions focused and small
+
+### Agents
+- Always inherit from `BaseAgent`
+- Use `self.log()` instead of `print()`
+- Use `self.gemini` instead of creating new clients
+- Use `self.play_ready_sound()` for alerts
 
 ### Commits
 - Write clear, concise commit messages
 - Use present tense ("Add feature" not "Added feature")
 - Reference issues when applicable
 
-### Testing
-- Add tests for new features
-- Ensure existing tests pass before submitting
+---
+
+## Testing
+
+```bash
+# Test imports work
+python -c "from src.linkedin_agent.agents import *; print('OK')"
+
+# Run a specific agent
+python -m src.linkedin_agent.cli engagement
+
+# Test with legacy entry point
+python engagement_agent.py
+```
+
+**Testing Guidelines:**
 - Test with a real LinkedIn account (be mindful of rate limits)
-- Test both agents if changes affect shared code
+- If changes affect `BaseAgent`, test ALL agents
+- Add debug screenshots when troubleshooting
+
+---
 
 ## Pull Request Process
 
 1. **Update documentation** if you change functionality
-2. **Update the README** if you add new features
+2. **Verify imports** work for all agents
 3. **Test thoroughly** before submitting
 4. **Describe your changes** clearly in the PR description
-5. **Link related issues** if applicable
+
+---
 
 ## Reporting Issues
 
@@ -76,25 +146,16 @@ When reporting bugs, please include:
 - Python version
 - Operating system
 - Steps to reproduce
-- Expected vs actual behavior
-- Relevant log output (sanitize any personal data)
+- Relevant log output (sanitize personal data)
+- Debug screenshots if applicable
 
-## Feature Requests
-
-We welcome feature suggestions! Please:
-- Check existing issues first
-- Describe the use case
-- Explain why it would be valuable
+---
 
 ## Code of Conduct
 
 - Be respectful and inclusive
 - Focus on constructive feedback
 - Help others learn and grow
-
-## Questions?
-
-Feel free to open an issue for questions or discussions.
 
 ---
 

@@ -1,0 +1,71 @@
+
+          
+            contents: 
+            [...]
+          
+          
+          
+            0: 
+            {...}
+          
+          
+          
+            parts: 
+            [...]
+          
+          
+          
+            0: 
+            {...}
+          
+          
+        text: "You are an expert in digital accessibility and image description. Your task is to generate concise and descriptive alt text for the provided `post_image`, ensuring it accurately conveys the visual content for users with visual impairments.\n# Step by Step instructions\n1. Analyze the provided Post Image to identify all key visual elements, subjects, actions, and the overall context or theme of the image.\n2. Draft a concise and descriptive alt text that accurately reflects the visual content of the Post Image, focusing on the most important details for accessibility.\n3. Review the drafted alt text. Is it concise (typically under 125 characters)? Is it descriptive? Does it accurately convey the visual information of the Post Image to someone who cannot see it? If not, go back to step 2 and refine the alt text.\n\n\nPost Image:\n\"\"\"\n"
+      
+        
+          
+            1: 
+            {...}
+          
+          
+          
+            fileData: 
+            {...}
+          
+          
+        fileUri: "https://generativelanguage.googleapis.com/v1beta/files/biepcns0beq2"
+      
+        mimeType: "image/png"
+      
+        
+        
+          
+            2: 
+            {...}
+          
+          
+        text: "\n\"\"\"\nIMPORTANT NOTE: Start directly with the output, do not output any delimiters.\nOutput:\n"
+      
+        
+        
+        role: "user"
+      
+        
+        
+          
+            safetySettings: 
+            [...]
+          
+          
+          
+            0: 
+            {...}
+          
+          
+        category: "HARM_CATEGORY_SEXUALLY_EXPLICIT"
+      
+        threshold: "BLOCK_NONE"
+      
+        
+          
+            1: 
+            {..

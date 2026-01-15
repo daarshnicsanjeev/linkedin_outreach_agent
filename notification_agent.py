@@ -14,11 +14,18 @@ import os
 import subprocess
 import socket
 import re
+import random
 from datetime import datetime
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
 from config_manager import ConfigManager
 from optimizer import AgentOptimizer
+
+# Anti-detection utilities
+from anti_detection import (
+    human_delay, human_scroll, human_mouse_move, 
+    human_like_navigate, human_like_click, RateLimiter
+)
 
 # Load environment variables
 load_dotenv()
@@ -31,6 +38,14 @@ NOTIFICATIONS_URL = "https://www.linkedin.com/notifications/"
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 HISTORY_FILE = os.path.join(SCRIPT_DIR, "notification_history.json")
 LOG_FILE = os.path.join(SCRIPT_DIR, "notification_agent_log.txt")
+
+# Daily invite limit (to avoid LinkedIn detection)
+DAILY_INVITE_LIMIT = 10
+
+
+class WeeklyLimitReachedError(Exception):
+    """Raised when LinkedIn's weekly invitation limit is detected."""
+    pass
 
 
 class NotificationAgent:
@@ -68,6 +83,14 @@ class NotificationAgent:
         # User profile URL for identifying user's own comments
         self.user_profile_url = None
         
+        # Rate limiter for human-like pacing (waits 5-15s between actions, long pause every 3 invites)
+        self.rate_limiter = RateLimiter(
+            min_delay=5, 
+            max_delay=15, 
+            long_pause_every=3,  # Every 3 invites, take a longer break
+            long_pause_duration=(30, 60)  # 30-60 second break
+        )
+        
     def log(self, msg):
         """Log message to console and file."""
         timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
@@ -75,6 +98,50 @@ class NotificationAgent:
         print(log_line)
         with open(LOG_FILE, "a", encoding="utf-8") as f:
             f.write(log_line + "\n")
+    
+    async def simulate_human_browsing(self):
+        """Simulate random human browsing behavior before taking action.
+        
+        This makes the bot appear more human by doing random actions like:
+        - Scrolling up and down
+        - Moving mouse to random elements
+        - Hovering over profile sections
+        - Taking natural reading pauses
+        """
+        try:
+            self.log("    [Simulating human browsing...]")
+            
+            # Random chance to do different activities
+            action = random.choice(["scroll", "scroll", "hover", "read", "scroll_up"])
+            
+            if action == "scroll":
+                # Scroll down a bit then back up
+                await human_scroll(self.page, random.randint(150, 350))
+                await human_delay(0.5, 1.5)
+                
+            elif action == "scroll_up":
+                # Sometimes scroll up
+                await self.page.evaluate(f"window.scrollBy(0, -{random.randint(50, 150)})")
+                await human_delay(0.5, 1.0)
+                
+            elif action == "hover":
+                # Hover over random elements
+                elements = await self.page.query_selector_all("button, a, img")
+                if elements and len(elements) > 0:
+                    random_elem = random.choice(elements[:min(10, len(elements))])
+                    await human_mouse_move(self.page, random_elem)
+                    await human_delay(0.3, 0.8)
+                    
+            elif action == "read":
+                # Just pause like reading
+                await human_delay(1.5, 3.5)
+            
+            # Random mouse movement
+            await human_mouse_move(self.page)
+            
+        except Exception as e:
+            # Don't fail if browsing simulation fails
+            pass
     
     def classify_notification_with_gemini(self, notification_text):
         """Use Gemini AI to classify if a notification is an engagement notification.
@@ -107,6 +174,7 @@ Engagement types include (but are not limited to):
 - Shared or reposted my content
 - Replied to my comment
 - Viewed my profile
+- REACTED TO someone else's comment that MENTIONED ME (third-party mention reaction)
 
 NOT engagement (should be skipped):
 - Job recommendations
@@ -118,7 +186,7 @@ NOT engagement (should be skipped):
 - LinkedIn feature announcements
 
 Respond with ONLY a JSON object in this exact format:
-{{"is_engagement": true/false, "engagement_type": "liked"/"loved"/"commented"/"mentioned"/"shared"/"viewed"/"reacted"/"none"}}
+{{"is_engagement": true/false, "engagement_type": "liked"/"loved"/"commented"/"mentioned"/"shared"/"viewed"/"reacted"/"third_party_mention"/"none"}}
 
 If not engagement, use "none" for type."""
 
@@ -152,7 +220,8 @@ If not engagement, use "none" for type."""
             "liked your", "loves your", "loved your", "celebrated your",
             "supported your", "found your", "reacted to", "commented on",
             "mentioned you", "shared your", "reposted your", "replied to",
-            "viewed your profile", "and others"
+            "viewed your profile", "and others",
+            "comment that mentioned you"  # Third-party mention reactions
         ]
         return any(kw in text_lower for kw in engagement_keywords)
 
@@ -180,8 +249,37 @@ If not engagement, use "none" for type."""
             "processed_notifications": [],
             "invited_profiles": {},
             "already_connected": [],
-            "skipped_profiles": []
+            "skipped_profiles": [],
+            "daily_invites": {}  # {"YYYY-MM-DD": count}
         }
+    
+    def get_todays_invite_count(self, history):
+        """Get the number of invites sent today."""
+        today = datetime.now().strftime("%Y-%m-%d")
+        
+        # Ensure daily_invites exists in history
+        if "daily_invites" not in history:
+            history["daily_invites"] = {}
+        
+        return history["daily_invites"].get(today, 0)
+    
+    def increment_daily_invite_count(self, history):
+        """Increment today's invite count in history."""
+        today = datetime.now().strftime("%Y-%m-%d")
+        
+        # Ensure daily_invites exists in history
+        if "daily_invites" not in history:
+            history["daily_invites"] = {}
+        
+        current_count = history["daily_invites"].get(today, 0)
+        history["daily_invites"][today] = current_count + 1
+        
+        return history["daily_invites"][today]
+    
+    def can_send_more_invites_today(self, history):
+        """Check if we can send more invites today (under daily limit)."""
+        todays_count = self.get_todays_invite_count(history)
+        return todays_count < DAILY_INVITE_LIMIT
     
     def save_history(self, data):
         """Save processing history atomically."""
@@ -371,16 +469,57 @@ If not engagement, use "none" for type."""
         except Exception as e:
             self.log(f"Error detecting user profile: {e}")
             return False
+
+    async def close_chat_popups(self):
+        """Close any open chat/messaging popups."""
+        try:
+            # multiple selectors for the close button on chat windows
+            selectors = [
+                 "button[data-control-name='overlay.close_conversation_window']",
+                 "button[aria-label^='Close conversation']",
+                 "button[aria-label^='Close message']",
+                 "aside.msg-overlay-conversation-bubble button[type='button'] svg[data-supported-dps-icon-name='compact-close-small']", # Icon approach
+                 "aside.msg-overlay-conversation-bubble header button" # Header close button
+            ]
+            
+            # Try finding any open chat windows first
+            open_chats = await self.page.query_selector_all("aside.msg-overlay-conversation-bubble")
+            if open_chats:
+                self.log(f"Found {len(open_chats)} open chat popups. Closing...")
+                for chat in open_chats:
+                    # Try to find the close button within THIS specific chat window
+                    close_btn = await chat.query_selector("button[aria-label^='Close'], button.msg-overlay-bubble-header__control--close-btn")
+                    
+                    if not close_btn:
+                         # Try finding button by looking for the SVG icon inside it
+                         close_btn = await chat.query_selector("button:has(svg[data-supported-dps-icon-name='compact-close-small'])")
+
+                    if close_btn and await close_btn.is_visible():
+                        await close_btn.click()
+                        await asyncio.sleep(0.5)
+            
+            # Fallback: check global selectors
+            for sel in selectors:
+                btns = await self.page.query_selector_all(sel)
+                for btn in btns:
+                    if await btn.is_visible():
+                        await btn.click()
+                        await asyncio.sleep(0.5)
+        except Exception as e:
+            self.log(f"Warning: Error closing chat popups: {e}")
     
     async def navigate_to_notifications(self):
         """Navigate to LinkedIn notifications page."""
         self.log(f"Navigating to notifications: {NOTIFICATIONS_URL}")
-        await self.page.goto(NOTIFICATIONS_URL, wait_until="domcontentloaded")
-        await asyncio.sleep(3)
+        # ANTI-DETECTION: Human-like navigation
+        await human_like_navigate(self.page, NOTIFICATIONS_URL)
         
         if not await self.check_login_required():
             return False
         
+        # Ensure view is clear of chat popups
+        await self.close_chat_popups()
+
         # Wait for notifications to load
         try:
             await self.page.wait_for_selector(
@@ -398,15 +537,15 @@ If not engagement, use "none" for type."""
         self.log("Extracting notifications...")
         
         # Scroll down multiple times to load more notifications
-        self.log("Scrolling to load more notifications...")
+        self.log("Scrolling to load more notifications (with human-like behavior)...")
         last_height = 0
         scroll_attempts = 0
         max_scroll_attempts = self.config_manager.get("notification_agent.scroll_attempts", 15)
         
         while scroll_attempts < max_scroll_attempts:
-            # Scroll down
-            await self.page.evaluate("window.scrollBy(0, 1000)")
-            await asyncio.sleep(1.5)  # Wait for content to load
+            # ANTI-DETECTION: Human-like scrolling
+            await human_scroll(self.page, random.randint(700, 1200))
+            await human_delay(1.5, 3.0)  # Variable wait for content to load
             
             # Check current scroll height
             current_height = await self.page.evaluate("document.body.scrollHeight")
@@ -421,10 +560,12 @@ If not engagement, use "none" for type."""
             
             if scroll_attempts % 5 == 0:
                 self.log(f"  Scrolled {scroll_attempts} times...")
+                # ANTI-DETECTION: Extra pause every 5 scrolls
+                await human_delay(3.0, 6.0)
         
         # Scroll back to top
         await self.page.evaluate("window.scrollTo(0, 0)")
-        await asyncio.sleep(1)
+        await human_delay(1.0, 2.0)
         
         notifications = []
         
@@ -526,11 +667,63 @@ If not engagement, use "none" for type."""
                             })
                 
                 
+                # NEW: Handle third-party mention reactions
+                # Pattern: "[Person A] reacted to [Person B]'s comment that mentioned you"
+                # We want to extract BOTH Person A (reactor) AND Person B (mentioner)
+                if "comment that mentioned you" in text_lower:
+                    self.log(f"    Third-party mention detected. Extracting mentioner...")
+                    
+                    # Extract Person B (the mentioner) from the pattern
+                    # Pattern variations:
+                    # - "Lewis Matthews reacted to Rory Safir's comment that mentioned you"
+                    # - "James Tillman liked Ian Mann's comment that mentioned you"
+                    mentioner_match = re.search(
+                        r"(?:reacted to|liked|loved|celebrated|found.*in)\s+(.+?)'s\s+comment that mentioned you",
+                        text_lower
+                    )
+                    
+                    if mentioner_match:
+                        mentioner_name_raw = mentioner_match.group(1).strip()
+                        # Capitalize properly
+                        mentioner_name = mentioner_name_raw.title()
+                        self.log(f"    Identified mentioner: {mentioner_name}")
+                        
+                        # Try to find mentioner's profile link in the notification
+                        mentioner_found = False
+                        for link in links:
+                            href = await link.get_attribute("href")
+                            link_text = await link.inner_text()
+                            link_text = link_text.strip() if link_text else ""
+                            
+                            if link_text and mentioner_name.lower() in link_text.lower() and href and "/in/" in href:
+                                if not href.startswith("http"):
+                                    href = "https://www.linkedin.com" + href
+                                href = href.split("?")[0]
+                                
+                                # Check if this profile is already in the list
+                                already_added = any(p["profile_url"] == href for p in profiles)
+                                if not already_added:
+                                    profiles.append({
+                                        "name": link_text.strip(),
+                                        "profile_url": href,
+                                        "role": "mentioner"
+                                    })
+                                    self.log(f"    Added mentioner profile: {link_text.strip()} -> {href}")
+                                    mentioner_found = True
+                                break
+                        
+                        if not mentioner_found:
+                            self.log(f"    Could not find mentioner's profile link for: {mentioner_name}")
+                    else:
+                        self.log(f"    Could not parse mentioner name from notification text")
+                
                 # Check for "and X others" expansion
                 # Usually text is like "Person A and 5 others liked..."
-                if "and" in text_lower and "others" in text_lower:
+                # Check for "and X others" expansion
+                # Usually text is like "Person A and 5 others liked..."
+                if "and" in text_lower and ("others" in text_lower or "other" in text_lower):
                     # Expand all grouped notifications (comments and non-comments)
-                    match = re.search(r'and\s+(\d+)\s+others', text_lower)
+                    match = re.search(r'and\s+(\d+)\s+others?', text_lower)
                     if match:
                         count = match.group(1)
                         self.log(f"    Found grouped notification (+{count} others). Expanding...")
@@ -541,7 +734,7 @@ If not engagement, use "none" for type."""
 
                         # 1. Try to find link with text "others"
                         try:
-                            others_link = await card.query_selector("a:has-text('others')")
+                            others_link = await card.query_selector("a:has-text('other')")
                             if others_link:
                                 expansion_url = await others_link.get_attribute("href")
                         except:
@@ -592,7 +785,10 @@ If not engagement, use "none" for type."""
                         engagement_type = ai_result["engagement_type"]
                     else:
                         engagement_type = "engaged"
-                        if "viewed your profile" in text_lower:
+                        # Check for third-party mention first (most specific)
+                        if "comment that mentioned you" in text_lower:
+                            engagement_type = "third_party_mention"
+                        elif "viewed your profile" in text_lower:
                             engagement_type = "viewed"
                         elif "loved" in text_lower:
                             engagement_type = "loved"
@@ -909,10 +1105,20 @@ If not engagement, use "none" for type."""
         try:
             self.log(f"  Sending connection invite to: {name}")
             
+            # ANTI-DETECTION: Variable delay before starting (more unpredictable)
+            await human_delay(random.uniform(2.0, 5.0), random.uniform(5.0, 8.0))
+            
             # Make sure we're on the profile page
             if profile_url not in self.page.url:
-                await self.page.goto(profile_url, wait_until="domcontentloaded")
-                await asyncio.sleep(2)
+                # ANTI-DETECTION: Human-like navigation
+                await human_like_navigate(self.page, profile_url)
+            
+            # ANTI-DETECTION: Simulate natural browsing (scroll, hover, read) before taking action
+            await self.simulate_human_browsing()
+            
+            # ANTI-DETECTION: Scroll and move mouse naturally
+            await human_scroll(self.page, random.randint(200, 400))
+            await human_delay(1.0, 2.5)
             
             # Find and click Connect button
             connect_selectors = [
@@ -935,8 +1141,9 @@ If not engagement, use "none" for type."""
                 self.log("    Connect button not found")
                 return False
             
-            await connect_btn.click()
-            await asyncio.sleep(2)
+            # ANTI-DETECTION: Human-like click with delay
+            await human_like_click(self.page, connect_btn)
+            await human_delay(1.5, 3.0)
             
             action_taken = False
             
@@ -951,9 +1158,10 @@ If not engagement, use "none" for type."""
                 )
                 if send_now_btn:
                     self.log("    Clicking 'Send without a note'...")
-                    await send_now_btn.click()
+                    await human_delay(0.5, 1.5)
+                    await human_like_click(self.page, send_now_btn)
                     action_taken = True
-                    await asyncio.sleep(2)
+                    await human_delay(2.0, 4.0)
             except:
                 pass
             
@@ -966,7 +1174,8 @@ If not engagement, use "none" for type."""
                     )
                     if send_btn:
                         self.log("    Clicking 'Send' in modal...")
-                        await send_btn.click()
+                        await human_delay(0.5, 1.0)
+                        await human_like_click(self.page, send_btn)
                         action_taken = True
                         await asyncio.sleep(2)
                 except:
@@ -1015,6 +1224,44 @@ If not engagement, use "none" for type."""
                     self.log(f"    ❌ Invite failed: 'Connect' clicked but no 'Send' option found and status not Pending.")
                     return False
             
+            # --- Check for Weekly Limit Popup or Toast ---
+            # Based on user screenshots:
+            # 1. Modal Header: "You've reached the weekly invitation limit"
+            # 2. Toast: "Your invitation to X was not sent because you have reached the weekly limit..."
+            try:
+                # Check for Modal
+                limit_header = await self.page.query_selector(
+                    "h2:has-text('You\\'ve reached the weekly invitation limit'), " +
+                    "h2:has-text('Weekly limit reached')"
+                )
+                
+                # Check for Toast (often appears at bottom left)
+                limit_toast = await self.page.query_selector(
+                    "div.artdeco-toast-item:has-text('weekly limit'), " +
+                    "div[role='alert']:has-text('weekly limit')"
+                )
+
+                if (limit_header and await limit_header.is_visible()) or (limit_toast and await limit_toast.is_visible()):
+                    self.log("    [!] WEEKLY INVITATION LIMIT DETECTED (Modal or Toast)!")
+                    
+                    # Try to close the modal nicely if it exists
+                    try:
+                        got_it_btn = await self.page.query_selector("button:has-text('Got it')")
+                        if got_it_btn and await got_it_btn.is_visible():
+                            self.log("    Clicking 'Got it' to dismiss modal...")
+                            await got_it_btn.click()
+                    except:
+                        pass
+                        
+                    raise WeeklyLimitReachedError("Weekly invitation limit reached.")
+            except WeeklyLimitReachedError:
+                raise # Re-raise to be caught by main loop
+            except Exception as e:
+                # Ignore other errors during limit check
+                pass
+
+        except WeeklyLimitReachedError:
+            raise
         except Exception as e:
             self.log(f"    Error sending invite: {e}")
             return False
@@ -1022,6 +1269,20 @@ If not engagement, use "none" for type."""
     async def process_notifications(self):
         """Main processing loop for notifications."""
         history = self.load_history()
+        
+        # Check daily invite limit first
+        todays_invites = self.get_todays_invite_count(history)
+        remaining_today = DAILY_INVITE_LIMIT - todays_invites
+        
+        if remaining_today <= 0:
+            self.log(f"\n" + "="*60)
+            self.log(f"DAILY INVITE LIMIT REACHED ({DAILY_INVITE_LIMIT} invites today)")
+            self.log(f"Please wait until tomorrow to send more invites.")
+            self.log("="*60 + "\n")
+            return
+        
+        self.log(f"\nDaily invite status: {todays_invites}/{DAILY_INVITE_LIMIT} sent today ({remaining_today} remaining)")
+        
         notifications = await self.extract_notifications()
         
         if not notifications:
@@ -1029,8 +1290,11 @@ If not engagement, use "none" for type."""
             return
         
         self.log(f"\nProcessing {len(notifications)} notifications...")
-        max_invites = self.config_manager.get("notification_agent.max_invites_per_run", 50)
-        self.log(f"Current invite count: {self.invites_sent}/{max_invites}")
+        # ANTI-DETECTION: Per-run limit (also respects daily limit)
+        max_invites_per_run = self.config_manager.get("notification_agent.max_invites_per_run", 10)
+        # Use the smaller of per-run limit and remaining daily limit
+        max_invites = min(max_invites_per_run, remaining_today)
+        self.log(f"This run limit: {max_invites} invites (per-run: {max_invites_per_run}, daily remaining: {remaining_today})")
         
         for notif in notifications:
             if self.invites_sent >= max_invites:
@@ -1076,7 +1340,13 @@ If not engagement, use "none" for type."""
                 
                 elif status == "not_connected":
                     # Send invite!
-                    success = await self.send_connection_invite(profile_url, name)
+                    try:
+                        success = await self.send_connection_invite(profile_url, name)
+                    except WeeklyLimitReachedError:
+                        self.log("\n" + "!"*60)
+                        self.log("STOPPING AGENT: Weekly Invitation Limit Reached.")
+                        self.log("!"*60 + "\n")
+                        return
                     
                     if success:
                         history["invited_profiles"][profile_url] = {
@@ -1085,13 +1355,15 @@ If not engagement, use "none" for type."""
                             "engagement_type": notif["engagement_type"]
                         }
                         self.invites_sent += 1
-                        self.log(f"  Progress: {self.invites_sent}/{max_invites} invites sent")
                         
-                        # Delay between invites
+                        # Increment daily invite count
+                        new_daily_count = self.increment_daily_invite_count(history)
+                        self.log(f"  Progress: {self.invites_sent}/{max_invites} this run | {new_daily_count}/{DAILY_INVITE_LIMIT} today")
+                        
+                        # ANTI-DETECTION: Use rate limiter for human-like pacing
+                        # (5-15s regular delay + 30-60s break every 3 invites)
                         if self.invites_sent < max_invites:
-                            delay = self.config_manager.get("notification_agent.delay_between_invites", 5)
-                            self.log(f"  Waiting {delay}s before next action...")
-                            await asyncio.sleep(delay)
+                            await self.rate_limiter.wait(self.log)
                     else:
                         self.errors += 1
                         history["skipped_profiles"].append(profile_url)
@@ -1108,6 +1380,9 @@ If not engagement, use "none" for type."""
                 # Save history after each profile
                 self.save_history(history)
         
+        
+        # Navigate back to notifications page
+
         # Navigate back to notifications page
         await self.page.goto(NOTIFICATIONS_URL, wait_until="domcontentloaded")
     
@@ -1193,38 +1468,50 @@ If not engagement, use "none" for type."""
     
     async def run(self):
         """Main entry point for the agent."""
-        try:
-            await self.start()
-            
-            if not await self.navigate_to_notifications():
-                self.log("Failed to navigate to notifications. Exiting.")
-                return
-            
-            # Detect user's profile URL for comment-specific filtering
-            await self.detect_user_profile()
-            
-            await self.process_notifications()
+        max_retries = 3
+        for attempt in range(max_retries):
+            try:
+                self.log(f"Starting run (Attempt {attempt+1}/{max_retries})...")
+                await self.start()
+                
+                if not await self.navigate_to_notifications():
+                    self.log("Failed to navigate to notifications. Exiting.")
+                    return
+                
+                # Detect user's profile URL for comment-specific filtering
+                await self.detect_user_profile()
+                
+                await self.process_notifications()
 
-            # Save metrics for optimization
-            self.save_metrics()
-            
-            # Print summary
-            self.log("\n" + "=" * 60)
-            self.log("RUN SUMMARY")
-            self.log("=" * 60)
-            self.log(f"  Notifications processed: {self.notifications_processed}")
-            self.log(f"  Connection invites sent: {self.invites_sent}")
-            self.log(f"  Already connected: {self.already_connected}")
-            self.log(f"  Already pending: {self.already_invited}")
-            self.log(f"  Errors/Skipped: {self.errors}")
-            self.log("=" * 60)
-            
-        except Exception as e:
-            self.log(f"CRITICAL ERROR: {e}")
-            import traceback
-            self.log(traceback.format_exc())
-        finally:
-            await self.stop()
+                # Save metrics for optimization
+                self.save_metrics()
+                
+                # Print summary
+                self.log("\n" + "=" * 60)
+                self.log("RUN SUMMARY")
+                self.log("=" * 60)
+                self.log(f"  Notifications processed: {self.notifications_processed}")
+                self.log(f"  Connection invites sent: {self.invites_sent}")
+                self.log(f"  Already connected: {self.already_connected}")
+                self.log(f"  Already pending: {self.already_invited}")
+                self.log(f"  Errors/Skipped: {self.errors}")
+                self.log("=" * 60)
+                
+                break # Success, exit loop
+                
+            except Exception as e:
+                is_target_closed = "Target page, context or browser has been closed" in str(e)
+                if is_target_closed and attempt < max_retries - 1:
+                    self.log(f"Browser closed unexpectedly (Attempt {attempt+1}). Retrying...")
+                    await self.stop()
+                    await asyncio.sleep(5)
+                else:
+                    self.log(f"CRITICAL ERROR: {e}")
+                    import traceback
+                    self.log(traceback.format_exc())
+                    break
+            finally:
+                await self.stop()
 
 
 if __name__ == "__main__":

@@ -1,667 +1,220 @@
 {
   "processed_notifications": [],
   "invited_profiles": {
-    "https://www.linkedin.com/in/ravi%2Dsoni%2D16358b184": {
-      "name": "Status is reachable",
-      "invited_at": "2025-12-09T19:51:46.020305",
-      "engagement_type": "viewed"
+    "https://www.linkedin.com/in/lara%2Dkramer%2D7344a235": {
+      "name": "Lara Kramer",
+      "invited_at": "2026-01-12T06:39:50.048004",
+      "engagement_type": "supported"
     },
-    "https://www.linkedin.com/in/elizabeth%2Ddorahy%2D28209a65": {
-      "name": "Elizabeth Dorahy",
-      "invited_at": "2025-12-09T21:24:22.609879",
+    "https://www.linkedin.com/in/avi%2Dsommer": {
+      "name": "Avi",
+      "invited_at": "2026-01-12T06:40:26.746954",
+      "engagement_type": "third_party_mention"
+    },
+    "https://www.linkedin.com/in/tadanelson": {
+      "name": "Tadanelson",
+      "invited_at": "2026-01-12T06:41:01.353596",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/kyle%2Dwright%2D96b35019": {
-      "name": "Status is online",
-      "invited_at": "2025-12-09T21:43:46.736924",
-      "engagement_type": "liked"
+    "https://www.linkedin.com/in/jaclyndbz": {
+      "name": "Jaclyndbz",
+      "invited_at": "2026-01-12T06:42:16.602140",
+      "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/andrewburtonpickett": {
-      "name": "Andrewburtonpickett",
-      "invited_at": "2025-12-09T21:44:04.692006",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/chuck%2Dsholtz%2D6a956b7": {
-      "name": "Chuck Sholtz 6A956B",
-      "invited_at": "2025-12-09T21:44:28.75875",
-      "engagement_type": "mentioned"
-    },
-    "https://www.linkedin.com/in/pranaygadodia": {
-      "name": "Pranaygadodia",
-      "invited_at": "2025-12-10T18:14:20.763562",
+    "https://www.linkedin.com/in/steven%2Dw%2Dbrookreson": {
+      "name": "Steven W",
+      "invited_at": "2026-01-12T06:42:50.324070",
       "engagement_type": "reacted"
     },
     "https://www.linkedin.com/in/chong%2Dye%2Dab84317": {
       "name": "Chong Ye",
-      "invited_at": "2025-12-10T18:14:36.205581",
-      "engagement_type": "liked"
+      "invited_at": "2026-01-12T06:43:23.660950",
+      "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/tabber%2Db%2Dbenedict": {
-      "name": "Tabber B",
-      "invited_at": "2025-12-10T18:14:50.471933",
-      "engagement_type": "mentioned"
+    "https://www.linkedin.com/in/ryan%2Dhancey%2D1886303b": {
+      "name": "Ryan Hancey",
+      "invited_at": "2026-01-12T06:44:41.925578",
+      "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/kevinjmcmanus": {
-      "name": "Kevinjmcmanus",
-      "invited_at": "2025-12-10T19:34:30.909878",
-      "engagement_type": "liked"
+    "https://www.linkedin.com/in/ACoAAAxh-XwBuPaRSBcO81cHC_Y83OKZbHZ0yxU": {
+      "name": "FRANCIS FARES MARO\nView FRANCIS FARES MARO’s profile\n \n1st degree connection\n· 1st\nReal Estate",
+      "invited_at": "2026-01-12T06:45:18.199077",
+      "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/dauntlessentrepreneur": {
-      "name": "Dauntlessentrepreneur",
-      "invited_at": "2025-12-10T19:34:45.134786",
-      "engagement_type": "engaged"
+    "https://www.linkedin.com/in/ACoAAAh1K_gBGduOIdHxQ8hBwLa_hqHgZZKNfbg": {
+      "name": "Ryan Hancey\nView Ryan Hancey’s profile\n \n1st degree connection\n· 1st\nOwner | Investor | Trial Lawyer",
+      "invited_at": "2026-01-12T06:46:02.362839",
+      "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/larry%2Dkotlyar": {
-      "name": "Larry",
-      "invited_at": "2025-12-10T19:57:18.406404",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/matt%2Dnakajima": {
-      "name": "Matt",
-      "invited_at": "2025-12-10T19:57:30.595939",
+    "https://www.linkedin.com/in/sophie%2Dbaidoshvili": {
+      "name": "Sophie",
+      "invited_at": "2026-01-12T06:47:30.897645",
       "engagement_type": "replied"
     },
-    "https://www.linkedin.com/in/carriegraydba": {
-      "name": "Carriegraydba",
-      "invited_at": "2025-12-10T19:57:45.336481",
-      "engagement_type": "loved"
+    "https://www.linkedin.com/in/leadgenant": {
+      "name": "Leadgenant",
+      "invited_at": "2026-01-13T06:12:29.762721",
+      "engagement_type": "viewed"
     },
-    "https://www.linkedin.com/in/sofia%2Dmaria%2Dsilva%2Dde%2Dalmeida%2De%2Dsouza%2Dnetto": {
-      "name": "Sofia Maria Silva De Almeida E Souza Netto",
-      "invited_at": "2025-12-10T19:57:59.888911",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/patrick%2Dmceuen": {
-      "name": "Patrick",
-      "invited_at": "2025-12-11T17:07:52.007276",
+    "https://www.linkedin.com/in/isaacamon": {
+      "name": "Isaacamon",
+      "invited_at": "2026-01-13T06:13:11.995561",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/lisa%2Dparlagreco": {
-      "name": "Lisa",
-      "invited_at": "2025-12-11T17:08:12.862764",
+    "https://www.linkedin.com/in/ACoAAACPNMYBmlM7Fs0ahY2P-gTAISplM1JFPFs": {
+      "name": "Avi Azoulay\nView Avi Azoulay’s profile\n \n1st degree connection\n· 1st\nGroup Director and SVP at Dime Community Bank",
+      "invited_at": "2026-01-13T06:13:54.529492",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/natanmohart": {
-      "name": "Natanmohart",
-      "invited_at": "2025-12-11T19:08:44.549376",
+    "https://www.linkedin.com/in/ACoAAEgjkiMB5-jfN8QeZoFVtamSzQz_-ZB714E": {
+      "name": "Fazil Naghiyev\nView Fazil Naghiyev’s profile\n \n3rd degree connection\n· 3rd+\ne-Commerce Entrepreneur | Wholesale & Distribution | Buyer & Seller | Amazon FBA | Consumer Electronics | Import & Export | B2B | Supply Chain |",
+      "invited_at": "2026-01-13T06:15:34.147107",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/robert%2Dadams%2Dleader": {
-      "name": "Robert Adams",
-      "invited_at": "2025-12-11T19:09:01.583853",
+    "https://www.linkedin.com/in/ACoAACWecu0BZBh0R0mHqymc9GTXgapmQoqHtAc": {
+      "name": "Valorie M Parisi\nView Valorie M Parisi’s profile\n \n3rd degree connection\n· 3rd+\nNJ Realtor",
+      "invited_at": "2026-01-13T06:16:16.677310",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAAA1nNysBF5kVTnH4OBnmWaBUwJydPkGEwVo": {
+      "name": "Tova Lowy-Pfeffer\nView Tova Lowy-Pfeffer’s profile\n \n3rd degree connection\n· 3rd+\nTax Director at PwC focused on consulting engagements to deliver value for our clients",
+      "invited_at": "2026-01-13T06:17:08.253857",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAACa3wwIBPnswgER9B1dkkT82Y8OH_rklokI": {
+      "name": "Nataša Glišić\nView Nataša Glišić’s profile\n \n2nd degree connection\n· 2nd\nAttorney",
+      "invited_at": "2026-01-13T06:18:56.593997",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAAC-ac5QB2TVpShTIakoDxsKb7UcPCWlZ-qI": {
+      "name": "Julien Blais\nView Julien Blais’ profile\n \n3rd degree connection\n· 3rd+\nAssistant Marketing",
+      "invited_at": "2026-01-13T06:19:35.726239",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAABIJ_U0BsJgdzvuf_cAlC5uVhuySaTEExdk": {
+      "name": "Shneur Davidoff\nView Shneur Davidoff’s profile\n \n3rd degree connection\n· 3rd+\nCalifornia Licensed Attorney",
+      "invited_at": "2026-01-13T06:20:11.968548",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAABEL69gBL_25vsB4Akcr9Uct_fCb9Z5B6nw": {
+      "name": "Daniel Taylor\nView Daniel Taylor’s profile\n \n3rd degree connection\n· 3rd+\nCo-Founder & CEO - Sekushi",
+      "invited_at": "2026-01-13T06:21:28.958625",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/bvrechek": {
+      "name": "Bvrechek",
+      "invited_at": "2026-01-14T06:18:10.945736",
+      "engagement_type": "viewed"
+    },
+    "https://www.linkedin.com/in/andrewburtonpickett": {
+      "name": "Andrewburtonpickett",
+      "invited_at": "2026-01-14T06:18:45.371830",
       "engagement_type": "mentioned"
-    },
-    "https://www.linkedin.com/in/panchalvinayak": {
-      "name": "Panchalvinayak",
-      "invited_at": "2025-12-12T17:52:13.445628",
-      "engagement_type": "shared"
-    },
-    "https://www.linkedin.com/in/kyree%2Drobinson%2Dbanks": {
-      "name": "Kyree Robinson Banks",
-      "invited_at": "2025-12-12T17:52:29.327442",
-      "engagement_type": "reacted"
     },
     "https://www.linkedin.com/in/mitchell%2Dchubb": {
       "name": "Mitchell Chubb",
-      "invited_at": "2025-12-12T17:52:45.837466",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/tom%2Dirving%2D9459b610": {
-      "name": "Tom Irving",
-      "invited_at": "2025-12-12T17:53:02.380785",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/jonathangms": {
-      "name": "Jonathangms",
-      "invited_at": "2025-12-12T17:53:27.254164",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/vipul%2Dladwa": {
-      "name": "Vipul Ladwa",
-      "invited_at": "2025-12-14T19:18:40.389533",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/david%2Dw%2Dhill%2D578a7aa": {
-      "name": "David W Hill",
-      "invited_at": "2025-12-15T19:23:17.522091",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ayazbarodawala": {
-      "name": "Ayazbarodawala",
-      "invited_at": "2025-12-15T19:23:33.187425",
-      "engagement_type": "shared"
-    },
-    "https://www.linkedin.com/in/ACoAAADbr_kBYh7qh0fpxbfWenXl3OjaxeX3nLY": {
-      "name": "Andrew Pickett\nView Andrew Pickett’s profile\n \n1st degree connection\n· 1st\nOwner at Andrew Pickett Law, PLLC",
-      "invited_at": "2025-12-15T19:55:07.395730",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAGsiUoBWZphYFb7fbvT8r9EcHRJj_UrrXM": {
-      "name": "Abbey Elinger\nView Abbey Elinger’s profile\n \n3rd degree connection\n· 3rd+\nChief Legal Officer & Director of Human Resources",
-      "invited_at": "2025-12-15T19:56:08.413438",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAD7b7MB6RENHmjeLY-Y66QPAzDCTpsFV6k": {
-      "name": "Fred Biesecker\nView Fred Biesecker’s profile\n \n3rd degree connection\n· 3rd+\nAssociate Faculty, O’Neill School of Public and Environmental Affairs; General Counsel at Indianapolis City-County Council (retired)",
-      "invited_at": "2025-12-15T19:57:36.792070",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAACdpdGcBaSDaZ8o_OLrE1eZxWzPWCe3g7no": {
-      "name": "Brogan Freeborn, CVRT\nView Brogan Freeborn, CVRT’s profile\n \n3rd degree connection\n· 3rd+\nLeader in Accessibility & Inclusion. Advocate for those with sight loss & disabilities. Passionate about all things tech! 🏳️‍🌈🟰🦯♿️🏳️‍⚧️🐕🌱",
-      "invited_at": "2025-12-15T19:58:05.595266",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAFUDEgB7x8m_UvSOyj2RfeDF-usFSrkpBU": {
-      "name": "Sara A. Peterson\nView Sara A. Peterson’s profile\n \n3rd degree connection\n· 3rd+\nConsultant + hopeless romantic for the power of NPOs, government & the arts to save the world",
-      "invited_at": "2025-12-15T19:59:14.234251",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAM_M8kB5i9Z2TXtrNoG4hN4mBu_TUJaFTU": {
-      "name": "sandy P.\nView sandy P.’s profile\n \n3rd degree connection\n· 3rd+\nour favorite places.com",
-      "invited_at": "2025-12-15T19:59:42.783832",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAgbwvgByJnoUJx8wJutf74pPpdwYKerzmo": {
-      "name": "Amanda Alasauskas\nView Amanda Alasauskas’ profile\n \n3rd degree connection\n· 3rd+\nAttorney at Swanson, Martin & Bell, LLP",
-      "invited_at": "2025-12-15T20:00:27.008773",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAABCgbfQB61s8WDQnpEYgvJ8WFJaCPtUisGk": {
-      "name": "Jennifer Ross, MBA, MOL\nView Jennifer Ross, MBA, MOL’s profile\n \n3rd degree connection\n· 3rd+\nVeteran Advocate | Perma-Student | Nonprofit Leader | ENFP-A",
-      "invited_at": "2025-12-15T20:01:09.046862",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAA1s6QBtVb7lqAGysvMJQ9t41N_TraiCBE": {
-      "name": "John L.\nView John L.’s profile\n \n3rd degree connection\n· 3rd+\nResearch Attorney at Orange County Superior Court",
-      "invited_at": "2025-12-15T20:01:45.276848",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAASENggBhRIqpfHJDxe_BQQ7XZPUSedRYqE": {
-      "name": "Nicole McGarrell PMP®,CSM®\nView Nicole McGarrell PMP®,CSM®’s profile\n \n3rd degree connection\n· 3rd+\nSenior Product Analyst at Loblaw Companies Limited",
-      "invited_at": "2025-12-15T20:02:22.325191",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAACclWWcBJXi3YKEt3uRZeQWcUMfE26qrIxs": {
-      "name": "Mickey Youmans\nView Mickey Youmans’ profile\n \n3rd degree connection\n· 3rd+\nSelf Employed",
-      "invited_at": "2025-12-15T20:03:15.697470",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAADduFEBlTMOBKb4RHIeJkJ7xtphoY0Hpcs": {
-      "name": "Dan Anixt\nView Dan Anixt’s profile\n \n2nd degree connection\n· 2nd\nCurrent Head of Legal US at D-Fend Solutions as well as former General Counsel/CLO and Fractional General Counsel.",
-      "invited_at": "2025-12-15T20:03:53.129577",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAC8xsMsBosKTbDN5Wjd7aDl37wR2VoYmMos": {
-      "name": "Judy Wells\nView Judy Wells’ profile\n \n3rd degree connection\n· 3rd+\nTMCA Credentialed Distinguised Mediator with Essential Mediations LLC",
-      "invited_at": "2025-12-15T20:04:16.846145",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAK8a54B2pYue6mMlTbLBbEi9qE_S8SOwa0": {
-      "name": "Dana Romanick\nView Dana Romanick’s profile\n \n3rd degree connection\n· 3rd+\nPartner at Kennedy Romanick LLP",
-      "invited_at": "2025-12-15T20:04:39.329259",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAO7XnYBWBWOCid0MSs73DtQcZbrIP-tgXk": {
-      "name": "Laura England\nView Laura England’s profile\n \n3rd degree connection\n· 3rd+\nReal Estate Broker at The England Group & Certified Relocation Specialist",
-      "invited_at": "2025-12-15T20:05:02.468621",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAMSRQ8BivjXux4KoQo1LUjezozrg2_emQU": {
-      "name": "Gerald Roden Office of the Attorney General - FL\nView Gerald Roden Office of the Attorney General - FL’s profile\n \n2nd degree connection\n· 2nd\nKnowledgeable in Civil, Criminal, Regulatory, Constitutional, Administrative, Legislative, Health & Settlement Law issues. Versed in advocacy, governmental relations, fundraising & community relations",
-      "invited_at": "2025-12-15T20:05:26.883488",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAABcNZ50Bibxze1BoEFciUU34GeMsZA4YDa8": {
-      "name": "Nathan McBurnett\nView Nathan McBurnett’s profile\n \n3rd degree connection\n· 3rd+\nUrban Planner",
-      "invited_at": "2025-12-15T20:05:49.977368",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAJnUKABE-Zh18IoAUvvhoMWIhYHtsY0rOE": {
-      "name": "Cathleen McClughan\nView Cathleen McClughan’s profile\n \n3rd degree connection\n· 3rd+\nHamilton Duncan",
-      "invited_at": "2025-12-15T20:06:17.563464",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAgqmrMBwFRAFUK87RYAn1Q_Uu6ai80OoSA": {
-      "name": "Marianne Murphy\nView Marianne Murphy’s profile\n \n3rd degree connection\n· 3rd+\nHumanities Teacher at Edmonton Public Schools",
-      "invited_at": "2025-12-15T20:06:38.845937",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAJ8jUUBYTIkXS0GvoosHecgIp9UTZZUsOk": {
-      "name": "Mark Waterfill\nView Mark Waterfill’s profile\n \n3rd degree connection\n· 3rd+\nAttorney",
-      "invited_at": "2025-12-15T20:07:02.127606",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADaKlJgBE8_gBcKgtH_wSPRx1_csVcA0zC8": {
-      "name": "MacAna Gilkerson\nView MacAna Gilkerson’s profile\n \n2nd degree connection\n· 2nd\nAttorney",
-      "invited_at": "2025-12-15T20:07:30.393625",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAivNeIB8y2tyXx-Dj-yUILj5bE_i22qCYE": {
-      "name": "Michelle Dellino\nView Michelle Dellino’s profile\n \n2nd degree connection\n· 2nd\nCEO + Family Law Attorney @ Dellino Family Law Group",
-      "invited_at": "2025-12-15T20:07:56.883920",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADybbUYBlcGe_hHk1c36lKpeqrWb03bh_zg": {
-      "name": "Riley Luplow, BSN, RN, CEN\nView Riley Luplow, BSN, RN, CEN’s profile\n \n2nd degree connection\n· 2nd\nI help plaintiff & defense attorneys uncover the medical truth through expert legal nurse consulting | Board Certified Emergency Nurse | Hyperbaric Oxygen Therapyy",
-      "invited_at": "2025-12-15T20:08:19.649245",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAM_ZKMBXGdmGIv8ucLgDalMc5XHeD2EiSQ": {
-      "name": "Megan McNally\nView Megan McNally’s profile\n \n3rd degree connection\n· 3rd+\nTrusted Counsel to CEOs, Boards & Founders",
-      "invited_at": "2025-12-15T20:08:42.433670",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAATSp2kBHcRRgimgJG7xHuQyDkV4sk-vEyk": {
-      "name": "Tom Coffee\nView Tom Coffee’s profile\n \n3rd degree connection\n· 3rd+\nAttorney",
-      "invited_at": "2025-12-15T20:09:04.517625",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAXFhhMBEXfYkJm4aSQWwwTBAFre77dHH4c": {
-      "name": "Ellen Roddy\nView Ellen Roddy’s profile\n \n3rd degree connection\n· 3rd+\nTrial Paralegal",
-      "invited_at": "2025-12-15T20:09:26.975944",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADtWGfcBIV6S5yTZX_U-DdSpzTWxTeJkncI": {
-      "name": "Salli Kae Egbert\nView Salli Kae Egbert’s profile\n \n2nd degree connection\n· 2nd\nPartnering with Attorneys to Reduce Preparation Time By 2-4X and Win Lucrative Personal-Injury or Medical Malpractice Cases Faster - Legal & Forensic Nurse Consultant Call me (435) 773-1022",
-      "invited_at": "2025-12-15T20:09:57.165900",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAC9X40BoGLBgBNCIueTeaJoIvr4XU847DY": {
-      "name": "Arlene M.\nView Arlene M.’s profile\n \n3rd degree connection\n· 3rd+\nHead of Corporate Compliance Group and Chief Compliance Officer, Certified Corporate Compliance and Ethics Professional - International (CCEP-I), CGBP Certified Compliance Officer",
-      "invited_at": "2025-12-15T20:10:28.281445",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAC8-qMBMD063Xbf3MLUHC2eQapvDG7eXis": {
-      "name": "Cynthia Pensoneau\nView Cynthia Pensoneau’s profile\n \n3rd degree connection\n· 3rd+\nAttorney/President at Pensoneau Firm, PC Well-Being & Professional Development at Summa Vita",
-      "invited_at": "2025-12-15T20:10:52.646996",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAACBjS8Brj3spNA8SzsllmJhd-mEA3xPp-4": {
-      "name": "Larry Feldman\nView Larry Feldman’s profile\n \n3rd degree connection\n· 3rd+\nPrincipal at Feldman Law Offices, LLC",
-      "invited_at": "2025-12-15T20:11:15.263358",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAANIVE4BR9jvBETz8uag2EjVpJVoBj9dix8": {
-      "name": "Susan C. Stewart, CPA, CIA\nView Susan C. Stewart, CPA, CIA’s profile\n \n3rd degree connection\n· 3rd+\nRetired Managing Director, Audit Quality and Risk Management at RSM US LLP",
-      "invited_at": "2025-12-15T20:11:39.113545",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAYZ2MEBphizsF3uAV-SMHormRQWLdAkRwQ": {
-      "name": "Peyton Tata Tackes\nView Peyton Tata Tackes’ profile\n \n2nd degree connection\n· 2nd\nLegal Marketing Director | Business Development | Employment Law | Military Spouse Advocate",
-      "invited_at": "2025-12-15T20:12:03.985030",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/thelauracowan": {
-      "name": "Thelauracowan",
-      "invited_at": "2025-12-15T23:08:03.593422",
+      "invited_at": "2026-01-14T06:19:30.776553",
       "engagement_type": "replied"
     },
-    "https://www.linkedin.com/in/nikiblack": {
-      "name": "Nikiblack",
-      "invited_at": "2025-12-15T23:08:20.021733",
+    "https://www.linkedin.com/in/matthewkorn": {
+      "name": "Matthewkorn",
+      "invited_at": "2026-01-14T06:21:08.412777",
+      "engagement_type": "mentioned"
+    },
+    "https://www.linkedin.com/in/sdavis07": {
+      "name": "Sdavis",
+      "invited_at": "2026-01-14T06:21:47.443760",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/dan%2Danixt%2Db29a484": {
-      "name": "Dan Anixt",
-      "invited_at": "2025-12-15T23:08:36.225922",
+    "https://www.linkedin.com/in/ACoAAAO9-pIBDuhJzsVO0Y2zYxjPB6nUC1Ws7Vw": {
+      "name": "Matthew Korn\nView Matthew Korn’s profile\n \n1st degree connection\n· 1st\nDon’t do law or fatherhood alone | Wage/hour defense + RIF compliance | Founder of Dad, Esq. (a community of 425+ lawyer dads balancing law & life)",
+      "invited_at": "2026-01-14T06:22:37.915280",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/richard%2Dteraci%2Dbb4366373": {
-      "name": "Richard Teraci",
-      "invited_at": "2025-12-15T23:09:00.075523",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/sophiebestai": {
-      "name": "Sophiebestai",
-      "invited_at": "2025-12-15T23:09:25.396604",
+    "https://www.linkedin.com/in/ACoAACuSC2EBUi6H5DSmUJwTmnuwZv1tVMf-Hco": {
+      "name": "Teresa Lombard\nView Teresa Lombard’s profile\n \n2nd degree connection\n· 2nd\nSenior Indirect Buyer at 3D Systems",
+      "invited_at": "2026-01-14T06:24:15.815580",
       "engagement_type": "liked"
     },
-    "https://www.linkedin.com/in/vaishnavi%2Dgeda%2D36002a333": {
-      "name": "Vaishnavi Geda",
-      "invited_at": "2025-12-16T19:24:34.562336",
+    "https://www.linkedin.com/in/ACoAAAEJpwoBz9cBZpQQC-dI_t2c23BIsSlRC7k": {
+      "name": "Rob Coursey\nView Rob Coursey’s profile\n \n2nd degree connection\n· 2nd\nEmployment Lawyer for the Modern Age",
+      "invited_at": "2026-01-14T06:24:57.245409",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAABMy9IQBjTUOF33dJQb8ptN3y1x6bbvxsKo": {
+      "name": "Scott Whitman\nView Scott Whitman’s profile\n \n2nd degree connection\n· 2nd\nGovernment Contracts and Investigations Associate at Haynes and Boone, LLP",
+      "invited_at": "2026-01-14T06:26:00.138380",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/ACoAACQiZmYBlD0ysexPti3pxWIng9-E__KlGfk": {
+      "name": "Issa Rabaya\nView Issa Rabaya’s profile\n \n2nd degree connection\n· 2nd\nPersonal Injury Lawyer",
+      "invited_at": "2026-01-14T06:27:55.956185",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/brian%2Dking%2Dbb41882b": {
+      "name": "Brian King",
+      "invited_at": "2026-01-15T06:30:44.680829",
+      "engagement_type": "liked"
+    },
+    "https://www.linkedin.com/in/levon%2Dkeusseyan%2D15a0b86b": {
+      "name": "Levon Keusseyan",
+      "invited_at": "2026-01-15T06:31:19.555539",
       "engagement_type": "viewed"
     },
-    "https://www.linkedin.com/in/financematteoturi": {
-      "name": "Financematteoturi",
-      "invited_at": "2025-12-16T19:24:56.382786",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAGrz90Bc1ADmZCrFmvpca9zyRFo-Wo5Guo": {
-      "name": "Robert T.\nView Robert T.’s profile\n \n3rd degree connection\n· 3rd+\nSpecialist Mechanical Designer",
-      "invited_at": "2025-12-16T19:25:23.513072",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAJ1lVQBRiZ88GMOAB7-DK893jl6C2qwx20": {
-      "name": "Tina Taylor Thomas\nView Tina Taylor Thomas’ profile\n \n2nd degree connection\n· 2nd\nPartner",
-      "invited_at": "2025-12-16T19:25:52.264250",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAADpC7wBevL6w44vE7-mYOS6XWBp__7OAW4": {
-      "name": "Allison Krumpe\nView Allison Krumpe’s profile\n \n3rd degree connection\n· 3rd+\nGlobal Vice President, North America & Asia Pacific",
-      "invited_at": "2025-12-16T19:26:14.214116",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADWxRy8BUmWqMhTXIhID_gwLAqcleddOhQE": {
-      "name": "Yee Shawn Lee\nView Yee Shawn Lee’s profile\n \n3rd degree connection\n· 3rd+\nLaw Graduate",
-      "invited_at": "2025-12-16T19:26:41.063837",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAANA4foBURbsNJHk_3-UZVV3g-VSvvvqN2c": {
-      "name": "Jillian Henry\nView Jillian Henry’s profile\n \n3rd degree connection\n· 3rd+\nChief Engagement Officer at Purdue for Life Foundation",
-      "invited_at": "2025-12-16T19:27:07.878666",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAr6SxMBKYwwHYqps2CDtO3pc5IHlzLl6I0": {
-      "name": "Stacey Meyerson\nView Stacey Meyerson’s profile\n \n2nd degree connection\n· 2nd\nAVP Banking Center Manager at Bank OZK",
-      "invited_at": "2025-12-16T19:27:37.836650",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAG-rLcB6yuP7vy6yQ-GO3lMXlhplq0_L70": {
-      "name": "Camelia Burn\nView Camelia Burn’s profile\n \n3rd degree connection\n· 3rd+\nCounsellor and Psychotherapist | Clay Therapist | Creative Educator | Qigong Teacher | Supporting Adults and Relationships Through Change, Loss and Growth",
-      "invited_at": "2025-12-16T19:27:59.365536",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAA79UGQBT3iAjlf-iqh8TJjenPWab-mLtXA": {
-      "name": "Aneka Jiwaji\nView Aneka Jiwaji’s profile\n \n2nd degree connection\n· 2nd\nCommercial and Securities Litigator with a Passion for Improving the Profession | JD, LLM in Securities Law | All views expressed are my own",
-      "invited_at": "2025-12-16T19:28:21.195966",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAABPIYc8B6KiK5A_UpMNfBSC_3ufrNePjNNM": {
-      "name": "Katie N.\nView Katie N.’s profile\n \n2nd degree connection\n· 2nd\nSenior Associate",
-      "invited_at": "2025-12-16T19:28:50.198279",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAx2zekBTOVX9EqeKwbFTB0PJ50JfiWuYkU": {
-      "name": "Steven Shergill\nView Steven Shergill’s profile\n \n3rd degree connection\n· 3rd+\nCommercial and Construction Litigation Lawyer at Synthesis Legal",
-      "invited_at": "2025-12-16T19:29:21.213404",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAE7YegBLFPTsrFX-jmr6IK26Si33CgC27Q": {
-      "name": "Caesar Villanueva\nView Caesar Villanueva’s profile\n \n2nd degree connection\n· 2nd\nExperienced in-house counsel | Expertise in construction, insurance & real estate | Trusted counsel to executive management & field operations to drive success across all disciplines",
-      "invited_at": "2025-12-16T19:29:50.332517",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAABrgPm4Bx9stWYeuMJ2rOXUkZPXImFcUdIk": {
-      "name": "Kellian Summers\nView Kellian Summers’ profile\n \n3rd degree connection\n· 3rd+\nTrial Attorney at Formica Law Group",
-      "invited_at": "2025-12-16T19:30:10.984271",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADPV6NgBjGUuIP4aS25jEHCUjFHCdXTIO4Q": {
-      "name": "Zara Joshi\nView Zara Joshi’s profile\n \n3rd degree connection\n· 3rd+\nAssociate Attorney, Jeffer Mangels Butler & Mitchell LLP",
-      "invited_at": "2025-12-16T19:30:32.925682",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAGK5poBAAAsdSoOCiyTL2P5bRcheDnqb7Q": {
-      "name": "Jean Gemelli-Zajicek\nView Jean Gemelli-Zajicek’s profile\n \n3rd degree connection\n· 3rd+\nParalegal",
-      "invited_at": "2025-12-16T19:30:54.247870",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAQnN60BXondsWUDplmCKyohSWQiPool2WA": {
-      "name": "Mindi Zissman\nView Mindi Zissman’s profile\n \n2nd degree connection\n· 2nd\nThought Leadership content for risk and insurance businesses | Board member | Mom of 5 | Reducing business risk one blog at a time",
-      "invited_at": "2025-12-16T19:31:16.967678",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAKu0pgBFRvz84sESX3CjOczsIotI1og2mY": {
-      "name": "Stacey Grande\nView Stacey Grande’s profile\n \n3rd degree connection\n· 3rd+\nRealtor at HomeSmart",
-      "invited_at": "2025-12-16T19:31:37.516049",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAbPq2IBDaxdzFUBkMoXOaMTe4mRaBOe8zw": {
-      "name": "Cheryl Borst\nView Cheryl Borst’s profile\n \n3rd degree connection\n· 3rd+\nRenaissance woman with a long list of skills, including Artist and Software Developer",
-      "invited_at": "2025-12-16T19:31:58.981589",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAp81XoBZqVbTQG4sX81QmCtZqPW4u10jIo": {
-      "name": "Shannon Lewis\nView Shannon Lewis’ profile\n \n3rd degree connection\n· 3rd+\nFamily and Juvenile Law Attorney",
-      "invited_at": "2025-12-16T19:32:20.051325",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAL-cKQBVLwljoKCx5RXrPKIpVGl_uu0Htk": {
-      "name": "Steven Tarakji\nView Steven Tarakji’s profile\n \n3rd degree connection\n· 3rd+\nSales Professional",
-      "invited_at": "2025-12-16T19:32:41.072101",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAnFv5oBRKcnAOkYZr_HqoAGH35wyETTStk": {
-      "name": "Rob Kastens\nView Rob Kastens’ profile\n \n3rd degree connection\n· 3rd+\nChief Executive Officer Honey Creek Legacy, Inc. #Legacy Maker Beef #All Natural Prime Beef #Bio Town AG #Sustainable Food Production Systems",
-      "invited_at": "2025-12-16T19:33:02.179711",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAChX0YYBMzdjrOfJaMiEexO7vQHOD_aSa2M": {
-      "name": "Ruth Hill\nView Ruth Hill’s profile\n \n3rd degree connection\n· 3rd+\nFormer Administrator Jubilee Center",
-      "invited_at": "2025-12-16T19:33:22.624048",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAANIQRUBWg7kzbaIHINJdp21x4wW9Ymu2KQ": {
-      "name": "Sarah Krolikowski\nView Sarah Krolikowski’s profile\n \n2nd degree connection\n· 2nd\nAttorney at Krolikowski Law, LLC",
-      "invited_at": "2025-12-16T19:33:53.097907",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAACEeZ4BeZDmy0P63HIzoNIxDc77irvCXK8": {
-      "name": "Rebecca Berfanger\nView Rebecca Berfanger’s profile\n \n3rd degree connection\n· 3rd+\nAttorney, Writer, and Adjunct Professor",
-      "invited_at": "2025-12-16T19:34:14.068901",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAGFoxR0BNNuXOz_yjH2LWmx_FAzA1Hnrv4o": {
-      "name": "Barbara Rankin\nView Barbara Rankin’s profile\n \n3rd degree connection\n· 3rd+\nAssistant Commissioner of Insurance, Retired. at Kansas Department of Insurance",
-      "invited_at": "2025-12-16T19:34:35.479969",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAADPFoaYBg10v0AVdEvHT_VTiYcmwpwC-8XA": {
-      "name": "Jamey Shropshire\nView Jamey Shropshire’s profile\n \n3rd degree connection\n· 3rd+\nOffice Coordinator at English, Lucas, Priest & Owsley",
-      "invited_at": "2025-12-16T19:35:04.032633",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAEEwygB__Zff41vdF4UxLh86yA33bpS2Vk": {
-      "name": "Jarret Raab\nView Jarret Raab’s profile\n \n3rd degree connection\n· 3rd+\nConsumer Protection and Complex Commercial Litigation Attorney | Helping protect individuals and small businesses against corporate wrongdoing and deceptive business practices.",
-      "invited_at": "2025-12-16T19:35:25.185629",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAABh8YpoB9nUW4D7hTKE6GMaC4jOotT_hgjc": {
-      "name": "Sara Moskowitz\nView Sara Moskowitz’s profile\n \n3rd degree connection\n· 3rd+\neDiscovery Attorney and Legal Project Management",
-      "invited_at": "2025-12-16T19:35:48.201665",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAHngf8B-VRqljGSGhO0Os2ondg13LAswRA": {
-      "name": "Nikki Chambers\nView Nikki Chambers’ profile\n \n3rd degree connection\n· 3rd+\nTechnical Recruiter",
-      "invited_at": "2025-12-16T19:36:18.075185",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAJAV6gB1vEysC9Tsk0wIjq0VHN3GBMeOyQ": {
-      "name": "Thomas Eybl\nView Thomas Eybl’s profile\n \n3rd degree connection\n· 3rd+\nExperienced Attorney | Enthusiastic Coach | Non-Profit Board Member | 2024 LCLD Fellow | Marine Corps Veteran",
-      "invited_at": "2025-12-16T19:36:41.219365",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAL5i5IBBlOTgeoZMk_VFWvvAfYIMih5PG8": {
-      "name": "Matt Siben\nView Matt Siben’s profile\n \n2nd degree connection\n· 2nd\nPartner Dietrich Siben Thorpe LLP",
-      "invited_at": "2025-12-16T19:37:08.983427",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAFp-WIB2qvdBmUFEZsgNNGltm2a28r-nYw": {
-      "name": "Darren O'Connor\nView Darren O'Connor’s profile\n \n3rd degree connection\n· 3rd+\nPrivate Practice Colorado Attorney focused on Civil Rights, Family Law, Tenant and Employment Law.",
-      "invited_at": "2025-12-16T19:37:32.617062",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAC0n9pkBsN-YBV3jKYjvCAr_-i6E_KljGGE": {
-      "name": "Zachary Gracey\nView Zachary Gracey’s profile\n \n3rd degree connection\n· 3rd+\nLogistics Sales Executive at TMC Transportation",
-      "invited_at": "2025-12-16T19:37:55.257606",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/ACoAAAFUICEBsXxSGPdRgKpo-Of_WCz0N1AzFfQ": {
-      "name": "Chuck Sholtz\nView Chuck Sholtz’s profile\n \n2nd degree connection\n· 2nd\nHead of Intellectual Property at Verdiva Bio",
-      "invited_at": "2025-12-16T19:38:28.484696",
+    "https://www.linkedin.com/in/guneytopcu": {
+      "name": "Guneytopcu",
+      "invited_at": "2026-01-15T06:31:54.948761",
       "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/ACoAAAGKKjgBvYCLjAzgu5lC8GWp9Stqb_DWjjg": {
-      "name": "Ningling Wang\nView Ningling Wang’s profile\n \n2nd degree connection\n· 2nd\nPartner at Finnegan, Henderson, Farabow, Garrett & Dunner, LLP",
-      "invited_at": "2025-12-16T19:38:57.400906",
+    "https://www.linkedin.com/in/ACoAACH1QSMBGi8yIwVhwBAnE78a5hNLz5LTaC4": {
+      "name": "Guney Topcu\nView Guney Topcu’s profile\n \n1st degree connection\n· 1st\nTech Leader at Google | The Weekend Builder. Helping professionals transform knowledge into extra income - with AI",
+      "invited_at": "2026-01-15T06:33:20.777150",
       "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/ACoAAAZtL1ABx2UIDBjfICQJ4D1BXprHk_lRhyk": {
-      "name": "Christopher Verni\nView Christopher Verni’s profile\n \n2nd degree connection\n· 2nd\nFounder @ Verni Legal LLC | IP Leader | Former Biotech Executive & General Counsel",
-      "invited_at": "2025-12-16T19:39:18.035937",
+    "https://www.linkedin.com/in/ACoAACT5QusBcKjWxFTjGXTsOm9H1_NH9YvQuhM": {
+      "name": "Sophie Baidoshvili\nView Sophie Baidoshvili’s profile\n \n1st degree connection\n· 1st\nGeneral Counsel | Cross-Border Transactions | Governance & Deal Execution | Author of The Borders of Reason",
+      "invited_at": "2026-01-15T06:34:03.147939",
       "engagement_type": "reacted"
     },
-    "https://www.linkedin.com/in/ACoAACZOT5MB5yZcYSRGPbY7IgOjQLVPV26UGds": {
-      "name": "Rashida Baji\nView Rashida Baji’s profile\n \n2nd degree connection\n· 2nd\nCorporate Lawyer | CICCM",
-      "invited_at": "2025-12-16T19:39:46.518904",
+    "https://www.linkedin.com/in/james%2Dvasselli": {
+      "name": "James",
+      "invited_at": "2026-01-15T06:34:45.807831",
+      "engagement_type": "loved"
+    },
+    "https://www.linkedin.com/in/francis%2Dfares%2Dmaro%2D2786a859": {
+      "name": "Francis Fares Maro",
+      "invited_at": "2026-01-15T06:35:59.151493",
       "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAADToMAUBtBaETHLJU4dN1xQfhA6CsvmaX5I": {
-      "name": "Bethany Farmer\nView Bethany Farmer’s profile\n \n2nd degree connection\n· 2nd\nExecutive Supply Chain Professional",
-      "invited_at": "2025-12-16T19:40:15.117575",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAE3Vn0cB8KrgCDsPXitKvSvFeGRI4DM4ZWM": {
-      "name": "Matic Research\nView Matic Research’s profile\n \n2nd degree connection\n· 2nd\nResearch Services, Patent Litigation, Prosecution, & Commercialization Support.",
-      "invited_at": "2025-12-16T19:40:43.328058",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAwNExwB0q288AAa1FTS6t2eNieVT2uq8JQ": {
-      "name": "Srilaxmi Chakilam\nView Srilaxmi Chakilam’s profile\n \n2nd degree connection\n· 2nd\nRegistered Indian Patent Agent & Trademark Agent IN/PA/ 5038 & IN/TMA/ 33731",
-      "invited_at": "2025-12-16T19:41:11.204133",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAE4amcBfmMhHW56GHqmsbhmOvlZ4yAbQEE": {
-      "name": "HaKung Wong\nView HaKung Wong’s profile\n \n2nd degree connection\n· 2nd\nPartner⚖ at Venable🏢 & Regular Guy🚹 Who Likes😊 Movies🎬",
-      "invited_at": "2025-12-16T19:41:46.387544",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAC-Q0ekBen5HGCyTSqdPesWZf0936Wnf6ps": {
-      "name": "Amaya L. R. Martin\nView Amaya L. R. Martin’s profile\n \n2nd degree connection\n· 2nd\nJ.D. Candidate at the University of Houston Law Center | B.S. Neuroscience and Behavioral Biology",
-      "invited_at": "2025-12-16T19:42:14.649858",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAADbUTcBhQ2Y3oyeJFGAjqxfBxNShUSemmw": {
-      "name": "Peter Dolan\nView Peter Dolan’s profile\n \n2nd degree connection\n· 2nd\nBusiness Development at Sanofi",
-      "invited_at": "2025-12-16T19:42:51.634432",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAA4SnZ8BEtsCmb2A8QV5lC38w1ebKju6dY0": {
-      "name": "Akshay Joshi\nView Akshay Joshi’s profile\n \n2nd degree connection\n· 2nd\nIntellectual property Rights, Ex-Alembic Pharmaceuticals, Ex-Aurobindo Pharma",
-      "invited_at": "2025-12-16T19:43:19.783062",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAADfSARkB-m_1NzSwmGDBtGuGv6MqqVZyyC0": {
-      "name": "Stephen Johnson\nView Stephen Johnson’s profile\n \n2nd degree connection\n· 2nd\nDirector, Patent Prosecution Genetic Medicines Eli Lilly",
-      "invited_at": "2025-12-16T19:43:48.139654",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAKBoboBagekLo2Lp2lRbJsgqfPJUOdbjL0": {
-      "name": "Jessica Irving Marschall\nView Jessica Irving Marschall’s profile\n \n2nd degree connection\n· 2nd\nPresident & CEO at Probity Appraisal Group, The Green Mission Inc., MAS LLC, GM ESG Solutions",
-      "invited_at": "2025-12-16T19:44:28.019696",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAId73kB02NT1iPHcCBs8ON8jvD1NtZmjc0": {
-      "name": "York Faulkner\nView York Faulkner’s profile\n \n2nd degree connection\n· 2nd\nU.S. Litigator in Tokyo | Building Tailor-Made Teams for IP & Complex Cross-Border Disputes",
-      "invited_at": "2025-12-16T19:44:57.607631",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAFiz0cBp_ZMq2xbMmdhv_0QpmYkBtxOFvQ": {
-      "name": "ByeongSeok O.\nView ByeongSeok O.’s profile\n \n2nd degree connection\n· 2nd\nCEO, Patent Attorney at IpLucy Inc. and OH&HAHM",
-      "invited_at": "2025-12-16T19:45:29.693693",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/ACoAAAetzVkBEtE_U5CC69Msyher3_uELckZh88": {
-      "name": "Kana Varu\nView Kana Varu’s profile\n \n2nd degree connection\n· 2nd\nPharma IPR professional (Formulation & Litigations)",
-      "invited_at": "2025-12-16T19:45:59.166504",
-      "engagement_type": "reacted"
-    },
-    "https://www.linkedin.com/in/vedransolaja": {
-      "name": "Vedransolaja",
-      "invited_at": "2025-12-17T18:11:26.564405",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/maurizio%2Dgrassi": {
-      "name": "Maurizio",
-      "invited_at": "2025-12-17T18:11:42.864049",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/houseofgolde": {
-      "name": "Houseofgolde",
-      "invited_at": "2025-12-17T18:11:59.914487",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/gray%2Dbroughton%2D2a8a265": {
-      "name": "Gray Broughton",
-      "invited_at": "2025-12-17T18:12:24.054372",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/kevin%2Dcheney1": {
-      "name": "Kevin",
-      "invited_at": "2025-12-17T18:12:40.988863",
-      "engagement_type": "liked"
-    },
-    "https://www.linkedin.com/in/colinslevy": {
-      "name": "Colinslevy",
-      "invited_at": "2025-12-17T18:12:56.960175",
-      "engagement_type": "liked"
     }
   },
   "already_connected": [
-    "https://www.linkedin.com/in/diana%2Dwhite%2D486920b5",
-    "https://www.linkedin.com/in/qarrar%2Dsomji",
-    "https://www.linkedin.com/in/ACoAADHwmKoBcsCdr33ilquzs-RvNWvUeI9irio",
-    "https://www.linkedin.com/in/ACoAAAFKGPYB1R0r0xjpTkYpONHM7Ya8rIsvg2s",
-    "https://www.linkedin.com/in/shirleybraun",
-    "https://www.linkedin.com/in/ACoAABT8GWgBHnIBaeU9GBIG57Zi7ZXQEjfkQPc",
-    "https://www.linkedin.com/in/ACoAAAAk63oBNJE6tjx3-UapFzPqthZ0t8JWm5g",
-    "https://www.linkedin.com/in/ACoAAAAmfR8BvPf6y2BL6XylqzHZVBSkOE5pyNA"
+    "https://www.linkedin.com/in/theresa%2Dmullins%2D4b453828a"
   ],
   "skipped_profiles": [
-    "https://www.linkedin.com/in/abdbansal",
-    "https://www.linkedin.com/in/munir%2Dmachmud%2Dali%2D1b2a4774",
-    "https://www.linkedin.com/in/mandy%2Drodriguez%2D63987817",
-    "https://www.linkedin.com/in/srikanth%2Dmangali%2D074a1822b",
-    "https://www.linkedin.com/in/jaredcorreia",
-    "https://www.linkedin.com/in/robertfinney",
-    "https://www.linkedin.com/in/ACoAAASV6MkBOfU3lLipiLNRQvHdKBfTaGs34Wc",
-    "https://www.linkedin.com/in/ACoAAAzgbvUBKyoFF-UEK5iczj127-5HGZ3o72s",
-    "https://www.linkedin.com/in/ACoAABSUlocBZd-YH_dLfGvgNh-qwiuYsUKbMuQ",
-    "https://www.linkedin.com/in/ACoAAALQaZ0Ba_Th08BqbOV9kG3X9olIGA4q0h0",
-    "https://www.linkedin.com/in/ACoAAAJQubkBmanZJeBcjIYLGlodg85LuCkGwJs",
-    "https://www.linkedin.com/in/ACoAABVBd_kBPzE87j9YmTXpR5G5tLM0-0SWkkI",
-    "https://www.linkedin.com/in/ACoAABgPn6gBACYM3ipde-ZjpYdEL1FI9wilDHQ",
-    "https://www.linkedin.com/in/danielathomson",
-    "https://www.linkedin.com/in/ACoAAAAdx6QBQGcbd4Qg4hDDmZLCGVecwLpnOXg",
-    "https://www.linkedin.com/in/ACoAAAHwFawBICTSS-vViOikg6Gj4iFk7AR5JKE",
-    "https://www.linkedin.com/in/ACoAAAFJF88BRCBI0XOCLKhIW15Qx8UVBlfsiOM",
-    "https://www.linkedin.com/in/ACoAAANMwvYBXzQecUUftonB0H7Z_RWfHy9joy4"
+    "https://www.linkedin.com/in/ACoAAAwgAcYBDYb-iqKrmJJtKz5mL1cso1KxItE",
+    "https://www.linkedin.com/in/ACoAAAvchuYBE6IOdvqk1aFUK8LB2JEzDX4IIDs",
+    "https://www.linkedin.com/in/chris%2Dfinney%2Dattorney",
+    "https://www.linkedin.com/in/kenlevinsonatty",
+    "https://www.linkedin.com/in/charlie%2Drittgers",
+    "https://www.linkedin.com/in/meghanfreed"
   ],
+  "daily_invites": {
+    "2026-01-12": 10,
+    "2026-01-13": 10,
+    "2026-01-14": 10,
+    "2026-01-15": 7
+  },
   "run_history": [
     {
-      "timestamp": "2025-12-09T21:24:32.734225",
-      "notifications_processed": 1,
-      "invites_sent": 1,
+      "timestamp": "2026-01-12T06:47:33.621821",
+      "notifications_processed": 12,
+      "invites_sent": 10,
       "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-09T21:40:28.138567",
-      "notifications_processed": 0,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-09T21:41:16.555093",
-      "notifications_processed": 0,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-09T21:44:54.481051",
-      "notifications_processed": 6,
-      "invites_sent": 3,
-      "already_connected": 2,
       "already_invited": 1,
       "errors": 0
     },
     {
-      "timestamp": "2025-12-09T21:47:01.726642",
+      "timestamp": "2026-01-12T07:05:41.806011",
       "notifications_processed": 0,
       "invites_sent": 0,
       "already_connected": 0,
@@ -669,39 +222,7 @@
       "errors": 0
     },
     {
-      "timestamp": "2025-12-10T18:14:57.940454",
-      "notifications_processed": 3,
-      "invites_sent": 3,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-10T19:34:52.539264",
-      "notifications_processed": 2,
-      "invites_sent": 2,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-10T19:58:08.156461",
-      "notifications_processed": 4,
-      "invites_sent": 4,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-11T17:08:20.657882",
-      "notifications_processed": 4,
-      "invites_sent": 4,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-11T17:13:50.355818",
+      "timestamp": "2026-01-12T07:10:25.614834",
       "notifications_processed": 0,
       "invites_sent": 0,
       "already_connected": 0,
@@ -709,131 +230,27 @@
       "errors": 0
     },
     {
-      "timestamp": "2025-12-11T18:44:13.279359",
-      "notifications_processed": 0,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-11T19:06:35.807166",
-      "notifications_processed": 0,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-11T19:09:15.552294",
-      "notifications_processed": 16,
-      "invites_sent": 2,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-12T17:53:35.864438",
-      "notifications_processed": 9,
-      "invites_sent": 5,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-12T22:27:16.616250",
-      "notifications_processed": 7,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-13T18:33:33.568770",
-      "notifications_processed": 9,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-13T20:26:00.193864",
+      "timestamp": "2026-01-13T06:21:31.502650",
       "notifications_processed": 11,
-      "invites_sent": 0,
+      "invites_sent": 10,
       "already_connected": 0,
-      "already_invited": 2,
+      "already_invited": 1,
       "errors": 0
     },
     {
-      "timestamp": "2025-12-14T19:19:23.501862",
-      "notifications_processed": 9,
-      "invites_sent": 1,
+      "timestamp": "2026-01-14T06:28:02.776979",
+      "notifications_processed": 15,
+      "invites_sent": 10,
       "already_connected": 0,
-      "already_invited": 0,
-      "errors": 2
-    },
-    {
-      "timestamp": "2025-12-15T19:23:41.020925",
-      "notifications_processed": 10,
-      "invites_sent": 2,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 1
-    },
-    {
-      "timestamp": "2025-12-15T19:31:41.041929",
-      "notifications_processed": 10,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
+      "already_invited": 1,
       "errors": 0
     },
     {
-      "timestamp": "2025-12-15T20:12:35.626417",
-      "notifications_processed": 0,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-15T20:12:36.158653",
-      "notifications_processed": 44,
-      "invites_sent": 32,
-      "already_connected": 2,
-      "already_invited": 2,
-      "errors": 6
-    },
-    {
-      "timestamp": "2025-12-15T20:26:49.375231",
-      "notifications_processed": 9,
-      "invites_sent": 0,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-15T23:09:33.316774",
-      "notifications_processed": 10,
-      "invites_sent": 5,
-      "already_connected": 0,
-      "already_invited": 0,
-      "errors": 0
-    },
-    {
-      "timestamp": "2025-12-16T19:46:03.390859",
-      "notifications_processed": 78,
-      "invites_sent": 50,
-      "already_connected": 4,
-      "already_invited": 4,
-      "errors": 1
-    },
-    {
-      "timestamp": "2025-12-17T18:13:04.928406",
-      "notifications_processed": 16,
-      "invites_sent": 6,
-      "already_connected": 0,
-      "already_invited": 0,
+      "timestamp": "2026-01-15T06:36:06.884235",
+      "notifications_processed": 13,
+      "invites_sent": 7,
+      "already_connected": 1,
+      "already_invited": 3,
       "errors": 0
     }
   ]

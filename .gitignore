@@ -6,6 +6,11 @@
 user_data/
 ChromeAutomationProfile/
 
+# Logs and Debug Output (new structured directories)
+logs/
+debug/
+data/
+
 # Logs - moved to .git/info/exclude so agent can read them
 # *.log
 # agent_log.txt
@@ -14,6 +19,7 @@ ChromeAutomationProfile/
 # agent_scheduler_log.txt
 # notification_agent_log.txt
 # log_output.txt
+engagement_test_log*.txt
 # git_status.txt
 # git_diff_stat.txt
 # debug_log.txt
@@ -57,6 +63,9 @@ status.txt
 commit_output.txt
 push_output.txt
 profile_snapshot*.pdf
+debug_*.png
+verify_fail_*.png
+monitor_view.png
 
 # IDE
 .vscode/

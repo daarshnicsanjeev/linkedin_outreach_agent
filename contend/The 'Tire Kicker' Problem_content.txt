@@ -1,0 +1,7 @@
+You spend 20 minutes on a consultation call, only to realize they can't afford your retainer. This "tire kicker" problem is a significant drain on law firm resources, underscoring the critical need for robust lead qualification.
+
+Lawyers hate wasting precious time on prospects who aren't serious or can't meet their financial requirements. The solution lies in smart automation. Imagine an AI Intake Agent that serves as your firm's initial point of contact. This advanced system is designed to ask crucial questions about case details and, most importantly, budget expectations—all before a lawyer ever gets on the phone.
+
+As we navigate a busy week starting Jan 12 (Mon), efficiency is paramount. This AI-powered agent effectively filters out unqualified leads, ensuring your legal team's valuable time is dedicated solely to serious, well-aligned prospective clients. It transforms your intake process from a time sink into a streamlined, high-conversion pipeline, allowing lawyers to focus on what they do best: practicing law.
+
+I built a 'Gatekeeper' bot that filters bad leads automatically. Want to see a video of how it works? DM me 'GATEKEEPER'.

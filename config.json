@@ -57,12 +57,12 @@
     "page_load": 5000,
     "scroll_wait": 10000,
     "message_send_wait": 2000,
-    "file_upload_wait_ms": 3000,
+    "file_upload_wait_ms": 8000,
     "message_verify_wait_ms": 2000,
     "ui_response_wait_ms": 3000,
     "identity_poll_delay_ms": 600,
     "identity_poll_retries": 30,
-    "send_button_enabled_poll_ms": 500
+    "send_button_enabled_poll_ms": 1000
   },
   "selectors": {
     "connections_list": "div[data-view-name='connections-list']",
@@ -78,25 +78,30 @@
     "chat_open_retries": 3,
     "chat_open_delay_ms": 1500,
     "send_message_retries": 2,
-    "send_button_enabled_retries": 5
+    "send_button_enabled_retries": 10
   },
   "invite_withdrawal": {
     "min_age_days": 31,
     "delay_between_withdrawals": 2,
     "max_withdrawals_per_run": 100,
     "max_load_more_clicks": 100,
-    "dialog_timeout_ms": 3000,
+    "dialog_timeout_ms": 2000,
     "withdrawal_click_timeout_ms": 3000
   },
   "notification_agent": {
     "max_notifications_per_run": 100,
     "max_invites_per_run": 50,
-    "delay_between_invites": 5,
+    "delay_between_invites": 8,
     "scroll_attempts": 15,
     "page_load_timeout": 10000
   },
   "outreach_agent": {
     "fast_forward_wait": 1.5,
     "login_wait_timeout_seconds": 300
+  },
+  "engagement_agent": {
+    "max_notifications_per_run": 50,
+    "review_server_port": 8000,
+    "server_timeout_seconds": 600
   }
 }

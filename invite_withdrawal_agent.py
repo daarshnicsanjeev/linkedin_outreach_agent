@@ -13,17 +13,25 @@ import os
 import subprocess
 import socket
 import re
+import random
 from datetime import datetime
 from playwright.async_api import async_playwright
 from dotenv import load_dotenv
 from config_manager import ConfigManager
 from optimizer import AgentOptimizer
 
+# Anti-detection utilities
+from anti_detection import (
+    human_delay, human_scroll, human_mouse_move, 
+    human_like_navigate
+)
+
 # Load environment variables
 load_dotenv()
 
 # Configuration
 SENT_INVITES_URL = "https://www.linkedin.com/mynetwork/invitation-manager/sent/"
+DELAY_BETWEEN_WITHDRAWALS = 2  # seconds to wait between withdrawals
 
 # Paths
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -235,6 +243,44 @@ class InviteWithdrawalAgent:
             self.log(f"Metrics saved: {self.run_metrics}")
         except Exception as e:
             self.log(f"Error saving metrics: {e}")
+
+    async def close_chat_popups(self):
+        """Close any open chat/messaging popups."""
+        try:
+            # multiple selectors for the close button on chat windows
+            selectors = [
+                 "button[data-control-name='overlay.close_conversation_window']",
+                 "button[aria-label^='Close conversation']",
+                 "button[aria-label^='Close message']",
+                 "aside.msg-overlay-conversation-bubble button[type='button'] svg[data-supported-dps-icon-name='compact-close-small']", # Icon approach
+                 "aside.msg-overlay-conversation-bubble header button" # Header close button
+            ]
+            
+            # Try finding any open chat windows first
+            open_chats = await self.page.query_selector_all("aside.msg-overlay-conversation-bubble")
+            if open_chats:
+                self.log(f"Found {len(open_chats)} open chat popups. Closing...")
+                for chat in open_chats:
+                    # Try to find the close button within THIS specific chat window
+                    close_btn = await chat.query_selector("button[aria-label^='Close'], button.msg-overlay-bubble-header__control--close-btn")
+                    
+                    if not close_btn:
+                         # Try finding button by looking for the SVG icon inside it
+                         close_btn = await chat.query_selector("button:has(svg[data-supported-dps-icon-name='compact-close-small'])")
+
+                    if close_btn and await close_btn.is_visible():
+                        await close_btn.click()
+                        await asyncio.sleep(0.5)
+            
+            # Fallback: check global selectors
+            for sel in selectors:
+                btns = await self.page.query_selector_all(sel)
+                for btn in btns:
+                    if await btn.is_visible():
+                        await btn.click()
+                        await asyncio.sleep(0.5)
+        except Exception as e:
+            self.log(f"Warning: Error closing chat popups: {e}")
     
     async def check_login_required(self):
         """Check if LinkedIn login is required."""
@@ -261,11 +307,14 @@ class InviteWithdrawalAgent:
     async def navigate_to_sent_invites(self):
         """Navigate to LinkedIn sent invitations page."""
         self.log(f"Navigating to sent invites: {SENT_INVITES_URL}")
-        await self.page.goto(SENT_INVITES_URL, wait_until="domcontentloaded")
-        await asyncio.sleep(3)
+        # ANTI-DETECTION: Human-like navigation
+        await human_like_navigate(self.page, SENT_INVITES_URL)
         
         if not await self.check_login_required():
             return False
+            
+        # Ensure view is clear of chat popups
+        await self.close_chat_popups()
         
         # Wait for invite cards to load
         try:
